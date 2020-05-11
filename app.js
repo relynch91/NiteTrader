@@ -1,7 +1,7 @@
-const app = express();
 const bodyParser = require('body-parser');
 const db = require('./config/keys').mongoURI;
 const express = require("express");
+const app = express();
 const mongoose = require('mongoose');
 const passport = require('passport');
 const stocks = require("./routes/api/stocks");
@@ -17,6 +17,7 @@ mongoose
 .catch(err => console.log(err));
 
 app.use(passport.initialize());
+require('./config/passport')(passport);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
