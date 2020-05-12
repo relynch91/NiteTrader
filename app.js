@@ -8,7 +8,7 @@ const stocks = require("./routes/api/stocks");
 const users = require("./routes/api/users");
 
 // app.get("/", (req, res) => res.send("Hello World"));
-
+// jason's comment
 mongoose
 .connect(db, {
     useNewUrlParser: true
