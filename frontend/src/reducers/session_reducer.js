@@ -15,17 +15,17 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isAuthenticated: !!action.currentUser,
-        user: action.currentUser,
+        user: action.currentUser
       };
     case RECEIVE_USER_LOGOUT:
       return {
         isAuthenticated: false,
-        user: undefined,
+        user: undefined
       };
     case RECEIVE_USER_SIGN_IN:
       return {
         ...state,
-        isSignedIn: true,
+        isSignedIn: true
       };
     default:
       return state;
