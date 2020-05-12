@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
+
 class SignupForm extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +19,7 @@ class SignupForm extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.signedIn === true) {
+
       this.props.history.push('/login');
     }
 
@@ -39,7 +41,8 @@ class SignupForm extends React.Component {
       password2: this.state.password2
     };
 
-    this.props.signup(user, this.props.history); 
+    this.props.signup(user, this.props.history);
+    this.props.login(user)
   }
 
   renderErrors() {
