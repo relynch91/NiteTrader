@@ -32,7 +32,7 @@
 
 .banner-button{
     background: #A3333D;
-    border-color: #3d6883;
+    /* border-color: #3d6883; */
     font-size: 20px;
     outline: 0;
     display: inline-block;
@@ -52,7 +52,8 @@
 .homepage-info{
     text-align: center;
     padding-left: 30px;
-    max-height: 400px;
+    padding-right: 30px;
+    max-height: 500px;
 }
 
 .homepage-info-title{
@@ -65,6 +66,7 @@
 }   
 .info-section{
     margin-top: 20px;
+    /* margin-bottom: 20px; */
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -79,6 +81,44 @@
 }
 
 .info-section li p:last-child{
+    /* color: #477998; */
+    font-size: 16px;
+    max-width: 200px;
+}
+
+.section-img{
+    height: 300px;
+    width: 400px;
+}
+
+.homepage-info2{
+    text-align: center;
+    background: rgb(211, 223, 198);
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    max-height: 500px;
+}
+
+.homepage-info-title2{
+    position: absolute;
+    color: #A3333D;
+    font-weight: 600;
+    padding-left: 550px;
+    /* text-align: right; */
+    margin-top: 40px;
+    font-size: 40px;
+}   
+
+.info-section2 li p:first-child{
+    /* color: #A3333D; */
+    font-weight: 500;
+    font-size: 20px;
+    padding-bottom: 10px;
+    padding-top: 20px;
+}
+
+.info-section2 li p:last-child{
     /* color: #477998; */
     font-size: 16px;
     max-width: 200px;

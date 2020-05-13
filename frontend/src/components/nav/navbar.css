@@ -2,8 +2,8 @@
     padding: 0 20px 0 20px;
 }
 
-.navbar-main{
-}
+/* .navbar-main{
+} */
 
 .navbar-main {
     width: 100%;
@@ -17,14 +17,14 @@
 }
 
 .navbar-link{
-    color: #477998;
+    color: #A3333D;
     padding-right: 20px;
     font-size: 16px;
     font-weight: 400;
 }
 
 .navbar-link:hover{
-    color: #291F1E;
+    color: #3d6883;
 }
 
 .navbar-main > h1{
@@ -33,15 +33,17 @@
 
 .navbar-button{
     padding-right: 20px;
-    color: #477998;
+    margin-right: 5px;
+    color: #A3333D;
+    font-size: 16px;
 }
 
 .navbar-button:hover{
-    color: #291F1E;
+    color: #3d6883;
 }
 
 .home-logo{
-    color: #477998;
+    color: #A3333D;
     font-size: 45px;
     font-family: 'Jim Nightshade', cursive;
 }
