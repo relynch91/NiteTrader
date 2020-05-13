@@ -48,3 +48,43 @@
     border-color: #1e3341;
     cursor: pointer;
 }
+
+.homepage-info{
+    text-align: center;
+    padding-left: 30px;
+    max-height: 400px;
+}
+
+.homepage-info-title{
+    position: absolute;
+    color: #A3333D;
+    font-weight: 600;
+    padding-left: 60px;
+    margin-top: 40px;
+    font-size: 40px;
+}   
+.info-section{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.info-section li p:first-child{
+    /* color: #A3333D; */
+    font-weight: 500;
+    font-size: 20px;
+    padding-bottom: 10px;
+    padding-top: 20px;
+}
+
+.info-section li p:last-child{
+    /* color: #477998; */
+    font-size: 16px;
+    max-width: 200px;
+}
+
+.section-img{
+    height: 300px;
+    width: 400px;
+}
