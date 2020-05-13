@@ -3,14 +3,13 @@
 }
 
 .navbar-main{
-    width: 100%;
-    padding-top: 20px;
-    /* padding: 20px 20px 20px 20px; */
-    background: #8AB0AB;
 }
 
 .navbar-main {
-    padding: 5px 10px 0px 10px;
+    width: 100%;
+    background: #8AB0AB;
+    /* padding-top: 20px; */
+    padding: 20px 10px 0px 10px;
     margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
@@ -30,4 +29,12 @@
 
 .navbar-main > h1{
     font-size: 25px;
+}
+
+.navbar-button{
+    padding-right: 20px;
+}
+
+.navbar-button:hover{
+    color: #9c460d;
 }
