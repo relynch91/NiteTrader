@@ -29,8 +29,6 @@ app.use(passport.initialize());
 
 require('./config/passport')(passport);
 
-
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 

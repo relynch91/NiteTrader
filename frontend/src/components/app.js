@@ -3,6 +3,7 @@ import { AuthRoute, ProtectedRoute} from '../util/route_util';
 import { Switch } from 'react-router-dom';
 import NavBarContainer from './nav/navbar_container';
 import ProfileContainer from './profile/profile_container';
+import './reset.css';
 
 
 import MainPage from './main/main_page';
