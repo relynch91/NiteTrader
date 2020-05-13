@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import './navbar.css'
 
 class NavBar extends React.Component {
@@ -19,7 +19,7 @@ class NavBar extends React.Component {
       if (this.props.loggedIn) {
         return (
             <div className="navbar-main">
-              <h1>NiteTrader</h1>
+            <NavLink className="home-logo" to="/">NiteTrader</NavLink>
               <div>
                 <Link className="navbar-link" to={'/stocks'}>All Stocks</Link>
                 <Link className="navbar-link" to={'/profile'}>Profile</Link>
@@ -30,7 +30,7 @@ class NavBar extends React.Component {
       } else {
         return (
             <div className="navbar-main">
-            <h1>NiteTrader</h1>
+            <NavLink className="home-logo" to="/">NiteTrader</NavLink>
               <div>
                 <Link className="navbar-link" to={'/signup'}>Signup</Link>
                 <Link className="navbar-link" to={'/login'}>Login</Link>
