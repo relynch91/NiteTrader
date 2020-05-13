@@ -20,12 +20,12 @@
 }
 
 .hero-text h1{
-    font-size: 50px;
+    font-size: 60px;
     font-weight: 600;
     text-shadow: 1px 1px rgb(49, 49, 49);
 }
 .hero-text p{
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 500;
     text-shadow: 1px 1px rgb(49, 49, 49);
 }
@@ -33,6 +33,7 @@
 .banner-button{
     background: #A3333D;
     border-color: #3d6883;
+    font-size: 20px;
     outline: 0;
     display: inline-block;
     padding: 10px 25px;
