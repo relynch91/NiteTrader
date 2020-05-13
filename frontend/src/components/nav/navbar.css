@@ -9,7 +9,7 @@
     width: 100%;
     background: whitesmoke;
     /* padding-top: 20px; */
-    padding: 20px 10px 20px 10px;
+    padding: 20px 10px 10px 10px;
     /* margin-bottom: 20px; */
     display: flex;
     justify-content: space-between;
@@ -42,5 +42,6 @@
 
 .home-logo{
     color: #477998;
-    font-size: 25px;
+    font-size: 45px;
+    font-family: 'Jim Nightshade', cursive;
 }
