@@ -31,11 +31,12 @@
 }
 
 .banner-button{
-    background: #477998;
+    background: #A3333D;
     border-color: #3d6883;
     outline: 0;
     display: inline-block;
     padding: 10px 25px;
+    margin-top: 10px;
     color: whitesmoke;
     text-align: center;
     cursor: pointer;
