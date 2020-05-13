@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const stocks = require("./routes/api/stocks");
 const users = require("./routes/api/users");
+const path = require('path');
+
 
 // app.get("/", (req, res) => res.send("Hello World"));
 // jason's comment
