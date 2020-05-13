@@ -20,12 +20,12 @@
 }
 
 .hero-text h1{
-    font-size: 50px;
+    font-size: 60px;
     font-weight: 600;
     text-shadow: 1px 1px rgb(49, 49, 49);
 }
 .hero-text p{
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 500;
     text-shadow: 1px 1px rgb(49, 49, 49);
 }
@@ -33,6 +33,7 @@
 .banner-button{
     background: #A3333D;
     border-color: #3d6883;
+    font-size: 20px;
     outline: 0;
     display: inline-block;
     padding: 10px 25px;
@@ -46,4 +47,44 @@
     background: #3d6883;
     border-color: #1e3341;
     cursor: pointer;
+}
+
+.homepage-info{
+    text-align: center;
+    padding-left: 30px;
+    max-height: 400px;
+}
+
+.homepage-info-title{
+    position: absolute;
+    color: #A3333D;
+    font-weight: 600;
+    padding-left: 60px;
+    margin-top: 40px;
+    font-size: 40px;
+}   
+.info-section{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.info-section li p:first-child{
+    /* color: #A3333D; */
+    font-weight: 500;
+    font-size: 20px;
+    padding-bottom: 10px;
+    padding-top: 20px;
+}
+
+.info-section li p:last-child{
+    /* color: #477998; */
+    font-size: 16px;
+    max-width: 200px;
+}
+
+.section-img{
+    height: 300px;
+    width: 400px;
 }
