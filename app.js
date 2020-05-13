@@ -4,7 +4,7 @@ const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
 const passport = require('passport');
-const stocks = require("./routes/api/stocks");
+const endPointStocks = require("./routes/api/stock_api/quoteendpointstock");
 const users = require("./routes/api/users");
 const path = require('path');
 
@@ -15,8 +15,8 @@ const path = require('path');
 mongoose
 .connect(db, {
     useNewUrlParser: true
-}).then(() => console.log("Connected to MongoDB successfully"))
-.catch(err => console.log(err));
+    }).then(() => console.log("Connected to MongoDB successfully"))
+    .catch(err => console.log(err));
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('frontend/build'));
@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use("/api/users", users);
-app.use("/api/stocks", stocks);
+app.use("/api/stock_api/quoteendpointstock", endPointStocks);
 
 const port = process.env.PORT || 5000;
 
