@@ -5,4 +5,6 @@ router.get("/test", (req, res) => res.json({
     msg: "This is the stocks route"
 }));
 
+
+
 module.exports = router;
