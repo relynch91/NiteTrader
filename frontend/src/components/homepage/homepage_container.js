@@ -11,7 +11,7 @@ const mapDispatchToProps = dispatch => {
   return {
     signUpButton: (
         <button className="banner-button" onClick={() => {
-            dispatch(openModal('login'))
+            dispatch(openModal('signup'))
             dispatch(clearErrors())
         }}>Start Investing Now
         </button>)
