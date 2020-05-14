@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import './homepage.css'
 import nyse from './nyse.jpg'
 import stockChart from './stock-chart.png'
@@ -15,7 +15,9 @@ class Homepage extends React.Component {
                     <div className="hero-text">
                         <h1 >Learn To Invest</h1>
                         <p>Set Your Goal | Pick Your Stocks</p>
-                        <NavLink className="banner-button" to="/signup">Start Investing Now</NavLink>
+                        {this.props.signUpButton}
+                        {/* <NavLink className="banner-button" to="/signup">Start Investing Now</NavLink> */}
+                        {/* <button className="banner-button" onClick={() => openModal("signup")}>Start Investing Now</button> */}
                     </div>
                 </div>
                 <div className="homepage-info">
