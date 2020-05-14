@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=demo`
+// `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=demo`
 export const stockSaveToDB = (stockData) => {
 
     return axios.post('/api/stocks', stockData);
