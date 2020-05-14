@@ -66,8 +66,8 @@ class SignupForm extends React.Component {
     const message = formType === 'Sign Up' ? 'Already have an account?' : 'No account?';
     const button_text = formType === 'Sign Up' ? 'Sign up' : 'Sign in';
     const intro = formType === 'Sign Up'
-      ? 'Create an account to start learn about stock market by using the simulator'
-      : 'Sign in to start continue learning about the stock market'
+      ? 'Create an account to learn about stock market by using the simulator'
+      : 'Sign in to continue learning about the stock market'
     const login_intro = formType === 'Sign Up' ? 'Join NiteTrader' : 'Welcome back.'
     
     return (
@@ -79,7 +79,7 @@ class SignupForm extends React.Component {
         <div className="modal-content">
           <div className="modal-title">{login_intro}</div>
           <div className="modal-intro">{intro}</div>
-          <div className="modal-quote">Real trading would be dominant</div>
+          <div className="modal-quote">Real Trading would be dominant.</div>
           <br />
           <ul>{this.renderErrors()}</ul>
           <br />
@@ -89,7 +89,7 @@ class SignupForm extends React.Component {
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
-                placeholder="Email"
+                // placeholder="Email"
                 className="modal-input"
               />
             </div>
@@ -99,7 +99,7 @@ class SignupForm extends React.Component {
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
-                placeholder="Username"
+                // placeholder="Username"
                 className="modal-input"
               />
             </div>
@@ -109,7 +109,7 @@ class SignupForm extends React.Component {
               <input type="password"
                 value={this.state.password}
                 onChange={this.update("password")}
-                placeholder="Password"
+                // placeholder="Password"
                 className="modal-input"
               />
             </div>
@@ -119,7 +119,7 @@ class SignupForm extends React.Component {
               <input type="password"
                 value={this.state.password2}
                 onChange={this.update("password2")}
-                placeholder="Confirm Password"
+                // placeholder="Confirm Password"
                 className="modal-input"
               />
             </div>
