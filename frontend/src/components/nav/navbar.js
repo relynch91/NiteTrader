@@ -48,6 +48,8 @@ class NavBar extends React.Component {
 
   // Selectively render links dependent on whether the user is logged in
   getLinks() {
+      const { openModal } = this.props;
+
       if (this.props.loggedIn) {
         return (
             <div className="navbar-main">
