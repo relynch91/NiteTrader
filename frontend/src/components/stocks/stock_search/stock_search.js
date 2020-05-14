@@ -10,7 +10,7 @@
 //     }
 
 
-//  getStockDetails(){
+//  getStockDetails(text){
 //         // dispatch api call (comes from mdtp from axios)
 //             // .then (returnedStockInfo => this.setState(returnedStockInfoDetails: stock))
 //     }
