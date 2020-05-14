@@ -1,13 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const QuoteEndPointStock = require('../../../models/stock_api_requests/QuoteEndPointStock');
-
+// test route
 router.get("/test", (req, res) => res.json({
     msg: "This is the stocks route"
 }));
-
+// create a new entry in the database
 router.post('/new', (req, res) => {
-
     const newStock = new QuoteEndPointStock({
         symbol: req.body.symbol,
         open: req.body.open,
@@ -23,23 +22,48 @@ router.post('/new', (req, res) => {
 
     newStock.save().then(newStock => res.json(newStock));
 });
-
+// update a current entry in the database. 
 router.patch('/update', (req, res) => {
-    
-        const updatedStock = QuoteEndPointStock.replaceOne({symbol: req.body.symbol}, {
-            symbol: req.body.symbol,
-            open: req.body.open,
-            high: req.body.high,
-            low: req.body.low,
-            price: req.body.price,
-            volume: req.body.volume,
-            lastTradingDay: req.body.lastTradingDay,
-            previousClose: req.body.previousClose,
-            change: req.body.change,
-            changePercent: req.body.changePercent
-        })
+    const query = { symbol: req.body.symbol };
+    // const options 
 
-        updatedStock.save().then(updatedStock => res.json(updatedStock))
+    const update = {
+        symbol: req.body.symbol,
+        open: req.body.open,
+        high: req.body.high,
+        low: req.body.low,
+        price: req.body.price,
+        volume: req.body.volume,
+        lastTradingDay: req.body.lastTradingDay,
+        previousClose: req.body.previousClose,
+        change: req.body.change,
+        changePercent: req.body.changePercent
+    };
+
+    const updatedStock = QuoteEndPointStock.replaceOne(query, update);
+
+    updatedStock.then(updatedStock => res.json(updatedStock));
+    // Need to figure out how to re-render the updateStock. 
 })
 
+
+// return all the stocks and information in the database 
+
+router.get('/', (req, res) => { 
+    const allStocks = QuoteEndPointStock.find();
+
+    allStocks.then(allStocks => res.json(allStocks))
+
+})
+
+
+router.delete('/DELETE', (req, res) => {
+
+    const deleteStock = QuoteEndPointStock.deleteOne( 
+        { symbol: { $eq: req.body.symbol } })
+    
+    deleteStock.then((deleteStock) => res.json(deleteStock))
+    // Need to figure out how to rerender the index page after deleting a stock. 
+
+})
 module.exports = router;
