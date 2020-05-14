@@ -9,16 +9,16 @@ export default class StockGraph extends React.Component {
   }
 
   componentDidMount(){
-    let theHistoricStockDate = this.props.stock["Time Series"]
+    let theHistoricStockDate = this.props.stock["Time Series (Daily)"];
     let theDays = Object.keys(theHistoricStockDate)
-    let structuredProps = theDays.map((dateKey) => (
-       {
-        date: dateKey,
-        low: theHistoricStockDate[dateKey].low,
-        high: theHistoricStockDate[dateKey].high,
-        open: theHistoricStockDate[dateKey].open,
-        close: theHistoricStockDate[dateKey].close
-      }))
+    // debugger
+    let structuredProps = theDays.map((dateKey) => ({
+      date: dateKey,
+      low: theHistoricStockDate[dateKey]["3. low"],
+      high: theHistoricStockDate[dateKey]["2. high"],
+      open: theHistoricStockDate[dateKey]["1. open"],
+      close: theHistoricStockDate[dateKey]["4. close"],
+    }));
     this.setState({stock: structuredProps});
     console.log(structuredProps);
   }
