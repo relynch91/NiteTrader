@@ -40,7 +40,7 @@
 }
 
 .close-x:hover {
-    color: black;
+    color: #F64740;
     cursor: pointer;
 }
 
@@ -100,6 +100,11 @@
     cursor: pointer;
 }
 
+.modal-submit:hover{
+    color: #3d6883;
+    cursor: pointer;
+}
+
 .modal-bottom {
     font-size: 15px;
     width: 300px;
@@ -117,5 +122,10 @@
     border: none;
     font-size: 15px;
     margin-left: 5px;
+    cursor: pointer;
+}
+
+.modal-switch:hover{
+    color: #3d6883;
     cursor: pointer;
 }
