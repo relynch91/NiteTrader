@@ -48,6 +48,7 @@ router.patch('/update', (req, res) => {
     };
 
     const updatedStock = QuoteEndPointStock.replaceOne(query, update);
+    
     updatedStock.then(updatedStock => res.json(updatedStock));
 
     // Need to figure out how to re-render the updateStock. 
