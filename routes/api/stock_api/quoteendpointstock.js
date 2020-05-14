@@ -56,6 +56,13 @@ router.get('/', (req, res) => {
 
 })
 
+router.get('/stock', (req, res) => {
+    const aStock = QuoteEndPointStock.findOne({
+        symbol: { $eq: req.body.symbol }});
+
+    aStock.then(aStock => res.json(aStock))
+})
+
 
 router.delete('/DELETE', (req, res) => {
 
