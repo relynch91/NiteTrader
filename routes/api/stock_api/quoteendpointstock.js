@@ -50,7 +50,6 @@ router.patch('/update', (req, res) => {
     };
 
     const updatedStock = QuoteEndPointStock.replaceOne(query, update);
-    debugger
     updatedStock.then(updatedStock => res.json(updatedStock));
 
     // Need to figure out how to re-render the updateStock. 
@@ -67,50 +66,18 @@ router.get('/', (req, res) => {
 
 })
 
-router.get('/user/:user_id', (req, res) => {
-    Tweet.find({user: req.params.user_id})
-        .sort({ date: -1 })
-        .then(tweets => res.json(tweets))
-        .catch(err =>
-            res.status(404).json({ notweetsfound: 'No tweets found from that user' }
-        )
-    );
-});
 
 router.get('/stock', (req, res) => {
     const aStock = QuoteEndPointStock.findOne({
         symbol: { $eq: req.body.symbol }
         })
-        .then(aStock => (res.json(aStock))
+        .then(aStock => (res.json(aStock)))
         .catch(err =>
             res.status(404).json({
                 notickersfound: 'No stocks found from that ticker'
             })
         )
-        // aStock.then(aStock => (res.json(aStock))); this line works alone
-        
-    
-        // if (aSctock.length > 0) {
-        //     aStock.then(aStock => (res.json(aStock)));
-        // } else {
-        //     aStock = ["Not a stock"];
-        //     aStock.then(aStock => (res.json(aStock)));
-        // }
-
-    // router.get('/user/:user_id', (req, res) => {
-    //     Tweet.find({
-    //             user: req.params.user_id
-    //         })
-    //         .then(tweets => res.json(tweets))
-    //         .catch(err =>
-    //             res.status(404).json({
-    //                 notweetsfound: 'No tweets found from that user'
-    //             })
-    //         );
-    // });
-
-)}
-
+});
 
 router.delete('/DELETE', (req, res) => {
 
@@ -119,7 +86,6 @@ router.delete('/DELETE', (req, res) => {
     
     deleteStock.then((deleteStock) => res.json(deleteStock))
     // Need to figure out how to rerender the index page after deleting a stock. 
-
 })
 
 module.exports = router;
