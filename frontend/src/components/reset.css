@@ -46,3 +46,9 @@ input[type="submit"] {
 body {
     text-align: left;
 }
+
+input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #000000;
+}

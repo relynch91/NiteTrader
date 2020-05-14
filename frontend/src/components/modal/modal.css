@@ -65,6 +65,9 @@
 .modal-quote {
     font-size: 28px;
     margin-top: 25px;
+    width: 600px;
+    display: flex;
+    justify-content: center;
 }
 
 .modal-form {
@@ -83,6 +86,36 @@
 .modal-input {
     width: 200px;
     margin-top: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     font-size: 15px;
+}
+
+.modal-submit {
+    color: #F64740;
+    background-color: transparent;
+    border: none;
+    font-size: 15px;
+    margin-left: -2px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.modal-bottom {
+    font-size: 15px;
+    width: 300px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.modal-switch {
+    color: #F64740;
+    background-color: transparent;
+    border: none;
+    font-size: 15px;
+    margin-left: 5px;
+    cursor: pointer;
 }
