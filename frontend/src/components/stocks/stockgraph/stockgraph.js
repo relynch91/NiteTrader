@@ -15,6 +15,7 @@ export default class StockGraph extends React.Component {
        {
         date: dateKey,
         low: theHistoricStockDate[dateKey].low,
+        high: theHistoricStockDate[dateKey].high,
         open: theHistoricStockDate[dateKey].open,
         close: theHistoricStockDate[dateKey].close
       }))
@@ -45,13 +46,10 @@ export default class StockGraph extends React.Component {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line
-            type="monotone"
-            dataKey="open"
-            stroke="#477998"
-            activeDot={{ r: 8 }}
-          />
+          <Line type="monotone" dataKey="high"  stroke="#C4D6BO" activeDot={{ r: 8 }} />
           <Line type="monotone" dataKey="low" stroke="#F64740" />
+          <Line type="monotone" dataKey="open" stroke="#291F1E" />
+          <Line type="monotone" dataKey="close" stroke="#477998" />
         </LineChart>
       </div>
     );
