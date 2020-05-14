@@ -3,54 +3,83 @@ import React, { Component } from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Brush, Legend, } from 'recharts';
 
 export default class StockGraph extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {stock: []}
+  }
+
+  componentDidMount(){
+    let theHistoricStockDate = this.props.stock["Time Series"]
+    let theDays = Object.keys(theHistoricStockDate)
+    let structuredProps = theDays.map((dateKey) => (
+       {
+        date: dateKey,
+        low: theHistoricStockDate[dateKey].low,
+        open: theHistoricStockDate[dateKey].open,
+        close: theHistoricStockDate[dateKey].close
+      }))
+    this.setState({stock: structuredProps});
+    console.log(structuredProps);
+  }
 
   render() {
-
+    // debugger
+      // let { symbol } = this.props["Meta Data"];
+      // console.log(this.state)
     return (
-      <LineChart
-        width={500}
-        height={300}
-        data={this.props.stock}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line
+      <div>
+
+        <LineChart
+          width={500}
+          height={300}
+          data={this.state.stock}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="date" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line
             type="monotone"
-            dataKey="high"
+            dataKey="open"
             stroke="#477998"
             activeDot={{ r: 8 }}
-        />
-        <Line 
-            type="monotone" 
-            dataKey="low" 
-            stroke="#F64740" />
-      </LineChart>
+          />
+          <Line type="monotone" dataKey="low" stroke="#F64740" />
+        </LineChart>
+      </div>
     );
   }
 }
 
 
+
 // {
-//     _id: "5ebcd68236b38531cacdc688",
-//     symbol: "ThisWorks",
-//     open: 15,
+//     _id: "5ebcb8782f80140cf07db340",
+//     symbol: "AAPL",
+//     open: 135,
 //     low: 114.85,
-//     price: 55,
+//     price: 115.72,
 //     volume: 3153277,
 //     change: -4.53,
 //     changePercent: -3.7668,
 //     __v: 0,
 //   },
 
+  //   { name: "Mon", high: 4000, low: 2400 },
+  //   { name: "Tues", high: 3000, low: 1398, amt: 2210, time: 3 },
+  //   { name: "Wed", high: 9800, low: 2000, amt: 2290, time: 9 },
+  //   { name: "Thur", high: 3908, low: 2750, amt: 2000, time: 10 },
+  //   { name: "Fri", high: 4800, low: 2500, amt: 2181, time: 12 },
+  //   { name: "Mon", high: 3800, low: 1220, amt: 2500, time: 16 },
+  //   { name: "Tues", high: 4300, low: 3290, amt: 2100, time: 18 },
+  // ],
 
 
 // <AreaChart width={730} height={250} data={data}

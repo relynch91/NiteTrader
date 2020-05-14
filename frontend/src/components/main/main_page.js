@@ -15,6 +15,7 @@ class MainPage extends React.Component {
         <h1>Welcome To NiteTrader</h1>
         <p>Here is Your Current Stock Portfolio</p>
         <StockIndexContainer />
+        <StockGraphContainer />
         {/* <StockSearch />
           -search bar
           -results view */}
