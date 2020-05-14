@@ -41,7 +41,8 @@ class LoginForm extends React.Component {
       password: this.state.password
     };
 
-    this.props.login(user);
+    this.props.login(user)
+      .then(() => this.props.closeModal())
   }
 
   // Render the session errors if there are any
@@ -58,27 +59,88 @@ class LoginForm extends React.Component {
   }
 
   render() {
+
+    const { formType, closeModal, otherForm } = this.props;
+
+    const message = formType === 'Sign Up' ? 'Already have an account?' : 'No account?';
+    const button_text = formType === 'Sign Up' ? 'Sign up' : 'Sign in';
+    const intro = formType === 'Sign Up'
+      ? 'Create an account to start learn about stock market by using the simulator'
+      : 'Sign in to start continue learning about the stock market'
+    const login_intro = formType === 'Sign Up' ? 'Join NiteTrader' : 'Welcome back.'
+
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <div>
+      <div className="modal-child">
+        <div onClick={closeModal} className="close-x">
+          &times;
+        </div>
+        <div className="modal-content">
+          <div className="modal-title">{login_intro}</div>
+          <div className="modal-intro">{intro}</div>
+          <div className="modal-quote">Real trading would be dominant</div>
+          <br />
+          <ul>{this.renderErrors()}</ul>
+          <br />
+          <form className="modal-form" onSubmit={this.handleSubmit}>
+            <div className="session-info">
+              <label htmlFor="username">Username</label>
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
                 placeholder="Username"
+                className="modal-input"
               />
-            <br/>
+            </div>
+            <br />
+            <div className="session-info">
+              <label htmlFor="password">Password</label>
               <input type="password"
                 value={this.state.password}
-                onChange={this.update('password')}
+                onChange={this.update("password")}
                 placeholder="Password"
+                className="modal-input"
               />
-            <br/>
-            <input type="submit" value="Submit" />
-            {this.renderErrors()}
+            </div>
+            <br />
+            <input type="submit" className="modal-submit" value={button_text} />
+          </form>
+          <div className="modal-bottom">
+            {message}
+            <div className="modal-switch">{otherForm}</div>
           </div>
-        </form>
+        </div>
       </div>
+
+
+
+
+
+
+
+
+
+
+
+      // <div>
+      //   <form onSubmit={this.handleSubmit}>
+      //     <div>
+      //         <input type="text"
+      //           value={this.state.username}
+      //           onChange={this.update('username')}
+      //           placeholder="Username"
+      //         />
+      //       <br/>
+      //         <input type="password"
+      //           value={this.state.password}
+      //           onChange={this.update('password')}
+      //           placeholder="Password"
+      //         />
+      //       <br/>
+      //       <input type="submit" value="Submit" />
+      //       {this.renderErrors()}
+      //     </div>
+      //   </form>
+      // </div>
     );
   }
 }

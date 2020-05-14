@@ -3,6 +3,7 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import LoginFormContainer from '../session/login_form_container';
 import SignUpFormContainer from '../session/signup_form_container';
+import './modal.css';
 
 function Modal({ modal, closeModal }) {
     if (!modal) {
@@ -39,3 +40,4 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+

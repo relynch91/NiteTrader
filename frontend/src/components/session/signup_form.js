@@ -41,9 +41,9 @@ class SignupForm extends React.Component {
       password2: this.state.password2
     };
 
-    this.props.signup(user, this.props.history).then( () => 
-      (this.props.login(user))
-    )
+    this.props.signup(user, this.props.history)
+      .then( () => (this.props.login(user)))
+      .then(() => (this.props.closeModal()))
   }
 
   renderErrors() {
@@ -59,40 +59,114 @@ class SignupForm extends React.Component {
   }
 
   render() {
+    
+    const { formType, closeModal, otherForm } = this.props;
+
+    const message = formType === 'Sign Up' ? 'Already have an account?' : 'No account?';
+    const button_text = formType === 'Sign Up' ? 'Sign up' : 'Sign in';
+    const intro = formType === 'Sign Up'
+      ? 'Create an account to start learn about stock market by using the simulator'
+      : 'Sign in to start continue learning about the stock market'
+    const login_intro = formType === 'Sign Up' ? 'Join NiteTrader' : 'Welcome back.'
+    
     return (
-      <div className="signup-form-container">
-        <form onSubmit={this.handleSubmit}>
-          <div className="signup-form">
-            <br/>
+
+      <div className="modal-child">
+        <div onClick={closeModal} className="close-x">
+          &times;
+        </div>
+        <div className="modal-content">
+          <div className="modal-title">{login_intro}</div>
+          <div className="modal-intro">{intro}</div>
+          <div className="modal-quote">Real trading would be dominant</div>
+          <br />
+          <ul>{this.renderErrors()}</ul>
+          <br />
+          <form className="modal-form" onSubmit={this.handleSubmit}>
+            <div className="session-info">
+              <label htmlFor="email">Email</label>
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
                 placeholder="Email"
+                className="modal-input"
               />
-            <br/>
+            </div>
+            <br />
+            <div className="session-info">
+              <label htmlFor="username">Username</label>
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
                 placeholder="Username"
+                className="modal-input"
               />
-            <br/>
+            </div>
+            <br />
+            <div className="session-info">
+              <label htmlFor="password">Password</label>
               <input type="password"
                 value={this.state.password}
-                onChange={this.update('password')}
+                onChange={this.update("password")}
                 placeholder="Password"
+                className="modal-input"
               />
-            <br/>
+            </div>
+            <br />
+            <div className="session-info">
+              <label htmlFor="password2">Confirm Password</label>
               <input type="password"
                 value={this.state.password2}
-                onChange={this.update('password2')}
+                onChange={this.update("password2")}
                 placeholder="Confirm Password"
+                className="modal-input"
               />
-            <br/>
-            <input type="submit" value="Submit" />
-            {this.renderErrors()}
+            </div>
+            <br />
+            <input type="submit" className="modal-submit" value={button_text} />
+          </form>
+          <div className="modal-bottom">
+            {message}
+            <div className="modal-switch">{otherForm}</div>
           </div>
-        </form>
+        </div>
       </div>
+
+
+
+      // <div className="signup-form-container">
+      //   <form onSubmit={this.handleSubmit}>
+      //     <div className="signup-form">
+      //       <br/>
+      //         <input type="text"
+      //           value={this.state.email}
+      //           onChange={this.update('email')}
+      //           placeholder="Email"
+      //         />
+      //       <br/>
+      //         <input type="text"
+      //           value={this.state.username}
+      //           onChange={this.update('username')}
+      //           placeholder="Username"
+      //         />
+      //       <br/>
+      //         <input type="password"
+      //           value={this.state.password}
+      //           onChange={this.update('password')}
+      //           placeholder="Password"
+      //         />
+      //       <br/>
+      //         <input type="password"
+      //           value={this.state.password2}
+      //           onChange={this.update('password2')}
+      //           placeholder="Confirm Password"
+      //         />
+      //       <br/>
+      //       <input type="submit" value="Submit" />
+      //       {this.renderErrors()}
+      //     </div>
+      //   </form>
+      // </div>
     );
   }
 }
