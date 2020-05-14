@@ -6,31 +6,40 @@ router.get("/test", (req, res) => res.json({
     msg: "This is the stocks route"
 }));
 
-router.post('/stock', (req, res) => {
-    QuoteEndPointStock.findOne({ 
-        symbol: req.body.symbol
-    }).then(stock => {
-        if (!stock) {
-            const newStock = new QuoteEndPointStock({
-                symbol: req.body.symbol,
-                date: req.body.date,
-                details: req.body.details
-            })
-            newStock.save().then(stock => res.json(stock));
-        } else {
-            QuoteEndPointStock.update(stock, {
-                open: { type: Number },
-                high: { type: Number },
-                low: { type: Number },
-                price: { type: Number },
-                volume: { type: Number },
-                latestTradingDay: { type: String },
-                previousClose: { type: Number },
-                change: { type: Number },
-                changePercent: { type: Number}
-            })
-        }
-    })
+router.post('/new', (req, res) => {
+
+    const newStock = new QuoteEndPointStock({
+        symbol: req.body.symbol,
+        open: req.body.open,
+        high: req.body.high,
+        low: req.body.low,
+        price: req.body.price,
+        volume: req.body.volume,
+        lastTradingDay: req.body.lastTradingDay,
+        previousClose: req.body.previousClose,
+        change: req.body.change,
+        changePercent: req.body.changePercent
+    });
+
+    newStock.save().then(newStock => res.json(newStock));
+});
+
+router.patch('/update', (req, res) => {
+    
+        const updatedStock = QuoteEndPointStock.replaceOne({symbol: req.body.symbol}, {
+            symbol: req.body.symbol,
+            open: req.body.open,
+            high: req.body.high,
+            low: req.body.low,
+            price: req.body.price,
+            volume: req.body.volume,
+            lastTradingDay: req.body.lastTradingDay,
+            previousClose: req.body.previousClose,
+            change: req.body.change,
+            changePercent: req.body.changePercent
+        })
+
+        updatedStock.save().then(updatedStock => res.json(updatedStock))
 })
 
 module.exports = router;
