@@ -9,7 +9,6 @@ router.get("/test", (req, res) => res.json({
 
 // create a new entry in the database
 
-
 router.post('/new', (req, res) => {
     const newStock = new QuoteEndPointStock({
         symbol: req.body.symbol,
@@ -26,7 +25,6 @@ router.post('/new', (req, res) => {
 
     newStock.save().then(newStock => res.json(newStock));
 });
-
 
 // update a current entry in the database. 
 
@@ -56,7 +54,6 @@ router.patch('/update', (req, res) => {
     // need to dispatch a get request for the updated stock. 
     // current ouput is the db response to the successful update.  Need to re-render 
 })
-
 
 // return all the stocks and information in the database 
 
