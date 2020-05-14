@@ -10,7 +10,7 @@ export default class StockGraph extends React.Component {
       <LineChart
         width={500}
         height={300}
-        data={this.props.appl}
+        data={this.props.stock}
         margin={{
           top: 5,
           right: 30,
@@ -37,6 +37,21 @@ export default class StockGraph extends React.Component {
     );
   }
 }
+
+
+// {
+//     _id: "5ebcd68236b38531cacdc688",
+//     symbol: "ThisWorks",
+//     open: 15,
+//     low: 114.85,
+//     price: 55,
+//     volume: 3153277,
+//     change: -4.53,
+//     changePercent: -3.7668,
+//     __v: 0,
+//   },
+
+
 
 // <AreaChart width={730} height={250} data={data}
 //     margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
