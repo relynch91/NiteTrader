@@ -14,9 +14,9 @@ export default class StockGraph extends React.Component {
     // debugger
     let structuredProps = theDays.map((dateKey) => ({
       date: dateKey,
-      low: theHistoricStockDate[dateKey]["3. low"],
-      high: theHistoricStockDate[dateKey]["2. high"],
       open: theHistoricStockDate[dateKey]["1. open"],
+      high: theHistoricStockDate[dateKey]["2. high"],
+      low: theHistoricStockDate[dateKey]["3. low"],
       close: theHistoricStockDate[dateKey]["4. close"],
     }));
     this.setState({stock: structuredProps});
@@ -25,11 +25,11 @@ export default class StockGraph extends React.Component {
 
   render() {
     // debugger
-      // let { symbol } = this.props["Meta Data"];
+      let { symbol } = this.props.stock["Meta Data"]["2. Symbol"];
       // console.log(this.state)
     return (
       <div>
-
+        <p>{symbol}</p>
         <LineChart
           width={500}
           height={300}
