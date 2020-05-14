@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect, withRouter } from 'react-router-dom';
-import Homepage from '../components/homepage/homepage';
+import HomepageContainer from '../components/homepage/homepage_container';
 
 // Passed in from parent component or from mapStateToProps
 const Auth = ({ component: Component, path, loggedIn, exact }) => (
@@ -23,7 +23,7 @@ const Protected = ({ component: Component, loggedIn, ...rest }) => (
         <Component {...props} />
       ) : (
         // Redirect to the home page if the user is already authenticated
-          <Homepage {...props} />
+          <HomepageContainer {...props} />
       )
     }
   />
