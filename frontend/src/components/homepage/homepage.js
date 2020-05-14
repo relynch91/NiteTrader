@@ -14,7 +14,7 @@ class Homepage extends React.Component {
                         <img src={nyse} className="banner-img" alt="stock-market-graph" />
                     <div className="hero-text">
                         <h1 >Learn To Invest</h1>
-                        <p>Set Your Goal | Pick Your Stocks</p>
+                        <p>Set Your Goals | Test Your Skills</p>
                         {this.props.signUpButton}
                         {/* <NavLink className="banner-button" to="/signup">Start Investing Now</NavLink> */}
                         {/* <button className="banner-button" onClick={() => openModal("signup")}>Start Investing Now</button> */}
@@ -48,7 +48,7 @@ class Homepage extends React.Component {
                         </li>
                         <li>
                             <p>Beat your Peers</p>
-                            <p>Invite a friend to see who has the inside scoop on market trends</p>
+                            <p>Invite a friend to see who has the inside scoop on market trends.</p>
                         </li>
                         <li>
                             <p>Beat Random Stocks</p>
