@@ -18,6 +18,7 @@ export const receiveStock = (stock) => ({
     stock
 })
 
+<<<<<<< HEAD
 export const getQuoteEndPointAlpha = stockURL => dispatch => (
     QuoteEndPointUtil.quoteEndPoint(stockURL).then((stockData) => (
         dispatch(receiveStock(stockData))
@@ -31,3 +32,15 @@ export const getQuoteEndPointAlpha = stockURL => dispatch => (
     // ));
 
     )
+=======
+// export const getQuoteEndPointAlpha = stockURL => dispatch => (
+//     QuoteEndPointUtil.QuoteEndPoint(stockURL).then((stockData) => ({
+//         let formatted = formatAPICall(stockData);
+
+//         QuoteEndPointUtil.quoteEndPointDB(stockData).then(stockData => (
+//                 )
+//     }
+        
+//     ));
+// )
+>>>>>>> 0659dfa1d7f3b1adafc21ba33143fce624d8f70d

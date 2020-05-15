@@ -45,4 +45,4 @@ getStockDetails(e){
                 </div>
             )
     }
-}
+}  

@@ -10,7 +10,7 @@ export default connect(mapStateToProps, null)(StockGraph)
 const thisStocksData = {
   "Meta Data": {
       Information: "Daily Prices (open, high, low, close) and Volumes",
-      Symbol: "IBM",
+      "2. Symbol": "IBM",
       "Last Refreshed": "2020-05-14",
       "Output Size": "Compact",
       "Time Zone": "US/Eastern",
@@ -56,7 +56,7 @@ const thisStocksData = {
       high: "110.3200",
       low: "90.2600",
       close: "100.2600",
-      volume: "4779635",
-    },
-  },
-};
+      volume: "4779635"
+    }
+  }
+}
