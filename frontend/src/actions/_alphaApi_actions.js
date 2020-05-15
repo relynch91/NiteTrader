@@ -1,6 +1,5 @@
-export const formatAPICall = apiObject => ({
 
-})
+
 
 // {
 //     "Global Quote": {
@@ -16,3 +15,16 @@ export const formatAPICall = apiObject => ({
 //         "10. change percent": "0.6143%"
 //     }
 // }
+
+// const QuoteEndPointStockSchema = new Schema({
+//     symbol: { type: String, index: {unique: true}},
+//     open: { type: Number },
+//     high: { type: Number },
+//     low: { type: Number },
+//     price: { type: Number },
+//     volume: { type: Number },
+//     latestTradingDay: { type: String },
+//     previousClose: { type: Number },
+//     change: { type: Number },
+//     changePercent: { type: Number}
+// });
