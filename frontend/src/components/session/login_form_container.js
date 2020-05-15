@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch) => {
       }}>Create one
       </button>
     ),
-    clearErrors: () => dispatch(clearErrors())
+    // clearErrors: () => dispatch(clearErrors())
   }
 }
 
