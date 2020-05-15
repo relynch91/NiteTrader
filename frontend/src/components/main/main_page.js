@@ -1,24 +1,18 @@
 import React from 'react';
 import StockGraphContainer from "../stocks/stockgraph/stockgraph_container";
 import StockIndexContainer from "../stocks/stock_index/stock_index_container";
-import StockSearchContainer from '../stocks/stock_search/stock_search_container';
-
+import StockSearchContainer from '../stocks/stock_search/stock_search_container'
+import './main_page.css'
 class MainPage extends React.Component {
 
   render() {
     return (
-      <div>
-        {/* <Switch>
-            <Link to="/profile" />
-            <Link to="/watchlist" />
-            <Link to="/portfolio" />
-        </Switch> */}
-        <h1>Welcome To NiteTrader</h1>
-        <p>Here is Your Current Stock Portfolio</p>
-        <StockIndexContainer />
-        <StockGraphContainer />
-
-        <StockSearchContainer />
+      <div className="main-landing">
+        <div className="main-components">
+          <StockIndexContainer />
+          <StockGraphContainer />
+          <StockSearchContainer />
+        </div>
       </div>
     );
   }

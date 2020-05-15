@@ -1,0 +1,11 @@
+.main-components{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-center;
+    max-width: 900px;
+    margin: 40px 40px 40px 40px
+}
+.main-landing h1{
+    color: #3d6883;
+    font-size: 18px;
+}
