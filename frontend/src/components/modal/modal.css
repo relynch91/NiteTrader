@@ -32,7 +32,7 @@
 }
 
 .close-x {
-    color: rgb(89,91,89);
+    color: #F64740;
     font-size: 25px;
     position: absolute;
     top: 0;
@@ -40,7 +40,7 @@
 }
 
 .close-x:hover {
-    color: #F64740;
+    color: #3d6883;
     cursor: pointer;
 }
 
