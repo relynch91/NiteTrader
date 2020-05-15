@@ -1,42 +1,47 @@
 import React from 'react';
 import StockDetails from './stock_details'
-import Key from '../../../config/keys_prod';
-import getQuoteEndPointAlpha from '../../..//actions/alphaApi_actions';
+// import Key from '../../../../../config/keys_prod';
+import { getQuoteEndPointAlpha } from '../../../actions/alphaApi_actions';
 
 
 export default class StockSearch extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            stockDetails = {}
+            stockDetails: {}
         }
+        this.getStockDetails = this.getStockDetails.bind(this);
     }
 
+getStockDetails(e){
+    e.preventDefault();
+    debugger
+    // let stockURL = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=https://www.alphavantage.co/query?function=GLOBAL_QUOTE%26symbol=${text}%26apikey=QU2KW0R97XR5187Y`;
 
- getStockDetails(text){
-    let stockURL = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=https://www.alphavantage.co/query?function=GLOBAL_QUOTE%26symbol=${text}%26apikey=${Key.alphaKeyMaster}`;
-
-    getQuoteEndPointAlpha(stockURL).then(
+    // getQuoteEndPointAlpha(stockURL).then(
         
-    )
+    // )
         // dispatch api call (comes from mdtp from axios)
             // .then (returnedStockInfo => this.setState(returnedStockInfoDetails: stock))
     }
 
     render(){
         let stockDetails = this.state;
-        let theDetails = (!!stockDetails ? <StockDetails stockDetails={stockDetails} /> : "")
+        // let theDetails = (!!stockDetails ? <StockDetails stockDetails={stockDetails} /> : "")
         
 
             return(
                 <div>
-                    <form >
-                        <label>Stock Ticker Quote EndPoint
-                            <input type="text" value="" placeholder="Enter a Ticker"/>
-                        </label>
-                        <button onClick={this.props.getStockDetails()}>Lookup Stock</button>
+                    <form  onSubmit = {this.getStockDetails }>
+                        <label>Stock Ticker Quote EndPoint</label>
+                        < input 
+                            id="ticker"
+                            type = "text"
+                            placeholder = "Enter a Ticker" 
+                        />
+                        <button>Lookup Stock</button>
                     </form>
-                    {theDetails}
+                    {/* {theDetails} */}
                 </div>
             )
     }

@@ -1,6 +1,7 @@
 import React from 'react';
 import StockGraphContainer from "../stocks/stockgraph/stockgraph_container";
 import StockIndexContainer from "../stocks/stock_index/stock_index_container";
+import StockSearchContainer from '../stocks/stock_search/stock_search_container';
 
 class MainPage extends React.Component {
 
@@ -16,9 +17,8 @@ class MainPage extends React.Component {
         <p>Here is Your Current Stock Portfolio</p>
         <StockIndexContainer />
         <StockGraphContainer />
-        {/* <StockSearch />
-          -search bar
-          -results view */}
+
+        <StockSearchContainer />
       </div>
     );
   }
