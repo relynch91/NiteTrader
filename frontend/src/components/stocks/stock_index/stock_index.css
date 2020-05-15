@@ -1,0 +1,31 @@
+.stock-index-main > p{
+    /* color: #3d6883; */
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.stock-box{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    text-align: center;
+    border: 1px solid gray;
+    padding: 20px;
+    margin:10px;
+    cursor: pointer;
+}
+.stock-box span:first-child{
+    font-size: 20px;
+    margin-right: 5px;
+}
+.stock-box span:last-child{
+    margin-left: 5px;
+}
+
+.current-price{
+    font-size: 16px;
+    color: #291F1E
+}
+.purchase-price{
+    font-size: 16px;
+    color: #291F1E
+}

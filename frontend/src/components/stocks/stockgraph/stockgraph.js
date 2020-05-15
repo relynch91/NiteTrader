@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { changeNumberOfData } from './utils';
+import './stockgraph.css'
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Brush, Legend, } from 'recharts';
 
 export default class StockGraph extends React.Component {
@@ -25,20 +25,20 @@ export default class StockGraph extends React.Component {
 
   render() {
     // debugger
-      let { symbol } = this.props.stock["Meta Data"]["2. Symbol"];
+      let symbol = this.props.stock["Meta Data"]["2. Symbol"];
       // console.log(this.state)
     return (
-      <div>
+      <div className="stock-graph-main">
         <p>{symbol}</p>
         <LineChart
           width={500}
           height={300}
           data={this.state.stock}
           margin={{
-            top: 5,
+            top: 10,
             right: 30,
             left: 20,
-            bottom: 5,
+            bottom: 10,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />

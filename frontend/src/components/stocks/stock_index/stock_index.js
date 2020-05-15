@@ -1,6 +1,5 @@
 import React from 'react';
-import StockGraphContainer from '../stockgraph/stockgraph_container'
-
+import './stock_index.css';
 export default class StockIndex extends React.Component {
 
     // componentDidMount(){
@@ -8,14 +7,23 @@ export default class StockIndex extends React.Component {
     // }
     
     render(){
-            let { allStocks } = this.props;
+            let { myStocks } = this.props;
             return (
-                <div>
-                    {/* {allStocks.map((stock) => {
-                        return <StockGraphContainer stock={stock} />
-                    })} */}
-                    <p>A table of all your stocks will go here</p>
-                </div>
-            )
+              <div className="stock-index-main">
+                <p>Here is Your Current Stock Portfolio</p>
+                {myStocks.map((ticker) => (
+                  <div>
+                    <div className="stock-box">
+                      <span>{ticker}</span>
+                      <span>
+                        <p className="current-price">Current Price: $214</p>
+                        <p className="purchase-price">Purchase Price: $110</p>
+                      {/* onClick= dispatch past month of data to populate graph */}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            );
     }
 }
