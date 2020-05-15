@@ -33,6 +33,12 @@ getStockDetails(e){
             // .then (returnedStockInfo => this.setState(returnedStockInfoDetails: stock))
     }
 
+    update() {
+        return e => this.setState({
+            text: e.currentTarget.value
+        });
+    }
+
     render(){
         let stockDetails = this.state;
         // let theDetails = (!!stockDetails ? <StockDetails stockDetails={stockDetails} /> : "")
@@ -40,26 +46,15 @@ getStockDetails(e){
 
             return(
                 <div>
-                    <form  onSubmit = {this.getStockDetails }>
+                    < form onSubmit = {this.getStockDetails} >
                         <label>Stock Ticker Quote EndPoint</label>
                         < input 
-                            id="ticker"
-                            type = "text"
+                            type="text"
+                            value = "text"
                             placeholder = "Enter a Ticker" 
                         />
                         <button>Lookup Stock</button>
                     </form>
-
-                    <form onSubmit={this.handleSubmit}>
-                <div>
-                    <input type="text"
-                        value={this.state.ticker}
-                        onChange={this.update()}
-                        placeholder="Write your tweet..."
-                    />
-                    <input type="submit" value="Submit" />
-                </div>
-            </form>
                     {/* {theDetails} */}
                 </div>
             )
