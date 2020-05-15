@@ -11,6 +11,7 @@ import './reset.css';
 import MainPage from './main/main_page';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
+import StockSearchContainer from './stocks/stock_search/stock_details_container'
 
 const App = () => (
   <div>
@@ -19,8 +20,7 @@ const App = () => (
     <Switch>
         <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
-        <ProtectedRoute exact path="/" component={MainPage} />
-        <ProtectedRoute exact path="/profile" component={ProfileContainer} />
+        <ProtectedRoute path="/" component={MainPage} />
     </Switch>
     <Footer />
   </div>
