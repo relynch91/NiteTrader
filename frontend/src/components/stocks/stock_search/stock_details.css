@@ -2,6 +2,9 @@
 .stock-box{
     display: flex;
     justify-content: space-around;
+    border: none;
+    width: 500px;
+    max-width: 70%;
 }
 
 .stock-buy{
@@ -19,4 +22,8 @@
 
 .stock-buy:hover{
     background: #3d6883;
+}
+
+.stock-details{
+    padding: 5px;
 }

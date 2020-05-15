@@ -14,13 +14,13 @@ export default class StockDetails extends React.Component {
                     <p>Today's Information</p>
                     <button className="stock-buy">Buy This Stock</button>
                   </div>
-                  <div>
+                  <div className="stock-details">
                     <p>Symbol: {theDetails["01. symbol"]}</p>
-                    <p>Open: {theDetails["02. open"]}</p>
-                    <p>High: {theDetails["03. high"]}</p>
-                    <p>Low: {theDetails["04. low"]}</p>
-                    <p>Price: {theDetails["05. price"]}</p>
-                    <p>Volume: {theDetails["06. volume"]}</p>
+                    <p>Open: ${parseInt(theDetails["02. open"])}</p>
+                    <p>High: ${parseInt(theDetails["03. high"])}</p>
+                    <p>Low: ${parseInt(theDetails["04. low"])}</p>
+                    <p>Price: ${parseInt(theDetails["05. price"])}</p>
+                    <p>Volume: {parseInt(theDetails["06. volume"])}</p>
                     <p>
                       Latest Trading Day: {theDetails["07. latest trading day"]}
                     </p>
