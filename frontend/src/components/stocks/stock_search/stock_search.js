@@ -2,8 +2,8 @@ import React from 'react';
 // import StockDetails from './stock_details'
 import StockDetailsContainer from './stock_details_container'
 import { getQuoteEndPointAlpha } from '../../../actions/alphaApi_actions';
-import { formatAPICall } from '../../../actions/_alphaAPI';
 import key from '../../../config/keys';
+import './stock_search.css'
 
 
 export default class StockSearch extends React.Component {
@@ -48,24 +48,26 @@ render(){
     
     // let theDetails = (!!this.state.stockDetails ? <StockDetails stockDetails={this.state.stockDetails} /> : "")
         // debugger
-        return(
-            <div>
-                < form onSubmit={this.getStockDetails}>
-                    <div>
-                        <label>Stock Ticker</label>
-                        <input 
-                        type="text"
-                        value = {this.state.ticker}
-                        onChange={this.update()}
-                        placeholder = "Enter a Ticker" 
-                        />
-                        <input type="submit" value="Submit" />
-                    </div>
-                    
-                </form>
-                <StockDetailsContainer />
-                {/* {theDetails} */}
-            </div>
-        )
+        return (
+          <div className="stock-search-container">
+            <form onSubmit={this.getStockDetails} className="stock-search-form">
+                <label>Search For A Stock</label>
+                <input
+                  type="text"
+                  value={this.state.ticker}
+                  onChange={this.update()}
+                  className="stock-search-form-input"
+                  placeholder="Enter a Ticker"
+                />
+                <input
+                  type="submit"
+                  value="Submit"
+                  className="stock-form-submit"
+                />
+            </form>
+            <StockDetailsContainer />
+            {/* {theDetails} */}
+          </div>
+        );
     }
 }  
