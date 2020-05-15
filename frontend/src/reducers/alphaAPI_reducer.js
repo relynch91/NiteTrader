@@ -8,9 +8,7 @@ export default function (state = {}, action) {
 
     switch (action.type) {
         case RECEIVE_STOCK:
-            nextState.assign({
-                "symbol": action.stock["Global Quote"]["01. symbol"],
-            })
+            Object.assign(nextState, { stock1: action.stock })
             return nextState;
         default:
             return state;
