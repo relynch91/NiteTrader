@@ -13,13 +13,13 @@ import formatAPICall from './_alphaApi_actions';
 
 
 
-export const getQuoteEndPointAlpha = stockURL => dispatch => (
-    QuoteEndPointUtil.QuoteEndPoint(stockURL).then((stockData) => ({
-        let formatted = formatAPICall(stockData);
+// export const getQuoteEndPointAlpha = stockURL => dispatch => (
+//     QuoteEndPointUtil.QuoteEndPoint(stockURL).then((stockData) => ({
+//         let formatted = formatAPICall(stockData);
 
-        QuoteEndPointUtil.quoteEndPointDB(stockData).then(stockData => (
-                )
-    }
+//         QuoteEndPointUtil.quoteEndPointDB(stockData).then(stockData => (
+//                 )
+//     }
         
-    ));
-)
+//     ));
+// )

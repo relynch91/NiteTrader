@@ -7,7 +7,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    // fetchThisStock: "Insert your axios api call here"
     getQuoteEndPointAlpha: (stockURL) => dispatch(getQuoteEndPointAlpha(stockURL))
     // logout: () => dispatch(logout()),
 })
