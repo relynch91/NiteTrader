@@ -3,18 +3,86 @@
     margin-bottom: 75px;
 }
 
-.baby-button{
-    padding: 100px 80px 100px 80px;
+.baby-button1{
+    width: 400px;
+    height: 250px;
     font-size: 25px;
     background-color: #477998;
     cursor: pointer;
     color: whitesmoke;
     font-weight: 700;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.baby-button:hover{
-    background-color: #A3333D;
+.baby-button1:hover{
+    display: block;
+}
+
+.baby-button1:hover .baby-button-text1{
+    display: none;
+}
+
+.baby-button-text1{
+    position: absolute;
+    font-size: 25px;
+}
+
+.baby-button-text1 span{
+    position: absolute;
+    font-size: 25px;
+}
+
+.baby-button-img1{
+    display: none;
+    position: absolute;
+    width: 400px;
+    height: 250px;
+    border-radius: 5px;
+}
+.baby-button1:hover .baby-button-img1{
+    display: block ;
+}
+.baby-button2{
+    width: 400px;
+    height: 250px;
+    font-size: 25px;
+    background-color: #477998;
+    cursor: pointer;
+    color: whitesmoke;
+    font-weight: 700;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.baby-button2:hover{
+    display: block;
+}
+
+.baby-button2:hover .baby-button-text2{
+    display: none;
+}
+
+.baby-button-text2{
+    position: absolute;
+    font-size: 25px;
+}
+
+.baby-button-img2{
+    display: none;
+    position: absolute;
+    width: 400px;
+    height: 250px;
+    border-radius: 5px;
+}
+.baby-button2:hover .baby-button-img2{
+    display: block ;
 }
 
 .main-welcome-message{
@@ -29,10 +97,5 @@
     display: flex;
     justify-content: space-around;
     align-items: flex-center;
-    /* max-width: 900px; */
     margin: 40px 50px 40px 50px
-}
-.main-landing h1{
-    color: #3d6883;
-    font-size: 18px;
 }

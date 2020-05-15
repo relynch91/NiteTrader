@@ -4,7 +4,7 @@
     justify-content: space-around;
     border: none;
     width: 500px;
-    max-width: 70%;
+    /* max-width: 70%; */
 }
 
 .stock-buy{
