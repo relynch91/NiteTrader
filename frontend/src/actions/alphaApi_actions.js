@@ -14,7 +14,3 @@ export const getQuoteEndPointAlpha = stockURL => dispatch => (
         dispatch(receiveStock(stockData))
     ))
 )
-
-export const formatAPICall = apiObject => dispatch => {
-    let apiObject = apiObject;
-    debugger
