@@ -1,9 +1,36 @@
+.main-landing{
+    margin-bottom: 75px;
+    margin-bottom: 75px;
+}
+
+.baby-button{
+    padding: 100px 80px 100px 80px;
+    font-size: 25px;
+    background-color: #477998;
+    cursor: pointer;
+    color: whitesmoke;
+    font-weight: 700;
+    border-radius: 5px;
+}
+
+.baby-button:hover{
+    background-color: #A3333D;
+}
+
+.main-welcome-message{
+    font-size: 35px;
+    text-align: center;
+    margin-top: 50px;
+    color: #A3333D;
+    font-weight: 700;
+}
+
 .main-components{
     display: flex;
     justify-content: space-around;
     align-items: flex-center;
-    max-width: 900px;
-    margin: 40px 40px 40px 40px
+    /* max-width: 900px; */
+    margin: 40px 50px 40px 50px
 }
 .main-landing h1{
     color: #3d6883;

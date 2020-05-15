@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './stock_details.css'
 export default class StockDetails extends React.Component {
 
     render(){
@@ -10,21 +10,24 @@ export default class StockDetails extends React.Component {
             return (
               <div>
                 <div className="stock-box">
-                  <p>Today's Information</p>
-                  <span>
+                  <div>
+                    <p>Today's Information</p>
+                    <button className="stock-buy">Buy This Stock</button>
+                  </div>
+                  <div className="stock-details">
                     <p>Symbol: {theDetails["01. symbol"]}</p>
-                    <p>Open: {theDetails["02. open"]}</p>
-                    <p>High: {theDetails["03. high"]}</p>
-                    <p>Low: {theDetails["04. low"]}</p>
-                    <p>Price: {theDetails["05. price"]}</p>
-                    <p>Volume: {theDetails["06. volume"]}</p>
+                    <p>Open: ${parseInt(theDetails["02. open"])}</p>
+                    <p>High: ${parseInt(theDetails["03. high"])}</p>
+                    <p>Low: ${parseInt(theDetails["04. low"])}</p>
+                    <p>Price: ${parseInt(theDetails["05. price"])}</p>
+                    <p>Volume: {parseInt(theDetails["06. volume"])}</p>
                     <p>
                       Latest Trading Day: {theDetails["07. latest trading day"]}
                     </p>
                     <p>Previous Close: {theDetails["08. previous close"]}</p>
                     <p>Change: {theDetails["09. change"]}</p>
                     <p>Change Percent: {theDetails["10. change percent"]}</p>
-                  </span>
+                  </div>
                 </div>
               </div>
             );

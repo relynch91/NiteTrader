@@ -18,4 +18,3 @@ export const getQuoteEndPointAlpha = stockURL => dispatch => (
 export const formatAPICall = apiObject => dispatch => {
     let apiObject = apiObject;
     debugger
-}

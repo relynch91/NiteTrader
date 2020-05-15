@@ -55,8 +55,8 @@ class NavBar extends React.Component {
             <div className="navbar-main">
             <NavLink className="home-logo" to="/">NiteTrader</NavLink>
               <div>
-                <Link className="navbar-link" to={'/stocks'}>All Stocks</Link>
-                <Link className="navbar-link" to={'/profile'}>Profile</Link>
+                <Link className="navbar-link" to={'/portfolio'}>Portfolio</Link>
+                <Link className="navbar-link" to={'/search'}>Search Stocks</Link>
                 <button className="navbar-button" onClick={this.logoutUser}>Logout</button>
               </div>
             </div>
