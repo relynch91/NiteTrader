@@ -26,6 +26,7 @@ getStockDetails(e){
     let stockURL = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${this.state.ticker}&apikey=QU2KW0R97XR5187Y`;
     const stockInfo = this.props.getQuoteEndPointAlpha(stockURL);
     // stock is in state
+    debugger
     this.props.formatAPICall(stockInfo);
 }
 
