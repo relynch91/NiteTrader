@@ -8,10 +8,18 @@ export default class StockSearch extends React.Component {
     constructor(props){
         super(props)
         this.state = {
+            ticker: '',
             stockDetails: {}
         }
         this.getStockDetails = this.getStockDetails.bind(this);
     }
+
+    update() {
+        return e => this.setState({
+            text: e.currentTarget.value
+        });
+    }
+
 
 getStockDetails(e){
     e.preventDefault();
@@ -41,6 +49,17 @@ getStockDetails(e){
                         />
                         <button>Lookup Stock</button>
                     </form>
+
+                    <form onSubmit={this.handleSubmit}>
+                <div>
+                    <input type="text"
+                        value={this.state.ticker}
+                        onChange={this.update()}
+                        placeholder="Write your tweet..."
+                    />
+                    <input type="submit" value="Submit" />
+                </div>
+            </form>
                     {/* {theDetails} */}
                 </div>
             )
