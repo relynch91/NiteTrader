@@ -8,6 +8,7 @@ export const receiveStock = (stock) => ({
 })
 
 // this is a get request for alphaVantage QuoteEndPointAPI 1 stock
+
 export const getQuoteEndPointAlpha = stockURL => dispatch => (
     QuoteEndPointUtil.quoteEndPoint(stockURL).then((stockData) => (
         dispatch(receiveStock(stockData))
@@ -15,11 +16,5 @@ export const getQuoteEndPointAlpha = stockURL => dispatch => (
 )
 
 export const formatAPICall = apiObject => dispatch => {
-     debugger
+
 }
-   
-
-
-// export const quoteEndPointAlpha = (stockData) => dispatch => (
-    
-// ) 

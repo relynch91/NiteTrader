@@ -2,7 +2,7 @@ import React from 'react';
 import StockDetails from './stock_details'
 // import Key from '../../../../../config/keys_prod';
 import { getQuoteEndPointAlpha } from '../../../actions/alphaApi_actions';
-import { formatAPICall } from '../../../actions/_alphaApi_actions';
+import { formatAPICall } from '../../../actions/alphaApi_actions';
 
 
 export default class StockSearch extends React.Component {
@@ -14,22 +14,19 @@ export default class StockSearch extends React.Component {
         }
 
         this.getStockDetails = this.getStockDetails.bind(this);
+        // this.formatAPICall = this.formatAPICall.bind(this)
     }
 
 
-
-
 getStockDetails(e){
+    // debugger
     // debugger
     e.preventDefault();
     // let stockURL = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE%26symbol=${this.state.ticker}%26apikey=QU2KW0R97XR5187Y`;
     let stockURL = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${this.state.ticker}&apikey=QU2KW0R97XR5187Y`;
     const stockInfo = this.props.getQuoteEndPointAlpha(stockURL);
     // stock is in state
-    debugger
-    let ticker = this.state.ticker;
-    debugger
-    this.props.formatAPICall(ticker);
+    this.props.formatAPICall(stockInfo);
 }
 
 update() {
