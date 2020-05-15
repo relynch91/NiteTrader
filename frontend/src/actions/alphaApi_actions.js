@@ -14,4 +14,3 @@ export const getQuoteEndPointAlpha = stockURL => dispatch => (
         dispatch(receiveStock(stockData))
     ))
 )
-
