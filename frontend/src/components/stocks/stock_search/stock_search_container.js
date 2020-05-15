@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import StockSearch from "./stock_search";
-import { getQuoteEndPointAlpha, formatAPICall } from '../../../actions/alphaApi_actions'
+import { getQuoteEndPointAlpha } from '../../../actions/alphaApi_actions';
+import { formatAPICall} from '../../../actions/_alphaAPI';
 
 // const mapStateToProps = (state) => ({
     
@@ -8,7 +9,7 @@ import { getQuoteEndPointAlpha, formatAPICall } from '../../../actions/alphaApi_
 
 const mapDispatchToProps = (dispatch) => ({
     getQuoteEndPointAlpha: (stockURL) => dispatch(getQuoteEndPointAlpha(stockURL)),
-    formatAPICall: (ticker) => dispatch(formatAPICall(ticker))
+    // formatAPICall: (ticker) => dispatch(formatAPICall(ticker))
     // logout: () => dispatch(logout()),
 })
 

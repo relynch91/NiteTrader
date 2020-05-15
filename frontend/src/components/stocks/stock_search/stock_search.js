@@ -2,6 +2,7 @@ import React from 'react';
 // import StockDetails from './stock_details'
 import StockDetailsContainer from './stock_details_container'
 import { getQuoteEndPointAlpha } from '../../../actions/alphaApi_actions';
+import { formatAPICall} from '../../../actions/_alphaAPI';
 import key from '../../../config/keys';
 import './stock_search.css'
 
@@ -14,16 +15,7 @@ export default class StockSearch extends React.Component {
         };
 
         this.getStockDetails = this.getStockDetails.bind(this);
-        // this.getQuoteEndPointAlpha = this.getQuoteEndPointAlpha.bind(this)
-        // this.bindingTheFunction = this.bindingTheFunction.bind(this)
     }
-
-// bindingTheFunction(e){
-//     e.preventDefault();
-//     this.props.getQuoteEndPointAlpha
-//     debugger
-// }
-
 
 getStockDetails(e){
     e.preventDefault();
