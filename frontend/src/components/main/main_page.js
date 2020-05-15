@@ -1,4 +1,5 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom'
 import StockGraphContainer from "../stocks/stockgraph/stockgraph_container";
 import StockIndexContainer from "../stocks/stock_index/stock_index_container";
 import StockSearchContainer from '../stocks/stock_search/stock_search_container'
@@ -13,6 +14,9 @@ class MainPage extends React.Component {
           <StockGraphContainer />
           <StockSearchContainer />
         </div>
+        {/* <Switch>
+          <Route exact path="/search" component={StockSearchContainer} />
+        </Switch> */}
       </div>
     );
   }
