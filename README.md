@@ -1,4 +1,4 @@
-#<<NiteTrader README>>
+#NiteTrader README
 
 NiteTrader is an application built implementing the MERN Stack Software Model.  Node.js is used as the application runtime that the stack runs on, mongoDB is used as the backend database, express router is implemented as the backend application router, and lastly NiteTrader uses react as the frontend web application framework.  API requests are dispatched as AJAX requests to the AlphaVantage stock api providing real-time and up-to-date information on any publicly traded company.  
 
