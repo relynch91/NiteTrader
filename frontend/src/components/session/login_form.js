@@ -12,7 +12,14 @@ class LoginForm extends React.Component {
       errors: {}
     };
 
+    this.demoUser = {
+      email: 'demo_user@nitetrader.com',
+      username: 'demo_user',
+      password: 'demo12345'
+    }
+
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
   }
 
@@ -31,6 +38,12 @@ class LoginForm extends React.Component {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
+  }
+
+  handleDemo(e) {
+    e.preventDefault();
+    this.props.demoLogin(this.demoUser)
+      .then(() => this.props.closeModal())
   }
 
   // Handle form submission
@@ -105,6 +118,9 @@ class LoginForm extends React.Component {
             <br />
             <input type="submit" className="modal-submit" value={button_text} />
           </form>
+          <button className="modal-submit-demo" onClick={this.handleDemo}>
+            Demo User
+          </button>
           <div className="modal-bottom">
             {message}
             <div className="modal-switch">{otherForm}</div>
