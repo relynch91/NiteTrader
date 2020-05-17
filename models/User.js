@@ -22,3 +22,11 @@ const UserSchema = new Schema({
 })
 
 module.exports = User = mongoose.model('User', UserSchema);
+
+
+// Simpler Way to store and fetch, but ultimately less scalable
+//   transactions: [
+                // { ticker: 'AAPL', price: 100, shares: 10, buy: true, date: "Date.now()"},
+                // { ticker: 'AAPL', price: 105, shares: 10, buy: false, date: "Date.now()"},
+                // { ticker: 'AAPL', price: 90, shares: 10, buy: true, date: "Date.now()"}
+    // ],

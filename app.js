@@ -6,8 +6,8 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const endPointStocks = require("./routes/api/stock_api/quoteendpointstock");
 const users = require("./routes/api/users");
+const transactions = require("./routes/api/transactions");
 const path = require('path');
-
 
 // app.get("/", (req, res) => res.send("Hello World"));
 // jason's comment
@@ -34,6 +34,7 @@ app.use(bodyParser.json());
 
 app.use("/api/users", users);
 app.use("/api/stock_api/quoteendpointstock", endPointStocks);
+app.use("/api/transactions", transactions);
 
 const port = process.env.PORT || 5000;
 
