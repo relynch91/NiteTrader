@@ -1,6 +1,6 @@
 import { RECEIVE_TRADE, RECEIVE_ALL_TRADES } from '../actions/transaction_actions';
 
-const transactionsReducer = (state = {}, action) => {
+const TransactionsReducer = (state = {}, action) => {
     Object.freeze(state);
     let nextState = Object.assign({}, state);
 
@@ -15,4 +15,4 @@ const transactionsReducer = (state = {}, action) => {
     }
 };
 
-export default transactionsReducer;
+export default TransactionsReducer;
