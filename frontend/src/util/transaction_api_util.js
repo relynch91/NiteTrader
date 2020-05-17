@@ -1,16 +1,18 @@
 import axios from 'axios';
 
-export const tradeStock = (transanction) => {
-    return axios.post('/api/transactions/trade', transanction);
+export const tradeStock = (transaction) => {
+    debugger
+    return axios.post('/api/transactions/trade', transaction);
     // return axios({
     //         method: 'post',
-    //         url: '/api/transanction/trade',
-    //         data: transanction,
+    //         url: '/api/transactions/trade',
+    //         data: transaction,
     //         headers: {'Content-Type': 'multipart/form-data' }
     //     })
 };
 
 export const fetchTrades = (userId) => {
-    return axios.get('/api/transanction/fetchtrades', userId);
+    return axios.get('/api/transactions/fetchtrades', userId);
 };
+
 

@@ -23,6 +23,6 @@ export const formatAPICall = stockInfo => {
         change: changeData,
         changePercent: changePercentData
     };
-    debugger
+    // debugger
     return formatted;
 }

@@ -4,7 +4,7 @@ export const RECEIVE_TRADE = 'RECEIVE_TRADE';
 export const RECEIVE_ALL_TRADES = 'RECEIVE_ALL_TRADES';
 export const RECEIVE_TRANSACTION_ERRORS = "RECEIVE_TRANSACTION_ERRORS";
 
-export const revieveTransaction = transaction => {
+export const receiveTransaction = transaction => {
     return ({
         type: RECEIVE_TRADE,
         transaction
@@ -23,12 +23,13 @@ export const receiveErrors = errors => ({
     errors
 });
 
-export const tradeStock = transaction => dispatch => (
-    APIUtil.tradeStock(transaction)
+export const tradeStock = transaction => dispatch => {
+    debugger
+    return APIUtil.tradeStock(transaction)
         .then(
-            (newTrade) => (dispatch(revieveTransaction(newTrade))),
+            (newTrade) => (dispatch(receiveTransaction(newTrade))),
             (err) => (dispatch(receiveErrors(err.response.data))))
-);
+    };
 
 export const fetchTrades = userId => dispatch => (
     APIUtil.tradeStock(userId)

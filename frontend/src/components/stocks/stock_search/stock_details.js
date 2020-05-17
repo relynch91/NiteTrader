@@ -17,14 +17,14 @@ export default class StockDetails extends React.Component {
 
     handleSubmit(e){
       e.preventDefault();
-      let data = new FormData();
-      data.set('userId', this.props.userId)
-      data.set('ticker', this.props.stockDetails["01. symbol"])
-      data.set('price', this.props.stockDetails["05. price"])
-      data.set('shares', this.state.numShares)
-      data.set('buy', true)
+      let transactionData = new FormData();
+      transactionData.append('userId', this.props.userId)
+      transactionData.append('ticker', this.props.stockDetails["01. symbol"])
+      transactionData.append('price', this.props.stockDetails["05. price"])
+      transactionData.append('shares', this.state.numShares)
+      transactionData.append('buy', true)
       debugger
-      this.props.tradeStock(data)
+      this.props.tradeStock(transactionData)
         .then(() => this.props.history.push('/portfolio/'))
     }
 
