@@ -1,7 +1,13 @@
 import axios from 'axios';
 
 export const tradeStock = (transanction) => {
-    return axios.post('/api/transanction/trade', transanction);
+    return axios.post('/api/transactions/trade', transanction);
+    // return axios({
+    //         method: 'post',
+    //         url: '/api/transanction/trade',
+    //         data: transanction,
+    //         headers: {'Content-Type': 'multipart/form-data' }
+    //     })
 };
 
 export const fetchTrades = (userId) => {
