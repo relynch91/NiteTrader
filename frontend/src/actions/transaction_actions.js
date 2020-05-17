@@ -1,10 +1,38 @@
-export const TRADE_STOCK = 'TRADE_STOCK';
+import * as APIUtil from '../util/transaction_api_util';
 
-export const tradeStock = transaction => {
+export const RECEIVE_TRADE = 'RECEIVE_TRADE';
+export const RECEIVE_ALL_TRADES = 'RECEIVE_ALL_TRADES';
+export const RECEIVE_TRANSACTION_ERRORS = "RECEIVE_TRANSACTION_ERRORS";
+
+export const revieveTransaction = transaction => {
     return ({
-        type: TRADE_STOCK,
+        type: RECEIVE_TRADE,
         transaction
     });
 };
 
+export const revieveAllUserTransactions = transactions => {
+    return ({
+        type: RECEIVE_ALL_TRADES,
+        transactions
+    });
+};
 
+export const receiveErrors = errors => ({
+    type: RECEIVE_TRANSACTION_ERRORS,
+    errors
+});
+
+export const tradeStock = transaction => dispatch => (
+    APIUtil.tradeStock(transaction)
+        .then(
+            (newTrade) => (dispatch(revieveTransaction(newTrade))),
+            (err) => (dispatch(receiveErrors(err.response.data))))
+);
+
+export const fetchTrades = userId => dispatch => (
+    APIUtil.tradeStock(userId)
+        .then(
+            (allTrades) => (dispatch(revieveAllUserTransactions(allTrades))),
+            (err) => (dispatch(receiveErrors(err.response.data))))
+);
