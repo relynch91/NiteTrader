@@ -8,7 +8,7 @@ const TransactionsReducer = (state = {}, action) => {
         case RECEIVE_ALL_TRADES:
             return action.transactions
         case RECEIVE_TRADE:
-            Object.assign(nextState, {[action.transaction.ticker]: action.transaction});
+            Object.assign(nextState, {[action.transaction.data.ticker]: action.transaction.data});
             return nextState;
         default:
             return state;

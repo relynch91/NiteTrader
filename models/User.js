@@ -30,3 +30,4 @@ module.exports = User = mongoose.model('User', UserSchema);
                 // { ticker: 'AAPL', price: 105, shares: 10, buy: false, date: "Date.now()"},
                 // { ticker: 'AAPL', price: 90, shares: 10, buy: true, date: "Date.now()"}
     // ],
+    // Stocks: [ticker: "AAPL", purchasePrice: ""]
