@@ -1,6 +1,32 @@
 import React from 'react';
 import './stock_details.css'
+
 export default class StockDetails extends React.Component {
+  
+  constructor(props){
+    super(props)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.state = {
+      numShares: 0
+    };
+  }
+
+    handleChange(){
+        return (e) => this.setState({ numShares: e.currentTarget.value })
+    }
+
+    handleSubmit(e){
+      e.preventDefault();
+      let transactionData = new FormData();
+      transactionData.append('userId', this.props.userId)
+      transactionData.append('ticker', this.props.stockDetails["01. symbol"])
+      transactionData.append('price', this.props.stockDetails["05. price"])
+      transactionData.append('shares', this.state.numShares)
+      transactionData.append('buy', true)
+      debugger
+      this.props.tradeStock(transactionData)
+        .then(() => this.props.history.push('/portfolio/'))
+    }
 
     render(){
             let theDetails = this.props.stockDetails;
@@ -12,8 +38,14 @@ export default class StockDetails extends React.Component {
                 <div className="stock-box">
                   <div>
                     <p>Today's Information</p>
-                    <button className="stock-buy">Buy This Stock</button>
+                    <form onSubmit={this.handleSubmit}>
+                        <label>Number of Shares
+                            <input type="number" onChange={this.handleChange()} value={this.state.numShares} />
+                        </label>
+                      <button className="stock-buy">Buy This Stock</button>
+                    </form>
                   </div>
+
                   <div className="stock-details">
                     <p>Symbol: {theDetails["01. symbol"]}</p>
                     <p>Open: ${parseInt(theDetails["02. open"])}</p>
