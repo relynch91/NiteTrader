@@ -20,11 +20,6 @@ router.post('/trade', function(req, res){
     // debugger
     // console.log(req);
     let newTransaction = new Transaction({
-        // userId: req.get('userId'),
-        // ticker: req.get('ticker'),
-        // price: parseFloat(req.get('price')),
-        // shares: parseInt(req.get('shares')),
-        // buy: req.get('buy') 
         userId: req.body.userId,
         ticker: req.body.ticker,
         price: parseFloat(req.body.price),
