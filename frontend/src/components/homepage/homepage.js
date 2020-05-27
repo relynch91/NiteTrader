@@ -44,7 +44,7 @@ class Homepage extends React.Component {
                         <img src={infoSection2} className="section-img" alt="stock-market-graph" />
                         <li>
                             <p>Beat our Portfolio</p>
-                            <p>We've picked our favorite stocks, will yours outproform our experts?</p>
+                            <p>We've picked our favorite stocks, will yours outperform our experts?</p>
                         </li>
                         <li>
                             <p>Beat your Peers</p>
@@ -52,7 +52,7 @@ class Homepage extends React.Component {
                         </li>
                         <li>
                             <p>Beat Random Stocks</p>
-                            <p>Compete against randome stock selector. Can you win against chance?</p>
+                            <p>Compete against a random stock selector. Can you beat chance?</p>
                         </li>
                     </ul>
                 </div>

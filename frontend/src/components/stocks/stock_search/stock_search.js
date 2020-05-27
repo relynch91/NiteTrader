@@ -22,9 +22,11 @@ getStockDetails(e){
     let stockURL = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${this.state.ticker}&apikey=${key}`;
     const stockInfo = this.props.getQuoteEndPointAlpha(stockURL).then(
         (res) => {
-            formatAPICall(res)
-            // debugge
+            if (res)
+                formatAPICall(res)
+            // debugger
         }
+        // (error) => dispatch 
     )
     // const stockInforFormatted = this.bindingTheFunction(stockURL);
 }
