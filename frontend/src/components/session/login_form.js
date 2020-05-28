@@ -80,8 +80,8 @@ class LoginForm extends React.Component {
     const button_text = formType === 'Sign Up' ? 'Sign up' : 'Sign in';
     const intro = formType === 'Sign Up'
       ? 'Create an account to learn about the stock market and build a portfolio!'
-      : 'Sign in to continue learning about the stock market'
-    const login_intro = formType === 'Sign Up' ? 'Join NiteTrader!' : 'Welcome back.'
+      : ''
+    const login_intro = formType === 'Sign Up' ? 'Join NiteTrader!' : 'Welcome back!'
 
     return (
       <div className="modal-child">

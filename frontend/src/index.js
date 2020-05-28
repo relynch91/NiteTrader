@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// We will create this component shortly
 import Root from './components/root';
 
 // We set this up in the last section
@@ -60,4 +59,4 @@ document.addEventListener('DOMContentLoaded', () => {
           store
         }
         />, root);
-      });
+});

@@ -61,7 +61,6 @@ router.patch('/update', (req, res) => {
 router.get('/', (req, res) => { 
     const allStocks = QuoteEndPointStock.find();
     allStocks.then(allStocks => res.json(allStocks))
-
 })
 
 
