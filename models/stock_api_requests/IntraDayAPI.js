@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const IntraDayAPI = new Schema({
+const IntraDayAPIStockSchema = new Schema({
     symbol: { type: String, index: {unique: true}},
     open: { type: Number },
     high: { type: Number },
@@ -14,5 +14,5 @@ const IntraDayAPI = new Schema({
     changePercent: { type: String}
 });
 
-module.exports = QuoteEndPointStock = mongoose.model(
-    'QuoteEndpointStock', QuoteEndPointStockSchema); 
+module.exports = IntraDayAPI = mongoose.model(
+    'IntraDayAPI', IntraDayAPIStockSchema); 
