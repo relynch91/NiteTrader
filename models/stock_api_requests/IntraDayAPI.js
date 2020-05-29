@@ -14,5 +14,5 @@ const IntraDayAPI = new Schema({
     changePercent: { type: String}
 });
 
-module.exports = QuoteEndPointStock = mongoose.model(
-    'QuoteEndpointStock', QuoteEndPointStockSchema); 
+module.exports = IntraDayAPI = mongoose.model(
+    'IntraDayAPI', IntraDayAPIStockSchema); 
