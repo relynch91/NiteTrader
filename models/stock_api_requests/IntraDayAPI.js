@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const IntraDayAPI = new Schema({
+const IntraDayAPIStockSchema = new Schema({
     symbol: { type: String, index: {unique: true}},
     open: { type: Number },
     high: { type: Number },
