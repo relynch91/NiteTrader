@@ -17,8 +17,6 @@ router.get('/fetchtrades', function(req, res){
 })
 
 router.post('/trade', function(req, res){
-    // debugger
-    // console.log(req);
     let newTransaction = new Transaction({
         userId: req.body.userId,
         ticker: req.body.ticker,
