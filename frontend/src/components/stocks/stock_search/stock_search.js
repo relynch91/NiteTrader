@@ -4,7 +4,7 @@ import { getQuoteEndPointAlpha } from '../../../actions/alphaApi_actions';
 import { formatAPICall} from '../../../actions/_alphaAPI';
 import key from '../../../config/keys';
 import './stock_search.css'
-import { quoteEndPointDB } from '../../../util/quote_end_point_util';
+import { quoteEndPointDB } from '../../../util/alphaAdvantageAPI';
 
 
 export default class StockSearch extends React.Component {
@@ -13,7 +13,6 @@ export default class StockSearch extends React.Component {
         this.state = {
           ticker: "",
         };
-
         this.getStockDetails = this.getStockDetails.bind(this);
     }
 

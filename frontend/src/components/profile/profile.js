@@ -21,12 +21,7 @@ class Profile extends React.Component {
             <div>
               <h2>All of This User's Stocks</h2>
                 <ul>
-                    {this.state.stocks.map(stock =>(
-                                <li>
-                                    {stock}
-                                </li>
-                            )      
-                        )}
+                    {this.state.stocks.map(stock =>(<li>{stock}</li>))}
                 </ul>
             </div>
           );}}
