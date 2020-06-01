@@ -3,8 +3,9 @@ export const formatAPICall = stockInfo => {
     if (stockInfo.stock.data["Error Message"]) {
         return "Invalid Ticker Value, please enter a correct ticker"
     }
+
     const rawStocks = stockInfo.stock.data["Global Quote"]
-    const symbolData = (rawStocks["01. symbol"]);
+    const symbolData = rawStocks["01. symbol"];
     const openData = parseInt(rawStocks["02. open"]);
     const highData = rawStocks["03. high"];
     const lowData = rawStocks["04. low"];
