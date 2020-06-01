@@ -24,7 +24,6 @@ export const receiveErrors = errors => ({
 });
 
 export const tradeStock = transaction => dispatch => {
-    debugger
     return APIUtil.tradeStock(transaction)
         .then(
             (newTrade) => (dispatch(receiveTransaction(newTrade))),

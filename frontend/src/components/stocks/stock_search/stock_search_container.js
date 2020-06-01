@@ -6,8 +6,6 @@ import { formatAPICall} from '../../../actions/_alphaAPI';
 
 const mapDispatchToProps = (dispatch) => ({
     getQuoteEndPointAlpha: (stockURL) => dispatch(getQuoteEndPointAlpha(stockURL)),
-    // formatAPICall: (ticker) => dispatch(formatAPICall(ticker))
-    // logout: () => dispatch(logout()),
 })
 
 export default connect(null, mapDispatchToProps)(StockSearch);

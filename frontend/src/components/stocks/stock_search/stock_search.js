@@ -4,7 +4,7 @@ import { getQuoteEndPointAlpha } from '../../../actions/alphaApi_actions';
 import { formatAPICall} from '../../../actions/_alphaAPI';
 import key from '../../../config/keys';
 import './stock_search.css'
-import { quoteEndPointDB } from '../../../util/quote_end_point_util';
+import { quoteEndPointDB } from '../../../util/alphaAdvantageAPI';
 
 
 export default class StockSearch extends React.Component {
@@ -13,32 +13,27 @@ export default class StockSearch extends React.Component {
         this.state = {
           ticker: "",
         };
-
         this.getStockDetails = this.getStockDetails.bind(this);
     }
 
-getStockDetails(e){
-    e.preventDefault();
-    let stockURL = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${this.state.ticker}&apikey=${key}`;
-    const stockInfo = this.props.getQuoteEndPointAlpha(stockURL).then(
-        (res) => {
-            if (res) {
-                let stockData = formatAPICall(res);
-                let storedData = quoteEndPointDB(stockData);
-            }
-        }
-    )
+    getStockDetails(e){
+        e.preventDefault();
+        let stockURL = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${this.state.ticker}&apikey=${key}`;
+        const stockInfo = this.props.getQuoteEndPointAlpha(stockURL).then(
+            (res) => {
+                if (res) {
+                    let stockData = formatAPICall(res);
+                    let storedData = quoteEndPointDB(stockData);
+        }})
+    }
 
-}
+    update() {
+        return e => this.setState({
+            ticker: e.currentTarget.value
+        });
+    }
 
-update() {
-    return e => this.setState({
-        ticker: e.currentTarget.value
-    });
-}
-
-render(){
-    
+    render(){
         return (
           <div className="stock-search-container">
             <form onSubmit={this.getStockDetails} className="stock-search-form">
