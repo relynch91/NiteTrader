@@ -5,7 +5,7 @@ class Profile extends React.Component {
         super(props);
 
         this.state = {
-            stocks: ['aapl', 'tsla']
+            stocks: []
         }
     }
     

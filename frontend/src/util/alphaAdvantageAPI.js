@@ -9,3 +9,5 @@ export const quoteEndPointDB = (endPointStock) => {
 export const quoteEndPoint = (stockURL) => {
     return axios.get(stockURL);
 };
+
+
