@@ -1,13 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const QuoteEndPointStock = require('../../../models/stock_api_requests/QuoteEndPointStock');
-// test route
+
 router.get("/test", (req, res) => res.json({
     msg: "This is the stocks route"
-}));
-
-
-// create a new entry in the database
+    })
+);
 
 router.post('/new', (req, res) => {
     const newStock = new QuoteEndPointStock({
@@ -26,10 +24,7 @@ router.post('/new', (req, res) => {
     newStock.save().then(newStock => res.json(newStock));
 });
 
-// update a current entry in the database. 
-
 router.patch('/update', (req, res) => {
-    debugger
     const query = { symbol: req.body.symbol };
 
     const update = {
@@ -45,18 +40,17 @@ router.patch('/update', (req, res) => {
         changePercent: req.body.changePercent
     };
 
-    const updatedStock = QuoteEndPointStock.replaceOne(query, update, { upsert: true });
-    
+    const updatedStock = QuoteEndPointStock.replaceOne(
+        query, update, { upsert: true }
+        );
+
     updatedStock.then(updatedStock => res.json(updatedStock));
 })
-
-// return all the stocks and information in the database 
 
 router.get('/', (req, res) => { 
     const allStocks = QuoteEndPointStock.find();
     allStocks.then(allStocks => res.json(allStocks))
 })
-
 
 router.get('/stock', (req, res) => {
     const aStock = QuoteEndPointStock.findOne({

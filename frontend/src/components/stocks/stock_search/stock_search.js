@@ -25,7 +25,6 @@ getStockDetails(e){
             if (res) {
                 let stockData = formatAPICall(res);
                 let storedData = quoteEndPointDB(stockData);
-                debugger 
             }
         }
     )
