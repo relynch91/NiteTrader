@@ -1,10 +1,10 @@
 import React from 'react';
-// import StockDetails from './stock_details'
 import StockDetailsContainer from './stock_details_container'
 import { getQuoteEndPointAlpha } from '../../../actions/alphaApi_actions';
 import { formatAPICall} from '../../../actions/_alphaAPI';
 import key from '../../../config/keys';
 import './stock_search.css'
+import { quoteEndPointDB } from '../../../util/quote_end_point_util';
 
 
 export default class StockSearch extends React.Component {
@@ -22,17 +22,16 @@ getStockDetails(e){
     let stockURL = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${this.state.ticker}&apikey=${key}`;
     const stockInfo = this.props.getQuoteEndPointAlpha(stockURL).then(
         (res) => {
-            if (res)
-                formatAPICall(res)
-            // debugger
+            if (res) {
+                let stockData = formatAPICall(res);
+                let storedData = quoteEndPointDB(stockData);
+            }
         }
-        // (error) => dispatch 
     )
-    // const stockInforFormatted = this.bindingTheFunction(stockURL);
+
 }
 
 update() {
-    // debugger
     return e => this.setState({
         ticker: e.currentTarget.value
     });
@@ -40,8 +39,6 @@ update() {
 
 render(){
     
-    // let theDetails = (!!this.state.stockDetails ? <StockDetails stockDetails={this.state.stockDetails} /> : "")
-        // debugger
         return (
           <div className="stock-search-container">
             <form onSubmit={this.getStockDetails} className="stock-search-form">
