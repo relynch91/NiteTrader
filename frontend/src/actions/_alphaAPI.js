@@ -1,6 +1,11 @@
 export const formatAPICall = stockInfo => {
-    const rawStocks = stockInfo.stock.data["Global Quote"] //{01. symbol: "AAPL", 02. open: "304.5100", 03. high: "309.7900"...}
-    const symbolData = parseInt(rawStocks["01. symbol"]);
+    debugger
+    if (stockInfo.stock.data["Error Message"]) {
+        return "Invalid Ticker Value, please enter a correct ticker"
+    }
+
+    const rawStocks = stockInfo.stock.data["Global Quote"]
+    const symbolData = rawStocks["01. symbol"];
     const openData = parseInt(rawStocks["02. open"]);
     const highData = rawStocks["03. high"];
     const lowData = rawStocks["04. low"];
@@ -23,6 +28,5 @@ export const formatAPICall = stockInfo => {
         change: changeData,
         changePercent: changePercentData
     };
-    // debugger
     return formatted;
 }

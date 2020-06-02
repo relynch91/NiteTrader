@@ -1,10 +1,10 @@
 import React from 'react';
-// import StockDetails from './stock_details'
 import StockDetailsContainer from './stock_details_container'
 import { getQuoteEndPointAlpha } from '../../../actions/alphaApi_actions';
 import { formatAPICall} from '../../../actions/_alphaAPI';
 import key from '../../../config/keys';
 import './stock_search.css'
+import { quoteEndPointDB } from '../../../util/alphaAdvantageAPI';
 
 
 export default class StockSearch extends React.Component {
@@ -13,33 +13,29 @@ export default class StockSearch extends React.Component {
         this.state = {
           ticker: "",
         };
-
         this.getStockDetails = this.getStockDetails.bind(this);
     }
 
-getStockDetails(e){
-    e.preventDefault();
-    let stockURL = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${this.state.ticker}&apikey=${key}`;
-    const stockInfo = this.props.getQuoteEndPointAlpha(stockURL).then(
-        (res) => {
-            formatAPICall(res)
-            // debugge
-        }
-    )
-    // const stockInforFormatted = this.bindingTheFunction(stockURL);
-}
+    getStockDetails(e){
+        e.preventDefault();
+        let stockURL = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${this.state.ticker}&apikey=${key}`;
+        const stockInfo = this.props.getQuoteEndPointAlpha(stockURL).then(
+            (res) => {
+                if (res) {
+                    let stockData = formatAPICall(res);
+                    let storedData = quoteEndPointDB(stockData);
+                }
+            }
+        )
+    }
 
-update() {
-    // debugger
-    return e => this.setState({
-        ticker: e.currentTarget.value
-    });
-}
+    update() {
+        return e => this.setState({
+            ticker: e.currentTarget.value
+        });
+    }
 
-render(){
-    
-    // let theDetails = (!!this.state.stockDetails ? <StockDetails stockDetails={this.state.stockDetails} /> : "")
-        // debugger
+    render(){
         return (
           <div className="stock-search-container">
             <form onSubmit={this.getStockDetails} className="stock-search-form">

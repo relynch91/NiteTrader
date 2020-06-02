@@ -12,7 +12,14 @@ class LoginForm extends React.Component {
       errors: {}
     };
 
+    this.demoUser = {
+      email: 'demo_user@nitetrader.com',
+      username: 'demo_user',
+      password: 'demo12345'
+    }
+
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
   }
 
@@ -31,6 +38,12 @@ class LoginForm extends React.Component {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
+  }
+
+  handleDemo(e) {
+    e.preventDefault();
+    this.props.demoLogin(this.demoUser)
+      .then(() => this.props.closeModal())
   }
 
   // Handle form submission
@@ -66,9 +79,9 @@ class LoginForm extends React.Component {
     const message = formType === 'Sign Up' ? 'Already have an account?' : 'No account?';
     const button_text = formType === 'Sign Up' ? 'Sign up' : 'Sign in';
     const intro = formType === 'Sign Up'
-      ? 'Create an account to learn about stock market by using the simulator'
-      : 'Sign in to continue learning about the stock market'
-    const login_intro = formType === 'Sign Up' ? 'Join NiteTrader' : 'Welcome back.'
+      ? 'Create an account to learn about the stock market and build a portfolio!'
+      : ''
+    const login_intro = formType === 'Sign Up' ? 'Join NiteTrader!' : 'Welcome back!'
 
     return (
       <div className="modal-child">
@@ -78,7 +91,7 @@ class LoginForm extends React.Component {
         <div className="modal-content">
           <div className="modal-title">{login_intro}</div>
           <div className="modal-intro">{intro}</div>
-          <div className="modal-quote">Real Trading would be dominant.</div>
+          <div className="modal-quote">The World is Yours</div>
           <br />
           <ul>{this.renderErrors()}</ul>
           <br />
@@ -105,6 +118,9 @@ class LoginForm extends React.Component {
             <br />
             <input type="submit" className="modal-submit" value={button_text} />
           </form>
+          <button className="modal-submit-demo" onClick={this.handleDemo}>
+            Demo User
+          </button>
           <div className="modal-bottom">
             {message}
             <div className="modal-switch">{otherForm}</div>

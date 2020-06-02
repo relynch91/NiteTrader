@@ -67,8 +67,8 @@ class SignupForm extends React.Component {
     const button_text = formType === 'Sign Up' ? 'Sign up' : 'Sign in';
     const intro = formType === 'Sign Up'
       ? 'Create an account to learn about stock market by using the simulator'
-      : 'Sign in to continue learning about the stock market'
-    const login_intro = formType === 'Sign Up' ? 'Join NiteTrader' : 'Welcome back.'
+      : 'Sign in to see your portfolio.'
+    const login_intro = formType === 'Sign Up' ? 'Join NiteTrader!' : 'Welcome Back!'
     
     return (
 
@@ -79,7 +79,7 @@ class SignupForm extends React.Component {
         <div className="modal-content">
           <div className="modal-title">{login_intro}</div>
           <div className="modal-intro">{intro}</div>
-          <div className="modal-quote">Real Trading would be dominant.</div>
+          <div className="modal-quote">The World is Yours.</div>
           <br />
           <ul>{this.renderErrors()}</ul>
           <br />
@@ -132,42 +132,6 @@ class SignupForm extends React.Component {
           </div>
         </div>
       </div>
-
-
-
-      // <div className="signup-form-container">
-      //   <form onSubmit={this.handleSubmit}>
-      //     <div className="signup-form">
-      //       <br/>
-      //         <input type="text"
-      //           value={this.state.email}
-      //           onChange={this.update('email')}
-      //           placeholder="Email"
-      //         />
-      //       <br/>
-      //         <input type="text"
-      //           value={this.state.username}
-      //           onChange={this.update('username')}
-      //           placeholder="Username"
-      //         />
-      //       <br/>
-      //         <input type="password"
-      //           value={this.state.password}
-      //           onChange={this.update('password')}
-      //           placeholder="Password"
-      //         />
-      //       <br/>
-      //         <input type="password"
-      //           value={this.state.password2}
-      //           onChange={this.update('password2')}
-      //           placeholder="Confirm Password"
-      //         />
-      //       <br/>
-      //       <input type="submit" value="Submit" />
-      //       {this.renderErrors()}
-      //     </div>
-      //   </form>
-      // </div>
     );
   }
 }

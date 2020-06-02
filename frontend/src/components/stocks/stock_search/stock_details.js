@@ -17,13 +17,7 @@ export default class StockDetails extends React.Component {
 
     handleSubmit(e){
       e.preventDefault();
-      // let transactionData = new FormData();
-      // transactionData.append('userId', this.props.userId)
-      // transactionData.append('ticker', this.props.stockDetails["01. symbol"])
-      // transactionData.append('price', this.props.stockDetails["05. price"])
-      // transactionData.append('shares', this.state.numShares)
-      // transactionData.append('buy', true)
-      // debugger
+
       let data = {
         'userId': this.props.userId,
         'ticker': this.props.stockDetails["01. symbol"],
@@ -72,15 +66,3 @@ export default class StockDetails extends React.Component {
             );
     }
 }
-
-
-// 01. symbol: "IBM"
-// 02. open: "114.5700"
-// 03. high: "117.0900"
-// 04. low: "111.8100"
-// 05. price: "116.9500"
-// 06. volume: "5230634"
-// 07. latest trading day: "2020-05-14"
-// 08. previous close: "115.7300"
-// 09. change: "1.2200"
-// 10. change percent: "1.0542%"
