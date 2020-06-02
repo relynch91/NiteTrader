@@ -1,8 +1,7 @@
 import React from 'react';
 import StockDetailsContainer from './stock_details_container'
-import { getQuoteEndPointAlpha } from '../../../actions/alphaApi_actions';
 import { formatAPICall} from '../../../actions/_alphaAPI';
-import key from '../../../config/keys';
+import key from '../../../frontConfig/frontKeys';
 import './stock_search.css'
 import { quoteEndPointDB } from '../../../util/alphaAdvantageAPI';
 

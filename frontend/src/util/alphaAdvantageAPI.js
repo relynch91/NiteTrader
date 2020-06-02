@@ -1,6 +1,6 @@
 import axios from 'axios';
+import key from '../frontConfig/frontKeys'
 
-// `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=demo`
 export const quoteEndPointDB = (endPointStock) => {
     return axios.patch('/api/stock_api/quoteendpointstock/update', endPointStock);
 };
@@ -9,3 +9,7 @@ export const quoteEndPointDB = (endPointStock) => {
 export const quoteEndPoint = (stockURL) => {
     return axios.get(stockURL);
 };
+
+export const intraDayAPI = (ticker) => {
+    let apiCall = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker}&interval=5min&apikey=key`
+}
