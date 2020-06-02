@@ -24,7 +24,9 @@ export default class StockSearch extends React.Component {
                 if (res) {
                     let stockData = formatAPICall(res);
                     let storedData = quoteEndPointDB(stockData);
-        }})
+                }
+            }
+        )
     }
 
     update() {
