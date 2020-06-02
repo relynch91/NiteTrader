@@ -1,4 +1,4 @@
 /config/keys_dev.js
 /node_modules
 
-/frontend/src/config/keys_dev.js
+/frontend/src/frontConfig/frontKeys_dev.js
