@@ -1,14 +1,15 @@
 import { connect } from "react-redux";
 import StockIndex from './stock_index'
+import { fetchTrades } from '../../../actions/transaction_actions'
 
 const mapStateToProps = (state) => ({
   myStocks: ["AAPL", "IBM", "TSLA", "NKE"],
+  // myStocks: state.transactions
+  userId: state.session.user.id 
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchAllUserStocks: "TBD"
+  fetchTrades: (userId) => dispatch(fetchTrades(userId)) 
 })
 
-export default connect(mapStateToProps, null)(StockIndex);
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(StockIndex);

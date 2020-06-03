@@ -11,7 +11,7 @@ export const receiveTransaction = transaction => {
     });
 };
 
-export const revieveAllUserTransactions = transactions => {
+export const receiveAllUserTransactions = transactions => {
     return ({
         type: RECEIVE_ALL_TRADES,
         transactions
@@ -24,16 +24,16 @@ export const receiveErrors = errors => ({
 });
 
 export const tradeStock = transaction => dispatch => {
-    debugger
     return APIUtil.tradeStock(transaction)
         .then(
             (newTrade) => (dispatch(receiveTransaction(newTrade))),
             (err) => (dispatch(receiveErrors(err.response.data))))
     };
 
-export const fetchTrades = userId => dispatch => (
-    APIUtil.tradeStock(userId)
+export const fetchTrades = userId => dispatch => {
+    // debugger
+    return APIUtil.fetchTrades(userId)
         .then(
-            (allTrades) => (dispatch(revieveAllUserTransactions(allTrades))),
+            (allTrades) => (dispatch(receiveAllUserTransactions(allTrades))),
             (err) => (dispatch(receiveErrors(err.response.data))))
-);
+};

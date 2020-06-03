@@ -1,11 +1,18 @@
 import React from 'react';
 import './stock_index.css';
-export default class StockIndex extends React.Component {
 
-    // componentDidMount(){
-    //     this.props.fetchAllStocks;
-    // }
-    
+export default class StockIndex extends React.Component {
+    constructor(props){
+      super(props)
+      this.state = {};
+    }
+    componentDidMount(){
+      // debugger
+      let trades = this.props.fetchTrades(this.props.userId)
+          // .then(res => this.setState(res))
+        // .then(() => console.log(this.state))
+    }
+
     render(){
             let { myStocks } = this.props;
             return (

@@ -8,9 +8,7 @@ const endPointStocks = require("./routes/api/stock_api/quoteendpointstock");
 const users = require("./routes/api/users");
 const transactions = require("./routes/api/transactions");
 const path = require('path');
-
-// app.get("/", (req, res) => res.send("Hello World"));
-// jason's comment
+const intraDayAPI = require('./routes/api/stock_api/intradayapi');
 
 mongoose
     .connect(db, {
@@ -35,8 +33,10 @@ app.use(bodyParser.json());
 app.use("/api/users", users);
 app.use("/api/stock_api/quoteendpointstock", endPointStocks);
 app.use("/api/transactions", transactions);
+app.use("/api/stock_api/intradayapi", intraDayAPI);
+
 
 const port = process.env.PORT || 5000;
 
-    
 app.listen(port, () => console.log(`Server is running on port ${port}`));
+    

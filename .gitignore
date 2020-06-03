@@ -1,3 +1,4 @@
 /config/keys_dev.js
 /node_modules
 
+/frontend/src/frontConfig/frontKeys_dev.js
