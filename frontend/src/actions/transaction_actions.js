@@ -31,7 +31,7 @@ export const tradeStock = transaction => dispatch => {
     };
 
 export const fetchTrades = userId => dispatch => (
-    APIUtil.tradeStock(userId)
+    APIUtil.fetchTrades(userId)
         .then(
             (allTrades) => (dispatch(revieveAllUserTransactions(allTrades))),
             (err) => (dispatch(receiveErrors(err.response.data))))
