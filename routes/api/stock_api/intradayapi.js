@@ -6,23 +6,29 @@ router.get("/test", (req, res) => res.json({
     msg: "This is the IntraDayAPI AlphAdvantage Stock route"
 }));
 
+router.post('/new', (req, res) => {
+    debugger
+    const newStock = new IntraDayAPI({
+        "I exist": "Yes, yes I do"
+    });
+
+    newStock.save().then(newStock => res.json(newStock));
+});
+
 router.patch('/update', (req, res) => {
+    debugger
     const query = {
-        symbol: req.body.symbol
+        data: req.body["Meta Data"]
     };
 
     const update = {
-        symbol: req.body.symbol,
-        timeSeries: req.body.timeSeries
+        body: req.body
     };
 
-    const updatedStock = IntraDayAPI.replaceOne(query, update);
-
+    const updatedStock = IntraDayAPI.replaceOne(query, update, {
+        upsert: true
+    });
     updatedStock.then(updatedStock => res.json(updatedStock));
-
-    // Need to figure out how to re-render the updateStock. 
-    // need to dispatch a get request for the updated stock. 
-    // current ouput is the db response to the successful update.  Need to re-render 
 })
 
 module.exports = router;

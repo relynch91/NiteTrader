@@ -68,6 +68,7 @@ router.delete('/DELETE', (req, res) => {
 
     const deleteStock = QuoteEndPointStock.deleteOne( 
         { symbol: { $eq: req.body.symbol } })
+
     deleteStock.then((deleteStock) => res.json(deleteStock))
 })
 
