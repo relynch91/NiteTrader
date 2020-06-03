@@ -7,13 +7,17 @@ router.get("/test", (req, res) => res.json({
 }));
 
 router.get('/fetchtrades', function(req, res){
+    
     Transaction.find({userId: req.body.userId}, function(err, trade){
-        if(err){
-            console.log(err);
-        } else {
-            res.json(trade)
-        }
-    })
+        
+    //     if(err){
+    //         console.log('no transactions found for this user');
+    //     } else {
+    //         // debugger
+    //         // res.json(trade)
+    //         // res.send(trade)
+    //     }
+    // })
 })
 
 router.post('/trade', function(req, res){
