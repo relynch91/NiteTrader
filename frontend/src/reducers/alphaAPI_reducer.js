@@ -15,8 +15,4 @@ export default function (state = {}, action) {
         default:
             return state;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 83d7265098588a379e18f24e798644f6caf02b37
