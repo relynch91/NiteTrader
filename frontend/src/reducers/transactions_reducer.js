@@ -6,10 +6,12 @@ const TransactionsReducer = (state = {}, action) => {
 // debugger
     switch (action.type) {
         case RECEIVE_ALL_TRADES:
-            return action.transactions
-        case RECEIVE_TRADE:
-            Object.assign(nextState, {[action.transaction.data.ticker]: action.transaction.data});
-            return nextState;
+            // debugger
+            return Object.assign(nextState, action.transactions);
+        // case RECEIVE_TRADE:
+        //     // Object.assign(nextState, {[action.transaction.data.ticker]: action.transaction.data});
+        //     // Object.assign(nextState, {[action.transaction.data.ticker]: action.transaction.data});
+        //     return nextState;
         default:
             return state;
     }
