@@ -7,8 +7,9 @@ router.get("/test", (req, res) => res.json({
 }));
 
 router.post('/new', (req, res) => {
+    debugger
     const newStock = new IntraDayAPI({
-        details: req.body
+        "I exist": "Yes, yes I do"
     });
 
     newStock.save().then(newStock => res.json(newStock));
