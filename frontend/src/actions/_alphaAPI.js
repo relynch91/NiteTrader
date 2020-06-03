@@ -1,5 +1,4 @@
 export const formatAPICall = stockInfo => {
-    debugger
     if (stockInfo.stock.data["Error Message"]) {
         return "Invalid Ticker Value, please enter a correct ticker"
     }
