@@ -1,4 +1,4 @@
-export const formatAPICall = stockInfo => {
+export const globalEndPointFormat = stockInfo => {
     if (stockInfo.stock.data["Error Message"]) {
         return "Invalid Ticker Value, please enter a correct ticker"
     }
