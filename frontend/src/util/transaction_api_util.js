@@ -5,5 +5,7 @@ export const tradeStock = (transaction) => {
 };
 
 export const fetchTrades = (userId) => {
-    return axios.get('/api/transactions/fetchtrades', userId);
+    return axios.get(`/api/transactions/${userId}`);
 };
+
+// put func to parse transactions into stocks owned and buy in price here.

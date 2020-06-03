@@ -6,18 +6,35 @@ router.get("/test", (req, res) => res.json({
     msg: "This is the transactions route"
 }));
 
-router.get('/fetchtrades', function(req, res){
-    
-    Transaction.find({userId: req.body.userId}, function(err, trade){
-        
-    //     if(err){
-    //         console.log('no transactions found for this user');
-    //     } else {
-    //         // debugger
-    //         // res.json(trade)
-    //         // res.send(trade)
-    //     }
+router.get('/:userId', (req, res) => {
+    console.log(req)
+    Transaction.find({ userId: req.params.userId })
+        .sort({ date: 1 })
+        .then(trades => res.json(trades))
+        .catch(err =>
+            res.status(404).json({ notweetsfound: 'No tweets found from that user' }
+            )
+        );
+    // // debugger
+    // Transaction.find({userId: req.body.userId})
+    //     .then(trades => res.json(trades))
+    //     .catch(err => res.json('this user has no trades'))
+    //     // , function(err, trade){    
+    // const userTrades = Transaction.find({ userId: req.body.userId }, function(err, trades){
+    //     res.send(trades)
     // })
+    // const userTrades = Transaction.find()
+    // console.log(userTrades);
+    // return res.send(trades)
+        // .toArray()
+    // if (userTrades.length > 0) { res.json(userTrades[0]); }
+        // .then(() => res.send(userTrades))
+    // const newArr = [];
+    
+    // userTrades.map(trades => { 
+    //     newArr.push(trades);
+    // }).then( () => res.json(newArr))
+       
 })
 
 router.post('/trade', function(req, res){

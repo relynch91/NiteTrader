@@ -4,12 +4,13 @@ import './stock_index.css';
 export default class StockIndex extends React.Component {
     constructor(props){
       super(props)
-      this.state = [];
+      this.state = {};
     }
     componentDidMount(){
-      this.props.fetchTrades(this.props.userId)
-        .then(res => this.setState(res))
-        .then(() => console.log(this.state))
+      // debugger
+      let trades = this.props.fetchTrades(this.props.userId)
+          // .then(res => this.setState(res))
+        // .then(() => console.log(this.state))
     }
 
     render(){
