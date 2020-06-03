@@ -7,7 +7,7 @@ const TransactionsReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_ALL_TRADES:
             // debugger
-            return Object.assign(nextState, action.transactions);
+            return Object.assign(nextState, action.transactions.data);
         // case RECEIVE_TRADE:
         //     // Object.assign(nextState, {[action.transaction.data.ticker]: action.transaction.data});
         //     // Object.assign(nextState, {[action.transaction.data.ticker]: action.transaction.data});

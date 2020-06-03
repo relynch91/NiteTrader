@@ -9,8 +9,8 @@ router.get("/test", (req, res) => res.json({
 router.get('/:userId', (req, res) => {
     console.log(req)
     Transaction.find({ userId: req.params.userId })
-        .sort({ date: -1 })
-        .then(tweets => res.json(tweets))
+        .sort({ date: 1 })
+        .then(trades => res.json(trades))
         .catch(err =>
             res.status(404).json({ notweetsfound: 'No tweets found from that user' }
             )
