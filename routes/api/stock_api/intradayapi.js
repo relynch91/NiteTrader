@@ -7,22 +7,21 @@ router.get("/test", (req, res) => res.json({
 }));
 
 router.post('/new', (req, res) => {
-    debugger
     const newStock = new IntraDayAPI({
-        "I exist": "Yes, yes I do"
+        'Meta Data': req.body["Meta Data"],
+        // 'Time Series (15min)': req.body['Time Series (15min)']
     });
 
-    newStock.save().then(newStock => res.json(newStock));
+    newStock.save().then(newStock => res.json(newStock))
+    .catch(console.log("Yikes"));
 });
 
 router.patch('/update', (req, res) => {
-    debugger
-    const query = {
-        data: req.body["Meta Data"]
-    };
+    const query = { symbol: "I exist" };
 
     const update = {
-        body: req.body
+        symbol: "I hope this works big time",
+        information: "Big big time"
     };
 
     const updatedStock = IntraDayAPI.replaceOne(query, update, {

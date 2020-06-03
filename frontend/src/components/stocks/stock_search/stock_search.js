@@ -1,6 +1,6 @@
 import React from 'react';
 import StockDetailsContainer from './stock_details_container'
-import { formatAPICall } from '../../../actions/_alphaAPI';
+import { globalEndPointFormat, intraDayFormat } from '../../../actions/_alphaAPI';
 import key from '../../../frontConfig/frontKeys';
 import { quoteEndPointDB,  intraDayDB } from '../../../util/alphaAdvantageAPI';
 
@@ -20,7 +20,7 @@ export default class StockSearch extends React.Component {
         const stockInfo = this.props.getQuoteEndPointAlpha(stockURL).then(
             (res) => {
                 if (res) {
-                    let stockData = formatAPICall(res);
+                    let stockData = globalEndPointFormat(res);
                     let storedData = quoteEndPointDB(stockData);
                 }
         })
