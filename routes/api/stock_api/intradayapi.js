@@ -1,19 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const IntraDayAPI = require('../../../models/stock_api_requests/IntraDayAPI');
+const IntraDayStock = require('../../../models/stock_api_requests/IntraDayAPI');
 
 router.get("/test", (req, res) => res.json({
     msg: "This is the IntraDayAPI AlphAdvantage Stock route"
 }));
 
 router.post('/new', (req, res) => {
-    const newStock = new IntraDayAPI({
-        'Meta Data': req.body["Meta Data"],
+    const newStock = new IntraDayStock({
+        'Meta Data': req.body
         // 'Time Series (15min)': req.body['Time Series (15min)']
     });
-
+    // console.log(newStock);
     newStock.save().then(newStock => res.json(newStock))
-    .catch(console.log("Yikes"));
+    .catch(console.log(newStock))
 });
 
 router.patch('/update', (req, res) => {

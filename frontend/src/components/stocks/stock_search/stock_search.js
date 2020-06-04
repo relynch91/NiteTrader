@@ -29,9 +29,7 @@ export default class StockSearch extends React.Component {
             (res) => {
                 if (res) {
                   let stockInfo = res.stock.data
-                  debugger
                   let intraDayData = intraDayDB(stockInfo);
-                  debugger
                 }
             }
         )

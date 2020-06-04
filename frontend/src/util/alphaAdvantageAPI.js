@@ -13,7 +13,6 @@ export const intraDayAPI = (apiURL) => {
 };
 
 export const intraDayDB = (stockInfo) => {
-    debugger
     const dbRecord = axios.post('/api/stock_api/intradayapi/new', stockInfo);
     return dbRecord;
 }
