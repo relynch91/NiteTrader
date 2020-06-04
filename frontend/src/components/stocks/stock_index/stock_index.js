@@ -10,7 +10,7 @@ export default class StockIndex extends React.Component {
     componentDidMount(){
       let {fetchTrades, userId, myStocks} = this.props
       fetchTrades(userId)
-        // .then(() => this.setState( myStocks ))
+        .then(() => this.setState( {myStocks} ))
         // .then(() => console.log(this.state))
     }
 
@@ -21,8 +21,10 @@ export default class StockIndex extends React.Component {
     // }
     
     render(){
-            let myShares = !!this.props.myStocks ? TransUtil.activeShares(this.props.myStocks) : null;
-            let theStuff = (this.props.myStocks === undefined) ? null : (
+      debugger
+        let myStocks = this.props;
+        let myShares = (!!myStocks) ? null : TransUtil.activeShares(myStocks);
+        let theStuff = (!!myStocks) ? null : (
               <div className="stock-index-main">
                 <p>Here is Your Current Stock Portfolio</p>
                 {Object.keys(myShares).map((ticker) => (
