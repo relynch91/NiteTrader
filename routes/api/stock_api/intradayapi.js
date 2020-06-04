@@ -8,12 +8,12 @@ router.get("/test", (req, res) => res.json({
 
 router.post('/new', (req, res) => {
     const newStock = new IntraDayStock({
-        'Meta Data': req.body
+        any: req.body
         // 'Time Series (15min)': req.body['Time Series (15min)']
     });
     // console.log(newStock);
-    newStock.save().then(newStock => res.json(newStock))
-    .catch(console.log(newStock))
+    newStock.save().then(newStock => res.json(newStock));
+    console.log(newStock)
 });
 
 router.patch('/update', (req, res) => {

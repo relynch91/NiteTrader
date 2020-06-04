@@ -16,8 +16,8 @@ export default class StockSearch extends React.Component {
 
     getStockDetails(e){
         e.preventDefault();
-        const stockURL = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${this.state.ticker}&apikey=${key}`;
-        const stockInfo = this.props.getQuoteEndPointAlpha(stockURL).then(
+        const quoteEndPointAPI = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${this.state.ticker}&apikey=${key}`;
+        const stockInfo = this.props.getQuoteEndPointAlpha(quoteEndPointAPI).then(
             (res) => {
                 if (res) {
                     let stockData = globalEndPointFormat(res);
@@ -29,9 +29,18 @@ export default class StockSearch extends React.Component {
             (res) => {
                 if (res) {
                   let stockInfo = res.stock.data
-                  let intraDayData = intraDayDB(stockInfo);
                 }
             }
+        )
+        // https: //www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=IBM&apikey=demo
+        // const timeSeriesMonthlyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${this.state.ticker}&apikey=${key}`;
+        const timeSeriesMonthlyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${this.state.ticker}&apikey=${key}`;
+        const timeSeriesInfo = this.props.timeSeriesInfoAPICall(timeSeriesMonthlyAPI).then(
+          (res) => {
+            if (res) {
+              let theGoods = res.stock.data;
+            }
+          }
         )
     }
 

@@ -16,3 +16,7 @@ export const intraDayDB = (stockInfo) => {
     const dbRecord = axios.post('/api/stock_api/intradayapi/new', stockInfo);
     return dbRecord;
 }
+
+export const timeSeriesInfo = (apiURL) => {
+    return axios.get(apiURL)
+}
