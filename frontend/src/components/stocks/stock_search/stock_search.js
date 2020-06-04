@@ -32,14 +32,16 @@ export default class StockSearch extends React.Component {
                 }
             }
         )
-        // const timeSeriesMonthlyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.ticker}&interval=15min&outputsize=full&apikey=${key}`;
-        // const intraDayInfo = this.props.intraDayAPICall(intraDayAPI).then(
-        //   (res) => {
-        //     if (res) {
-        //       let stockInfo = res.stock.data
-        //     }
-        //   }
-        // )
+        // https: //www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=IBM&apikey=demo
+        // const timeSeriesMonthlyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${this.state.ticker}&apikey=${key}`;
+        const timeSeriesMonthlyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${this.state.ticker}&apikey=${key}`;
+        const timeSeriesInfo = this.props.timeSeriesInfoAPICall(timeSeriesMonthlyAPI).then(
+          (res) => {
+            if (res) {
+              let theGoods = res.stock.data;
+            }
+          }
+        )
     }
 
     update() {
