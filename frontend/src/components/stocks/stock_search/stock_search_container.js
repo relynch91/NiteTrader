@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import StockSearch from "./stock_search";
-import { getQuoteEndPointAlpha, intraDayAPICall, timeSeriesInfoAPICall } from '../../../actions/alphaAPI_actions';
+import { getQuoteEndPointAlpha, intraDayAPICall, timeSeriesInfoAPICall } from '../../../actions/alphaApi_actions';
 
 const mapDispatchToProps = (dispatch) => ({
     getQuoteEndPointAlpha: (stockURL) => dispatch(getQuoteEndPointAlpha(stockURL)),
