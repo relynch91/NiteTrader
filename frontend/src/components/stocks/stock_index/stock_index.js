@@ -3,30 +3,15 @@ import './stock_index.css';
 import * as TransUtil from '../../../util/transaction_api_util';
 
 export default class StockIndex extends React.Component {
-    // constructor(props){
-    //   super(props)
-    // }
 
     componentDidMount(){
-      let {fetchTrades, userId, myStocks} = this.props
+      let { fetchTrades, userId } = this.props
       fetchTrades(userId)
-        // .then(() => this.setState( {myStocks} ))
-        // .then(() => console.log(this.state))
     }
-
-    // componentDidUpdate(){
-    //   debugger
-    //   let { myStocks, activeShares } = this.props;
-    //   this.setState({mystocks: activeShares(myStocks)})
-    // }
     
     render(){
-      // debugger
-        let { myStocks } = this.props;
-        console.log("my stocks ===", myStocks);
+      let { myStocks } = this.props;
       let myShares = (Object.keys(myStocks).length === 0) ? null : TransUtil.activeShares(myStocks);
-        // let myShares = TransUtil.activeShares(myStocks);
-        console.log("myShares", myShares);
         let theStuff = (!myShares) ? null : (
               <div className="stock-index-main">
                 <p>Here is Your Current Stock Portfolio</p>
@@ -44,7 +29,6 @@ export default class StockIndex extends React.Component {
                 ))}
               </div>
             )
-            // debugger
             return (
               <div>
                 {theStuff}
