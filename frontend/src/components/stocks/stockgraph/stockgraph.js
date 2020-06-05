@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './stockgraph.css'
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Brush, Legend, } from 'recharts';
 
@@ -10,6 +10,9 @@ export default class StockGraph extends React.Component {
 
   componentDidMount(){
     let theHistoricStockDate = this.props.stock["Time Series (Daily)"];
+    // let theHistoricStockDate = this.props.stock["Monthly Time Series"];
+    // console.log(this.props.stock1.timeSeriesMonthly["Monthly Time Series"])
+    // debugger
     let theDays = Object.keys(theHistoricStockDate)
     // debugger
     let structuredProps = theDays.map((dateKey) => ({

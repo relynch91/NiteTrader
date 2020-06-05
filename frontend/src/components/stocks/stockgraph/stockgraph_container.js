@@ -3,6 +3,7 @@ import StockGraph from './stockgraph';
 
 const mapStateToProps = (state) => ({
     stock: thisStocksData
+    // stock1: state.stocks
 });
 
 export default connect(mapStateToProps, null)(StockGraph)
