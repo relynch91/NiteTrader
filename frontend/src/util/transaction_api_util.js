@@ -8,4 +8,31 @@ export const fetchTrades = (userId) => {
     return axios.get(`/api/transactions/${userId}`);
 };
 
-// put func to parse transactions into stocks owned and buy in price here.
+export const activeShares = (trades) => {
+    let res = {}
+    // debugger
+    Object.values(trades).forEach((trade) => {
+        // console.log(trade)
+        let stock = res[trade.ticker];
+        if (!stock && trade.buy === true) {
+            res[trade.ticker] = {
+                pricePerShare: trade.price,
+                ownedShares: trade.shares
+            }
+        } else if (stock && trade.buy === true) {
+            stock.pricePerShare = newPricePerShareBuy(stock, trade);
+            stock.ownedShares += trade.shares;
+        } else if (stock && trade.buy === false) {
+
+            stock.ownedShares -= trade.shares
+        }
+    })
+    return res;
+}
+
+function newPricePerShareBuy(existingStock, newStock) {
+    let startingPrice = existingStock.pricePerShare * existingStock.ownedShares;
+    let secondPrice = newStock.price * newStock.shares;
+    let totalShares = existingStock.ownedShares + newStock.shares
+    return (startingPrice + secondPrice) / totalShares
+}
