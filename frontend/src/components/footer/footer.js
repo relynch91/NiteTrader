@@ -8,17 +8,17 @@ class Footer extends React.Component {
         return (
             <div>
                 <div className="footer-container">
-                    <ul>
+                    {/* <ul>
                         <li className="li-top">Your Account</li>
                         <li><Link className="nav-button" to="/signup">Sign Up</Link></li>
                         <li><Link className="nav-button" to="/login">Log In</Link></li>
-                    </ul>
-                    <ul>
+                    </ul> */}
+                    {/* <ul>
                         <li className="li-top">Discover</li>
                         <li>Stocks</li>
                         <li>Practice</li>
                         <li>Compete</li>
-                    </ul>
+                    </ul> */}
                     <ul>
                         <li className="li-top">NiteTrader</li>
                         <li>About</li>
@@ -26,7 +26,7 @@ class Footer extends React.Component {
                 </div>
                 <div className="last-foot">
                     <br />
-                    <span>© 2020 NiteTrader LLC</span>
+                    {/* <span>© 2020 NiteTrader LLC</span> */}
                 </div>
             </div>
         )

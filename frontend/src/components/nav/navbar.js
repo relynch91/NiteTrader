@@ -11,34 +11,7 @@ class NavBar extends React.Component {
 
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
-
-    // this.handleClickButton = this.handleClickButton.bind(this);
-    // this.showMenu = this.showMenu.bind(this);
-    // this.closeMenu = this.closeMenu.bind(this);
-    
-
-
   }
-
-  // handleClickButton() {
-  //   this.setState({ open: !this.state.open })
-  // }
-
-  // showMenu(e) {
-  //   e.preventDefault();
-  //   this.setState({ open: true }, () => {
-  //     document.addEventListener('click', this.closeMenu)
-  //   })
-  // }
-
-  // closeMenu(e) {
-  //   if (!this.open.contains(e.target))
-  //     this.setState({
-  //       open: false
-  //     }, () => {
-  //       document.removeEventListener('click', closeMenu)
-  //     })
-  // }
 
 
   logoutUser(e) {
