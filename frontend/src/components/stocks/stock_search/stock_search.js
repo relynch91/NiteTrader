@@ -3,6 +3,7 @@ import StockDetailsContainer from './stock_details_container'
 import { globalEndPointFormat, intraDayFormat } from '../../../actions/_alphaAPI';
 import key from '../../../frontConfig/frontKeys';
 import { quoteEndPointDB,  intraDayDB } from '../../../util/alphaAdvantageAPI';
+import './stock_search.css';
 
 
 export default class StockSearch extends React.Component {
@@ -49,10 +50,17 @@ export default class StockSearch extends React.Component {
     }
 
     render(){
+      let selectivelyShow = (Object.keys(this.props.stockDetails).length !== 0) ? <StockDetailsContainer /> : (
+        <div className="stock-search-landing">
+            <span>Find Your Next Unicorn</span>
+            <span>Enter a company's stock ticker to access real-time information</span>
+        </div>
+      )
         return (
           <div className="stock-search-container">
+            
             <form onSubmit={this.getStockDetails} className="stock-search-form">
-                <label>Search For A Stock</label>
+                <div>Search For A Stock</div>
                 <input
                   type="text"
                   value={this.state.ticker}
@@ -60,14 +68,15 @@ export default class StockSearch extends React.Component {
                   className="stock-search-form-input"
                   placeholder="Enter a Ticker"
                 />
+                <br/>
                 <input
                   type="submit"
                   value="Submit"
                   className="stock-form-submit"
                 />
             </form>
-            <StockDetailsContainer />
-            {/* {theDetails} */}
+            {/* <StockDetailsContainer /> */}
+            {selectivelyShow}
           </div>
         );
     }

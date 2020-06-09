@@ -37,7 +37,7 @@ export default class StockDetails extends React.Component {
                   <p>Today's Information</p>
                   <form onSubmit={this.handleSubmit}>
                     <label>Number of Shares
-                                    <input type="number" onChange={this.handleChange()} value={this.state.numShares} />
+                      <input type="number" onChange={this.handleChange()} value={this.state.numShares} />
                     </label>
                     <button className="stock-buy">Buy This Stock</button>
                   </form>

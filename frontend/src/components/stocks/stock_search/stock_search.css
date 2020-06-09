@@ -5,8 +5,11 @@
 }
 
 .stock-search-form{
-    margin: 50px;
-    max-width: 150px;
+    /* margin: 50px;
+    max-width: 150px; */
+}
+.stock-search-form > span{
+    /* padding: 50px; */
 }
 
 .stock-search-form-input {
@@ -21,10 +24,19 @@
   border-radius: 2px;
 }
 
+
 .stock-form-submit{
-    background: #A3333D;
-    /* border-color: #3d6883; */
+    /* background: #A3333D;
     border-radius: 2px;
+    font-size: 16px;
+    outline: 0;
+    display: inline-block;
+    padding: 10px 10px;
+    margin-top: 10px;
+    color: whitesmoke;
+    text-align: center;
+    cursor: pointer; */
+    background: #A3333D;
     font-size: 16px;
     outline: 0;
     display: inline-block;
@@ -36,5 +48,14 @@
 }
 
 .stock-form-submit:hover{
+    background: #3d6883;
+}
+
+.stock-search-landing{
+    font-size: 16px;
+}
+
+.stock-search-landing > span{
+    font-size: 16px;
     background: #3d6883;
 }
