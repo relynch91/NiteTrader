@@ -24,7 +24,7 @@ router.get('/:userId', (req, res) => {
         .catch(err =>
             res.status(404).json({ noTradesFound: 'No trades found from that user' }
             )
-        );     
+        );   
 })
 
 router.post('/trade', function(req, res){

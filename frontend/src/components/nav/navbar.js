@@ -12,8 +12,7 @@ class NavBar extends React.Component {
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
   }
-
-
+  
   logoutUser(e) {
       e.preventDefault();
       this.props.logout();
@@ -39,8 +38,6 @@ class NavBar extends React.Component {
             <div className="navbar-main">
             <NavLink className="home-logo" to="/">NiteTrader</NavLink>
               <div>
-                {/* <Link className="navbar-link" to={'/signup'}>Signup</Link>
-                <Link className="navbar-link" to={'/login'}>Login</Link> */}
                 <button className="navbar-link" onClick={() => openModal('login')}>Sign in</button>
                 <button className="navbar-link" onClick={() => openModal('signup')}>Get started</button>
               </div>

@@ -2,6 +2,8 @@
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
+    margin-top: 50px;
+    margin-bottom: 100px;
 }
 
 .stock-search-form{

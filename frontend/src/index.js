@@ -9,8 +9,7 @@ import { allStocks } from './util/transaction_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
       let store;
-      let data = allStocks()
-      window.thisworks = data;
+
       if (localStorage.jwtToken) {
         // Set the token as a common header for all axios requests
         setAuthToken(localStorage.jwtToken);
