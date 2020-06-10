@@ -35,13 +35,7 @@ export default class StockSearch extends React.Component {
             }
         )
         const timeSeriesMonthlyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${this.state.ticker}&apikey=${key}`;
-        const timeSeriesInfo = this.props.timeSeriesInfoAPICall(timeSeriesMonthlyAPI).then(
-        //   (res) => {
-        //     if (res) {
-        //       let theGoods = res.stock.data;
-        //     }
-        //   }
-        )
+        const timeSeriesInfo = this.props.timeSeriesInfoAPICall(timeSeriesMonthlyAPI);
     }
 
     update() {
