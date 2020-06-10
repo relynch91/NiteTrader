@@ -5,7 +5,7 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Brush, Legend, }
 export default class StockGraph extends React.Component {
   constructor(props){
     super(props)
-    this.state = {stock: []}
+    this.state = {stock: {}}
   }
 
   formatGraphData(){
@@ -23,9 +23,8 @@ export default class StockGraph extends React.Component {
     }));
     this.setState({ stock: structuredProps });
   }
+
   componentDidMount(){
-    // debugger
-    // let theHistoricStockDate = (Object.keys(this.props.stockInfo).length === 0) ? this.props.stock["Time Series (Daily)"] : this.props.stockInfo.timeSeriesMonthly["Monthly Time Series"] ;
     this.formatGraphData()
   }
 
