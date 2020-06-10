@@ -1,19 +1,18 @@
 .stock-search-container{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: flex-start;
+    margin-top: 100px;
+    margin-bottom: 100px;
 }
 
-.stock-search-form{
-    /* margin: 50px;
-    max-width: 150px; */
-}
-.stock-search-form > span{
-    /* padding: 50px; */
+.stock-search-form > div{
+    font-size: 20px;
+    padding-bottom: 15px;
 }
 
 .stock-search-form-input {
-  width: 100px;
+  width: 115px;
   padding: .5em;
   font-size: 12px;
   font-weight: 500;
@@ -21,41 +20,28 @@
   display: inline-block;
   background: #fafafa;
   border: 1px solid lightgrey;
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
-
 .stock-form-submit{
-    /* background: #A3333D;
-    border-radius: 2px;
-    font-size: 16px;
-    outline: 0;
-    display: inline-block;
-    padding: 10px 10px;
-    margin-top: 10px;
-    color: whitesmoke;
-    text-align: center;
-    cursor: pointer; */
+    width: 115px;
     background: #A3333D;
     font-size: 16px;
     outline: 0;
     display: inline-block;
-    padding: 10px 10px;
+    padding: .5em;
     margin-top: 10px;
     color: whitesmoke;
     text-align: center;
     cursor: pointer;
+    border-radius: 3px;
 }
 
 .stock-form-submit:hover{
     background: #3d6883;
 }
 
-.stock-search-landing{
+.stock-search-landing div{
     font-size: 16px;
-}
-
-.stock-search-landing > span{
-    font-size: 16px;
-    background: #3d6883;
+    margin: 0 0 20px 10px;
 }

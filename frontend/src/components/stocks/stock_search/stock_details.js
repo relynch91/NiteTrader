@@ -20,8 +20,8 @@ export default class StockDetails extends React.Component {
 
       let data = {
         'userId': this.props.userId,
-        'ticker': this.props.stockDetails["01. symbol"],
-        'price': this.props.stockDetails["05. price"],
+        'ticker': this.props.stockDetails.globalEndPoint["01. symbol"],
+        'price': this.props.stockDetails.globalEndPoint["05. price"],
         'shares': this.state.numShares,
         'buy': true
       }
@@ -32,17 +32,16 @@ export default class StockDetails extends React.Component {
     render(){
       let { stockDetails } = this.props
       let theDetails = (Object.keys(stockDetails).length === 0) ? null : (
-        <div className="stock-box">
-                <div>
-                  <p>Today's Information</p>
+             <div className="stock-box-container">
+                <div className="stock-details-box">
+                  <span>Today's Information</span>
                   <form onSubmit={this.handleSubmit}>
-                    <label>Number of Shares
-                      <input type="number" onChange={this.handleChange()} value={this.state.numShares} />
-                    </label>
+                    <p>Number of Shares You intend to purchase</p>
+                    <input type="number" onChange={this.handleChange()} value={this.state.numShares} />
+                    <br/>
                     <button className="stock-buy">Buy This Stock</button>
                   </form>
                 </div>
-
                 <div className="stock-details">
                   <p>Symbol: {stockDetails.globalEndPoint["01. symbol"]}</p>
                   <p>Open: ${parseInt(stockDetails.globalEndPoint["02. open"])}</p>

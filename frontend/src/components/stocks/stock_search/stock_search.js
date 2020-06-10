@@ -52,15 +52,14 @@ export default class StockSearch extends React.Component {
     render(){
       let selectivelyShow = (Object.keys(this.props.stockDetails).length !== 0) ? <StockDetailsContainer /> : (
         <div className="stock-search-landing">
-            <span>Find Your Next Unicorn</span>
-            <span>Enter a company's stock ticker to access real-time information</span>
+            <div>Find Your Next Unicorn</div>
+            <div>Enter a company's stock ticker to access real-time information</div>
         </div>
       )
         return (
           <div className="stock-search-container">
-            
             <form onSubmit={this.getStockDetails} className="stock-search-form">
-                <div>Search For A Stock</div>
+                <div>Search Stocks:</div>
                 <input
                   type="text"
                   value={this.state.ticker}
