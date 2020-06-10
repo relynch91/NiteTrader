@@ -12,8 +12,8 @@ export default class StockGraph extends React.Component {
     let theHistoricStockDate = (this.props.stockInfo.timeSeriesMonthly) ?
       this.props.stockInfo.timeSeriesMonthly["Monthly Time Series"] :
       this.props.stock["Time Series (Daily)"];
-    let theDays = Object.keys(theHistoricStockDate)
-    // debugger
+    let theDays = Object.keys(theHistoricStockDate);
+
     let structuredProps = theDays.map((dateKey) => ({
       date: dateKey,
       open: theHistoricStockDate[dateKey]["1. open"],
@@ -37,7 +37,6 @@ export default class StockGraph extends React.Component {
   render() {
     let theData = this.props.stock
     if (!!this.props.stockInfo.timeSeriesMonthly) { theData = this.props.stockInfo.timeSeriesMonthly}
-    debugger
     let symbol = theData["Meta Data"]["2. Symbol"].toUpperCase();
     return (
       <div className="stock-graph-main">

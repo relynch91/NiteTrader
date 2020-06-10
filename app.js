@@ -29,10 +29,7 @@ require('./config/passport')(passport);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ 
-    limit: '50mb', 
-    extended: true, 
-    parameterLimit: 50000 
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 
 }));
 
 app.use("/api/users", users);
@@ -41,5 +38,4 @@ app.use("/api/transactions", transactions);
 app.use("/api/stock_api/intradayapi", intraDayAPI);
 
 const port = process.env.PORT || 5000;
-
 app.listen(port, () => console.log(`Server is running on port ${port}`));
