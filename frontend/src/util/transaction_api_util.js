@@ -8,6 +8,11 @@ export const fetchTrades = (userId) => {
     return axios.get(`/api/transactions/${userId}`);
 };
 
+export const allStocks = () => {
+    let tickers = axios.get('/api/transactions/activeTrades')
+    return tickers;
+}
+
 export const activeShares = (trades) => {
     let res = {}
     Object.values(trades).forEach((trade) => {
