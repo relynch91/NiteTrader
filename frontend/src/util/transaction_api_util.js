@@ -10,9 +10,7 @@ export const fetchTrades = (userId) => {
 
 export const activeShares = (trades) => {
     let res = {}
-    // debugger
     Object.values(trades).forEach((trade) => {
-        // console.log(trade)
         let stock = res[trade.ticker];
         if (!stock && trade.buy === true) {
             res[trade.ticker] = {

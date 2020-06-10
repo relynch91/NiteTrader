@@ -4,7 +4,7 @@ import StockDetails from "./stock_details";
 import { tradeStock } from '../../../actions/transaction_actions'
 
 const mapStateToProps = (state) => ({
-    stockDetails: state.stocks,
+    stockDetails: state.stocks.globalEndPoint,
     userId: state.session.user.id
 });
 
