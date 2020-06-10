@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const Transaction = require('../../models/Transaction');
-const helperFunctions = require('../../util/helperFunctions');
 
 router.get("/test", (req, res) => res.json({
     msg: "This is the transactions route"
@@ -9,7 +8,6 @@ router.get("/test", (req, res) => res.json({
 
 router.get('/activeTrades', (req, res) => {
     Transaction.find({ buy: true }, { ticker: 1, _id: 0 })
-        .then( tickerObjs => helperFunctions.formatTickers(tickerObjs))
         .then( tickerArray => res.json(tickerArray))
         .catch(err => 
             res.status(404).json({ noTradesFound: 'No active trades found' }
