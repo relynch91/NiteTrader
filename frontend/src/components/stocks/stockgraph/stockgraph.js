@@ -36,8 +36,9 @@ export default class StockGraph extends React.Component {
 
   render() {
     let theData = this.props.stock
-    if (!!this.props.stockInfo.timeSeriesMonthly) { theData = this.props.stockInfo.timeSeriesMonthly} 
-      let symbol = theData["Meta Data"]["2. Symbol"].toUpperCase();
+    if (!!this.props.stockInfo.timeSeriesMonthly) { theData = this.props.stockInfo.timeSeriesMonthly}
+    debugger
+    let symbol = theData["Meta Data"]["2. Symbol"].toUpperCase();
     return (
       <div className="stock-graph-main">
         <p>{symbol}</p>

@@ -17,15 +17,11 @@ import {
 
 document.addEventListener('DOMContentLoaded', () => {
       let store;
-
       if (localStorage.jwtToken) {
-
         // Set the token as a common header for all axios requests
         setAuthToken(localStorage.jwtToken);
-
         // Decode the token to obtain the user's information
         const decodedUser = jwt_decode(localStorage.jwtToken);
-
         // Create a preconfigured state we can immediately add to our store
         const preloadedState = {
           session: {
@@ -35,9 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         store = configureStore(preloadedState);
-
         const currentTime = Date.now() / 1000;
-
         // If the user's token has expired
         if (decodedUser.exp < currentTime) {
           // Logout the user and redirect to the login page
