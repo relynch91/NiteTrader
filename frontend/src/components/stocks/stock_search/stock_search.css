@@ -2,6 +2,11 @@
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
+<<<<<<< HEAD
+=======
+    margin-top: 50px;
+    margin-bottom: 100px;
+>>>>>>> aea19413b55d096d6b5e9cf30e5de325de8f7a54
 }
 
 .stock-search-form{

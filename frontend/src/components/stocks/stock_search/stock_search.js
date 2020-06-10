@@ -1,5 +1,6 @@
 import React from 'react';
-import StockDetailsContainer from './stock_details_container'
+import StockDetailsContainer from './stock_details_container';
+import StockGraph from '../stockgraph/stockgraph_container';
 import { globalEndPointFormat, intraDayFormat } from '../../../actions/_alphaAPI';
 import key from '../../../frontConfig/frontKeys';
 import { quoteEndPointDB,  intraDayDB } from '../../../util/alphaAdvantageAPI';
@@ -44,7 +45,8 @@ export default class StockSearch extends React.Component {
     }
 
     render(){
-      let selectivelyShow = (Object.keys(this.props.stockDetails).length !== 0) ? <StockDetailsContainer /> : (
+      let theStockGraph = (Object.keys(this.props.stockDetails).length !== 0) ? <StockGraph /> : null;
+      let selectivelyShow = (Object.keys(this.props.stockDetails).length !== 0) ? <StockDetailsContainer />: (
         <div className="stock-search-landing">
             <div>Find Your Next Unicorn</div>
             <div>Enter a company's stock ticker to access real-time information</div>
@@ -69,7 +71,10 @@ export default class StockSearch extends React.Component {
                 />
             </form>
             {/* <StockDetailsContainer /> */}
-            {selectivelyShow}
+            <div>
+              {selectivelyShow}
+              {theStockGraph}
+            </div>
           </div>
         );
     }

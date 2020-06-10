@@ -5,14 +5,13 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Brush, Legend, }
 export default class StockGraph extends React.Component {
   constructor(props){
     super(props)
-    this.state = {stock: []}
+    this.state = {stock: {}}
   }
 
-  componentDidMount(){
-    let theHistoricStockDate = this.props.stock["Time Series (Daily)"];
-    // let theHistoricStockDate = this.props.stock["Monthly Time Series"];
-    // console.log(this.props.stock1.timeSeriesMonthly["Monthly Time Series"])
-    // debugger
+  formatGraphData(){
+    let theHistoricStockDate = (this.props.stockInfo.timeSeriesMonthly) ?
+      this.props.stockInfo.timeSeriesMonthly["Monthly Time Series"] :
+      this.props.stock["Time Series (Daily)"];
     let theDays = Object.keys(theHistoricStockDate)
     // debugger
     let structuredProps = theDays.map((dateKey) => ({
@@ -22,14 +21,23 @@ export default class StockGraph extends React.Component {
       low: theHistoricStockDate[dateKey]["3. low"],
       close: theHistoricStockDate[dateKey]["4. close"],
     }));
-    this.setState({stock: structuredProps});
-    console.log(structuredProps);
+    this.setState({ stock: structuredProps });
+  }
+
+  componentDidMount(){
+    this.formatGraphData()
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.stockInfo !== prevProps.stockInfo){
+      this.formatGraphData()
+    }
   }
 
   render() {
-    // debugger
-      let symbol = this.props.stock["Meta Data"]["2. Symbol"];
-      // console.log(this.state)
+    let theData = this.props.stock
+    if (!!this.props.stockInfo.timeSeriesMonthly) { theData = this.props.stockInfo.timeSeriesMonthly} 
+      let symbol = theData["Meta Data"]["2. Symbol"].toUpperCase();
     return (
       <div className="stock-graph-main">
         <p>{symbol}</p>
