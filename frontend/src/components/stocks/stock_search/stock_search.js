@@ -6,7 +6,6 @@ import key from '../../../frontConfig/frontKeys';
 import { quoteEndPointDB,  intraDayDB } from '../../../util/alphaAdvantageAPI';
 import './stock_search.css';
 
-
 export default class StockSearch extends React.Component {
     constructor(props){
         super(props)
