@@ -26,7 +26,6 @@ export default class StockGraph extends React.Component {
     //Insert logic to pass/parse appropriate api into data 
 
     let theDays = Object.keys(theHistoricStockDate)
-    debugger
     let structuredProps = theDays.map((dateKey) => ({
       date: dateKey,
       open: theHistoricStockDate[dateKey]["1. open"],

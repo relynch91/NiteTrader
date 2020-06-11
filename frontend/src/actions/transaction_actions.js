@@ -31,7 +31,6 @@ export const tradeStock = transaction => dispatch => {
     };
 
 export const fetchTrades = userId => dispatch => {
-    // debugger
     return APIUtil.fetchTrades(userId)
         .then(
             (allTrades) => (dispatch(receiveAllUserTransactions(allTrades))),

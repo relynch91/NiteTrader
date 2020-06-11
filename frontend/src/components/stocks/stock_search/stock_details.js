@@ -28,8 +28,8 @@ export default class StockDetails extends React.Component {
       this.props.tradeStock(data)
         .then(() => this.props.history.push('/portfolio/'))
     }
-
-    render(){
+    
+    render() {
       let { stockDetails } = this.props
       let theDetails = (!stockDetails.globalEndPoint) ? null : (
              <div className="stock-box-container">
@@ -56,7 +56,8 @@ export default class StockDetails extends React.Component {
                   <p>Change: {stockDetails.globalEndPoint["09. change"]}</p>
                   <p>Change Percent: {stockDetails.globalEndPoint["10. change percent"]}</p>
                 </div>
-              </div>);
+              </div>
+              );
             return (
               <div>
                 {theDetails}
