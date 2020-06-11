@@ -19,12 +19,6 @@ export default class StockGraph extends React.Component {
         this.props.stockInfo.timeSeriesMonthly["Monthly Time Series"] :
         this.props.stock["Time Series (Daily)"]
     }
-    // let theHistoricStockDate = (this.props.stockInfo.timeSeriesMonthly) ?
-    //   this.props.stockInfo.timeSeriesMonthly["Monthly Time Series"] :
-    //   this.props.stock["Time Series (Daily)"];
-
-    //Insert logic to pass/parse appropriate api into data 
-
     let theDays = Object.keys(theHistoricStockDate)
     let structuredProps = theDays.map((dateKey) => ({
       date: dateKey,
@@ -52,17 +46,20 @@ export default class StockGraph extends React.Component {
 
   render() {
     let theData = this.props.stock
-    // let {stockInfo} = this.props;
     if (!!this.props.stockInfo.timeSeriesMonthly) { theData = this.props.stockInfo.timeSeriesMonthly} 
       let symbol = theData["Meta Data"]["2. Symbol"].toUpperCase();
+      let theButtons = (!!this.props.stockInfo.timeSeriesMonthly) ?
+        <div className="stockgraph-time-button-container">
+          <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.oneWeek(this.props.stockInfo.intraDay))}>1 Week</button>
+          <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.oneMonth(this.props.stockInfo.intraDay))}>1 Month</button>
+          <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.threeMonths(this.props.stockInfo.intraDay))}>3 Months</button>
+          <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.oneYear(this.props.stockInfo.timeSeriesMonthly))}>1 Year</button>
+          <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.twoYears(this.props.stockInfo.timeSeriesMonthly))}>2 Years</button>
+        </div> : null;
     return (
       <div className="stock-graph-main">
         <p>{symbol}</p>
-        <button onClick={() => this.handleClick(StockUtil.oneWeek(this.props.stockInfo.intraDay))}>1 Week</button>
-        <button onClick={() => this.handleClick(StockUtil.oneMonth(this.props.stockInfo.intraDay))}>1 Month</button>
-        <button onClick={() => this.handleClick(StockUtil.threeMonths(this.props.stockInfo.intraDay))}>3 Months</button>
-        <button onClick={() => this.handleClick(StockUtil.oneYear(this.props.stockInfo.timeSeriesMonthly))}>1 Year</button>
-        <button onClick={() => this.handleClick(StockUtil.twoYears(this.props.stockInfo.timeSeriesMonthly))}>2 Years</button>
+        {theButtons}
         <LineChart
           width={500}
           height={300}
