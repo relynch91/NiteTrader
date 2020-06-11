@@ -27,7 +27,7 @@ async function getStockData(ticker) {
     let data = await axios.get(`
     https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key}`
     )
-    return data.data
+    return data.data['Global Quote'];
 }
 
 async function updateDatabase () {
