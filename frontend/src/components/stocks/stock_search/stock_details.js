@@ -31,8 +31,7 @@ export default class StockDetails extends React.Component {
     
     render() {
       let { stockDetails } = this.props
-      
-      let theDetails = (Object.keys(stockDetails).length === 0) ? null : (
+      let theDetails = (!stockDetails.globalEndPoint) ? null : (
              <div className="stock-box-container">
                 <div className="stock-details-box">
                   <span>Today's Information</span>

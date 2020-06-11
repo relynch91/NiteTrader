@@ -11,7 +11,7 @@ export default connect(mapStateToProps, null)(StockGraph)
 
 const thisStocksData = {
   "Meta Data": {
-    Information: "Daily Prices (open, high, low, close) and Volumes",
+    "Information": "Daily Prices (open, high, low, close) and Volumes",
     "2. Symbol": "IBM",
     "Last Refreshed": "2020-05-14",
     "Output Size": "Compact",
