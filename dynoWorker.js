@@ -1,7 +1,7 @@
 const axios = require('axios').default;
+const key = require('./config/keys');
 
 function unpackTickers(argument) {
-    // console.log(argument)
     let tickers = [];
     for(let i = 0; i < argument.length; i ++) {
         let name = argument[i]['ticker']
@@ -20,14 +20,25 @@ async function receiveTickers() {
 async function tickerCalls() {
     let ticker = await receiveTickers();
     let ticks = unpackTickers(ticker.data)
-    // console.log(ticks);
     return ticks;
 }
-
-async function printTicks () {
-    console.log(tickerCalls());
+//--------------------- above retrieves all tickers ---------------------
+async function getStockData(ticker) {
+    let data = await axios.get(`
+    https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key}`
+    )
+    return data.data
 }
-printTicks();
+
+async function updateDatabase () {
+    let ticker = await (tickerCalls());
+    for(let i = 0; i < 1; i++){
+        let stockData = await getStockData(ticker[i]);
+        console.log(ticker[i])
+        console.log(stockData);
+    }
+}
+updateDatabase();
 
 // function getStocksToGetInfo() {
 //     // query mongo db
