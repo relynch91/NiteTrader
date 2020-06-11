@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Transaction = require('../../models/Transaction');
-const helperFunctions = require('../../util/helperFunctions');
+// const helperFunctions = require('../../util/helperFunctions');
 
 router.get("/test", (req, res) => res.json({
     msg: "This is the transactions route"
