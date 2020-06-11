@@ -1,28 +1,33 @@
 const axios = require('axios').default;
 
 function unpackTickers(argument) {
+    // console.log(argument)
     let tickers = [];
-    for(let i = 0; i < argument.length; i++){
-        let ticker = argument[i]["ticker"];
-        if (tickers.includes(ticker)) {
-            continue;
-        } else {
-            tickers.push(ticker);
+    for(let i = 0; i < argument.length; i ++) {
+        let name = argument[i]['ticker']
+        if (!tickers.includes(name)) {            
+            tickers.push(name)
         }
     }
     return tickers
 }
 
-
-function receiveTickers() {
-    const tickers = (axios.get('http://localhost:5000/api/transactions/activeTrades'))
+async function receiveTickers() {
+    let apiData = await axios.get('http://localhost:5000/api/transactions/activeTrades');
+    return apiData
 }
 
-function tickerCalls() {
-    
+async function tickerCalls() {
+    let ticker = await receiveTickers();
+    let ticks = unpackTickers(ticker.data)
+    // console.log(ticks);
+    return ticks;
 }
 
-console.log(receiveTickers());
+async function printTicks () {
+    console.log(tickerCalls());
+}
+printTicks();
 
 // function getStocksToGetInfo() {
 //     // query mongo db
