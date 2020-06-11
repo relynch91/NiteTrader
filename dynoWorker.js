@@ -1,14 +1,28 @@
 const axios = require('axios').default;
 
-function receiveTickers() {
-    // debugger
-    return (axios.get('http://localhost:5000/api/transactions/activeTrades')
-        .then(res => console.log(res))
-        .catch( err => console.log(err))
-    )
+function unpackTickers(argument) {
+    let tickers = [];
+    for(let i = 0; i < argument.length; i++){
+        let ticker = argument[i]["ticker"];
+        if (tickers.includes(ticker)) {
+            continue;
+        } else {
+            tickers.push(ticker);
+        }
+    }
+    return tickers
 }
 
-receiveTickers();
+
+function receiveTickers() {
+    const tickers = (axios.get('http://localhost:5000/api/transactions/activeTrades'))
+}
+
+function tickerCalls() {
+    
+}
+
+console.log(receiveTickers());
 
 // function getStocksToGetInfo() {
 //     // query mongo db
