@@ -5,25 +5,27 @@ const oneYearInMilliseconds = 31556952000;
 function oneWeek(stockData) {
     let todaysDate = Date.now();
     // intraDay
+    let result = {};
     let pastWeek = Object.keys(stockData["Time Series (15min)"])
-        .filter(rawDate => {
+        .forEach(rawDate => {
             if (Date.parse(rawDate) >= todaysDate - oneWeekInMilliseconds) {
-                return rawDate
+                result[rawDate] = stockData["Time Series (15min)"][rawDate];
             }
         });
-    return pastWeek
+    return result;
 }
 
 function oneMonth(stockData) {
     let todaysDate = Date.now();
     // intraDay
+    let result = {};
     let pastMonth = Object.keys(stockData["Monthly Time Series"])
         .filter(rawDate => {
             if (Date.parse(rawDate) >= todaysDate - oneMonthInMilliseconds) {
-                return rawDate
+                result[rawDate] = stockData["Monthly Time Series"][rawDate];
             }
         });
-    return pastMonth
+    return result;
 }
 
 function threeMonths(stockData) {
@@ -41,23 +43,25 @@ function threeMonths(stockData) {
 
 function oneYear(stockData) {
     let todaysDate = Date.now();
+    let result = {};
     let pastYear = Object.keys(stockData["Monthly Time Series"])
         .filter(rawDate => {
             if (Date.parse(rawDate) >= todaysDate - oneYearInMilliseconds) {
-                return rawDate
+                result[rawDate] = stockData["Monthly Time Series"][rawDate]
             }
         });
-    return pastYear
+    return result;
 }
 
 function twoYears(stockData) {
     let todaysDate = Date.now();
     let twoYearsAgo = 2 * oneYearInMilliseconds;
+    let result = {};
     let pastTwoYears = Object.keys(stockData["Monthly Time Series"])
         .filter(rawDate => {
             if (Date.parse(rawDate) >= todaysDate - twoYearsAgo) {
-                return rawDate
+                result[rawDate] = stockData["Monthly Time Series"][rawDate]
             }
         });
-    return pastTwoYears
+    return result;
 }
