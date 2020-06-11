@@ -49,7 +49,7 @@ export default class StockGraph extends React.Component {
     if (!!this.props.stockInfo.timeSeriesMonthly) { theData = this.props.stockInfo.timeSeriesMonthly} 
       let symbol = theData["Meta Data"]["2. Symbol"].toUpperCase();
       let theButtons = (!!this.props.stockInfo.timeSeriesMonthly) ?
-        <div>
+        <div className="stockgraph-time-button-container">
           <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.oneWeek(this.props.stockInfo.intraDay))}>1 Week</button>
           <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.oneMonth(this.props.stockInfo.intraDay))}>1 Month</button>
           <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.threeMonths(this.props.stockInfo.intraDay))}>3 Months</button>

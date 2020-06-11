@@ -2,9 +2,12 @@
     font-size: 18px;
 }
 
+.stockgraph-time-button-container{
+    display: flex;
+    justify-content: space-around;
+}
 .stockgraph-time-button{
     background: #A3333D;
-    /* border-color: #3d6883; */
     border-radius: 2px;
     font-size: 16px;
     outline: 0;
