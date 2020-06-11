@@ -4,7 +4,6 @@ const oneYearInMilliseconds = 31556952000;
 
 export const oneWeek = (stockData) => {
     let todaysDate = Date.now();
-    // intraDay
     let result = {};
     let pastWeek = Object.keys(stockData["Time Series (15min)"])
         .forEach(rawDate => {
@@ -17,8 +16,6 @@ export const oneWeek = (stockData) => {
 
 export const oneMonth = (stockData) => {
     let todaysDate = Date.now();
-    // intraDay
-    // debugger
     let result = {};
     let pastMonth = Object.keys(stockData["Time Series (15min)"])
         .filter(rawDate => {
@@ -30,15 +27,6 @@ export const oneMonth = (stockData) => {
 }
 
 export const threeMonths = (stockData) => {
-    // let todaysDate = Date.now();
-    // let threeMonths = 3 * oneMonthInMilliseconds;
-    // let threeMonths = Object.keys(stockData["Monthly Time Series"])
-    //                 .filter(rawDate => {
-    //                   if (Date.parse(rawDate) >= todaysDate - threeMonths ){
-    //                     return rawDate
-    //                   }
-    //                 });
-    // Can probably just return "intraDay" api all
     return stockData["Monthly Time Series"]
 }
 
