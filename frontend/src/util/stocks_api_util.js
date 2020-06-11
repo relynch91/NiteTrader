@@ -18,7 +18,7 @@ export const oneWeek = (stockData) => {
 export const oneMonth = (stockData) => {
     let todaysDate = Date.now();
     // intraDay
-    debugger
+    // debugger
     let result = {};
     let pastMonth = Object.keys(stockData["Time Series (15min)"])
         .filter(rawDate => {
