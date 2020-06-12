@@ -24,6 +24,10 @@ async function tickerCalls() {
     return ticks;
 }
 // --------------------- above retrieves all tickers ---------------------
+async function timeOut() {
+    let x = await setTimeout( () => {}, 20000);
+    return x
+}
 
 async function getStockData(ticker) {
     let data = await axios.get(`
@@ -40,6 +44,7 @@ async function updateDatabase(tickers) {
         console.log(formattedData);
         let dbUpdate = await axios.patch(
             'http://localhost:5000/api/stock_api/quoteendpointstock/update', formattedData);
+        let x = await timeOut();
         }
     return true;
 }
@@ -47,7 +52,7 @@ async function updateDatabase(tickers) {
 async function candle() {
     let ticker = await tickerCalls();
     updateDatabase(ticker);
-    return "yes";
+    return true;
 }
 
 candle();
