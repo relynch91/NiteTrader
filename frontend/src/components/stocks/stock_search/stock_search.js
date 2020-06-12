@@ -3,7 +3,7 @@ import StockDetailsContainer from './stock_details_container';
 import StockGraph from '../stockgraph/stockgraph_container';
 import { globalEndPointFormat, intraDayFormat } from '../../../actions/_alphaAPI';
 import key from '../../../frontConfig/frontKeys';
-import { quoteEndPointDB,  intraDayDB } from '../../../util/alphaAdvantageAPI';
+import { quoteEndPointDB } from '../../../util/alphaAdvantageAPI';
 import './stock_search.css';
 
 export default class StockSearch extends React.Component {

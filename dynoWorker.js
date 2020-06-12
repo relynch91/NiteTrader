@@ -1,5 +1,6 @@
 const axios = require('axios').default;
 const key = require('./config/keys');
+const globalEndPointObject = require('./config/endPointRestructure')
 
 function unpackTickers(argument) {
     let tickers = [];
@@ -22,37 +23,31 @@ async function tickerCalls() {
     let ticks = unpackTickers(ticker.data)
     return ticks;
 }
-//--------------------- above retrieves all tickers ---------------------
+// --------------------- above retrieves all tickers ---------------------
+
 async function getStockData(ticker) {
     let data = await axios.get(`
-    https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key}`
-    )
+    https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key}`);
+    
     return data.data['Global Quote'];
 }
 
-async function updateDatabase () {
-    let ticker = await (tickerCalls());
-    for(let i = 0; i < 1; i++){
-        let stockData = await getStockData(ticker[i]);
-        console.log(ticker[i])
-        console.log(stockData);
-    }
+async function updateDatabase(tickers) {
+    let please = []
+    for(let i = 0; i < tickers.length; i++){
+        let stockData = await getStockData(tickers[i]);
+        let formattedData = globalEndPointObject(stockData);
+        console.log(formattedData);
+        let dbUpdate = await axios.patch(
+            'http://localhost:5000/api/stock_api/quoteendpointstock/update', formattedData);
+        }
+    return true;
 }
-updateDatabase();
 
-// function getStocksToGetInfo() {
-//     // query mongo db
-//     return [];
-// }
+async function candle() {
+    let ticker = await tickerCalls();
+    updateDatabase(ticker);
+    return "yes";
+}
 
-// function getDataFromAPI(yourArrayFromFunctionAbove) {\
-//     // call stock api with that Data
-//     return data;
-// }
-
-// function updateMongoDBWithData(dataFromFunctionAbove) {
-//     //update mongo DB with new values
-//     return true;
-// }
-
-// updateMongoDBWithData(getDataFromAPI(getStocksToGetInfo()));
+candle();
