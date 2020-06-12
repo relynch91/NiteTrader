@@ -25,22 +25,20 @@ export default class StockDetails extends React.Component {
 
     handleSubmit(e){
       e.preventDefault();
-      let data = {
+      let { data, ticker } = this.state.mostRecentStockApiData;
+      let transactionData = {
         'userId': this.props.userId,
-        'ticker': this.state.mostRecentStockApiData.data["01. symbol"],
-        'price': this.state.mostRecentStockApiData.data["05. price"],
+        'ticker': ticker,
+        'price': Math.floor(parseFloat(data["4. close"])),
         'shares': this.state.numShares,
         'buy': true
       }
-      this.props.tradeStock(data)
+      this.props.tradeStock(transactionData)
         .then(() => this.props.history.push('/portfolio/'))
     }
     
     render() {
-      let { stockDetails } = this.props
-      let { data } = this.state.mostRecentStockApiData;
-      // let symbol = this.props.stock["Meta Data"]["2. Symbol"].toUpperCase();
-      debugger
+      let { data, ticker } = this.state.mostRecentStockApiData;
       let theDetails = (Object.keys(this.state.mostRecentStockApiData).length === 0) ? null : (
              <div className="stock-box-container">
                 <div className="stock-details-box">
@@ -53,18 +51,12 @@ export default class StockDetails extends React.Component {
                   </form>
                 </div>
                 <div className="stock-details">
-                  <p>Symbol: {stockDetails.intraDay["Meta Data"]["2. Symbol"].toUpperCase()}</p>
+                  <p>Symbol: {ticker}</p>
                   <p>Open: ${Math.floor(parseFloat(data["1. open"]))}</p>
                   <p>High: ${Math.floor(parseFloat(data["2. high"]))}</p>
                   <p>Low: ${Math.floor(parseFloat(data["3. low"]))}</p>
                   <p>Price: ${Math.floor(parseFloat(data["4. close"]))}</p>
                   <p>Volume: {parseInt(data["5. volume"])}</p>
-                  {/* <p>
-                    Latest Trading Day: {stockDetails.intraDay["07. latest trading day"]}
-                  </p>
-                  <p>Previous Close: {stockDetails.intraDay["08. previous close"]}</p>
-                  <p>Change: {stockDetails.intraDay["09. change"]}</p>
-                  <p>Change Percent: {stockDetails.intraDay["10. change percent"]}</p> */}
                 </div>
               </div>
               );

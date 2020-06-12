@@ -4,19 +4,15 @@ const oneYearInMilliseconds = 31556952000;
 
 export const mostRecent = (stockData) => {
     let result = {};
-    let dateKey;
-    // debugger
     Object.keys(stockData["Time Series (15min)"])
         .forEach(rawDate => {
             if (!result[rawDate]) {
                 result["data"] = stockData["Time Series (15min)"][rawDate];
-                dateKey = rawDate;
             } else if ( Date.parse(Object.keys((result)[0])) < Date.parse(rawDate)){
                 result["data"] = stockData["Time Series (15min)"][rawDate];
-                dateKey = rawDate;
             }
         });
-    result["date"] = dateKey;
+    result['ticker'] = stockData["Meta Data"]["2. Symbol"].toUpperCase();
     return result;
 }
 
