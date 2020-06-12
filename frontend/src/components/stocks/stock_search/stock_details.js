@@ -1,5 +1,6 @@
 import React from 'react';
 import './stock_details.css'
+import * as StockUtil from '../../../util/stocks_api_util';
 
 export default class StockDetails extends React.Component {
   
@@ -7,7 +8,8 @@ export default class StockDetails extends React.Component {
     super(props)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.state = {
-      numShares: 0
+      numShares: 0,
+      mostRecentStockApiData: {}
     };
   }
 
@@ -15,23 +17,29 @@ export default class StockDetails extends React.Component {
         return (e) => this.setState({ numShares: e.currentTarget.value })
     }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.stockDetails !== prevProps.stockDetails) {
+      this.setState({ mostRecentStockApiData: StockUtil.mostRecent(this.props.stockDetails.intraDay) })
+    }
+  }
+
     handleSubmit(e){
       e.preventDefault();
-
-      let data = {
+      let { data, ticker } = this.state.mostRecentStockApiData;
+      let transactionData = {
         'userId': this.props.userId,
-        'ticker': this.props.stockDetails.globalEndPoint["01. symbol"],
-        'price': this.props.stockDetails.globalEndPoint["05. price"],
+        'ticker': ticker,
+        'price': Math.floor(parseFloat(data["4. close"])),
         'shares': this.state.numShares,
         'buy': true
       }
-      this.props.tradeStock(data)
+      this.props.tradeStock(transactionData)
         .then(() => this.props.history.push('/portfolio/'))
     }
     
     render() {
-      let { stockDetails } = this.props
-      let theDetails = (!stockDetails.globalEndPoint) ? null : (
+      let { data, ticker } = this.state.mostRecentStockApiData;
+      let theDetails = (Object.keys(this.state.mostRecentStockApiData).length === 0) ? null : (
              <div className="stock-box-container">
                 <div className="stock-details-box">
                   <span>Today's Information</span>
@@ -43,18 +51,12 @@ export default class StockDetails extends React.Component {
                   </form>
                 </div>
                 <div className="stock-details">
-                  <p>Symbol: {stockDetails.globalEndPoint["01. symbol"]}</p>
-                  <p>Open: ${parseInt(stockDetails.globalEndPoint["02. open"])}</p>
-                  <p>High: ${parseInt(stockDetails.globalEndPoint["03. high"])}</p>
-                  <p>Low: ${parseInt(stockDetails.globalEndPoint["04. low"])}</p>
-                  <p>Price: ${parseInt(stockDetails.globalEndPoint["05. price"])}</p>
-                  <p>Volume: {parseInt(stockDetails.globalEndPoint["06. volume"])}</p>
-                  <p>
-                    Latest Trading Day: {stockDetails.globalEndPoint["07. latest trading day"]}
-                  </p>
-                  <p>Previous Close: {stockDetails.globalEndPoint["08. previous close"]}</p>
-                  <p>Change: {stockDetails.globalEndPoint["09. change"]}</p>
-                  <p>Change Percent: {stockDetails.globalEndPoint["10. change percent"]}</p>
+                  <p>Symbol: {ticker}</p>
+                  <p>Open: ${Math.floor(parseFloat(data["1. open"]))}</p>
+                  <p>High: ${Math.floor(parseFloat(data["2. high"]))}</p>
+                  <p>Low: ${Math.floor(parseFloat(data["3. low"]))}</p>
+                  <p>Price: ${Math.floor(parseFloat(data["4. close"]))}</p>
+                  <p>Volume: {parseInt(data["5. volume"])}</p>
                 </div>
               </div>
               );
