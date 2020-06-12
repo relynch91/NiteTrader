@@ -1,9 +1,8 @@
 import React from 'react';
 import StockDetailsContainer from './stock_details_container';
 import StockGraph from '../stockgraph/stockgraph_container';
-import { globalEndPointFormat, intraDayFormat } from '../../../actions/_alphaAPI';
 import key from '../../../frontConfig/frontKeys';
-import { quoteEndPointDB } from '../../../util/alphaAdvantageAPI';
+
 import './stock_search.css';
 
 export default class StockSearch extends React.Component {
@@ -17,14 +16,6 @@ export default class StockSearch extends React.Component {
 
     getStockDetails(e){
         e.preventDefault();
-        const quoteEndPointAPI = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${this.state.ticker}&apikey=${key}`;
-        const stockInfo = this.props.getQuoteEndPointAlpha(quoteEndPointAPI).then(
-            (res) => {
-                if (res) {
-                    let stockData = globalEndPointFormat(res);
-                    let storedData = quoteEndPointDB(stockData);
-                }
-        })
         const intraDayAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.ticker}&interval=15min&outputsize=full&apikey=${key}`;
         const intraDayInfo = this.props.intraDayAPICall(intraDayAPI).then(
             (res) => {
@@ -69,7 +60,6 @@ export default class StockSearch extends React.Component {
                   className="stock-form-submit"
                 />
             </form>
-            {/* <StockDetailsContainer /> */}
             <div>
               {selectivelyShow}
               {theStockGraph}
