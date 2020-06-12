@@ -17,14 +17,14 @@ export default class StockSearch extends React.Component {
 
     getStockDetails(e){
         e.preventDefault();
-        const quoteEndPointAPI = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${this.state.ticker}&apikey=${key}`;
-        const stockInfo = this.props.getQuoteEndPointAlpha(quoteEndPointAPI).then(
-            (res) => {
-                if (res) {
-                    let stockData = globalEndPointFormat(res);
-                    let storedData = quoteEndPointDB(stockData);
-                }
-        })
+        // const quoteEndPointAPI = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${this.state.ticker}&apikey=${key}`;
+        // const stockInfo = this.props.getQuoteEndPointAlpha(quoteEndPointAPI).then(
+        //     (res) => {
+        //         if (res) {
+        //             let stockData = globalEndPointFormat(res);
+        //             let storedData = quoteEndPointDB(stockData);
+        //         }
+        // })
         const intraDayAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.ticker}&interval=15min&outputsize=full&apikey=${key}`;
         const intraDayInfo = this.props.intraDayAPICall(intraDayAPI).then(
             (res) => {
@@ -69,7 +69,6 @@ export default class StockSearch extends React.Component {
                   className="stock-form-submit"
                 />
             </form>
-            {/* <StockDetailsContainer /> */}
             <div>
               {selectivelyShow}
               {theStockGraph}

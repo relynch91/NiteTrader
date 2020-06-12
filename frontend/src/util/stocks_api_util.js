@@ -2,6 +2,24 @@ const oneWeekInMilliseconds = 604800000;
 const oneMonthInMilliseconds = 2592000000;
 const oneYearInMilliseconds = 31556952000;
 
+export const mostRecent = (stockData) => {
+    let result = {};
+    let dateKey;
+    // debugger
+    Object.keys(stockData["Time Series (15min)"])
+        .forEach(rawDate => {
+            if (!result[rawDate]) {
+                result["data"] = stockData["Time Series (15min)"][rawDate];
+                dateKey = rawDate;
+            } else if ( Date.parse(Object.keys((result)[0])) < Date.parse(rawDate)){
+                result["data"] = stockData["Time Series (15min)"][rawDate];
+                dateKey = rawDate;
+            }
+        });
+    result["date"] = dateKey;
+    return result;
+}
+
 export const oneWeek = (stockData) => {
     let todaysDate = Date.now();
     let result = {};
