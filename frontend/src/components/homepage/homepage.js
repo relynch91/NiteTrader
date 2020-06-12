@@ -16,8 +16,6 @@ class Homepage extends React.Component {
                         <h1 >Learn To Invest</h1>
                         <p>Set Your Goals | Test Your Skills</p>
                         {this.props.signUpButton}
-                        {/* <NavLink className="banner-button" to="/signup">Start Investing Now</NavLink> */}
-                        {/* <button className="banner-button" onClick={() => openModal("signup")}>Start Investing Now</button> */}
                     </div>
                 </div>
                 <div className="homepage-info">

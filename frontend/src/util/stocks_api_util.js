@@ -19,24 +19,27 @@ export const mostRecent = (stockData) => {
 export const oneWeek = (stockData) => {
     let todaysDate = Date.now();
     let result = {};
-    let pastWeek = Object.keys(stockData["Time Series (15min)"])
+    Object.keys(stockData["Time Series (15min)"])
         .forEach(rawDate => {
             if (Date.parse(rawDate) >= todaysDate - oneWeekInMilliseconds) {
                 result[rawDate] = stockData["Time Series (15min)"][rawDate];
             }
-        });
+        }
+    );
     return result;
 }
 
 export const oneMonth = (stockData) => {
     let todaysDate = Date.now();
     let result = {};
-    let pastMonth = Object.keys(stockData["Time Series (15min)"])
+    Object.keys(stockData["Time Series (15min)"])
         .filter(rawDate => {
             if (Date.parse(rawDate) >= todaysDate - oneMonthInMilliseconds) {
                 result[rawDate] = stockData["Time Series (15min)"][rawDate];
             }
-        });
+            return true
+        }
+    );
     return result;
 }
 
@@ -47,12 +50,14 @@ export const threeMonths = (stockData) => {
 export const oneYear = (stockData) => {
     let todaysDate = Date.now();
     let result = {};
-    let pastYear = Object.keys(stockData["Monthly Time Series"])
+    Object.keys(stockData["Monthly Time Series"])
         .filter(rawDate => {
             if (Date.parse(rawDate) >= todaysDate - oneYearInMilliseconds) {
                 result[rawDate] = stockData["Monthly Time Series"][rawDate];
             }
-        });
+            return true;
+        }
+    );
     return result;
 }
 
@@ -64,6 +69,8 @@ export const twoYears = (stockData) => {
             if (Date.parse(rawDate) >= todaysDate - twoYearsAgo) {
                 result[rawDate] = stockData["Monthly Time Series"][rawDate];
             }
-        });
+            return true;
+        }
+        );
     return result;
 }
