@@ -41,7 +41,7 @@ export const oneMonth = (stockData) => {
 }
 
 export const threeMonths = (stockData) => {
-    return stockData["Monthly Time Series"]
+    return stockData["Time Series (15min)"]
 }
 
 export const oneYear = (stockData) => {
