@@ -2,6 +2,7 @@ import React from 'react';
 import StockDetailsContainer from './stock_details_container';
 import StockGraph from '../stockgraph/stockgraph_container';
 import key from '../../../frontConfig/frontKeys';
+
 import './stock_search.css';
 
 export default class StockSearch extends React.Component {
