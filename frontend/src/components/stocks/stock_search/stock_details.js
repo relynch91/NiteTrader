@@ -41,23 +41,25 @@ export default class StockDetails extends React.Component {
       let { data, ticker } = this.state.mostRecentStockApiData;
       let theDetails = (Object.keys(this.state.mostRecentStockApiData).length === 0) ? null : (
              <div className="stock-box-container">
-                <div className="stock-details-box">
-                  <span>Today's Information</span>
-                  <form onSubmit={this.handleSubmit}>
-                    <p>Number of Shares You intend to purchase</p>
-                    <input type="number" onChange={this.handleChange()} value={this.state.numShares} />
-                    <br/>
-                    <button className="stock-buy">Buy This Stock</button>
-                  </form>
-                </div>
+                {/* <div className="stock-details-box"> */}
+                <div>Today's Information</div>     
                 <div className="stock-details">
-                  <p>Symbol: {ticker}</p>
+                  <p>Ticker: {ticker}</p>
                   <p>Open: ${Math.floor(parseFloat(data["1. open"]))}</p>
                   <p>High: ${Math.floor(parseFloat(data["2. high"]))}</p>
                   <p>Low: ${Math.floor(parseFloat(data["3. low"]))}</p>
                   <p>Price: ${Math.floor(parseFloat(data["4. close"]))}</p>
                   <p>Volume: {parseInt(data["5. volume"])}</p>
                 </div>
+                <form onSubmit={this.handleSubmit}>
+                  <p>Number of Shares You intend to purchase</p>
+                  <input
+                    className="stock-buy-input"
+                    type="number"
+                    onChange={this.handleChange()}
+                    value={this.state.numShares} />
+                  <button className="stock-buy-submit">Buy This Stock</button>
+                </form>
               </div>
               );
             return (

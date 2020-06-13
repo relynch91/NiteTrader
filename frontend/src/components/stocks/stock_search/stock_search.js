@@ -45,7 +45,7 @@ export default class StockSearch extends React.Component {
 
     render(){
       let theStockDetailsAndGraph = (Object.keys(this.props.stockDetails).length === 0) ? null : (
-        <div>
+        <div className="stock-details-and-graph">
           <StockDetailsContainer />
           <StockGraph /> ;
         </div>);
