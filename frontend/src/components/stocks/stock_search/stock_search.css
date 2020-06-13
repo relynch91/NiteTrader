@@ -1,14 +1,25 @@
 .stock-search-container{
-    display: flex;
+    /* display: flex;
     justify-content: space-around;
-    align-items: flex-start;
-    margin-top: 50px;
+    align-items: flex-start; */
+    margin-top: 20px;
     margin-bottom: 100px;
+    align-items: center;
+}
+
+.stock-search-component{
+    display:flex;
+    justify-content: space-around;
+    background-color: lightslategrey;
 }
 
 .stock-search-form{
-    margin: 50px;
-    max-width: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* max-width: 500px; */
+    /* margin: 50px;
+    max-width: 150px; */
 }
 
 .stock-search-form-input {
@@ -16,8 +27,9 @@
   padding: .5em;
   font-size: 12px;
   font-weight: 500;
-  margin: 5px 0 16px 0;
-  display: inline-block;
+  /* margin: 5px 0 16px 0; */
+  /* display: inline-block; */
+  margin-left: 40px;
   background: #fafafa;
   border: 1px solid lightgrey;
   border-radius: 2px;
@@ -29,9 +41,9 @@
     border-radius: 2px;
     font-size: 16px;
     outline: 0;
-    display: inline-block;
-    padding: 10px 10px;
-    margin-top: 10px;
+    /* display: inline-block; */
+    padding: 5px 5px;
+    margin-left: 40px;
     color: whitesmoke;
     text-align: center;
     cursor: pointer;

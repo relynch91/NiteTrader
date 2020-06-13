@@ -53,22 +53,23 @@ export default class StockSearch extends React.Component {
       )
         return (
           <div className="stock-search-container">
-            <form onSubmit={this.getStockDetails} className="stock-search-form">
-                <div>Search Stocks:</div>
-                <input
-                  type="text"
-                  value={this.state.ticker}
-                  onChange={this.update()}
-                  className="stock-search-form-input"
-                  placeholder="Enter a Ticker"
-                />
-                <br/>
-                <input
-                  type="submit"
-                  value="Submit"
-                  className="stock-form-submit"
-                />
-            </form>
+            <div className="stock-search-component">
+              <form onSubmit={this.getStockDetails} className="stock-search-form">
+                  <span>Search Stocks:</span>
+                  <input
+                    type="text"
+                    value={this.state.ticker}
+                    onChange={this.update()}
+                    className="stock-search-form-input"
+                    placeholder="Enter a Ticker"
+                  />
+                  <input
+                    type="submit"
+                    value="Submit"
+                    className="stock-form-submit"
+                  />
+              </form>
+            </div>
             <div>
               {selectivelyShow}
               {theStockGraph}
