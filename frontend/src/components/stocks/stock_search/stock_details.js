@@ -42,9 +42,9 @@ export default class StockDetails extends React.Component {
       let theDetails = (Object.keys(this.state.mostRecentStockApiData).length === 0) ? null : (
              <div className="stock-box-container">
                 {/* <div className="stock-details-box"> */}
-                <div>Today's Information</div>     
+                <div>Today's Information for: {ticker}</div>     
                 <div className="stock-details">
-                  <p>Ticker: {ticker}</p>
+                  {/* <p>Ticker: {ticker}</p> */}
                   <p>Open: ${Math.floor(parseFloat(data["1. open"]))}</p>
                   <p>High: ${Math.floor(parseFloat(data["2. high"]))}</p>
                   <p>Low: ${Math.floor(parseFloat(data["3. low"]))}</p>
@@ -53,12 +53,14 @@ export default class StockDetails extends React.Component {
                 </div>
                 <form onSubmit={this.handleSubmit}>
                   <p>Number of Shares You intend to purchase</p>
-                  <input
-                    className="stock-buy-input"
-                    type="number"
-                    onChange={this.handleChange()}
-                    value={this.state.numShares} />
-                  <button className="stock-buy-submit">Buy This Stock</button>
+                  <div>
+                    <input
+                      className="stock-buy-input"
+                      type="number"
+                      onChange={this.handleChange()}
+                      value={this.state.numShares} />
+                    <button className="stock-buy-submit">Buy This Stock</button>
+                  </div>
                 </form>
               </div>
               );

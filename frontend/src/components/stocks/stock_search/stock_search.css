@@ -54,6 +54,6 @@
 .stock-details-and-graph{
     display:flex;
     justify-content: space-around;
-    align-items: center;
-    margin: 30px 0 30px 80px;
+    /* align-items: center; */
+    margin: 50px 0 30px 80px;
 }

@@ -8,24 +8,22 @@
 }
 .stock-buy-input{
     width: 100px;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 500;
     padding: 7px 7px;
     background: #fafafa;
     border: 1px solid lightgrey;
     border-radius: 2px;
+    margin-right: 20px;
 }
 .stock-buy-submit{
     background: #A3333D;
-    /* border-color: #3d6883; */
     font-size: 16px;
-    outline: 0;
-    display: inline-block;
-    padding: 10px 10px;
-    margin-top: 10px;
+    padding: 7px 7px;
     color: whitesmoke;
     text-align: center;
     cursor: pointer;
+    border: none;
 }
 
 .stock-buy-sumbit:hover{
@@ -39,7 +37,11 @@
     padding: 5px;
 }
 .stock-details p{
-    font-size: 16px;
+    font-size: 20px;
+    margin-right: 20px;
+}
+.stock-details {
+    max-width: 600px;
 }
 
 .stock-box-container div:first-child{
@@ -50,3 +52,7 @@
     font-size: 20px;
     margin-top: 20px;
 }
+.stock-box-container form div{
+    margin-top: 20px;
+}
+/* margin-right: 10px; */
