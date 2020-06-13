@@ -44,8 +44,12 @@ export default class StockSearch extends React.Component {
     }
 
     render(){
-      let theStockGraph = (Object.keys(this.props.stockDetails).length !== 0) ? <StockGraph /> : null;
-      let selectivelyShow = (Object.keys(this.props.stockDetails).length !== 0) ? <StockDetailsContainer />: (
+      let theStockDetailsAndGraph = (Object.keys(this.props.stockDetails).length === 0) ? null : (
+        <div>
+          <StockDetailsContainer />
+          <StockGraph /> ;
+        </div>);
+      let stockSearchLanding = (Object.keys(this.props.stockDetails).length !== 0) ? null: (
         <div className="stock-search-landing">
             <div>Find Your Next Unicorn</div>
             <div>Enter a company's stock ticker to access real-time information</div>
@@ -70,10 +74,8 @@ export default class StockSearch extends React.Component {
                   />
               </form>
             </div>
-            <div>
-              {selectivelyShow}
-              {theStockGraph}
-            </div>
+              {stockSearchLanding}
+              {theStockDetailsAndGraph}
           </div>
         );
     }
