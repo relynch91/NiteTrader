@@ -3,7 +3,6 @@ import {
     RECEIVE_TRADE,
     RECEIVE_ALL_TRADES
 } from '../actions/transaction_actions';
-import { CLEAR_ERRORS } from '../actions/error_actions';
 
 const _nullErrors = [];
 

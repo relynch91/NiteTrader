@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import { RECEIVE_STOCK, RECEIVE_INTRADAY, RECEIVE_TIME_SERIES } from '../actions/alphaApi_actions';
 
 export default function (state = {}, action) {
