@@ -27,7 +27,7 @@ export default class StockGraph extends React.Component {
       low: theHistoricStockDate[dateKey]["3. low"],
       close: theHistoricStockDate[dateKey]["4. close"],
     }));
-    this.setState({ stock: structuredProps });
+    this.setState({ stock: structuredProps.reverse() });
   }
 
   componentDidMount(){
