@@ -1,6 +1,7 @@
 const axios = require('axios').default;
 const key = require('./config/keys');
 const globalEndPointObject = require('./config/endPointRestructure')
+const sleep = require('util').promisify(setTimeout);
 
 function unpackTickers(argument) {
     let tickers = [];
@@ -21,30 +22,32 @@ async function receiveTickers() {
 async function tickerCalls() {
     let ticker = await receiveTickers();
     let ticks = unpackTickers(ticker.data)
+    console.log(ticks)
     return ticks;
 }
+
 // --------------------- above retrieves all tickers ---------------------
-async function timeOut() {
-    let x = await setTimeout( () => {}, 20000);
-    return x
-}
+
+async function fireAPI(ticker) {
+    let value = await axios.get(`
+    https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key}`);
+    return value;
+};
 
 async function getStockData(ticker) {
-    let data = await axios.get(`
-    https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key}`);
+    let data = setInterval(fireAPI(ticker), 200000)
     return data.data['Global Quote'];
 }
 
 async function updateDatabase(tickers) {
-    let please = []
+
     for(let i = 0; i < tickers.length; i++){
         let stockData = await getStockData(tickers[i]);
         let formattedData = globalEndPointObject(stockData);
-        console.log(formattedData);
+        console.log(stockData);
         let dbUpdate = await axios.patch(
             'http://localhost:5000/api/stock_api/quoteendpointstock/update', formattedData);
-        let x = await timeOut();
-        }
+    }
     return true;
 }
 
@@ -54,4 +57,4 @@ async function candle() {
     return true;
 }
 
-candle();
+console.log(candle());
