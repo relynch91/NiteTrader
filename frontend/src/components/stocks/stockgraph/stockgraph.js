@@ -6,33 +6,31 @@ import * as StockUtil from '../../../util/stocks_api_util';
 export default class StockGraph extends React.Component {
   constructor(props){
     super(props)
-    this.state = {stock: {}}
+    this.state = {stock: []}
     this.handleClick = this.handleClick.bind(this);
   }
 
   formatGraphData(stockData){
-    let theHistoricStockDate;
+    let stockDataFromState;
     if (stockData) {
-      theHistoricStockDate = stockData
+      stockDataFromState = stockData
     } else{
-      theHistoricStockDate = (this.props.stockInfo.timeSeriesMonthly) ?
-        this.props.stockInfo.timeSeriesMonthly["Monthly Time Series"] :
-        this.props.stock["Time Series (Daily)"];
+      stockDataFromState = StockUtil.threeMonths(this.props.stockInfo.intraDay);
     }
-    let theDays = Object.keys(theHistoricStockDate)
+    let theDays = Object.keys(stockDataFromState)
     let structuredProps = theDays.map((dateKey) => ({
       date: dateKey,
-      open: theHistoricStockDate[dateKey]["1. open"],
-      high: theHistoricStockDate[dateKey]["2. high"],
-      low: theHistoricStockDate[dateKey]["3. low"],
-      close: theHistoricStockDate[dateKey]["4. close"],
+      open: stockDataFromState[dateKey]["1. open"],
+      high: stockDataFromState[dateKey]["2. high"],
+      low: stockDataFromState[dateKey]["3. low"],
+      close: stockDataFromState[dateKey]["4. close"],
     }));
     this.setState({ stock: structuredProps.reverse() });
   }
 
-  componentDidMount(){
-    this.formatGraphData()
-  }
+  // componentDidMount(){
+  //   this.formatGraphData()
+  // }
 
   componentDidUpdate(prevProps) {
     if (this.props.stockInfo !== prevProps.stockInfo){
@@ -41,20 +39,22 @@ export default class StockGraph extends React.Component {
   }
 
   handleClick(stockData){
-    this.formatGraphData(stockData)
+    this.formatGraphData(stockData);
+    return this.render()
   }
 
   render() {
-    let theData = this.props.stock
-    if (!!this.props.stockInfo.timeSeriesMonthly) { theData = this.props.stockInfo.timeSeriesMonthly} 
-      // let symbol = theData["Meta Data"]["2. Symbol"].toUpperCase();
-      let theButtons = (!!this.props.stockInfo.timeSeriesMonthly) ?
+    if (!this.props.stockInfo.intraDay){
+      return null;
+    }
+    let { intraDay, timeSeriesMonthly} = this.props.stockInfo;
+      let theButtons = (!!timeSeriesMonthly) ?
         <div className="stockgraph-time-button-container">
-          <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.oneWeek(this.props.stockInfo.intraDay))}>1 Week</button>
-          <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.oneMonth(this.props.stockInfo.intraDay))}>1 Month</button>
-          <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.threeMonths(this.props.stockInfo.intraDay))}>3 Months</button>
-          <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.oneYear(this.props.stockInfo.timeSeriesMonthly))}>1 Year</button>
-          <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.twoYears(this.props.stockInfo.timeSeriesMonthly))}>2 Years</button>
+          <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.oneWeek(intraDay))}>1 Week</button>
+          <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.oneMonth(intraDay))}>1 Month</button>
+          <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.threeMonths(intraDay))}>3 Months</button>
+          <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.oneYear(timeSeriesMonthly))}>1 Year</button>
+          <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.twoYears(timeSeriesMonthly))}>2 Years</button>
         </div> : null;
     return (
       <div className="stock-graph-main">
@@ -72,7 +72,7 @@ export default class StockGraph extends React.Component {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" />
-          <YAxis />
+          <YAxis dataKey="close"/>
           <Tooltip />
           <Legend />
           <Line type="monotone" dataKey="high"  stroke="#C4D6BO" activeDot={{ r: 8 }} />
