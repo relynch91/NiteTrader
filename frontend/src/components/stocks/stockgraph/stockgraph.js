@@ -17,7 +17,7 @@ export default class StockGraph extends React.Component {
     } else{
       theHistoricStockDate = (this.props.stockInfo.timeSeriesMonthly) ?
         this.props.stockInfo.timeSeriesMonthly["Monthly Time Series"] :
-        this.props.stock["Time Series (Daily)"]
+        this.props.stock["Time Series (Daily)"];
     }
     let theDays = Object.keys(theHistoricStockDate)
     let structuredProps = theDays.map((dateKey) => ({
@@ -47,7 +47,7 @@ export default class StockGraph extends React.Component {
   render() {
     let theData = this.props.stock
     if (!!this.props.stockInfo.timeSeriesMonthly) { theData = this.props.stockInfo.timeSeriesMonthly} 
-      let symbol = theData["Meta Data"]["2. Symbol"].toUpperCase();
+      // let symbol = theData["Meta Data"]["2. Symbol"].toUpperCase();
       let theButtons = (!!this.props.stockInfo.timeSeriesMonthly) ?
         <div className="stockgraph-time-button-container">
           <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.oneWeek(this.props.stockInfo.intraDay))}>1 Week</button>
@@ -58,7 +58,6 @@ export default class StockGraph extends React.Component {
         </div> : null;
     return (
       <div className="stock-graph-main">
-        {/* <p>{symbol}</p> */}
         {theButtons}
         <LineChart
           width={500}
