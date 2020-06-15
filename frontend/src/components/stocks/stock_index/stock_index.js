@@ -16,8 +16,8 @@ export default class StockIndex extends React.Component {
     let theStuff = (!myShares) ? null : (
       <div className="stock-index-main">
         <p>Here is Your Current Stock Portfolio</p>
-        {Object.keys(myShares).map((ticker) => (
-          <div className="stock-box">
+        {Object.keys(myShares).map((ticker, idx) => (
+          <div className="stock-box" key={idx * 392}>
             <span>{ticker}</span>
             <span>
               <p className="current-price">Price Per Share: {Math.floor(parseFloat(myShares[ticker].pricePerShare))}</p>
