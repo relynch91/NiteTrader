@@ -58,7 +58,7 @@ export default class StockGraph extends React.Component {
         </div> : null;
     return (
       <div className="stock-graph-main">
-        <p>{symbol}</p>
+        {/* <p>{symbol}</p> */}
         {theButtons}
         <LineChart
           width={500}

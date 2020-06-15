@@ -5,16 +5,15 @@
 .stockgraph-time-button-container{
     display: flex;
     justify-content: space-around;
+    margin-left: 35px;
 }
 .stockgraph-time-button{
-    background: #A3333D;
-    border-radius: 2px;
+    color: #A3333D;
+    padding-right: 20px;
     font-size: 16px;
-    outline: 0;
-    display: inline-block;
-    padding: 10px 10px;
-    margin-top: 10px;
-    color: whitesmoke;
-    text-align: center;
-    cursor: pointer;
+    font-weight: 400;
+}
+
+.stockgraph-time-button:hover{
+    color: #3d6883;
 }
