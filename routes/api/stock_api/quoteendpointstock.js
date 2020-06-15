@@ -26,7 +26,6 @@ router.post('/new', (req, res) => {
 
 router.patch('/update', (req, res) => {
     const query = { symbol: req.body.symbol };
-
     const update = {
         symbol: req.body.symbol,
         open: req.body.open,

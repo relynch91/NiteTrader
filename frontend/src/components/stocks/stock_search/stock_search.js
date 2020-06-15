@@ -21,8 +21,13 @@ export default class StockSearch extends React.Component {
   getStockDetails(e){
     e.preventDefault();
     const intraDayAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.ticker}&interval=15min&outputsize=full&apikey=${key}`;
+    
     this.props.intraDayAPICall(intraDayAPI);
+    // console.log(intraDayAPI);
+
+    // need helper function to format(reverse) data.
     const timeSeriesMonthlyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${this.state.ticker}&apikey=${key}`;
+    // need helper function to format(reverse) data.
     this.props.timeSeriesInfoAPICall(timeSeriesMonthlyAPI);
   }
 
