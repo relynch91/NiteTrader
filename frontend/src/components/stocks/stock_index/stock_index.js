@@ -12,6 +12,7 @@ export default class StockIndex extends React.Component {
   render(){
     let { myStocks } = this.props;
     let myShares = (Object.keys(myStocks).length === 0) ? null : TransUtil.activeShares(myStocks);
+    let currentStockData = null;
     let theStuff = (!myShares) ? null : (
       <div className="stock-index-main">
         <p>Here is Your Current Stock Portfolio</p>

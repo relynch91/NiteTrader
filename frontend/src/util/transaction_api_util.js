@@ -26,16 +26,29 @@ export const activeShares = (trades) => {
             stock.pricePerShare = newPricePerShareBuy(stock, trade);
             stock.ownedShares += trade.shares;
         } else if (stock && trade.buy === false) {
-
             stock.ownedShares -= trade.shares
         }
     })
-    return res;
+    // filter for stocks with ownedShares > 0
+    return ownedStocksOnly(res);
 }
 
 function newPricePerShareBuy(existingStock, newStock) {
     let startingPrice = existingStock.pricePerShare * existingStock.ownedShares;
     let secondPrice = newStock.price * newStock.shares;
     let totalShares = existingStock.ownedShares + newStock.shares
-    return (startingPrice + secondPrice) / totalShares
+    return (startingPrice + secondPrice) / totalShares;
 }
+
+function ownedStocksOnly(transactions){
+    let res = {};
+    let activeTickers = Object.keys(transactions).filter(ticker => {
+        if (transactions[ticker].ownedShares > 0){
+            return ticker;
+        }
+    })
+    activeTickers.forEach(ticker => res[ticker] = transactions[ticker])
+    return res;
+}
+
+// calculate over/under of all active stocks based on fetchStocks for globalEndPoint data
