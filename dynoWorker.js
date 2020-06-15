@@ -22,7 +22,7 @@ async function receiveTickers() {
 async function tickerCalls() {
     let ticker = await receiveTickers();
     let ticks = unpackTickers(ticker.data)
-    console.log(ticks)
+    console.log(ticks);
     return ticks;
 }
 
