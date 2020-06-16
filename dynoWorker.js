@@ -1,7 +1,6 @@
 const axios = require('axios').default;
 const key = require('./config/keys');
 const globalEndPointObject = require('./config/endPointRestructure')
-const sleep = require('util').promisify(setTimeout);
 
 function unpackTickers(argument) {
     let tickers = [];
@@ -22,29 +21,28 @@ async function receiveTickers() {
 async function tickerCalls() {
     let ticker = await receiveTickers();
     let ticks = unpackTickers(ticker.data)
-    console.log(ticks);
     return ticks;
 }
 
 // --------------------- above retrieves all tickers ---------------------
 
+function timeout(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 async function fireAPI(ticker) {
+    await timeout(20000)
     let value = await axios.get(`
     https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key}`);
     return value;
 };
 
-async function getStockData(ticker) {
-    let data = setInterval(fireAPI(ticker), 200000)
-    return data.data['Global Quote'];
-}
-
 async function updateDatabase(tickers) {
 
     for(let i = 0; i < tickers.length; i++){
-        let stockData = await getStockData(tickers[i]);
-        let formattedData = globalEndPointObject(stockData);
-        console.log(stockData);
+        let stockData = await fireAPI(tickers[i]);
+        let formattedData = globalEndPointObject(stockData.data['Global Quote']);
+        console.log(formattedData);
         let dbUpdate = await axios.patch(
             'http://localhost:5000/api/stock_api/quoteendpointstock/update', formattedData);
     }
