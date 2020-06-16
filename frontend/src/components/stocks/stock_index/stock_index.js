@@ -17,17 +17,20 @@ export default class StockIndex extends React.Component {
   
 
   render(){
-    let { myStocks } = this.props;
-    let myShares = (Object.keys(myStocks).length === 0) ? null : PortUtil.activeShares(myStocks);
-    let theStuff = (!myShares) ? null : (
+
+    let { myPortfolio } = this.props;
+    if (Object.keys(myPortfolio).length === 0){return null};
+    // Here is where we will create ternerary and conditionally render 'buy into portfolio'
+
+    let theStuff = (!myPortfolio) ? null : (
       <div className="stock-index-main">
         <p>Here is Your Current Stock Portfolio</p>
-        {Object.keys(myShares).map((ticker, idx) => (
+        {Object.keys(myPortfolio).map((ticker, idx) => (
           <div className="stock-box" key={idx * 392}>
             <span>{ticker}</span>
             <span>
-              <p className="current-price">Price Per Share: {Math.floor(parseFloat(myShares[ticker].pricePerShare))}</p>
-              <p className="purchase-price">Shares Owned: {myShares[ticker].ownedShares}</p>
+              <p className="current-price">Price Per Share: {Math.floor(parseFloat(myPortfolio[ticker].pricePerShare))}</p>
+              <p className="purchase-price">Shares Owned: {myPortfolio[ticker].ownedShares}</p>
             </span>
           </div>
         ))}

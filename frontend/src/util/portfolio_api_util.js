@@ -14,7 +14,6 @@ export const activeShares = (trades) => {
             stock.ownedShares -= trade.shares
         }
     })
-    // filter for stocks with ownedShares > 0
     return ownedStocksOnly(res);
 }
 

@@ -11,11 +11,6 @@ export const receivePortfolio = transactions => {
     });
 };
 
-// export const receiveErrors = errors => ({
-//     type: RECEIVE_PORTFOLIO_ERRORS,
-//     errors
-// });
-
 export const buildPortfolio = transactions => dispatch => {
     let ownedStocks = PortUtil.activeShares(transactions)
     return dispatch(receivePortfolio(ownedStocks))
