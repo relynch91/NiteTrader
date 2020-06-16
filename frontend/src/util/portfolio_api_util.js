@@ -1,3 +1,5 @@
+import * as QuoteEP from '../util/quote_end_point_util'
+
 export const activeShares = (trades) => {
     let res = {}
     Object.values(trades).forEach((trade) => {
@@ -31,7 +33,10 @@ function ownedStocksOnly(transactions) {
             return ticker;
         }
     })
-    activeTickers.forEach(ticker => res[ticker] = transactions[ticker])
+    activeTickers.forEach(ticker => {
+        res[ticker] = transactions[ticker]
+        res[ticker].quoteEndPointData = QuoteEP.fetchAllQuoteEndPointDB(ticker)
+    })
     return res;
 }
 
