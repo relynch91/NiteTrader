@@ -7,3 +7,8 @@ export const quoteEndPointDB = (endPointStock) => {
 export const quoteEndPoint = (stockURL) => {
     return axios.get(stockURL);
 };
+
+export const fetchAllQuoteEndPointDB = () => {
+    return axios.get(`/api/stock_api/quoteendpointstock/stock`);
+};
+
