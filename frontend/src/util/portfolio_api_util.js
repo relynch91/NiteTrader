@@ -36,7 +36,6 @@ function ownedStocksOnly(transactions) {
     activeTickers.forEach( async ticker => {
         res[ticker] = transactions[ticker];
         let data = await QuoteEP.fetchAllQuoteEndPointDB(ticker);
-        console.log(data);
         res[ticker].quoteEndPointData = data;
     })
     return res;
