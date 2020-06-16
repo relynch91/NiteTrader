@@ -1,6 +1,5 @@
 import React from 'react';
 import './stock_index.css';
-import * as PortUtil from '../../../util/portfolio_api_util';
 
 export default class StockIndex extends React.Component {
 
@@ -15,12 +14,10 @@ export default class StockIndex extends React.Component {
     }
   }
   
-
   render(){
 
     let { myPortfolio } = this.props;
     if (Object.keys(myPortfolio).length === 0){return null};
-    // Here is where we will create ternerary and conditionally render 'buy into portfolio'
 
     let theStuff = (!myPortfolio) ? null : (
       <div className="stock-index-main">

@@ -32,11 +32,12 @@ function ownedStocksOnly(transactions) {
         if (transactions[ticker].ownedShares > 0) {
             return ticker;
         }
-    })
-    activeTickers.forEach( async ticker => {
+    });
+
+    activeTickers.forEach( ticker => {
         res[ticker] = transactions[ticker];
-        let data = await QuoteEP.fetchAllQuoteEndPointDB(ticker);
-        res[ticker].quoteEndPointData = data;
+        QuoteEP.fetchAllQuoteEndPointDB(ticker)
+        .then( data => res[ticker].quoteEndPointData = data['data']);
     })
     return res;
 }
