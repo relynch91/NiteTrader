@@ -61,7 +61,7 @@ export const oneYear = (stockData) => {
             return true;
         }
     );
-    result["max"] = findMax(stockData["Monthly Time Series"])
+    // result["max"] = findMax(stockData["Monthly Time Series"])
     return result;
 }
 
@@ -76,16 +76,16 @@ export const twoYears = (stockData) => {
             return true;
         }
         );
-    result["max"] = findMax(stockData["Monthly Time Series"])
+    // result["max"] = findMax(stockData["Monthly Time Series"])
     return result;
 }
 
-export const findMax = (stockSeriesData) => {
-    let max = 0;
-    Object.values(stockSeriesData).forEach(stockObj => {
-        if (stockObj["4. close"] > max) {
-            max = stockObj["4. close"]
-        }
-    })
-    return max;
-}
+// export const findMax = (stockSeriesData) => {
+//     let max = 0;
+//     Object.values(stockSeriesData).forEach(stockObj => {
+//         if (stockObj["4. close"] > max) {
+//             max = stockObj["4. close"]
+//         }
+//     })
+//     return max;
+// }

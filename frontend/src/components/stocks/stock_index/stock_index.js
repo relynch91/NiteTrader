@@ -1,6 +1,6 @@
 import React from 'react';
 import './stock_index.css';
-import * as TransUtil from '../../../util/transaction_api_util';
+import * as PortUtil from '../../../util/portfolio_api_util';
 
 export default class StockIndex extends React.Component {
 
@@ -8,11 +8,17 @@ export default class StockIndex extends React.Component {
     let { fetchTrades, userId } = this.props
     fetchTrades(userId)
   }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.myStocks !== prevProps.myStocks) {
+      this.props.buildPortfolio(this.props.myStocks);
+    }
+  }
   
+
   render(){
     let { myStocks } = this.props;
-    let myShares = (Object.keys(myStocks).length === 0) ? null : TransUtil.activeShares(myStocks);
-    let currentStockData = null;
+    let myShares = (Object.keys(myStocks).length === 0) ? null : PortUtil.activeShares(myStocks);
     let theStuff = (!myShares) ? null : (
       <div className="stock-index-main">
         <p>Here is Your Current Stock Portfolio</p>
