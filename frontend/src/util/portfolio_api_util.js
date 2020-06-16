@@ -33,11 +33,11 @@ function ownedStocksOnly(transactions) {
             return ticker;
         }
     })
-    activeTickers.forEach(ticker => {
-        res[ticker] = transactions[ticker]
-        res[ticker].quoteEndPointData = QuoteEP.fetchAllQuoteEndPointDB(ticker)
+    activeTickers.forEach( async ticker => {
+        res[ticker] = transactions[ticker];
+        let data = await QuoteEP.fetchAllQuoteEndPointDB(ticker);
+        console.log(data);
+        res[ticker].quoteEndPointData = data;
     })
     return res;
 }
-
-// calculate over/under of all active stocks based on fetchStocks for globalEndPoint data

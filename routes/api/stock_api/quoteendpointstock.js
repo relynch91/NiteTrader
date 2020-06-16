@@ -20,7 +20,6 @@ router.post('/new', (req, res) => {
         change: req.body.change,
         changePercent: req.body.changePercent
     });
-
     newStock.save().then(newStock => res.json(newStock));
 });
 
@@ -51,23 +50,19 @@ router.get('/', (req, res) => {
     allStocks.then(allStocks => res.json(allStocks))
 })
 
-router.get('/stock', (req, res) => {
-    const aStock = QuoteEndPointStock.findOne({
-        symbol: { $eq: req.body.symbol }
+router.post('/stock', (req, res) => {
+    QuoteEndPointStock.findOne({ symbol: { $eq: req.body.symbol } })
+    .then(aStock => (res.json(aStock)))
+    .catch(err =>
+        res.status(404).json({
+            notickersfound: 'No stocks found from that ticker'
         })
-        .then(aStock => (res.json(aStock)))
-        .catch(err =>
-            res.status(404).json({
-                notickersfound: 'No stocks found from that ticker'
-            })
-        )
+    )
 });
 
 router.delete('/DELETE', (req, res) => {
-
     const deleteStock = QuoteEndPointStock.deleteOne( 
         { symbol: { $eq: req.body.symbol } })
-
     deleteStock.then((deleteStock) => res.json(deleteStock))
 })
 
