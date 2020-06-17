@@ -82,6 +82,7 @@
 
 .stock-search-background{
     width: 100%;
-    position: relative;
+    max-height: 600px;
+    overflow: hidden;
     /* max-height: min-content; */
 }
