@@ -29,7 +29,7 @@ export const getQuoteEndPointAlpha = stockURL => dispatch => (
 export const intraDayAPICall = apiURL => dispatch => (
     AlphaAdvantageUtil.intraDayAPI(apiURL).then((stockData) => (
         dispatch(receiveIntraDay(stockData))
-        // .catch( e => console.log("That API Call did not work. Please try again!"))
+        .catch( e => console.log("That API Call did not work. Please try again!"))
     ))
 )
 
