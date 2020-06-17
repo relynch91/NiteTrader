@@ -11,7 +11,9 @@ export default class StockDetails extends React.Component {
     this.state = {
       numShares: 0,
       transactionType: true,
-      mostRecentStockApiData: {}
+      mostRecentStockApiData: {},
+      activeBuy: false,
+      activeSell: false,
     };
   }
 
@@ -30,6 +32,7 @@ export default class StockDetails extends React.Component {
 
     handleClick(type){
       this.setState({ transactionType: type })
+      type ? this.setState({ activeBuy: true, activeSell: false }) : this.setState({ activeBuy: false, activeSell: true });
     }
 
     handleSubmit(e){
@@ -47,8 +50,12 @@ export default class StockDetails extends React.Component {
     }
     
     render() {
+      let { activeBuy, activeSell } = this.state;
       let { data, ticker } = this.state.mostRecentStockApiData;
-      let sellButton = (Object.keys(this.props.portfolio).includes(ticker)) ? <button className="stock-sell-button" onClick={() => this.handleClick(false)}>Sell This Stock</button> : null;
+      let sellButton = (!Object.keys(this.props.portfolio).includes(ticker)) ? null : (
+          <button className={activeSell ? "sell-button-active" : "sell-button"} 
+            onClick={() => this.handleClick(false)}
+          >Sell</button>);
       let theDetails = (Object.keys(this.state.mostRecentStockApiData).length === 0) ? null : (
              <div className="stock-box-container">
                 <div>Today's Information for: {ticker}</div>     
@@ -60,19 +67,19 @@ export default class StockDetails extends React.Component {
                   <p>Volume: {parseInt(data["5. volume"])}</p>
                 </div>
                 <form >
-                  <p>Number of Shares You intend to buy/ sell</p>
+                  <p>Number of Shares You intend to buy or sell</p>
                   <div>
                     <input
                       className="stock-buy-input"
                       type="number"
                       onChange={this.handleChange()}
                       value={this.state.numShares} />
-                    <button className="stock-buy-button"
-                            onClick={() => this.handleClick(true)}>Buy This Stock</button>
+                      <button className={activeBuy ? "buy-button-active" : "buy-button"}
+                            onClick={() => this.handleClick(true)}>Buy</button>
                     {sellButton}
-                    <button className="trade-submit-button" onClick={this.handleSubmit}>Submit Trade</button>
                   </div>
                 </form>
+                <button className="trade-submit-button" onClick={this.handleSubmit}>Submit Trade</button>
               </div>
               );
             return (

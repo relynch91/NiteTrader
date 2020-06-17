@@ -4,8 +4,8 @@
     justify-content: space-around;
     border: none;
     width: 500px;
-    /* max-width: 70%; */
 }
+
 .stock-buy-input{
     width: 100px;
     font-size: 16px;
@@ -16,26 +16,53 @@
     border-radius: 2px;
     margin-right: 20px;
 }
-.stock-buy-button{
+
+.buy-button{
+    margin-left: 20px;
     border: 1px solid #A3333D;
+    border-radius: 2px;
     font-size: 16px;
-    padding: 7px 7px;
+    padding: 7px 10px;
     color: #A3333D;
     text-align: center;
     cursor: pointer;
 }
-.stock-sell-button{
+.buy-button-active{
+    margin-left: 20px;
+    border: 1px solid #3d6883;
+    border-radius: 2px;
+    font-size: 16px;
+    padding: 7px 10px;
+    color: #3d6883;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.sell-button{
     margin-left: 20px;
     border: 1px solid #A3333D;
+    border-radius: 2px;
     font-size: 16px;
-    padding: 7px 7px;
+    padding: 7px 10px;
     color: #A3333D;
     text-align: center;
     cursor: pointer;
+}
+.sell-button-active{
+    margin-left: 20px;
+    border: 1px solid #3d6883;
+    border-radius: 2px;
+    font-size: 16px;
+    padding: 7px 7px;
+    color: #3d6883;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
 }
 
 .trade-submit-button{
-    margin-left: 20px;
+    margin-top: 25px;
     background: #A3333D;
     border: none;
     border-radius: 2px;
@@ -45,6 +72,10 @@
     color: whitesmoke;
     text-align: center;
     cursor: pointer;
+}
+
+.trade-submit-button:hover{
+    background: #3d6883;
 }
 
 .stock-buy-sumbit:hover{
