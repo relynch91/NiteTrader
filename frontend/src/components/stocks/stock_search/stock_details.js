@@ -7,21 +7,30 @@ export default class StockDetails extends React.Component {
   constructor(props){
     super(props)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleClick = this.handleClick.bind(this)
     this.state = {
       numShares: 0,
+      transactionType: true,
       mostRecentStockApiData: {}
     };
   }
 
-    handleChange(){
-        return (e) => this.setState({ numShares: e.currentTarget.value })
+    componentDidUpdate(prevProps) {
+      if (this.props.stockDetails !== prevProps.stockDetails) {
+        this.setState({ mostRecentStockApiData: StockUtil.mostRecent(this.props.stockDetails.intraDay) })
+      }
+      // } else if (this.props.portfolio !== prevProps.portfolio){
+      //   this.render()
+      // }
     }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.stockDetails !== prevProps.stockDetails) {
-      this.setState({ mostRecentStockApiData: StockUtil.mostRecent(this.props.stockDetails.intraDay) })
+    handleChange() {
+      return (e) => this.setState({ numShares: e.currentTarget.value })
     }
-  }
+
+    handleClick(type){
+      this.setState({ transactionType: type })
+    }
 
     handleSubmit(e){
       e.preventDefault();
@@ -31,7 +40,7 @@ export default class StockDetails extends React.Component {
         'ticker': ticker,
         'price': Math.floor(parseFloat(data["4. close"])),
         'shares': this.state.numShares,
-        'buy': true
+        'buy': this.state.transactionType
       }
       this.props.tradeStock(transactionData)
         .then(() => this.props.history.push('/portfolio/'))
@@ -39,27 +48,29 @@ export default class StockDetails extends React.Component {
     
     render() {
       let { data, ticker } = this.state.mostRecentStockApiData;
+      let sellButton = (Object.keys(this.props.portfolio).includes(ticker)) ? <button className="stock-sell-button" onClick={() => this.handleClick(false)}>Sell This Stock</button> : null;
       let theDetails = (Object.keys(this.state.mostRecentStockApiData).length === 0) ? null : (
              <div className="stock-box-container">
-                {/* <div className="stock-details-box"> */}
                 <div>Today's Information for: {ticker}</div>     
                 <div className="stock-details">
-                  {/* <p>Ticker: {ticker}</p> */}
                   <p>Open: ${Math.floor(parseFloat(data["1. open"]))}</p>
                   <p>High: ${Math.floor(parseFloat(data["2. high"]))}</p>
                   <p>Low: ${Math.floor(parseFloat(data["3. low"]))}</p>
                   <p>Price: ${Math.floor(parseFloat(data["4. close"]))}</p>
                   <p>Volume: {parseInt(data["5. volume"])}</p>
                 </div>
-                <form onSubmit={this.handleSubmit}>
-                  <p>Number of Shares You intend to purchase</p>
+                <form >
+                  <p>Number of Shares You intend to buy/ sell</p>
                   <div>
                     <input
                       className="stock-buy-input"
                       type="number"
                       onChange={this.handleChange()}
                       value={this.state.numShares} />
-                    <button className="stock-buy-submit">Buy This Stock</button>
+                    <button className="stock-buy-button"
+                            onClick={() => this.handleClick(true)}>Buy This Stock</button>
+                    {sellButton}
+                    <button className="trade-submit-button" onClick={this.handleSubmit}>Submit Trade</button>
                   </div>
                 </form>
               </div>
