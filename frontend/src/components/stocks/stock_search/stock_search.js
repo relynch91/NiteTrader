@@ -8,10 +8,19 @@ export default class StockSearch extends React.Component {
   constructor(props){
       super(props)
       this.state = {
-        ticker: "",
+        stocks: "",
       };
       this.getStockDetails = this.getStockDetails.bind(this);
+      this.getStockTicker = this.getStockTicker.bind(this);
+
   }
+
+  getStockTicker(e) {
+    e.preventDefault();
+    const stockSearchAPI = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${this.state.stock}&apikey=${key}`;
+    this.props.stockNameSearchAPICall(stockSearchAPI)
+  }
+
   getStockDetails(e){
       e.preventDefault();
       const intraDayAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.ticker}&interval=15min&outputsize=full&apikey=${key}`;
@@ -21,7 +30,7 @@ export default class StockSearch extends React.Component {
   }
   update() {
       return e => this.setState({
-          ticker: e.currentTarget.value
+          stock: e.currentTarget.value
       });
   }
   render(){
@@ -29,24 +38,26 @@ export default class StockSearch extends React.Component {
       <div className="stock-details-and-graph">
         <StockDetailsContainer />
         <StockGraph /> ;
-      </div>);
-    let stockSearchLanding = (Object.keys(this.props.stockDetails).length !== 0) ? null: (
+      </div>
+      );
+    let stockSearchLanding = (Object.keys(this.props.stockDetails).length !== 0) ? null : (
       <div className="stock-search-landing">
-          <div>Find Your Next Unicorn</div>
+          <div>Find Your Next Unicorn I am Here</div>
           <div>Enter a company's stock ticker to access real-time information</div>
       </div>
+    // let stockTickerSearch = Object.keys(this.props.stockTickers).length === 0) ? null : 
     )
     return (
       <div className="stock-search-container">
         <div className="stock-search-component">
-          <form onSubmit={this.getStockDetails} className="stock-search-form">
+          <form onSubmit={this.getStockTicker} className="stock-search-form">
               <span>Search Stocks:</span>
               <input
                 type="text"
-                value={this.state.ticker}
+                value={this.state.stock}
                 onChange={this.update()}
                 className="stock-search-form-input"
-                placeholder="Enter a Ticker"
+                placeholder="Enter a Stock Company Name or Ticker"
               />
               <input
                 type="submit"
@@ -56,7 +67,8 @@ export default class StockSearch extends React.Component {
           </form>
         </div>
           {stockSearchLanding}
-          {theStockDetailsAndGraph}
+          {/* {stockTickerSearch} */}
+          {/* {theStockDetailsAndGraph} */}
       </div>
     );
   }
