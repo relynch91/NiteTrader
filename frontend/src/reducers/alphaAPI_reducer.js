@@ -15,7 +15,7 @@ export default function (state = {}, action) {
             Object.assign(nextState, { timeSeriesMonthly: action.stock.data });
             return nextState;
         case RECEIVE_STOCK_NAME:
-            Object.assign(nextState, {stockName: action.name.data.bestMatches });
+            Object.assign(nextState, {stockNameSearch: action.name.data.bestMatches });
             return nextState;
         default:
             return state;

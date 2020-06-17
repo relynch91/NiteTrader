@@ -49,8 +49,7 @@ export default class StockSearch extends React.Component {
           <span>Enter a company's ticker to access real-time information</span>
         </div>
       </div>
-    // let stockTickerSearch = Object.keys(this.props.stockTickers).length === 0) ? null : 
-    )
+    );
     return (
       <div className="stock-search-container">
         <div className="stock-search-component">
@@ -76,4 +75,4 @@ export default class StockSearch extends React.Component {
       </div>
     );
   }
-}  
+}
