@@ -1,9 +1,5 @@
 .stock-search-container{
-    /* display: flex;
-    justify-content: space-around;
-    align-items: flex-start; */
-    /* margin-top: 20px; */
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
 }
 
 .stock-search-component{
@@ -59,13 +55,11 @@
 
 .stock-search-landing{
     position: relative;
-    height: 500px;
+    max-height: 600px;
     background-color: lightgrey;
 }
 
 .stock-search-landing div{
-    background:darkgray;
-    height: 300px;
     margin: -70px 0 0 -180px;
     position: absolute;
     top: 30%;
@@ -73,13 +67,21 @@
     padding: 40px;
 }
 .stock-search-landing div > p{
-    font-size: 40px;
+    font-size: 50px;
     font-weight: 700;
-
+    color: #A3333D;
 }
 .stock-search-landing div > span{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    font-size: 18px;
+    font-size: 22px;
+    color: #A3333D;
+    font-weight: 600;
+}
+
+.stock-search-background{
+    width: 100%;
+    position: relative;
+    /* max-height: min-content; */
 }
