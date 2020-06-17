@@ -32,8 +32,10 @@ export default class StockSearch extends React.Component {
       </div>);
     let stockSearchLanding = (Object.keys(this.props.stockDetails).length !== 0) ? null: (
       <div className="stock-search-landing">
-          <div>Find Your Next Unicorn</div>
-          <div>Enter a company's stock ticker to access real-time information</div>
+        <div>
+          <p>Find Your Next Unicorn</p>
+          <span>Enter a company's ticker to access real-time information</span>
+        </div>
       </div>
     )
     return (
