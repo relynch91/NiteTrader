@@ -28,16 +28,23 @@ function newPricePerShareBuy(existingStock, newStock) {
 
 function ownedStocksOnly(transactions) {
     let res = {};
-    let activeTickers = Object.keys(transactions).filter(ticker => {
-        if (transactions[ticker].ownedShares > 0) {
-            return ticker;
-        }
-    });
+    let activeTickers = Object.keys(transactions).filter(ticker => transactions[ticker].ownedShares > 0)
+        // if (transactions[ticker].ownedShares > 0) {
+        //     return ticker;
+        // }
+    // });
 
     activeTickers.forEach( ticker => {
         res[ticker] = transactions[ticker];
-        QuoteEP.fetchAllQuoteEndPointDB(ticker)
-        .then( data => res[ticker].quoteEndPointData = data['data']);
+        QuoteEP.fetchQuoteEndPointDB(ticker)
+        .then( data => res[ticker].quoteEndPointData = data['data'])
+            .then(() => res[ticker]['diff'] = overUnder(res[ticker]));
     })
     return res;
+}
+
+ function overUnder(stockObj){
+        let purchased = stockObj.pricePerShare;
+        let current = Math.floor(parseInt(stockObj.quoteEndPointData.price))
+        return Math.round(parseFloat(current - purchased));
 }

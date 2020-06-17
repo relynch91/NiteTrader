@@ -8,7 +8,7 @@ export const quoteEndPoint = (stockURL) => {
     return axios.get(stockURL);
 };
 
-export const fetchAllQuoteEndPointDB = (ticker) => {
+export const fetchQuoteEndPointDB = (ticker) => {
     return axios.post('/api/stock_api/quoteendpointstock/stock', {
         symbol: `${ticker}`,
     })
