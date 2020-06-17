@@ -3,6 +3,7 @@ import StockDetailsContainer from './stock_details_container';
 import StockGraph from '../stockgraph/stockgraph_container';
 import key from '../../../frontConfig/frontKeys';
 import './stock_search.css';
+import stockSearchLandingPic from './stock-search-landing.png'
 
 export default class StockSearch extends React.Component {
   constructor(props){
@@ -32,8 +33,11 @@ export default class StockSearch extends React.Component {
       </div>);
     let stockSearchLanding = (Object.keys(this.props.stockDetails).length !== 0) ? null: (
       <div className="stock-search-landing">
-          <div>Find Your Next Unicorn</div>
-          <div>Enter a company's stock ticker to access real-time information</div>
+        <span><img src={stockSearchLandingPic} alt='stock search' className="stock-search-background" /></span>
+        <div>
+          <p>Seek And You Shall Find</p>
+          <span>Enter a company's ticker to access real-time information</span>
+        </div>
       </div>
     )
     return (
