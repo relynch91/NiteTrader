@@ -8,10 +8,11 @@ const QuoteEndPointStockSchema = new Schema({
     low: { type: String },
     price: { type: String },
     volume: { type: String },
-    latestTradingDay: { type: String },
+    latestTradingDay: { type: Date },
     previousClose: { type: String },
     change: { type: String },
-    changePercent: { type: String}
+    changePercent: { type: String},
+    date: { type: Date,default: Date.now }
 });
 
 module.exports = QuoteEndPointStock = mongoose.model(
