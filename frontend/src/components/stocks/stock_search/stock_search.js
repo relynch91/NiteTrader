@@ -61,7 +61,7 @@ export default class StockSearch extends React.Component {
                 onChange={this.update()}
                 className="stock-search-form-input"
                 placeholder="Enter a Stock Company Name or Ticker"
-              />
+                />
               <input
                 type="submit"
                 value="Submit"

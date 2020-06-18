@@ -44,7 +44,7 @@ function ownedStocksOnly(transactions) {
 }
 
  function overUnder(stockObj){
-        let purchased = stockObj.pricePerShare;
-        let current = Math.floor(parseInt(stockObj.quoteEndPointData.price))
-        return Math.round(parseFloat(current - purchased));
+        // let purchased = stockObj.pricePerShare;
+        // let current = Math.floor(parseInt(stockObj.quoteEndPointData.price))
+        // return Math.round(parseFloat(current - purchased));
 }
