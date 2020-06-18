@@ -1,17 +1,15 @@
-.header-container{
-    padding: 0 20px 0 20px;
+.navbar-container{
+    /* padding: 0 20px 0 20px; */
 }
 
 .navbar-main {
     width: 100vw;
     background: whitesmoke;
-    /* padding-top: 20px; */
     padding: 20px 10px 10px 10px;
-    /* margin-bottom: 20px; */
     display: flex;
-    /* flex-direction: column; */
     justify-content: space-between;
     align-items: center;
+    min-width: 500px;
 }
 
 .navbar-link{

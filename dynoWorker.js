@@ -38,12 +38,11 @@ async function fireAPI(ticker) {
 };
 
 async function updateDatabase(tickers) {
-
     for(let i = 0; i < tickers.length; i++){
         let stockData = await fireAPI(tickers[i]);
         let formattedData = globalEndPointObject(stockData.data['Global Quote']);
         console.log(formattedData);
-        let dbUpdate = await axios.patch(
+        await axios.patch(
             'http://localhost:5000/api/stock_api/quoteendpointstock/update', formattedData);
     }
     return true;

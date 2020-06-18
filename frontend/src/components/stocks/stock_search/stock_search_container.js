@@ -3,7 +3,8 @@ import StockSearch from "./stock_search";
 import { intraDayAPICall, timeSeriesInfoAPICall, stockNameAPICall } from '../../../actions/alphaApi_actions';
 
 const mapStateToProps = (state) => ({
-    stockDetails: state.stocks
+    stockDetails: state.stocks,
+    // stockNameSearch: state.stocks.stockNameSearch
 });
 
 const mapDispatchToProps = (dispatch) => ({

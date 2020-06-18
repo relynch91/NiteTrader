@@ -7,13 +7,12 @@ import stockSearchLandingPic from './stock-search-landing.png'
 
 export default class StockSearch extends React.Component {
   constructor(props){
-      super(props)
-      this.state = {
-        stocks: "",
-      };
-      this.getStockDetails = this.getStockDetails.bind(this);
-      this.getStockTicker = this.getStockTicker.bind(this);
-
+    super(props)
+    this.state = {
+      stocks: "",
+    };
+    this.getStockDetails = this.getStockDetails.bind(this);
+    this.getStockTicker = this.getStockTicker.bind(this);
   }
 
   getStockTicker(e) {
@@ -23,16 +22,16 @@ export default class StockSearch extends React.Component {
   }
 
   getStockDetails(e){
-      e.preventDefault();
-      const intraDayAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.ticker}&interval=15min&outputsize=full&apikey=${key}`;
-      this.props.intraDayAPICall(intraDayAPI);
-      const timeSeriesMonthlyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${this.state.ticker}&apikey=${key}`;
-      this.props.timeSeriesInfoAPICall(timeSeriesMonthlyAPI);
+    e.preventDefault();
+    const intraDayAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.ticker}&interval=15min&outputsize=full&apikey=${key}`;
+    this.props.intraDayAPICall(intraDayAPI);
+    const timeSeriesMonthlyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${this.state.ticker}&apikey=${key}`;
+    this.props.timeSeriesInfoAPICall(timeSeriesMonthlyAPI);
   }
   update() {
-      return e => this.setState({
-          stock: e.currentTarget.value
-      });
+    return e => this.setState({
+        stock: e.currentTarget.value
+    });
   }
   render(){
     let theStockDetailsAndGraph = (Object.keys(this.props.stockDetails).length === 0) ? null : (
@@ -50,6 +49,17 @@ export default class StockSearch extends React.Component {
         </div>
       </div>
     );
+
+    // let stockTickerSearch = (Object.keys(this.props.stockDetails.stockNameSearch).length === '0') ? null : (
+    //   <div className="stock-search-results">
+    //     <ul>
+    //       <li>  
+    //         {this.props.stockDetails.stockNameSearch.map(d => <li key={d.name}>{d.name}</li>)}
+    //       </li>
+    //     </ul>
+    //   </div>
+    // );
+    
     return (
       <div className="stock-search-container">
         <div className="stock-search-component">
@@ -68,6 +78,7 @@ export default class StockSearch extends React.Component {
                 className="stock-form-submit"
               />
           </form>
+
         </div>
           {stockSearchLanding}
           {/* {stockTickerSearch} */}
