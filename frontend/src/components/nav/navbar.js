@@ -19,24 +19,24 @@ class NavBar extends React.Component {
     const { openModal } = this.props;
     if (this.props.loggedIn) {
       return (
-          <div className="navbar-main">
+        <div className="navbar-main">
           <NavLink className="home-logo" to="/">NiteTrader</NavLink>
             <div>
               <Link className="navbar-link" to={'/portfolio'}>Portfolio</Link>
               <Link className="navbar-link" to={'/search'}>Search Stocks</Link>
               <button className="navbar-button" onClick={this.logoutUser}>Logout</button>
             </div>
-          </div>
+        </div>
       );
     } else {
       return (
-          <div className="navbar-main">
-          <NavLink className="home-logo" to="/">NiteTrader</NavLink>
-            <div>
-              <button className="navbar-link" onClick={() => openModal('login')}>Sign in</button>
-              <button className="navbar-link" onClick={() => openModal('signup')}>Get started</button>
-            </div>
+        <div className="navbar-main">
+        <NavLink className="home-logo" to="/">NiteTrader</NavLink>
+          <div>
+            <button className="navbar-link" onClick={() => openModal('login')}>Sign in</button>
+            <button className="navbar-link" onClick={() => openModal('signup')}>Get started</button>
           </div>
+        </div>
       );
     }
   }

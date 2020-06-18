@@ -12,7 +12,7 @@ import SignupFormContainer from './session/signup_form_container';
 
 
 const App = () => (
-  <div>
+  <div className='main-app'>
     <NavBarContainer />
     <Modal />
     <Switch>

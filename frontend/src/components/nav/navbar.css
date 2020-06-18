@@ -3,12 +3,13 @@
 }
 
 .navbar-main {
-    width: 100%;
+    width: 100vw;
     background: whitesmoke;
     /* padding-top: 20px; */
     padding: 20px 10px 10px 10px;
     /* margin-bottom: 20px; */
     display: flex;
+    /* flex-direction: column; */
     justify-content: space-between;
     align-items: center;
 }

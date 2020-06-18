@@ -12,7 +12,7 @@ const QuoteEndPointStockSchema = new Schema({
     previousClose: { type: String },
     change: { type: String },
     changePercent: { type: String},
-    date: { type: Date,default: Date.now }
+    date: { type: Date, default: Date.now }
 });
 
 module.exports = QuoteEndPointStock = mongoose.model(
