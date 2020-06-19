@@ -29,8 +29,10 @@ export default class StockIndex extends React.Component {
             <div className="purchase-price">
               Shares Owned: {myPortfolio[ticker].ownedShares}
             </div>
-            <div>
-
+            <div className="quote-endpoint-data">
+              Other Data: {
+                myPortfolio[ticker].quoteEndPointData['open']
+              }
             </div>
             {/* {console.log(myPortfolio[ticker])} */}
             {/* {(myPortfolio[ticker].diff > 0) ?
