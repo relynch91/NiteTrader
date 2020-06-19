@@ -24,6 +24,7 @@ export default class StockIndex extends React.Component {
             </div>
             <div className="current-price">
               Your Average Cost: ${Math.floor(parseFloat(myPortfolio[ticker].pricePerShare))}
+
             </div>
             <div className="purchase-price">
               Shares Owned: {myPortfolio[ticker].ownedShares}

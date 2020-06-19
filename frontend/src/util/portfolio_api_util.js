@@ -29,10 +29,6 @@ function newPricePerShareBuy(existingStock, newStock) {
 function ownedStocksOnly(transactions) {
     let res = {};
     let activeTickers = Object.keys(transactions).filter(ticker => transactions[ticker].ownedShares > 0)
-        // if (transactions[ticker].ownedShares > 0) {
-        //     return ticker;
-        // }
-    // });
 
     activeTickers.forEach( ticker => {
         res[ticker] = transactions[ticker];
@@ -44,7 +40,7 @@ function ownedStocksOnly(transactions) {
 }
 
  function overUnder(stockObj){
-        // let purchased = stockObj.pricePerShare;
-        // let current = Math.floor(parseInt(stockObj.quoteEndPointData.price))
-        // return Math.round(parseFloat(current - purchased));
+        let purchased = stockObj.pricePerShare;
+        let current = Math.floor(parseInt(stockObj.quoteEndPointData.price))
+        return Math.round(parseFloat(current - purchased));
 }
