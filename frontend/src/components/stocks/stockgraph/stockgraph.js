@@ -28,9 +28,9 @@ export default class StockGraph extends React.Component {
     this.setState({ stock: structuredProps.reverse() });
   }
 
-  // componentDidMount(){
-  //   this.formatGraphData()
-  // }
+  componentDidMount(){
+    this.formatGraphData()
+  }
 
   componentDidUpdate(prevProps) {
     if (this.props.stockInfo !== prevProps.stockInfo){
