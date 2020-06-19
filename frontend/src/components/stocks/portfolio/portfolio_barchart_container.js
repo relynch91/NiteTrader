@@ -16,18 +16,18 @@ const data = [
         name: 'IBM', uv: 3000,
     },
     {
-        name: 'NKE', pv: -9800,
+        name: 'NKE', pv: 9800,
     },
     {
-        name: 'ONE', uv: 2780, pv: 3908, amt: 2000,
+        name: 'ONE', uv: 2780,
     },
     {
-        name: 'TWO', uv: -1890, pv: 4800, amt: 2181,
+        name: 'TWO', pv: 1890,
     },
     {
-        name: 'THREE', uv: 2390, pv: -3800, amt: 2500,
+        name: 'THREE', pv: -3800,
     },
     {
-        name: 'FOUR', uv: 3490, pv: 4300, amt: 2100,
+        name: 'FOUR', uv: 3490,
     },
 ];

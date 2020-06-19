@@ -38,6 +38,7 @@ export default class StockSearch extends React.Component {
 
   render(){
     let { stockDetails } = this.props;
+
     let theStockDetailsAndGraph = (!stockDetails.intraDayAPI) ? null : (
       <div className="stock-details-and-graph">
         <StockDetailsContainer />
@@ -60,12 +61,10 @@ export default class StockSearch extends React.Component {
       </div>
     );
     
-    // let stockTickerSearch = (Object.keys(this.props.stockDetails.stockNameSearch).length === '0') ? null : (
+    // let stockTickerSearch = (!stockDetails.stockNameSearch) ? null : (
     //   <div className="stock-search-results">
     //     <ul>
-    //       <li>  
-    //         {this.props.stockDetails.stockNameSearch.map(d => <li key={d.name}>{d.name}</li>)}
-    //       </li>
+    //         {stockDetails.stockNameSearch.map(d => <li key={d.name}>{d.name}</li>)}
     //     </ul>
     //   </div>
     // );
