@@ -9,14 +9,19 @@ class Portfolio extends React.Component {
   render() {
     return (
         <div className="portfolio-container">
-          {/* <span className="portfolio-background">
-            <img
-              src={PortfolioBackground}
-              alt='portfoio background'
-              className="portfolio-background" />
-          </span> */}
-        <div><StockIndexContainer /></div>
-        {/* <PortfolioPieChartContainer /> */}
+          <div> 
+            <h1>Here is your Portfolio!</h1>
+          </div>
+          <div>
+            {/* <span className="portfolio-background">
+              <img
+                src={PortfolioBackground}
+                alt='portfoio background'
+                className="portfolio-background" />
+            </span> */}
+            <StockIndexContainer />
+            {/* <PortfolioPieChartContainer /> */}
+          </div>
       </div>
     );
   }

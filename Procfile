@@ -1,1 +1,1 @@
-worker: node dynoWorker.js
+"worker: node dynoWorker.js"
