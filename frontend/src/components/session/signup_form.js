@@ -64,8 +64,8 @@ class SignupForm extends React.Component {
     const message = formType === 'Sign Up' ? 'Already have an account?' : 'No account?';
     const button_text = formType === 'Sign Up' ? 'Sign up' : 'Sign in';
     const intro = formType === 'Sign Up'
-      ? 'Create an account to learn about stock market by using the simulator'
-      : 'Sign in to see your portfolio.'
+      // ? 'Create an account to begin making trades with real stock data!'
+      // : 'Sign in to see your portfolio.'
     const login_intro = formType === 'Sign Up' ? 'Join NiteTrader!' : 'Welcome Back!'
     
     return (

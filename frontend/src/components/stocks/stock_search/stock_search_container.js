@@ -4,7 +4,6 @@ import { intraDayAPICall, timeSeriesInfoAPICall, stockNameAPICall } from '../../
 
 const mapStateToProps = (state) => ({
     stockDetails: state.stocks,
-    // stockNameSearch: state.stocks.stockNameSearch
 });
 
 const mapDispatchToProps = (dispatch) => ({

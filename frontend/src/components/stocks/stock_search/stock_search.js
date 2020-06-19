@@ -19,6 +19,7 @@ export default class StockSearch extends React.Component {
     e.preventDefault();
     const stockSearchAPI = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${this.state.stock}&apikey=${key}`;
     this.props.stockNameSearchAPICall(stockSearchAPI)
+    // .then( response => figureAPICall(response));
   }
 
   getStockDetails(e){
@@ -28,28 +29,36 @@ export default class StockSearch extends React.Component {
     const timeSeriesMonthlyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${this.state.ticker}&apikey=${key}`;
     this.props.timeSeriesInfoAPICall(timeSeriesMonthlyAPI);
   }
+  
   update() {
     return e => this.setState({
         stock: e.currentTarget.value
     });
   }
+
   render(){
-    let theStockDetailsAndGraph = (Object.keys(this.props.stockDetails).length === 0) ? null : (
+    let theStockDetailsAndGraph = (!this.props.stockDetails.intraDayAPI) ? null : (
       <div className="stock-details-and-graph">
         <StockDetailsContainer />
         <StockGraph /> ;
       </div>
-      );
-    let stockSearchLanding = (Object.keys(this.props.stockDetails).length !== 0) ? null : (
+    );
+
+    let stockSearchLanding = (this.props.stockDetails.intraDayAPI) ? null : (
       <div className="stock-search-landing">
-        <span><img src={stockSearchLandingPic} alt='stock search' className="stock-search-background" /></span>
+        <span>
+          <img 
+          src={stockSearchLandingPic} 
+          alt='stock search' 
+          className="stock-search-background" />
+        </span>
         <div>
           <p>Seek And You Shall Find</p>
           <span>Enter a company's ticker to access real-time information</span>
         </div>
       </div>
     );
-
+    
     // let stockTickerSearch = (Object.keys(this.props.stockDetails.stockNameSearch).length === '0') ? null : (
     //   <div className="stock-search-results">
     //     <ul>
@@ -64,25 +73,25 @@ export default class StockSearch extends React.Component {
       <div className="stock-search-container">
         <div className="stock-search-component">
           <form onSubmit={this.getStockTicker} className="stock-search-form">
-              <span>Search Stocks:</span>
-              <input
-                type="text"
-                value={this.state.stock}
-                onChange={this.update()}
-                className="stock-search-form-input"
-                placeholder="Enter a Stock Company Name or Ticker"
-                />
-              <input
-                type="submit"
-                value="Submit"
-                className="stock-form-submit"
+            <span>Search Stocks:</span>
+            <input
+              type="text"
+              value={this.state.stock}
+              onChange={this.update()}
+              className="stock-search-form-input"
+              placeholder="Enter a Stock Company Name or Ticker"
               />
+            <input
+              type="submit"
+              value="Submit"
+              className="stock-form-submit"
+            />
           </form>
 
         </div>
           {stockSearchLanding}
           {/* {stockTickerSearch} */}
-          {/* {theStockDetailsAndGraph} */}
+          {theStockDetailsAndGraph}
       </div>
     );
   }

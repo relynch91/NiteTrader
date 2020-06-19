@@ -6,7 +6,7 @@
 .main-app {
     display: flex;
     flex-direction: column;
-    min-width: 1000px;
+    min-width: 800px;
 }
 .hero-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.719), rgba(0, 0, 0, 0.815)), url("./banner.png");

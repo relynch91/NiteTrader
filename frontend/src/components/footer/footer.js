@@ -6,8 +6,8 @@ class Footer extends React.Component {
     render() {
         return (
             <div className="footer-container">
-                <div>
-                    <h1> NiteTrader Contributors </h1>
+                <div className="footer-title">
+                    <h1> NiteTrader Contributors:</h1>
                 </div>
 
                 <div className="footer-contributors">

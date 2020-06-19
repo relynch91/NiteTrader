@@ -91,7 +91,7 @@ class LoginForm extends React.Component {
         <div className="modal-content">
           <div className="modal-title">{login_intro}</div>
           <div className="modal-intro">{intro}</div>
-          <div className="modal-quote">The World is Yours</div>
+          <div className="modal-quote">The World is Yours.</div>
           <br />
           <ul>{this.renderErrors()}</ul>
           <br />

@@ -13,7 +13,6 @@ export const mostRecent = (stockData) => {
             }
         });
     result['ticker'] = stockData["Meta Data"]["2. Symbol"].toUpperCase();
-    // result["max"] = findMax(stockData["Time Series (15min)"])
     return result;
 }
 
@@ -27,7 +26,6 @@ export const oneWeek = (stockData) => {
             }
         }
     );
-    // result["max"] = findMax(stockData["Time Series (15min)"])
     return result;
 }
 
@@ -42,7 +40,6 @@ export const oneMonth = (stockData) => {
             return true
         }
     );
-    // result["max"] = findMax(stockData["Time Series (15min)"])
     return result;
 }
 
@@ -61,7 +58,6 @@ export const oneYear = (stockData) => {
             return true;
         }
     );
-    // result["max"] = findMax(stockData["Monthly Time Series"])
     return result;
 }
 
@@ -75,17 +71,10 @@ export const twoYears = (stockData) => {
             }
             return true;
         }
-        );
-    // result["max"] = findMax(stockData["Monthly Time Series"])
+    );
     return result;
 }
 
-// export const findMax = (stockSeriesData) => {
-//     let max = 0;
-//     Object.values(stockSeriesData).forEach(stockObj => {
-//         if (stockObj["4. close"] > max) {
-//             max = stockObj["4. close"]
-//         }
-//     })
-//     return max;
-// }
+export const figureAPICall = apiObject => {
+    
+}
