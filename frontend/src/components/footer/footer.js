@@ -15,12 +15,14 @@ class Footer extends React.Component {
                         <h2> Ben Hafner </h2>
                         <ul>
                             <li>
-                                < a href = "https://www.linkedin.com/in/brhafner/" >
+                                < a href = "https://www.linkedin.com/in/brhafner/" 
+                                target='_blank' rel='noopener'>
                                     LinkedIn Profile
                                 </a>
                             </li>
                             <li>
-                                < a href = "https://github.com/brhafner" >
+                                < a href = "https://github.com/brhafner" 
+                                target='_blank' rel='noopener'>
                                     GitHub Link
                                 </a>
                             </li>
@@ -30,12 +32,14 @@ class Footer extends React.Component {
                         <h2> Jason Wintery </h2>
                         <ul>
                             <li>
-                                < a href = "https://www.linkedin.com/in/jasonwintery/" >
+                                < a href = "https://www.linkedin.com/in/jasonwintery/" 
+                                target='_blank' rel='noopener'>
                                     LinkedIn Profile
                                 </a>
                             </li>
                             <li>
-                                < a href = "https://github.com/oranje19" >
+                                < a href = "https://github.com/oranje19" 
+                                target='_blank' rel='noopener'>
                                     GitHub Link
                                 </a>
                             </li>
@@ -46,12 +50,14 @@ class Footer extends React.Component {
                         <h2> Ryan Lynch </h2>
                         <ul>
                             <li>
-                                <a href="https://www.linkedin.com/in/ryan-e-lynch/">
+                                <a href="https://www.linkedin.com/in/ryan-e-lynch/" 
+                                target='_blank' rel='noopener'>
                                     LinkedIn Profile
                                 </a>
                             </li>
                             <li>
-                                < a href="https://github.com/relynch91">
+                                < a href="https://github.com/relynch91" 
+                                target='_blank' rel='noopener'>
                                     GitHub Link
                                 </a>
                             </li>
