@@ -16,7 +16,6 @@ class Homepage extends React.Component {
                         <p>Set Your Goals | Test Your Skills</p>
                         {this.props.signUpButton}
                     </div>
-                
             </div>
         )
     }
