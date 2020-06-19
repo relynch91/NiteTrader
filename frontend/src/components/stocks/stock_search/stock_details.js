@@ -18,7 +18,6 @@ export default class StockDetails extends React.Component {
 
   componentDidUpdate(prevProps) {
     let { stockDetails } = this.props;
-    
     if (stockDetails !== prevProps.stockDetails) {
       this.setState(
         { mostRecentStockApiData: StockUtil.mostRecent(stockDetails.intraDay) }

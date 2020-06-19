@@ -2,7 +2,7 @@ import React from 'react';
 import './stock_index.css';
 export default class StockIndex extends React.Component {
   componentDidMount(){
-    let { fetchTrades, userId } = this.props
+    let { fetchTrades, userId } = this.props;
     fetchTrades(userId)
   }
 
@@ -14,6 +14,7 @@ export default class StockIndex extends React.Component {
   
   render(){
     let { myPortfolio } = this.props;
+    debugger
     if (Object.keys(myPortfolio).length === 0){return null};
     return (
       <div className="stock-index-table">
