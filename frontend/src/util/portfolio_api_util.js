@@ -44,3 +44,13 @@ function ownedStocksOnly(transactions) {
         let current = Math.floor(parseInt(stockObj.quoteEndPointData.price))
         return Math.round(parseFloat(current - purchased));
 }
+
+export const formatPortfolioData = (portfolio) => {
+    let res = [];
+    Object.keys(portfolio).forEach(ticker => {
+        debugger
+        let key = portfolio.ticker.diff > 0 ? 'up' : 'down';
+        res.push({name: ticker, key: portfolio.ticker.diff })
+    })
+    return res;
+}

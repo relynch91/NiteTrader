@@ -2,16 +2,29 @@ import React, { PureComponent } from 'react';
 import {
     BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine,
 } from 'recharts';
+import { formatPortfolioData } from '../../../util/portfolio_api_util'
 
 export default class PortfolioBarChart extends PureComponent {
-    static jsfiddleUrl = 'https://jsfiddle.net/alidingling/q68cz43w/';
+    constructor(props){
+        super(props)
+        this.state = {}
+    }
+
+    componentDidUpdate(prevProps){
+        if (this.props.portfolio !== prevProps.portfolio){
+           this.setState({ data: formatPortfolioData(this.props.portfolio) });
+        }
+    }
 
     render() {
+        let firstKey = Object.keys(this.props.portfolio)[0]
+        if (!Object.keys(this.props.portfolio[firstKey]).includes('diff')) {return null};
+
         return (
             <BarChart
                 width={500}
                 height={300}
-                data={this.props.pnl}
+                data={this.state.data}
                 margin={{
                     top: 5, right: 30, left: 20, bottom: 5,
                 }}
