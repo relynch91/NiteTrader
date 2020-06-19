@@ -19,11 +19,24 @@ export default class StockDetails extends React.Component {
   componentDidUpdate(prevProps) {
     let { stockDetails } = this.props;
     if (stockDetails !== prevProps.stockDetails) {
+
       this.setState(
-        { mostRecentStockApiData: StockUtil.mostRecent(stockDetails.intraDay) }
+        { 
+          mostRecentStockApiData: StockUtil.mostRecent(this.props.stockDetails.intraDay) 
+        }
       )
     }
   }
+
+  // Need to pass in withRouter History to see if coming back from portfolio
+  // handleComeback(){
+  //   let { stockDetails } = this.props;
+  //   if (stockDetails.intraDay) {
+  //     this.setState(
+  //       { mostRecentStockApiData: StockUtil.mostRecent(stockDetails.intraDay) }
+  //     )
+  //   }
+  // }
 
   handleChange() {
     return (e) => this.setState({ numShares: e.currentTarget.value })
@@ -50,6 +63,7 @@ export default class StockDetails extends React.Component {
   }
   
   render() {
+    
     let { activeBuy, activeSell } = this.state;
     let { data, ticker } = this.state.mostRecentStockApiData;
 
@@ -63,7 +77,7 @@ export default class StockDetails extends React.Component {
         onClick={this.handleSubmit}>Submit Trade
       </button> :
       null;
-
+    
     let theDetails = (Object.keys(this.state.mostRecentStockApiData).length === 0) ? null : (
       <div className="stock-box-container">
         <div>Today's Information for: {ticker}</div>     
