@@ -1,9 +1,4 @@
-.navbar-container{
-    /* padding: 0 20px 0 20px; */
-}
-
 .navbar-main {
-    width: 100vw;
     background: whitesmoke;
     padding: 20px 10px 10px 10px;
     display: flex;
