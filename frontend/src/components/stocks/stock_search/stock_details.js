@@ -49,6 +49,8 @@ export default class StockDetails extends React.Component {
         <button className={activeSell ? "sell-button-active" : "sell-button"} 
           onClick={() => this.handleClick(false)}
         >Sell</button>);
+    let submitButton = (activeSell || activeBuy) ? <button className="trade-submit-button" onClick={this.handleSubmit}>Submit Trade</button> :
+      null;
     let theDetails = (Object.keys(this.state.mostRecentStockApiData).length === 0) ? null : (
       <div className="stock-box-container">
         <div>Today's Information for: {ticker}</div>     
@@ -71,8 +73,8 @@ export default class StockDetails extends React.Component {
                     onClick={() => this.handleClick(true)}>Buy</button>
             {sellButton}
           </div>
+          {submitButton}
         </form>
-        <button className="trade-submit-button" onClick={this.handleSubmit}>Submit Trade</button>
       </div>
       );
     return (
