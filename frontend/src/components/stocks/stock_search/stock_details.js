@@ -17,17 +17,25 @@ export default class StockDetails extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.stockDetails !== prevProps.stockDetails) {
-      this.setState({ mostRecentStockApiData: StockUtil.mostRecent(this.props.stockDetails.intraDay) })
+    let { stockDetails } = this.props;
+    
+    if (stockDetails !== prevProps.stockDetails) {
+      this.setState(
+        { mostRecentStockApiData: StockUtil.mostRecent(stockDetails.intraDay) }
+      )
     }
   }
+
   handleChange() {
     return (e) => this.setState({ numShares: e.currentTarget.value })
   }
+
   handleClick(type){
     this.setState({ transactionType: type })
-    type ? this.setState({ activeBuy: true, activeSell: false }) : this.setState({ activeBuy: false, activeSell: true });
+    type ? this.setState({ activeBuy: true, activeSell: false }) : 
+    this.setState({ activeBuy: false, activeSell: true });
   }
+
   handleSubmit(e){
     e.preventDefault();
     let { data, ticker } = this.state.mostRecentStockApiData;
@@ -45,12 +53,18 @@ export default class StockDetails extends React.Component {
   render() {
     let { activeBuy, activeSell } = this.state;
     let { data, ticker } = this.state.mostRecentStockApiData;
+
     let sellButton = (!Object.keys(this.props.portfolio).includes(ticker)) ? null : (
         <button className={activeSell ? "sell-button-active" : "sell-button"} 
           onClick={() => this.handleClick(false)}
         >Sell</button>);
-    let submitButton = (activeSell || activeBuy) ? <button className="trade-submit-button" onClick={this.handleSubmit}>Submit Trade</button> :
+
+    let submitButton = (activeSell || activeBuy) ?
+       <button className="trade-submit-button" 
+        onClick={this.handleSubmit}>Submit Trade
+      </button> :
       null;
+
     let theDetails = (Object.keys(this.state.mostRecentStockApiData).length === 0) ? null : (
       <div className="stock-box-container">
         <div>Today's Information for: {ticker}</div>     
