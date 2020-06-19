@@ -19,7 +19,7 @@ export default class StockIndex extends React.Component {
     let { myPortfolio } = this.props;
    
     if (Object.keys(myPortfolio).length === 0){return null};
-    
+
     return (
       <div>
         <div className="stock-index-main">
@@ -30,10 +30,10 @@ export default class StockIndex extends React.Component {
               <span>
                 <p className="current-price">Price Per Share: ${Math.floor(parseFloat(myPortfolio[ticker].pricePerShare))}</p>
                 <p className="purchase-price">Shares Owned: {myPortfolio[ticker].ownedShares}</p>
-                {/* {console.log(myPortfolio[ticker])} */}
-                {/* {(myPortfolio[ticker].diff > 0) ?
-                  <p className="price-change-positive">Gain Per Share: ${myPortfolio[ticker].diff}</p> :
-                  <p className="price-change-negative">Loss Loss Per Share: ${myPortfolio[ticker].diff}</p>
+                {/* {console.log(myPortfolio[ticker]['diff'])}
+                {(myPortfolio[ticker]['diff'] > 0) ?
+                  <p className="price-change-positive">Gain Per Share: ${myPortfolio[ticker]['diff']}</p> :
+                  <p className="price-change-negative">Loss Loss Per Share: ${myPortfolio[ticker]['diff']}</p>
                 } */}
               </span>
             </div>
