@@ -35,13 +35,13 @@ export default class StockSearch extends React.Component {
       });
   }
   render(){
-    let theStockDetailsAndGraph = (Object.keys(this.props.stockDetails).length === 0) ? null : (
+    let theStockDetailsAndGraph = (!this.props.stockDetails.intraDayAPI) ? null : (
       <div className="stock-details-and-graph">
         <StockDetailsContainer />
         <StockGraph /> ;
       </div>
       );
-    let stockSearchLanding = (Object.keys(this.props.stockDetails).length !== 0) ? null : (
+    let stockSearchLanding = (this.props.stockDetails.intraDayAPI) ? null : (
       <div className="stock-search-landing">
         <span><img src={stockSearchLandingPic} alt='stock search' className="stock-search-background" /></span>
         <div>
@@ -71,7 +71,7 @@ export default class StockSearch extends React.Component {
         </div>
           {stockSearchLanding}
           {/* {stockTickerSearch} */}
-          {/* {theStockDetailsAndGraph} */}
+          {theStockDetailsAndGraph}
       </div>
     );
   }
