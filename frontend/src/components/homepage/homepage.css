@@ -15,10 +15,13 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+
 }
 
 .banner-img{
     max-height: 800px;
+    display: flex;
+    flex-direction: column;
 }
 
 .hero-text {
