@@ -58,6 +58,7 @@ export default class StockSearch extends React.Component {
     );
 
     let stockSearchLanding = (this.props.stockDetails.intraDay) ? null : (
+
       <div className="stock-search-landing">
         <span>
           <img 
@@ -72,6 +73,7 @@ export default class StockSearch extends React.Component {
       </div>
     );
     
+
     return (
       <div className="stock-search-container">
         <div className="stock-search-component">
