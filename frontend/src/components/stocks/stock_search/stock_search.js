@@ -30,6 +30,7 @@ export default class StockSearch extends React.Component {
     if (apiCall) {
       this.setState({ticker: apiCall});
       this.getStockDetails();
+      return this.render();
     } else {
       
     }

@@ -1,8 +1,6 @@
 import React from 'react';
 import './stock_index.css';
-
 export default class StockIndex extends React.Component {
-
   componentDidMount(){
     let { fetchTrades, userId } = this.props
     fetchTrades(userId)
@@ -15,31 +13,32 @@ export default class StockIndex extends React.Component {
   }
   
   render(){
-
     let { myPortfolio } = this.props;
-   
     if (Object.keys(myPortfolio).length === 0){return null};
-    
     return (
-      <div>
-        <div className="stock-index-main">
-          <p>Here is Your Current Stock Portfolio</p>
-          {Object.keys(myPortfolio).map((ticker, idx) => (
-            <div className="stock-box" key={idx * 392}>
-              <span>{ticker}</span>
-              <span>
-                <p className="current-price">Price Per Share: ${Math.floor(parseFloat(myPortfolio[ticker].pricePerShare))}</p>
-                <p className="purchase-price">Shares Owned: {myPortfolio[ticker].ownedShares}</p>
-                {/* {console.log(myPortfolio[ticker])} */}
-                {/* {(myPortfolio[ticker].diff > 0) ?
-                  <p className="price-change-positive">Gain Per Share: ${myPortfolio[ticker].diff}</p> :
-                  <p className="price-change-negative">Loss Loss Per Share: ${myPortfolio[ticker].diff}</p>
-                } */}
-              </span>
+      <div className="stock-index-table">
+        {Object.keys(myPortfolio).map((ticker, idx) => (
+          <div className="stock-box" key={idx * 392}>
+            <div>
+              {ticker}
             </div>
-          ))}
-        </div>
+            <div className="current-price">
+              Your Average Cost: ${Math.floor(parseFloat(myPortfolio[ticker].pricePerShare))}
+            </div>
+            <div className="purchase-price">
+              Shares Owned: {myPortfolio[ticker].ownedShares}
+            </div>
+            <div>
+
+            </div>
+            {/* {console.log(myPortfolio[ticker])} */}
+            {/* {(myPortfolio[ticker].diff > 0) ?
+              <p className="price-change-positive">Gain Per Share: ${myPortfolio[ticker].diff}</p> :
+              <p className="price-change-negative">Loss Loss Per Share: ${myPortfolio[ticker].diff}</p>
+            } */}
+          </div>
+        ))}
       </div>
     );
-  }
+  };
 }
