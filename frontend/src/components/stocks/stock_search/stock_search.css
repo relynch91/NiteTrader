@@ -1,13 +1,10 @@
 .stock-search-container{
-    /* margin-bottom: 100px; */
     display: flex;
     flex-direction: column;
 }
 
 .stock-search-form {
     display: block;
-    /* flex-direction: column; */
-    /* justify-content: space-between; */
     background-color: lightslategrey;
     padding: 10px 0 10px 0
 }
@@ -23,7 +20,7 @@
 }
 
 .stock-search-form-input {
-  width: 100px;
+  width: 225px;
   font-size: 12px;
   font-weight: 500;
   padding: 7px 7px;
