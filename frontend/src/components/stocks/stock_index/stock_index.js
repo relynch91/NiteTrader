@@ -15,6 +15,7 @@ export default class StockIndex extends React.Component {
   render(){
     let { myPortfolio } = this.props;
     if (Object.keys(myPortfolio).length === 0){return null};
+    debugger
     return (
       <div className="stock-index-table">
         {Object.keys(myPortfolio).map((ticker, idx) => (
@@ -31,7 +32,7 @@ export default class StockIndex extends React.Component {
             </div>
             <div className="quote-endpoint-data">
               Other Data: {
-                myPortfolio[ticker].quoteEndPointData['open']
+                myPortfolio[ticker].quoteEndPointData
               }
             </div>
             {/* {console.log(myPortfolio[ticker])} */}
