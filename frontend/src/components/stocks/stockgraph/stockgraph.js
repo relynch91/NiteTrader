@@ -50,11 +50,16 @@ export default class StockGraph extends React.Component {
     let { intraDay, timeSeriesMonthly} = this.props.stockInfo;
       let theButtons = (!!timeSeriesMonthly) ?
         <div className="stockgraph-time-button-container">
-          <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.oneWeek(intraDay))}>1 Week</button>
-          <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.oneMonth(intraDay))}>1 Month</button>
-          <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.threeMonths(intraDay))}>3 Months</button>
-          <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.oneYear(timeSeriesMonthly))}>1 Year</button>
-          <button className="stockgraph-time-button" onClick={() => this.handleClick(StockUtil.twoYears(timeSeriesMonthly))}>2 Years</button>
+          <button className="stockgraph-time-button" 
+            onClick={() => this.handleClick(StockUtil.oneWeek(intraDay))}>1 Week</button>
+          <button className="stockgraph-time-button" 
+            onClick={() => this.handleClick(StockUtil.oneMonth(intraDay))}>1 Month</button>
+          <button className="stockgraph-time-button" 
+            onClick={() => this.handleClick(StockUtil.threeMonths(intraDay))}>3 Months</button>
+          <button className="stockgraph-time-button" 
+            onClick={() => this.handleClick(StockUtil.oneYear(timeSeriesMonthly))}>1 Year</button>
+          <button className="stockgraph-time-button" 
+            onClick={() => this.handleClick(StockUtil.twoYears(timeSeriesMonthly))}>2 Years</button>
         </div> : null;
     return (
       <div className="stock-graph-main">

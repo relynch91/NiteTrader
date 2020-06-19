@@ -53,7 +53,7 @@ export default class StockSearch extends React.Component {
     let theStockDetailsAndGraph = (!this.props.stockDetails.intraDay) ? null : (
       <div className="stock-details-and-graph">
         <StockDetailsContainer />
-        <StockGraph /> 
+        <StockGraph />
       </div>
     );
 
