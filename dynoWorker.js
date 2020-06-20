@@ -1,6 +1,6 @@
 const axios = require('axios').default;
 const key = require('./config/keys.js');
-const globalEndPointObject = require('./config/endPointRestructure')
+const globalEndPointObject = require('./config/endPointRestructure.js')
 
 function unpackTickers(argument) {
     let tickers = [];
