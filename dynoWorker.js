@@ -1,12 +1,12 @@
 const axios = require('axios').default;
-const key = require('./config/keys');
+const key = require('./config/keys.js');
 const globalEndPointObject = require('./config/endPointRestructure')
 
 function unpackTickers(argument) {
     let tickers = [];
     for(let i = 0; i < argument.length; i ++) {
         let name = argument[i]['ticker']
-        if (!tickers.includes(name)) {            
+        if (!tickers.includes(name)) {
             tickers.push(name)
         }
     }
@@ -14,7 +14,7 @@ function unpackTickers(argument) {
 }
 
 async function receiveTickers() {
-    let apiData = await axios.get('http://localhost:5000/api/transactions/activeTrades');
+    let apiData = await axios.get('https://nitetrader.herokuapp.com/api/transactions/activeTrades');
     return apiData
 }
 
@@ -43,7 +43,7 @@ async function updateDatabase(tickers) {
         let formattedData = globalEndPointObject(stockData.data['Global Quote']);
         console.log(formattedData);
         await axios.patch(
-            'http://localhost:5000/api/stock_api/quoteendpointstock/update', formattedData);
+            'https://nitetrader.herokuapp.com/api/stock_api/quoteendpointstock/update', formattedData);
     }
     return true;
 }
