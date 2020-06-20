@@ -1,1 +1,2 @@
-"worker: node dynoWorker.js"
+web: npm run dev
+worker: node dynoWorker.js
