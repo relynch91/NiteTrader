@@ -28,12 +28,22 @@ export default class StockSearch extends React.Component {
     let apiCall = figureAPICall(response);
     console.log(apiCall);
     if (apiCall) {
-      this.setState({ticker: apiCall});
+      this.setState((state) => {
+        return { ticker: state.ticker = apiCall}
+      });
       this.getStockDetails();
-      // return this.render();
     } else {
       
     }
+    // if (apiCall) {
+    //   this.setState({
+    //     ticker: apiCall
+    //   });
+    //   this.getStockDetails();
+    //   // return this.render();
+    // } else {
+
+    // }
   }  
 
   getStockDetails(e){
@@ -94,7 +104,6 @@ export default class StockSearch extends React.Component {
               className="stock-form-submit"
             />
           </form>
-
         </div>
           {stockSearchLanding}
           {theStockDetailsAndGraph}
