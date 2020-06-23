@@ -1,16 +1,7 @@
-/* .portfolio-container{
-    
-} */
-
 .portfolio-container{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     height: 500px;
-}
-
-.portfolio-background{
-    width: 100%;
-    min-height: min-content;
-    /* z-index: -100; */
+    /* background-image: url('./portfolio_background.png'); */
 }

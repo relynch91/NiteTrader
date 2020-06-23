@@ -1,8 +1,5 @@
 import React from 'react';
 import './stock_index.css';
-// import PortfolioBarChartContainer from '../portfolio/portfolio_barchart_container';
-// import PortfolioBarChart from '../portfolio/portfolio_barchart';
-// import { formatPortfolioData } from '../../../util/portfolio_api_util'
 
 export default class StockIndex extends React.Component {
 
@@ -28,7 +25,7 @@ export default class StockIndex extends React.Component {
     if (Object.keys(myPortfolio).length === 0){return null};
 
     return (
-      <div>
+      <div className="stock-index-container">
         <div className="stock-index-main">
           <p>Here is Your Current Stock Portfolio</p>
           {Object.keys(myPortfolio).map((ticker, idx) => (
@@ -50,7 +47,6 @@ export default class StockIndex extends React.Component {
             </div>
           ))}
         </div>
-        {/* <PortfolioBarChart data={this.props.myPortfolio.data}/> */}
       </div>
     );
   }

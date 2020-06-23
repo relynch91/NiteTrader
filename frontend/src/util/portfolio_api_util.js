@@ -17,7 +17,6 @@ export const activeShares = (trades) => {
         }
     })
     return res;
-    // return ownedStocksOnly(res);
 }
 
 function newPricePerShareBuy(existingStock, newStock) {
@@ -36,18 +35,14 @@ export const fetchDBStockData = (transactions) => {
 }
 
  export const overUnder = (stockObj) => {
-        // debugger
         let purchased = stockObj.pricePerShare;
         let current = Math.floor(parseInt(stockObj.quoteEndPointData.price))
         return Math.round(parseFloat(current - purchased));
-        // let res = Math.round(parseFloat(current - purchased));
-        // return res > 0 ? {'up': res} : { 'down': res} 
 }
 
 export const formatPortfolioData = (portfolio) => {
     let res = [];
     Object.keys(portfolio).forEach(ticker => {
-        // debugger
         let key = portfolio[ticker].priceDiff > 0 ? 'Gain' : 'Loss';
         res.push({ name: ticker, [key]: portfolio[ticker].priceDiff })
     })

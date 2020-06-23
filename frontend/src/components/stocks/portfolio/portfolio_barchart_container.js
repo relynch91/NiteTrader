@@ -4,7 +4,6 @@ import PortfolioBarChart from './portfolio_barchart';
 
 const mapStateToProps = (state) => ({
     portfolio: state.portfolio,
-    // pnl: data
 })
 
 export default connect(mapStateToProps, null)(PortfolioBarChart);
