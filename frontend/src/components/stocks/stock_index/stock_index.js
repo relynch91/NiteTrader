@@ -18,26 +18,25 @@ export default class StockIndex extends React.Component {
   render(){
     let { myPortfolio } = this.props;
     console.log(myPortfolio);
-    if (Object.keys(myPortfolio).length === 0){return null};
+    if (Object.keys(myPortfolio).length === 0) {return null};
     return (
       <div className="stock-index-main">
         {Object.keys(myPortfolio).map((ticker, idx) => (
           <div className="stock-box-owned" key={idx * 392}>
-            <span>{ticker}</span>
-            <ul>
-              < li className = "current-price">
+            <div className='stock-box-owned-ticker'>Ticker: {ticker}</div>
+            <ul className='stock-box-owned-details'>
+              < li className='stock-boxowned--current-price'>
                 Price Per Share: 
-                ${Math.floor(parseFloat(myPortfolio[ticker].pricePerShare))}
+                ${(parseFloat(myPortfolio[ticker].pricePerShare).toFixed(2))}
               </li>
-              < li className = "purchase-price">
-                Shares Owned: {myPortfolio[ticker].ownedShares}
+              < li className="stock-box-owned-purchase-price">
+                Shares Owned: {myPortfolio[ticker].ownedShares.toFixed(2)}
               </li>
-          
               {(myPortfolio[ticker]['priceDiff'] > 0) ? 
-              <li className = "price-change-positive" >
-                Gain Per Share: ${myPortfolio[ticker]['priceDiff']}
+              <li className='stock-box-owned-price-change-positive'>
+                Gain Per Share: ${myPortfolio[ticker]['priceDiff'].toFixed(2)}
               </li> :
-              <li className="price-change-negative">
+              <li className='stock-box-owned-price-change-negative'>
                 Loss Loss Per Share: ${myPortfolio[ticker]['priceDiff']}
               </li>
               }

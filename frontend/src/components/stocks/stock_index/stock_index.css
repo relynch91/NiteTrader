@@ -1,20 +1,8 @@
 .stock-box-owned {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
+    flex-direction: column;
     border: 1px solid gray;
     background-color: rgb(232, 232, 232);
     padding: 20px;
     margin:10px 0 0 0px;
-}
-
-.current-price{
-    font-size: 16px;
-    color: #291F1E
-}
-
-.purchase-price{
-    font-size: 16px;
-    color: #291F1E
 }
