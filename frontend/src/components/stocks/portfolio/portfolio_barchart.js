@@ -17,7 +17,6 @@ export default class PortfolioBarChart extends PureComponent {
     }
 
     render() {
-
         let { portfolio } = this.props;
         if (Object.keys(portfolio).length === 0) { return null };
         return (
