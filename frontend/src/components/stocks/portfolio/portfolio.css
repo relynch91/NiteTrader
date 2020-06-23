@@ -1,7 +1,6 @@
 .portfolio-container{
-     display: flex;
+    display: flex;
     justify-content: space-evenly;
     align-items: center;
     height: 500px;
-    /* background-image: url('./portfolio_background.png'); */
 }
