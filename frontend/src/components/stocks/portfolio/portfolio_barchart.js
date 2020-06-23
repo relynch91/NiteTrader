@@ -5,7 +5,6 @@ import {
 import { formatPortfolioData } from '../../../util/portfolio_api_util'
 
 export default class PortfolioBarChart extends PureComponent {
-
     constructor(props){
         super(props)
         this.state = {};
@@ -21,7 +20,6 @@ export default class PortfolioBarChart extends PureComponent {
 
         let { portfolio } = this.props;
         if (Object.keys(portfolio).length === 0) { return null };
-
         return (
             <BarChart
                 width={500}
