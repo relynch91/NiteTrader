@@ -13,5 +13,15 @@ export const receivePortfolio = transactions => {
 
 export const buildPortfolio = transactions => dispatch => {
     let ownedStocks = PortUtil.activeShares(transactions)
-    return dispatch(receivePortfolio(ownedStocks))
+    PortUtil.fetchDBStockData(ownedStocks)
+        .then((stockApiArray) => {
+            stockApiArray.forEach(stockObj => {
+                let sym = stockObj.data.symbol
+                ownedStocks[sym]['quoteEndPointData'] = stockObj.data
+                ownedStocks[sym]['priceDiff'] = PortUtil.overUnder(ownedStocks[sym])
+            })
+            console.log(ownedStocks)
+            dispatch(receivePortfolio(ownedStocks))
+        })
+    
 };
