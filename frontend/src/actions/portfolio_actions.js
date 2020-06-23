@@ -20,7 +20,7 @@ export const buildPortfolio = transactions => dispatch => {
                 ownedStocks[sym]['quoteEndPointData'] = stockObj.data
                 ownedStocks[sym]['priceDiff'] = PortUtil.overUnder(ownedStocks[sym])
             })
-            console.log(ownedStocks)
+            // console.log(ownedStocks)
             dispatch(receivePortfolio(ownedStocks))
         })
     

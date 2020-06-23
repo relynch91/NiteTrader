@@ -73,7 +73,6 @@ export default class StockSearch extends React.Component {
         </div>
       </div>
     );
-    
 
     return (
       <div className="stock-search-container">
