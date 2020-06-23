@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom'
 import './navbar.css'
+import { session } from 'passport';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class NavBar extends React.Component {
         <div className="navbar-main">
           <NavLink className="home-logo" to="/">NiteTrader</NavLink>
             <div>
-              <Link className="navbar-link" to={'/portfolio'}>Portfolio</Link>
+      <Link className="navbar-link" to={'/portfolio'}> {this.props.user} Portfolio </Link>
               <Link className="navbar-link" to={'/search'}>Search Stocks</Link>
               <button className="navbar-button" onClick={this.logoutUser}>Logout</button>
             </div>

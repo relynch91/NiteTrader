@@ -8,7 +8,7 @@ class Portfolio extends React.Component {
   render() {
     return (
         <div className="portfolio-container">
-          <div><StockIndexContainer /></div>
+          <StockIndexContainer />
           <PortfolioBarChartContainer />
       </div>
     );
