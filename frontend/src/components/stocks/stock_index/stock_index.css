@@ -9,26 +9,17 @@
     margin: 0 0 20px 100px;
     width: 70%
 }
+
 .stock-box{
     display: flex;
     justify-content: space-around;
-    align-items: flex-start;
+    align-items: center;
     text-align: center;
     border: 1px solid gray;
     background-color: rgb(232, 232, 232);
     padding: 20px;
     margin:10px 0 0 100px;
-    cursor: pointer;
-    max-width: 60%;
 }
-.stock-box span:first-child{
-    font-size: 20px;
-    margin-right: 5px;
-}
-.stock-box span:last-child{
-    margin-left: 5px;
-}
-
 .current-price{
     font-size: 16px;
     color: #291F1E

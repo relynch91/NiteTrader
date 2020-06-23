@@ -1,6 +1,6 @@
 .portfolio-container{
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
     align-items: center;
     height: 500px;
     /* background-image: url('./portfolio_background.png'); */

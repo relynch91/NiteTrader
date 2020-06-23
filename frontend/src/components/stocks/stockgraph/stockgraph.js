@@ -78,6 +78,7 @@ export default class StockGraph extends React.Component {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" />
           <YAxis dataKey="close"/>
+          <YAxis type="number" domain={[0, 'dataMax']} />
           <Tooltip />
           <Legend />
           <Line type="monotone" dataKey="high"  stroke="#C4D6BO" activeDot={{ r: 8 }} />

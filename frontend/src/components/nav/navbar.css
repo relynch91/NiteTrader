@@ -5,6 +5,7 @@
     justify-content: space-between;
     align-items: center;
     /* min-width: 500px; */
+    width: 100vw;
 }
 
 .navbar-link{

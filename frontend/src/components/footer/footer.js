@@ -16,13 +16,15 @@ class Footer extends React.Component {
                         <ul>
                             <li>
                                 < a href = "https://www.linkedin.com/in/brhafner/" 
-                                target='_blank' rel='noopener'>
+                                target = '_blank'
+                                rel = 'noopener noreferrer' >
                                     LinkedIn Profile
                                 </a>
                             </li>
                             <li>
                                 < a href = "https://github.com/brhafner" 
-                                target='_blank' rel='noopener'>
+                                target = '_blank'
+                                rel = 'noopener noreferrer' >
                                     GitHub Link
                                 </a>
                             </li>
@@ -33,13 +35,15 @@ class Footer extends React.Component {
                         <ul>
                             <li>
                                 < a href = "https://www.linkedin.com/in/jasonwintery/" 
-                                target='_blank' rel='noopener'>
+                                target = '_blank'
+                                rel = 'noopener noreferrer' >
                                     LinkedIn Profile
                                 </a>
                             </li>
                             <li>
                                 < a href = "https://github.com/oranje19" 
-                                target='_blank' rel='noopener'>
+                                target = '_blank'
+                                rel = 'noopener noreferrer' >
                                     GitHub Link
                                 </a>
                             </li>
@@ -51,13 +55,15 @@ class Footer extends React.Component {
                         <ul>
                             <li>
                                 <a href="https://www.linkedin.com/in/ryan-e-lynch/" 
-                                target='_blank' rel='noopener'>
+                                target = '_blank'
+                                rel = 'noopener noreferrer' >
                                     LinkedIn Profile
                                 </a>
                             </li>
                             <li>
                                 < a href="https://github.com/relynch91" 
-                                target='_blank' rel='noopener'>
+                                target = '_blank'
+                                rel = 'noopener noreferrer' >
                                     GitHub Link
                                 </a>
                             </li>

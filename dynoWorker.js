@@ -1,6 +1,6 @@
 const axios = require('axios').default;
 const key = require('./config/keys');
-const globalEndPointObject = require('./config/endPointRestructure')
+const globalEndPointObject = require('./config/endPointRestructure.js')
 
 function unpackTickers(argument) {
     let tickers = [];
@@ -14,7 +14,7 @@ function unpackTickers(argument) {
 }
 
 async function receiveTickers() {
-    let apiData = await axios.get('http://localhost:5000/api/transactions/activeTrades');
+    let apiData = await axios.get('https://nitetrader.herokuapp.com/api/transactions/activeTrades');
     return apiData
 }
 
@@ -31,7 +31,7 @@ function timeout(ms) {
 }
 
 async function fireAPI(ticker) {
-    await timeout(20000)
+    await timeout(15000)
     let value = await axios.get(`
     https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key}`);
     return value;
@@ -43,7 +43,7 @@ async function updateDatabase(tickers) {
         let formattedData = globalEndPointObject(stockData.data['Global Quote']);
         console.log(formattedData);
         await axios.patch(
-            'http://localhost:5000/api/stock_api/quoteendpointstock/update', formattedData);
+            'https://nitetrader.herokuapp.com/api/stock_api/quoteendpointstock/update', formattedData);
     }
     return true;
 }
