@@ -16,7 +16,7 @@ export const activeShares = (trades) => {
             stock.ownedShares -= trade.shares
         }
     })
-    return ownedStocksOnly(res);
+    return res;
 }
 
 function newPricePerShareBuy(existingStock, newStock) {
@@ -26,21 +26,25 @@ function newPricePerShareBuy(existingStock, newStock) {
     return (startingPrice + secondPrice) / totalShares;
 }
 
-function ownedStocksOnly(transactions) {
-    let res = {};
-    let activeTickers = Object.keys(transactions).filter(ticker => transactions[ticker].ownedShares > 0)
+export const fetchDBStockData = (transactions) => {
 
-    activeTickers.forEach( ticker => {
-        res[ticker] = transactions[ticker];
-        QuoteEP.fetchQuoteEndPointDB(ticker)
-        .then( data => res[ticker].quoteEndPointData = data['data'])
-            .then(() => res[ticker]['diff'] = overUnder(res[ticker]));
-    })
-    return res;
+    let activeTickers = Object.keys(transactions).filter(ticker => transactions[ticker].ownedShares > 0)
+    let allPromises = activeTickers.map(ticker => QuoteEP.fetchQuoteEndPointDB(ticker))
+
+    return Promise.all(allPromises);
 }
 
- function overUnder(stockObj){
+ export const overUnder = (stockObj) => {
         let purchased = stockObj.pricePerShare;
         let current = Math.floor(parseInt(stockObj.quoteEndPointData.price))
         return Math.round(parseFloat(current - purchased));
+}
+
+export const formatPortfolioData = (portfolio) => {
+    let res = [];
+    Object.keys(portfolio).forEach(ticker => {
+        let key = portfolio[ticker].priceDiff > 0 ? 'Gain' : 'Loss';
+        res.push({ name: ticker, [key]: portfolio[ticker].priceDiff })
+    })
+    return res;
 }

@@ -1,47 +1,49 @@
 import React from 'react';
 import './stock_index.css';
+
 export default class StockIndex extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {};
+  }
   componentDidMount(){
-    let { fetchTrades, userId } = this.props;
+    let { fetchTrades, userId } = this.props
     fetchTrades(userId)
   }
-
   componentDidUpdate(prevProps) {
     if (this.props.myStocks !== prevProps.myStocks) {
       this.props.buildPortfolio(this.props.myStocks);
     }
   }
-  
   render(){
     let { myPortfolio } = this.props;
     if (Object.keys(myPortfolio).length === 0){return null};
-    return (
-      <div className="stock-index-table">
-        {Object.keys(myPortfolio).map((ticker, idx) => (
-          <div className="stock-box" key={idx * 392}>
-            <div>
-              {ticker}
-            </div>
-            <div className="current-price">
-              Your Average Cost: ${Math.floor(parseFloat(myPortfolio[ticker].pricePerShare))}
 
-            </div>
-            <div className="purchase-price">
-              Shares Owned: {myPortfolio[ticker].ownedShares}
-            </div>
-            <div className="quote-endpoint-data">
-              Other Data: {
-                myPortfolio[ticker].quoteEndPointData
+    return (
+      <div className="stock-index-main">
+        {Object.keys(myPortfolio).map((ticker, idx) => (
+          <div className="stock-box-owned" key={idx * 392}>
+            <div className='stock-box-owned-ticker'>Ticker: {ticker}</div>
+            <ul className='stock-box-owned-details'>
+              < li className='stock-boxowned-current-price'>
+                Price Per Share: 
+                ${(parseFloat(myPortfolio[ticker].pricePerShare).toFixed(2))}
+              </li>
+              < li className="stock-box-owned-purchase-price">
+                Shares Owned: {myPortfolio[ticker].ownedShares.toFixed(2)}
+              </li>
+              {(myPortfolio[ticker]['priceDiff'] > 0) ? 
+              <li className='stock-box-owned-price-change-positive'>
+                Gain Per Share: ${myPortfolio[ticker]['priceDiff'].toFixed(2)}
+              </li> :
+              <li className='stock-box-owned-price-change-negative'>
+                Loss Loss Per Share: ${myPortfolio[ticker]['priceDiff']}
+              </li>
               }
-            </div>
-            {/* {console.log(myPortfolio[ticker])} */}
-            {/* {(myPortfolio[ticker].diff > 0) ?
-              <p className="price-change-positive">Gain Per Share: ${myPortfolio[ticker].diff}</p> :
-              <p className="price-change-negative">Loss Loss Per Share: ${myPortfolio[ticker].diff}</p>
-            } */}
+            </ul>
           </div>
         ))}
       </div>
     );
-  };
+  }
 }
