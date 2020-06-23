@@ -31,7 +31,8 @@ export default class StockSearch extends React.Component {
     e.preventDefault();
     const stockSearchAPI = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${this.state.stock}&apikey=${key}`;
     this.props.stockNameSearchAPICall(stockSearchAPI)
-    .then(response => this.apiLogic(response['name']['data']['bestMatches']))
+    .then(response => 
+      this.apiLogic(response['name']['data']['bestMatches']))
   }
   
   apiLogic(response) {

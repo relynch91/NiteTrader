@@ -1,15 +1,10 @@
 import * as AlphaAdvantageUtil from '../util/alphaAdvantageAPI';
-
 export const RECEIVE_INTRADAY = 'RECEIVE_INTRADAY';
 export const RECEIVE_INTRADAY_SUCCESS = 'RECEIVE_INTRADAY_SUCCESS';
 export const RECEIVE_INTRADAY_FAILURE = 'RECEIVE_INTRADAY_FAILURE';
-
-
 export const RECEIVE_TIME_SERIES = 'RECEIVE_TIME_SERIES';
 export const RECEIVE_TIME_SERIES_SUCCESS = 'RECEIVE_TIME_SERIES_SUCCESS';
 export const RECEIVE_TIME_SERIES_FAILURE = 'RECEIVE_TIME_SERIES_FAILURE';
-
-
 export const RECEIVE_STOCK_NAME = 'RECEIEVE_STOCK_NAME';
 export const RECEIVE_STOCK_NAME_SUCCESS = 'RECEIEVE_STOCK_NAME_SUCCESS';
 export const RECEIVE_STOCK_NAME_FAILURE = 'RECEIEVE_STOCK_NAME_FAILURE';
@@ -23,7 +18,7 @@ export const receiveIntraDay = () => ({
     type: RECEIVE_INTRADAY,
 })
 
-export const receiveIntraDaySucess = stock => ({
+export const receiveIntraDaySuccess = stock => ({
     type: RECEIVE_INTRADAY_SUCCESS,
     stock
 })
@@ -33,14 +28,32 @@ export const receiveIntraDayFailure = error => ({
     error
 })
 
-export const receiveTimeSeries = stock => ({
+export const receiveTimeSeries = () => ({
     type: RECEIVE_TIME_SERIES,
+})
+
+export const receiveTimeSeriesSuccess = stock => ({
+    type: RECEIVE_TIME_SERIES_SUCCESS,
     stock
 })
 
-export const receiveStockName = (name) => ({
+export const receiveTimeSeriesFailure = error => ({
+    type: RECEIVE_TIME_SERIES_FAILURE,
+    error
+})
+
+export const receiveStockName = () => ({
     type: RECEIVE_STOCK_NAME,
+})
+
+export const receiveStockNameSucess = name => ({
+    type: RECEIVE_STOCK_NAME_SUCCESS,
     name
+})
+
+export const receiveStockNameFailure = error => ({
+    type: RECEIVE_STOCK_NAME_FAILURE,
+    error
 })
 
 // export const getQuoteEndPointAlpha = stockURL => dispatch => (
@@ -49,20 +62,38 @@ export const receiveStockName = (name) => ({
 //     ))
 // )
 
-export const intraDayAPICall = apiURL => dispatch => (
-    AlphaAdvantageUtil.intraDayAPI(apiURL).then((stockData) => (
-        dispatch(receiveIntraDay(stockData))
-    ))
-)
+export const intraDayAPICall = apiURL => dispatch => {
+    dispatch(receiveIntraDay())
+    AlphaAdvantageUtil.intraDayAPI(apiURL)
+        .then(stockData => {
+            dispatch(receiveIntraDaySuccess(stockData))
+        })
+        .catch(error => {
+            dispatch(receiveIntraDayFailure(error.messages))
+        }
+    )
+}
 
-export const timeSeriesInfoAPICall = apiURL => dispatch => (
-    AlphaAdvantageUtil.timeSeriesInfo(apiURL).then((stockData) => (
-        dispatch(receiveTimeSeries(stockData))
-    ))
-)
+export const timeSeriesInfoAPICall = apiURL => dispatch => {
+    dispatch(receiveTimeSeries())
+    AlphaAdvantageUtil.timeSeriesInfo(apiURL)
+        .then((stockData) => {
+            dispatch(receiveTimeSeriesSuccess(stockData))
+        })
+        .catch(error => {
+            dispatch(receiveTimeSeriesFailure(error.messages))
+        }
+    )
+}
 
-export const stockNameAPICall = apiURL => dispatch => (
-    AlphaAdvantageUtil.stockName(apiURL).then(stockData => (
-        dispatch(receiveStockName(stockData))
-    ))
-)
+export const stockNameAPICall = apiURL => dispatch => {
+    dispatch(receiveStockName())
+    AlphaAdvantageUtil.stockName(apiURL)
+        .then(stockData => {
+            dispatch(receiveStockNameSucess(stockData))
+        })
+        .catch( error => {
+            dispatch(receiveStockNameFailure(error))
+        }
+    )
+}
