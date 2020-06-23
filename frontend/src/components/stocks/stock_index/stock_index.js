@@ -14,9 +14,7 @@ export default class StockIndex extends React.Component {
   
   render(){
     let { myPortfolio } = this.props;
-    debugger
     if (Object.keys(myPortfolio).length === 0){return null};
-    debugger
     return (
       <div className="stock-index-table">
         {Object.keys(myPortfolio).map((ticker, idx) => (

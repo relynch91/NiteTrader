@@ -10,11 +10,21 @@ export default class StockSearch extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      stocks: "",
-      ticker: ""
+      stocks: {},
+      ticker: "",
+      loading: true,
+      error: ''
     };
     this.getStockDetails = this.getStockDetails.bind(this);
     this.getStockTicker = this.getStockTicker.bind(this);
+  }
+
+  componentWillUnmount() {
+    this.setState(() => {
+      return { 
+        ticker: "",
+        stocks: ""
+    }})
   }
 
   getStockTicker(e) {
@@ -26,33 +36,23 @@ export default class StockSearch extends React.Component {
   
   apiLogic(response) {
     let apiCall = figureAPICall(response);
-    console.log(apiCall);
     if (apiCall) {
-      this.setState((state) => {
-        return { ticker: state.ticker = apiCall}
-      });
+      this.setState({
+                ticker: apiCall
+              });
       this.getStockDetails();
     } else {
       
     }
-    // if (apiCall) {
-    //   this.setState({
-    //     ticker: apiCall
-    //   });
-    //   this.getStockDetails();
-    //   // return this.render();
-    // } else {
-
-    // }
   }  
 
   getStockDetails(e){
     if (e) { e.preventDefault() }
     const intraDayAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.ticker}&interval=15min&outputsize=full&apikey=${key}`;
-    this.props.intraDayAPICall(intraDayAPI);
+    const intraDay = this.props.intraDayAPICall(intraDayAPI);
     const timeSeriesMonthlyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${this.state.ticker}&apikey=${key}`;
-    this.props.timeSeriesInfoAPICall(timeSeriesMonthlyAPI);
-    return true;
+    const timeSeries = this.props.timeSeriesInfoAPICall(timeSeriesMonthlyAPI);
+    // return Promise.all([intraDay, timeSeries])
   }
   
   update() {
@@ -85,7 +85,6 @@ export default class StockSearch extends React.Component {
       </div>
     );
     
-
     return (
       <div className="stock-search-container">
         <div className="stock-search-component">

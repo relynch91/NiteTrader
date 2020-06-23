@@ -1,21 +1,39 @@
 import * as AlphaAdvantageUtil from '../util/alphaAdvantageAPI';
 
-export const RECEIVE_STOCK = 'RECEIVE_STOCK';
 export const RECEIVE_INTRADAY = 'RECEIVE_INTRADAY';
+export const RECEIVE_INTRADAY_SUCCESS = 'RECEIVE_INTRADAY_SUCCESS';
+export const RECEIVE_INTRADAY_FAILURE = 'RECEIVE_INTRADAY_FAILURE';
+
+
 export const RECEIVE_TIME_SERIES = 'RECEIVE_TIME_SERIES';
+export const RECEIVE_TIME_SERIES_SUCCESS = 'RECEIVE_TIME_SERIES_SUCCESS';
+export const RECEIVE_TIME_SERIES_FAILURE = 'RECEIVE_TIME_SERIES_FAILURE';
+
+
 export const RECEIVE_STOCK_NAME = 'RECEIEVE_STOCK_NAME';
+export const RECEIVE_STOCK_NAME_SUCCESS = 'RECEIEVE_STOCK_NAME_SUCCESS';
+export const RECEIVE_STOCK_NAME_FAILURE = 'RECEIEVE_STOCK_NAME_FAILURE';
 
-export const receiveStock = (stock) => ({
-    type: RECEIVE_STOCK,
-    stock
-})
+// export const receiveStock = (stock) => ({
+//     type: RECEIVE_STOCK,
+//     stock
+// })
 
-export const receiveIntraDay = (stock) => ({
+export const receiveIntraDay = () => ({
     type: RECEIVE_INTRADAY,
+})
+
+export const receiveIntraDaySucess = stock => ({
+    type: RECEIVE_INTRADAY_SUCCESS,
     stock
 })
 
-export const receiveTimeSeries = (stock) => ({
+export const receiveIntraDayFailure = error => ({
+    type: RECEIVE_INTRADAY_FAILURE,
+    error
+})
+
+export const receiveTimeSeries = stock => ({
     type: RECEIVE_TIME_SERIES,
     stock
 })
@@ -25,11 +43,11 @@ export const receiveStockName = (name) => ({
     name
 })
 
-export const getQuoteEndPointAlpha = stockURL => dispatch => (
-    AlphaAdvantageUtil.quoteEndPoint(stockURL).then((stockData) => (
-        dispatch(receiveStock(stockData))
-    ))
-)
+// export const getQuoteEndPointAlpha = stockURL => dispatch => (
+//     AlphaAdvantageUtil.quoteEndPoint(stockURL).then((stockData) => (
+//         dispatch(receiveStock(stockData))
+//     ))
+// )
 
 export const intraDayAPICall = apiURL => dispatch => (
     AlphaAdvantageUtil.intraDayAPI(apiURL).then((stockData) => (
