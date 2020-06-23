@@ -1,5 +1,4 @@
 import * as PortUtil from '../util/portfolio_api_util';
-import PortfolioBarChart from '../components/stocks/portfolio/portfolio_barchart';
 
 export const RECEIVE_PORTFOLIO = 'RECEIVE_PORTFOLIO';
 export const RECEIVE_PORTFOLIO_ERRORS = 'RECEIVE_PORTFOLIO_ERRORS';

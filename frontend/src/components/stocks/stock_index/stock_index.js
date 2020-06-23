@@ -27,7 +27,7 @@ export default class StockIndex extends React.Component {
     return (
       <div className="stock-index-container">
         <div className="stock-index-main">
-          <p>Here is Your Current Stock Portfolio</p>
+          <p>Welcome to Your Stock Portfolio</p>
           {Object.keys(myPortfolio).map((ticker, idx) => (
             <div className="stock-box" key={idx * 392}>
               <span>{ticker}</span>
