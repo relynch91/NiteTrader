@@ -37,8 +37,8 @@ export default class PortfolioBarChart extends PureComponent {
                 <Tooltip />
                 <Legend />
                 <ReferenceLine y={0} stroke="#000" />
-                <Bar dataKey="down" fill="#A3333D" />
-                <Bar dataKey="up" fill="#82ca9d" />
+                <Bar dataKey="Loss" fill="#A3333D" />
+                <Bar dataKey="Gain" fill="#82ca9d" />
             </BarChart>
         );
     }
