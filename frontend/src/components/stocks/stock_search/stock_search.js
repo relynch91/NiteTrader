@@ -43,7 +43,7 @@ export default class StockSearch extends React.Component {
               });
       this.getStockDetails();
     } else {
-      //this
+      // render the search results
     }
   }  
 
