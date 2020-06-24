@@ -106,6 +106,7 @@ export default class StockSearch extends React.Component {
           {stockSearchLanding}
           {theStockDetailsAndGraph}
       </div>
-    );
+    )
+    ;
   }
 }
