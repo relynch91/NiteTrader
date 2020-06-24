@@ -43,7 +43,7 @@ export default class StockSearch extends React.Component {
               });
       this.getStockDetails();
     } else {
-      
+      //this
     }
   }  
 
@@ -69,9 +69,7 @@ export default class StockSearch extends React.Component {
         <StockGraph />
       </div>
     );
-
     let stockSearchLanding = (this.props.stockDetails.intraDay) ? null : (
-
       <div className="stock-search-landing">
         <span>
           <img 
