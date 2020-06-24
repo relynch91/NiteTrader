@@ -85,11 +85,7 @@ export default class StockSearch extends React.Component {
         </div>
       </div>
     );
-<<<<<<< HEAD
     
-=======
-
->>>>>>> 440ed90b08742191f25b9ec677f1a761c7d1e5fe
     return (
       <div className="stock-search-container">
         <div className="stock-search-component">
