@@ -10,27 +10,38 @@ export default class StockSearch extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      stocks: "",
-      ticker: ""
+      stocks: {},
+      ticker: "",
+      loading: true,
+      error: ''
     };
     this.getStockDetails = this.getStockDetails.bind(this);
     this.getStockTicker = this.getStockTicker.bind(this);
+  }
+
+  componentWillUnmount() {
+    this.setState(() => {
+      return { 
+        ticker: "",
+        stocks: ""
+    }})
   }
 
   getStockTicker(e) {
     e.preventDefault();
     const stockSearchAPI = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${this.state.stock}&apikey=${key}`;
     this.props.stockNameSearchAPICall(stockSearchAPI)
-    .then(response => this.apiLogic(response['name']['data']['bestMatches']))
+    .then(response => 
+      this.apiLogic(response['name']['data']['bestMatches']))
   }
   
   apiLogic(response) {
     let apiCall = figureAPICall(response);
-    console.log(apiCall);
     if (apiCall) {
-      this.setState({ticker: apiCall});
+      this.setState({
+                ticker: apiCall
+              });
       this.getStockDetails();
-      return this.render();
     } else {
       
     }
@@ -39,9 +50,10 @@ export default class StockSearch extends React.Component {
   getStockDetails(e){
     if (e) { e.preventDefault() }
     const intraDayAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.ticker}&interval=15min&outputsize=full&apikey=${key}`;
-    this.props.intraDayAPICall(intraDayAPI);
+    const intraDay = this.props.intraDayAPICall(intraDayAPI);
     const timeSeriesMonthlyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${this.state.ticker}&apikey=${key}`;
-    this.props.timeSeriesInfoAPICall(timeSeriesMonthlyAPI);
+    const timeSeries = this.props.timeSeriesInfoAPICall(timeSeriesMonthlyAPI);
+    // return Promise.all([intraDay, timeSeries])
   }
   
   update() {
@@ -73,7 +85,7 @@ export default class StockSearch extends React.Component {
         </div>
       </div>
     );
-
+    
     return (
       <div className="stock-search-container">
         <div className="stock-search-component">
@@ -92,7 +104,6 @@ export default class StockSearch extends React.Component {
               className="stock-form-submit"
             />
           </form>
-
         </div>
           {stockSearchLanding}
           {theStockDetailsAndGraph}
