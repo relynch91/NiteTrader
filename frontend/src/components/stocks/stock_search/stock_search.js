@@ -10,7 +10,10 @@ export default class StockSearch extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      stocks: {},
+      stock: '',
+      stocks: {
+        stockNameSearch: []
+      },
       ticker: "",
       loading: false,
     };
@@ -22,35 +25,52 @@ export default class StockSearch extends React.Component {
     this.setState(() => {
       return { 
         ticker: "",
-        stocks: ""
-    }})
+        loading: false,
+        stocks: {
+          stockNameSearch: []
+        },
+        stock: ''
+      }
+    })
   }
 
-  tickerCall(apiURL) {
-    this.props.stockNameSearchAPICall(apiURL).then(
-      res => this.apiLogic(res))
-    return true;
+  componentDidUpdate() {
+    if (this.state.ticker.length !== 0) {
+      // this.getStockDetails();
+    }
   }
 
-  getStockTicker(e) {
-    e.preventDefault();
+  async tickerCall(apiURL) {
+    let whatIs = this.props.stockNameSearchAPICall(apiURL);
+    return whatIs;
+  }
+
+  async getStockTicker(e) {
     const stockSearchAPI = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${this.state.stock}&apikey=${key}`;
-    this.tickerCall(stockSearchAPI);
-    return true;
-    // apiLogic(res['name']['data']['bestMatches'])
+    const stockSearch = await (this.tickerCall(stockSearchAPI));
+    this.apiLogic(stockSearch);
+  }
+
+  searchIsTicker (ticker) {
+    this.setState (() => {
+      return { ticker: ticker }
+    })
   }
   
-  apiLogic(response) {
-    let apiCall = figureAPICall(response);
-    if (apiCall) {
-      this.setState({
-                ticker: apiCall
-              });
-      this.getStockDetails();
-    } else {
-      // render the search results
+  apiLogic() {
+    const data = this.props.stockDetails['stockNameSearch'];
+    const tickerMatch = figureAPICall(data);
+    if (tickerMatch) {
+      const ticker = data[0]['1. symbol'];
+      this.setState(() => {
+        return {
+          ticker: ticker
+        }
+      }).then(() => this.getStockDetails());
+      // console.log(ticker);
     }
-  }  
+    // console.log(tickerMatch);
+  }
 
   getStockDetails(e){
     if (e) { e.preventDefault() }
@@ -58,7 +78,6 @@ export default class StockSearch extends React.Component {
     const intraDay = this.props.intraDayAPICall(intraDayAPI);
     const timeSeriesMonthlyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${this.state.ticker}&apikey=${key}`;
     const timeSeries = this.props.timeSeriesInfoAPICall(timeSeriesMonthlyAPI);
-    // return Promise.all([intraDay, timeSeries])
   }
   
   update() {

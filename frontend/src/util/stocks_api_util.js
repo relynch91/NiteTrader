@@ -75,10 +75,10 @@ export const twoYears = (stockData) => {
     return result;
 }
 
-export const figureAPICall = apiArray => {
-    console.log(apiArray[0]);
-    if (apiArray[0]['9. matchScore'] === '1.0000') {
-        return apiArray[0]['1. symbol']
+export const figureAPICall = (apiArray = []) => {
+    console.log(apiArray)
+    if (apiArray.length === 0  || apiArray[0]['9. matchScore'] !== '1.0000') {
+        return false
     }
-    return false;
+    return true
 }
