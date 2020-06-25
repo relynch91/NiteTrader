@@ -62,14 +62,13 @@ export default class StockSearch extends React.Component {
     const tickerMatch = figureAPICall(data);
     if (tickerMatch) {
       const ticker = data[0]['1. symbol'];
+      console.log(ticker)
       this.setState(() => {
         return {
           ticker: ticker
         }
-      }).then(() => this.getStockDetails());
-      // console.log(ticker);
+      })
     }
-    // console.log(tickerMatch);
   }
 
   getStockDetails(e){
