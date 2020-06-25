@@ -15,6 +15,7 @@ export default function (state = {}, action) {
     let nextState = Object.assign({}, state);
 
     switch (action.type) {
+        
         // case RECEIVE_STOCK:
         //     Object.assign(nextState, { globalEndPoint: action.stock.data["Global Quote"] });
         //     return nextState;
@@ -57,7 +58,12 @@ export default function (state = {}, action) {
 
         case RECEIVE_STOCK_NAME:
             Object.assign(nextState, {
-                loading: true 
+                loading: true,
+                stock: '',
+                stocks: {
+                    stockNameSearch: []
+                },
+                ticker: "",
             });
             return nextState;
         case RECEIVE_STOCK_NAME_SUCCESS:
