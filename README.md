@@ -5,3 +5,5 @@ NiteTrader is an application built implementing the MERN Stack Software Model.  
 Users are able to create stock portfolios with an initial value amount...(e.g. 50,000$).  The user will be able to buy and sell stock much similiar to actual stock market.  Furthermore, users will be able to create watch lists of stocks they have interest in.  The app will simulate how a user would have done if they had made the same trades using actual currency. The user is able to search for vast amounts of data on each individual stock utilizing a number of different api calls. 
 
 However, the rates on which api stock information calls to AlphaVantage and the amount of database entries are both bottlenecks in the current state of the app, and as a result, the user is not able to make multiple stock information calls quickly.  Design implementations of the backend database were then based around the prior mentioned information, and as result turned out to be an interesting curveball in the build process. 
+
+<!-- editing to set upstream -->
