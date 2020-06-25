@@ -44,9 +44,10 @@ export const receiveTimeSeriesFailure = error => ({
 
 export const receiveStockName = () => ({
     type: RECEIVE_STOCK_NAME,
+    loading: true
 })
 
-export const receiveStockNameSucess = name => ({
+export const receiveStockNameSuccess = name => ({
     type: RECEIVE_STOCK_NAME_SUCCESS,
     name
 })
@@ -87,10 +88,10 @@ export const timeSeriesInfoAPICall = apiURL => dispatch => {
 }
 
 export const stockNameAPICall = apiURL => dispatch => {
-    dispatch(receiveStockName())
+    // dispatch(receiveStockName())
     AlphaAdvantageUtil.stockName(apiURL)
         .then(stockData => {
-            dispatch(receiveStockNameSucess(stockData))
+            dispatch(receiveStockNameSuccess(stockData))
         })
         .catch( error => {
             dispatch(receiveStockNameFailure(error))

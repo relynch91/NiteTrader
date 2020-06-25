@@ -12,8 +12,7 @@ export default class StockSearch extends React.Component {
     this.state = {
       stocks: {},
       ticker: "",
-      loading: true,
-      error: ''
+      loading: false,
     };
     this.getStockDetails = this.getStockDetails.bind(this);
     this.getStockTicker = this.getStockTicker.bind(this);
@@ -27,12 +26,18 @@ export default class StockSearch extends React.Component {
     }})
   }
 
+  tickerCall(apiURL) {
+    this.props.stockNameSearchAPICall(apiURL).then(
+      res => this.apiLogic(res))
+    return true;
+  }
+
   getStockTicker(e) {
     e.preventDefault();
     const stockSearchAPI = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${this.state.stock}&apikey=${key}`;
-    this.props.stockNameSearchAPICall(stockSearchAPI)
-    .then(response => 
-      this.apiLogic(response['name']['data']['bestMatches']))
+    this.tickerCall(stockSearchAPI);
+    return true;
+    // apiLogic(res['name']['data']['bestMatches'])
   }
   
   apiLogic(response) {
@@ -43,7 +48,7 @@ export default class StockSearch extends React.Component {
               });
       this.getStockDetails();
     } else {
-      //this
+      // render the search results
     }
   }  
 
