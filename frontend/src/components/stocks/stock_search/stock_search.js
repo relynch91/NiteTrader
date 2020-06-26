@@ -3,8 +3,9 @@ import StockDetailsContainer from './stock_details_container';
 import StockGraph from '../stockgraph/stockgraph_container';
 import key from '../../../frontConfig/frontKeys';
 import './stock_search.css';
-import stockSearchLandingPic from './stock-search-landing.png'
-import { figureAPICall } from './../../../util/stocks_api_util'
+import stockSearchLandingPic from './stock-search-landing.png';
+import { figureAPICall } from './../../../util/stocks_api_util';
+import StockNameContainer from './stock_name_container';
 
 export default class StockSearch extends React.Component {
   constructor(props){
@@ -99,6 +100,23 @@ export default class StockSearch extends React.Component {
         </div>
       </div>
     );
+
+    // let theStockNames = !this.props.stocks.stockNameSearch ? null : (
+    //     <div>
+    //       <ul>
+    //         {this.props.stocks.stockNameSearch.map(compObj => {
+    //           return (<li>
+    //             <div>
+    //               <span>{compObj['1. symbol:']}</span>
+    //               <span>{compObj['2. name']}</span>
+    //               <span>{compObj['9. matchScore']}</span>
+    //             </div>
+    //           </li>)
+    //         })
+    //         }
+    //       </ul>
+    //     </div>
+    // )
     
     return (
       <div className="stock-search-container">
@@ -119,6 +137,9 @@ export default class StockSearch extends React.Component {
             />
           </form>
         </div>
+          <StockNameContainer
+            getStockDetails={this.getStockDetails}
+          />
           {stockSearchLanding}
           {theStockDetailsAndGraph}
       </div>

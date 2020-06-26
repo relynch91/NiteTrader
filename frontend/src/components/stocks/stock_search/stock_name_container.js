@@ -2,8 +2,11 @@ import { connect } from 'react-redux';
 import StockName from './stock_name';
 
 const mapStateToProps = (state) => ({
-    stockNames: state.stocks,
-    porfolio: null
+    stocks: state.stocks,
 });
+
+const mapDispatchToProps = dispatch => ({
+    null: null
+})
 
 export default connect(mapStateToProps, null)(StockName);
