@@ -5,13 +5,13 @@ export default class StockName extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            ticker: ""
+            stock: ""
         }
     }
 
-    handleClick(){
+    handleClick(ticker){
         this.setState({
-            ticker: 'aapl'
+            stock: ticker
         })
         this.props.getStockDetails()
     }
@@ -21,10 +21,11 @@ export default class StockName extends React.Component {
         if (!this.props.stocks.stockNameSearch) {return null}
         return (
             <div>
+                <p>Click on the company below to search their stock data</p>
                 <ul>
                     {this.props.stocks.stockNameSearch.map(compObj => {
                         return (
-                            <li onClick={() => this.handleClick()}>
+                            <li onClick={() => this.handleClick(compObj['1. symbol'])}>
                                 <span>{compObj['1. symbol:']}</span>
                                 <span>{compObj['2. name']}</span>
                                 <span>{compObj['9. matchScore']}</span>
