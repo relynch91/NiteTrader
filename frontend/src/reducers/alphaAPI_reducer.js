@@ -1,5 +1,4 @@
-import { //RECEIVE_STOCK, 
-    RECEIVE_INTRADAY, 
+import { RECEIVE_INTRADAY, 
     RECEIVE_TIME_SERIES, 
     RECEIVE_STOCK_NAME, 
     RECEIVE_INTRADAY_SUCCESS, 
@@ -21,13 +20,8 @@ export default function (oldState = preLoadedState, action) {
 
     switch (action.type) {
         
-        // case RECEIVE_STOCK:
-        //     Object.assign(nextState, { globalEndPoint: action.stock.data["Global Quote"] });
-        //     return nextState;
-
         case RECEIVE_INTRADAY:
             Object.assign(nextState, {
-                // intraDay: {},
                 stockNameSearch: []
             });
             return nextState;
@@ -48,7 +42,6 @@ export default function (oldState = preLoadedState, action) {
 
         case RECEIVE_TIME_SERIES:
             Object.assign(nextState, {
-                // intraDay: {},
                 stockNameSearch: []
             });
             return nextState;
@@ -63,7 +56,6 @@ export default function (oldState = preLoadedState, action) {
             Object.assign(nextState, {
                 timeSeriesMonthly: {},
                 loading: false,
-                // error: action.error
             });
             return nextState;
 
@@ -83,9 +75,7 @@ export default function (oldState = preLoadedState, action) {
             return nextState;
         case RECEIVE_STOCK_NAME_FAILURE:
             Object.assign(nextState, {
-                // stockNameSearch: {},
                 loading: false,
-                // error: action.error
             });
             return nextState;
 
