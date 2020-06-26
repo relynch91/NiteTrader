@@ -68,10 +68,14 @@ export const intraDayAPICall = apiURL => dispatch => {
     dispatch(receiveIntraDay())
     AlphaAdvantageUtil.intraDayAPI(apiURL)
         .then(stockData => {
-            dispatch(receiveIntraDaySuccess(stockData))
+            if (stockData.data.Note || stockData.data['Error Message']) {
+                dispatch(receiveIntraDayFailure(stockData))
+            } else {
+                dispatch(receiveIntraDaySuccess(stockData))
+            }
         })
         .catch(error => {
-            dispatch(receiveIntraDayFailure(error.messages))
+            dispatch(receiveIntraDayFailure(error))
         }
     )
 }
@@ -80,10 +84,16 @@ export const timeSeriesInfoAPICall = apiURL => dispatch => {
     dispatch(receiveTimeSeries())
     AlphaAdvantageUtil.timeSeriesInfo(apiURL)
         .then((stockData) => {
-            dispatch(receiveTimeSeriesSuccess(stockData))
+            console.log(stockData);
+            if (stockData.data.Note || stockData.data['Error Message']) {
+                dispatch(receiveTimeSeriesFailure(stockData))
+            } else {
+                dispatch(receiveTimeSeriesSuccess(stockData))
+            }
+            
         })
         .catch(error => {
-            dispatch(receiveTimeSeriesFailure(error.messages))
+            dispatch(receiveTimeSeriesFailure(error))
         }
     )
 }

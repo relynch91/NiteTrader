@@ -53,25 +53,27 @@
     margin: 50px 0 30px 80px;
 }
 
-.stock-search-landing{
+.stock-search-landing {
     position: relative;
     max-height: 600px;
     background-color: lightgrey;
 }
 
-.stock-search-landing div{
-    margin: -70px 0 0 -180px;
+.stock-search-landing div {
+    /* margin: -70px 0 0 -180px;  */
     position: absolute;
-    top: 30%;
-    left: 45%;
-    padding: 40px;
+    top: 10%;
+    /* left: 50%; */
+    padding: 40px; 
+    display: flex;
+    flex-direction: column;
 }
-.stock-search-landing div > p{
+.stock-search-landing div > p {
     font-size: 50px;
     font-weight: 700;
     color: #A3333D;
 }
-.stock-search-landing div > span{
+.stock-search-landing div > span {
     display: flex;
     justify-content: space-evenly;
     align-items: center;

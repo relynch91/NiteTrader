@@ -25,22 +25,22 @@ export default class StockGraph extends React.Component {
       low: stockDataFromState[dateKey]["3. low"],
       close: stockDataFromState[dateKey]["4. close"],
     }));
-    this.setState({ stock: structuredProps.reverse() });
+    this.setState( { stock: structuredProps.reverse() });
   }
 
   componentDidMount(){
     this.formatGraphData()
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.stockInfo !== prevProps.stockInfo){
-      this.formatGraphData()
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.stockInfo !== prevProps.stockInfo){
+  //     this.formatGraphData()
+  //   }
+  // }
 
   handleClick(stockData){
     this.formatGraphData(stockData);
-    return this.render()
+    // return this.render()
   }
 
   render() {
