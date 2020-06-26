@@ -1,6 +1,6 @@
 import React from 'react';
 import StockDetailsContainer from './stock_details_container';
-import StockGraph from '../stockgraph/stockgraph_container';
+import StockGraphContainer from '../stockgraph/stockgraph_container';
 import key from '../../../frontConfig/frontKeys';
 import './stock_search.css';
 import stockSearchLandingPic from './stock-search-landing.png';
@@ -22,18 +22,18 @@ export default class StockSearch extends React.Component {
     this.getStockTicker = this.getStockTicker.bind(this);
   }
   
-  componentWillUnmount() {
-    this.setState(() => {
-      return { 
-        ticker: "",
-        loading: false,
-        stocks: {
-          stockNameSearch: []
-        },
-        stock: ''
-      }
-    })
-  }
+  // componentWillUnmount() {
+  //   this.setState(() => {
+  //     return { 
+  //       ticker: "",
+  //       loading: false,
+  //       stocks: {
+  //         stockNameSearch: []
+  //       },
+  //       stock: ''
+  //     }
+  //   })
+  // }
 
   async tickerCall(apiURL) {
     let whatIs = this.props.stockNameSearchAPICall(apiURL);
@@ -78,25 +78,39 @@ export default class StockSearch extends React.Component {
   }
 
   render() {
-
-    let theStockDetailsAndGraph = (!this.props.stockDetails.intraDay || !this.props.stockDetails.timeSeriesMonthly) ? null : (
+    let firstCheck = (Object.keys(this.props.stockDetails.intraDay).length !== 0);
+    let secondCheck = (Object.keys(this.props.stockDetails.timeSeriesMonthly).length !== 0);
+    
+    let theStockDetailsAndGraph = (!!firstCheck && !!secondCheck) ? (
       <div className="stock-details-and-graph">
         <StockDetailsContainer />
-        <StockGraph />
+        <StockGraphContainer />
       </div>
-    );
+    ) : null;
 
-    let stockSearchLanding = (this.props.stockDetails.intraDay) ? null : (
+    let stockSearchLanding = (!!firstCheck && !!secondCheck) ? null : (
       <div className="stock-search-landing">
+          <span>
+            <img 
+            src={stockSearchLandingPic} 
+            alt='stock search' 
+            className="stock-search-background" />
+          </span>
+        
+         {/* <div></div>
         <span>
           <img 
           src={stockSearchLandingPic} 
           alt='stock search' 
           className="stock-search-background" />
-        </span>
+        </span> */}
         <div>
           <p>Seek And You Shall Find</p>
-          <span>Enter a company's ticker to access real-time information</span>
+          <span>Enter a company's ticker to access real-time information.  Due
+            to API Limitations, we are unable to process more than 2 stock ticker 
+            searches per minute.  So if a response is not rendered, please stand by 
+            then try again! Thank you for your patience. 
+          </span>
         </div>
       </div>
     );

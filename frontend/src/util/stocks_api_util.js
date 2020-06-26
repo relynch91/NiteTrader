@@ -76,7 +76,6 @@ export const twoYears = (stockData) => {
 }
 
 export const figureAPICall = (apiArray = []) => {
-    console.log(apiArray)
     if (apiArray.length === 0  || apiArray[0]['9. matchScore'] !== '1.0000') {
         return false
     }
