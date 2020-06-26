@@ -20,7 +20,7 @@ export default class StockSearch extends React.Component {
     this.getStockDetails = this.getStockDetails.bind(this);
     this.getStockTicker = this.getStockTicker.bind(this);
   }
-
+  
   componentWillUnmount() {
     this.setState(() => {
       return { 
@@ -34,18 +34,13 @@ export default class StockSearch extends React.Component {
     })
   }
 
-  componentDidUpdate() {
-    if (this.state.ticker.length !== 0) {
-      // this.getStockDetails();
-    }
-  }
-
   async tickerCall(apiURL) {
     let whatIs = this.props.stockNameSearchAPICall(apiURL);
     return whatIs;
   }
 
   async getStockTicker(e) {
+    if (e) { e.preventDefault() }
     const stockSearchAPI = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${this.state.stock}&apikey=${key}`;
     const stockSearch = await (this.tickerCall(stockSearchAPI));
     this.apiLogic(stockSearch);
@@ -62,18 +57,13 @@ export default class StockSearch extends React.Component {
     const tickerMatch = figureAPICall(data);
     if (tickerMatch) {
       const ticker = data[0]['1. symbol'];
-      this.setState(() => {
-        return {
-          ticker: ticker
-        }
-      }).then(() => this.getStockDetails());
-      // console.log(ticker);
+      this.setState( { ticker: ticker });
+      this.getStockDetails();
     }
-    // console.log(tickerMatch);
   }
 
   getStockDetails(e){
-    if (e) { e.preventDefault() }
+    if (e) { e.preventDefault() };
     const intraDayAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.ticker}&interval=15min&outputsize=full&apikey=${key}`;
     const intraDay = this.props.intraDayAPICall(intraDayAPI);
     const timeSeriesMonthlyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${this.state.ticker}&apikey=${key}`;
@@ -86,13 +76,15 @@ export default class StockSearch extends React.Component {
     });
   }
 
-  render(){
-    let theStockDetailsAndGraph = (!this.props.stockDetails.intraDay) ? null : (
+  render() {
+
+    let theStockDetailsAndGraph = (!this.props.stockDetails.intraDay || !this.props.stockDetails.timeSeriesMonthly) ? null : (
       <div className="stock-details-and-graph">
         <StockDetailsContainer />
         <StockGraph />
       </div>
     );
+
     let stockSearchLanding = (this.props.stockDetails.intraDay) ? null : (
       <div className="stock-search-landing">
         <span>
