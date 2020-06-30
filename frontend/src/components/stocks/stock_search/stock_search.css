@@ -68,7 +68,6 @@
 }
 
 .stock-search-landing {
-    /* font-size: 50px; */
     font-weight: 700;
     color: blue;
 }
@@ -78,5 +77,4 @@
     max-height: 600px;
     overflow: hidden;
     background-repeat: repeat-x;
-    /* max-height: min-content; */
 }
