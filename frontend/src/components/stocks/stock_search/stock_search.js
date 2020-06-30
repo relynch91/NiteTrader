@@ -91,10 +91,10 @@ export default class StockSearch extends React.Component {
     let stockSearchLanding = (!!firstCheck && !!secondCheck) ? null : (
       <div className="stock-search-landing">
           <span>
-            <img 
+            {/* <img 
             src={stockSearchLandingPic} 
             alt='stock search' 
-            className="stock-search-background" />
+            className="stock-search-background" /> */}
           </span> 
            {/* <span>
             <img 
