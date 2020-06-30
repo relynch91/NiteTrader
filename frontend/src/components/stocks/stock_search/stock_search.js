@@ -3,7 +3,7 @@ import StockDetailsContainer from './stock_details_container';
 import StockGraphContainer from '../stockgraph/stockgraph_container';
 import key from '../../../frontConfig/frontKeys';
 import './stock_search.css';
-import stockSearchLandingPic from './stock-search-landing.png';
+import stockSearchLandingPic from './stock-search-landing.jpg';
 import { figureAPICall } from './../../../util/stocks_api_util';
 import StockNameContainer from './stock_name_container';
 
@@ -22,18 +22,18 @@ export default class StockSearch extends React.Component {
     this.getStockTicker = this.getStockTicker.bind(this);
   }
   
-  // componentWillUnmount() {
-  //   this.setState(() => {
-  //     return { 
-  //       ticker: "",
-  //       loading: false,
-  //       stocks: {
-  //         stockNameSearch: []
-  //       },
-  //       stock: ''
-  //     }
-  //   })
-  // }
+  componentWillUnmount() {
+    this.setState(() => {
+      return { 
+        ticker: "",
+        loading: false,
+        stocks: {
+          stockNameSearch: []
+        },
+        stock: ''
+      }
+    })
+  }
 
   async tickerCall(apiURL) {
     let whatIs = this.props.stockNameSearchAPICall(apiURL);
