@@ -1,5 +1,4 @@
 import React from 'react';
-
 export default class StockName extends React.Component {
     
     constructor(props){
@@ -17,11 +16,12 @@ export default class StockName extends React.Component {
     }
 
     render(){
-        // debugger
-        if (!this.props.stocks.stockNameSearch) {return null}
+        if (!this.props.stocks.stockNameSearch || this.props.stocks.stockNameSearch !== 0) {
+            return null
+        }
         return (
-            <div>
-                <p>Click on the company below to search their stock data</p>
+            <div className='stockName-search-results'>
+                <h1>Click on the company below to search their stock data</h1>
                 <ul>
                     {this.props.stocks.stockNameSearch.map(compObj => {
                         return (

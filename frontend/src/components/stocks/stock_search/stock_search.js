@@ -3,7 +3,7 @@ import StockDetailsContainer from './stock_details_container';
 import StockGraphContainer from '../stockgraph/stockgraph_container';
 import key from '../../../frontConfig/frontKeys';
 import './stock_search.css';
-import stockSearchLandingPic from './stock-search-landing.png';
+import stockSearchLandingPic from './stock-search-landing.jpg';
 import { figureAPICall } from './../../../util/stocks_api_util';
 import StockNameContainer from './stock_name_container';
 
@@ -22,18 +22,18 @@ export default class StockSearch extends React.Component {
     this.getStockTicker = this.getStockTicker.bind(this);
   }
   
-  // componentWillUnmount() {
-  //   this.setState(() => {
-  //     return { 
-  //       ticker: "",
-  //       loading: false,
-  //       stocks: {
-  //         stockNameSearch: []
-  //       },
-  //       stock: ''
-  //     }
-  //   })
-  // }
+  componentWillUnmount() {
+    this.setState(() => {
+      return { 
+        ticker: "",
+        loading: false,
+        stocks: {
+          stockNameSearch: []
+        },
+        stock: ''
+      }
+    })
+  }
 
   async tickerCall(apiURL) {
     let whatIs = this.props.stockNameSearchAPICall(apiURL);
@@ -91,26 +91,24 @@ export default class StockSearch extends React.Component {
     let stockSearchLanding = (!!firstCheck && !!secondCheck) ? null : (
       <div className="stock-search-landing">
           <span>
+            {/* <img 
+            src={stockSearchLandingPic} 
+            alt='stock search' 
+            className="stock-search-background" /> */}
+          </span> 
+           {/* <span>
             <img 
             src={stockSearchLandingPic} 
             alt='stock search' 
             className="stock-search-background" />
-          </span>
-        
-         {/* <div></div>
-        <span>
-          <img 
-          src={stockSearchLandingPic} 
-          alt='stock search' 
-          className="stock-search-background" />
-        </span> */}
+          </span> */}
         <div>
-          <p>Seek And You Shall Find</p>
-          <span>Enter a company's ticker to access real-time information.  Due
+          <h1>Seek And You Shall Find</h1>
+          <div>Enter a company's ticker to access real-time information.  Due
             to API Limitations, we are unable to process more than 2 stock ticker 
             searches per minute.  So if a response is not rendered, please stand by 
             then try again! Thank you for your patience. 
-          </span>
+          </div>
         </div>
       </div>
     );
@@ -134,7 +132,6 @@ export default class StockSearch extends React.Component {
     
     return (
       <div className="stock-search-container">
-        <div className="stock-search-component">
           <form onSubmit={this.getStockTicker} className="stock-search-form">
             <span>Search Stocks:</span>
             <input
@@ -150,7 +147,6 @@ export default class StockSearch extends React.Component {
               className="stock-form-submit"
             />
           </form>
-        </div>
           <StockNameContainer
             getStockDetails={this.getStockDetails}
           />
