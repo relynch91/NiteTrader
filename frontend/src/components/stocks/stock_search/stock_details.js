@@ -73,13 +73,13 @@ export default class StockDetails extends React.Component {
     
     let theDetails = (Object.keys(this.state.mostRecentStockApiData).length === 0) ? null : (
       <div className="stock-box-container">
-        <div>Today's Information for: {ticker}</div>     
+        <div>Today's Information for {ticker}</div>     
         <div className="stock-details">
-          <p>Open: ${Math.floor(parseFloat(data["1. open"]))}</p>
-          <p>High: ${Math.floor(parseFloat(data["2. high"]))}</p>
-          <p>Low: ${Math.floor(parseFloat(data["3. low"]))}</p>
-          <p>Price: ${Math.floor(parseFloat(data["4. close"]))}</p>
-          <p>Volume: {parseInt(data["5. volume"])}</p>
+          <p>Open: {(parseFloat(data["1. open"]))}</p>
+          <p>High: {(parseFloat(data["2. high"]))}</p>
+          <p>Low: {(parseFloat(data["3. low"]))}</p>
+          <p>Price: {(parseFloat(data["4. close"]))}</p>
+          <p>Volume: {parseFloat(data["5. volume"])}</p>
         </div>
         <form >
           <p>Number of Shares You intend to buy or sell</p>

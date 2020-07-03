@@ -1,18 +1,16 @@
-.stock-search-container{
+.stock-search-container {
     display: flex;
     flex-direction: column;
+    width: 100vw;
 }
 
 .stock-search-form {
-    display: block;
-    background-color: lightslategrey;
-    padding: 10px 0 10px 0
-}
-
-.stock-search-form {
-    display:flex;
+    display: flex;
     justify-content: space-around;
     align-items: center;
+    min-width: 950px;
+    background-color: #778899;
+    padding: 10px 0 10px 0;
 }
 
 .stock-search-form-input {
@@ -52,9 +50,9 @@
 .stock-search-landing {
     display: flex;
     flex-direction: column;
-    max-height: 600px;
-    /* background-color: lightgrey; */
-    background-color: lightblue ;
+    height: 60vh;
+    background-color: lightblue;
+    min-width: 950px;
 }
 
 .stockName-search-results {

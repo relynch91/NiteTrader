@@ -1,13 +1,21 @@
 #root {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+
+}
+
+html body {
+    min-height: 100vh;
 }
 
 .main-app {
     display: flex;
     flex-direction: column;
-    min-width: 800px;
+    min-width: 950px;
+    height: 100%;
 }
+
 .hero-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.719), rgba(0, 0, 0, 0.815)), url("./banner.png");
   height: 50%;
