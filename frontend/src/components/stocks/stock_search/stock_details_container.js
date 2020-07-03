@@ -2,8 +2,6 @@ import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
 import StockDetails from "./stock_details";
 import { tradeStock } from '../../../actions/transaction_actions';
-// import { fetchTrades } from '../../../actions/transaction_actions'
-// import { buildPortfolio } from '../../../actions/portfolio_actions';
 
 const mapStateToProps = (state) => ({
     stockDetails: state.stocks,

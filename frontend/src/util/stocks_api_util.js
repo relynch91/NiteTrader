@@ -2,9 +2,10 @@ const oneWeekInMilliseconds = 604800000;
 const oneMonthInMilliseconds = 2592000000;
 const oneYearInMilliseconds = 31556952000;
 
-export const mostRecent = (stockData) => {
+export const mostRecent = (stockData) => { //stockData is stock api response. {Meta Data: {...}, Time Sereies: {...}}
+    debugger
     let result = {};
-    Object.keys(stockData["Time Series (15min)"])
+    Object.keys(stockData["Time Series (15min)"]).reverse()
         .forEach(rawDate => {
             if (!result[rawDate]) {
                 result["data"] = stockData["Time Series (15min)"][rawDate];
