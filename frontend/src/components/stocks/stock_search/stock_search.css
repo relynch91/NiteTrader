@@ -9,11 +9,6 @@
     padding: 10px 0 10px 0
 }
 
-/* .stock-search-form span {
-    font-size: 28px;
-    color: whitesmoke;
-} */
-
 .stock-search-form {
     display:flex;
     justify-content: space-around;
