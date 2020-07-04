@@ -3,8 +3,8 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    min-height: 750px;
-    height: 69vh;
+    /* min-height: 750px; */
+    height: 78vh;
     width: 100vw;
 }
 

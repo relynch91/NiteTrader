@@ -15,6 +15,7 @@ export default class StockDetails extends React.Component {
       activeSell: false,
     };
   }
+
   componentDidMount() {
     this.setState({
       mostRecentStockApiData: StockUtil.mostRecent(this.props.stockDetails.intraDay)
@@ -24,22 +25,11 @@ export default class StockDetails extends React.Component {
   componentDidUpdate(prevProps) {
     let { stockDetails } = this.props;
     if (stockDetails !== prevProps.stockDetails) {
-
       this.setState({
         mostRecentStockApiData: StockUtil.mostRecent(this.props.stockDetails.intraDay)
       })
     }
   }
-
-  // Need to pass in withRouter History to see if coming back from portfolio
-  // handleComeback(){
-  //   let { stockDetails } = this.props;
-  //   if (stockDetails.intraDay) {
-  //     this.setState(
-  //       { mostRecentStockApiData: StockUtil.mostRecent(stockDetails.intraDay) }
-  //     )
-  //   }
-  // }
 
   handleChange() {
     return (e) => this.setState({ numShares: e.currentTarget.value })
@@ -83,13 +73,13 @@ export default class StockDetails extends React.Component {
     
     let theDetails = (Object.keys(this.state.mostRecentStockApiData).length === 0) ? null : (
       <div className="stock-box-container">
-        <div>Today's Information for: {ticker}</div>     
+        <div>Today's Information for {ticker}</div>     
         <div className="stock-details">
-          <p>Open: ${Math.floor(parseFloat(data["1. open"]))}</p>
-          <p>High: ${Math.floor(parseFloat(data["2. high"]))}</p>
-          <p>Low: ${Math.floor(parseFloat(data["3. low"]))}</p>
-          <p>Price: ${Math.floor(parseFloat(data["4. close"]))}</p>
-          <p>Volume: {parseInt(data["5. volume"])}</p>
+          <p>Open: {(parseFloat(data["1. open"]))}</p>
+          <p>High: {(parseFloat(data["2. high"]))}</p>
+          <p>Low: {(parseFloat(data["3. low"]))}</p>
+          <p>Price: {(parseFloat(data["4. close"]))}</p>
+          <p>Volume: {parseFloat(data["5. volume"])}</p>
         </div>
         <form >
           <p>Number of Shares You intend to buy or sell</p>
@@ -114,3 +104,52 @@ export default class StockDetails extends React.Component {
     );
   }
 }
+
+// render() {
+    
+//     let { activeBuy, activeSell } = this.state;
+//     let { data, ticker } = this.state.mostRecentStockApiData;
+
+//     let sellButton = (!Object.keys(this.props.portfolio).includes(ticker)) ? null : (
+//         <button className={activeSell ? "sell-button-active" : "sell-button"} 
+//           onClick={() => this.handleClick(false)}
+//         >Sell</button>);
+
+//     let submitButton = (activeSell || activeBuy) ?
+//        <button className="trade-submit-button" 
+//         onClick={this.handleSubmit}>Submit Trade
+//       </button> :
+//       null;
+    
+//     let theDetails = (Object.keys(this.state.mostRecentStockApiData).length === 0) ? null : (
+//       <div className="stock-box-container">
+//         <div>Today's Information for: {ticker}</div>     
+//         <div className="stock-details">
+//           <p>Open: ${Math.floor(parseFloat(data["1. open"]))}</p>
+//           <p>High: ${Math.floor(parseFloat(data["2. high"]))}</p>
+//           <p>Low: ${Math.floor(parseFloat(data["3. low"]))}</p>
+//           <p>Price: ${Math.floor(parseFloat(data["4. close"]))}</p>
+//           <p>Volume: {parseInt(data["5. volume"])}</p>
+//         </div>
+//         <form >
+//           <p>Number of Shares You intend to buy or sell</p>
+//           <div>
+//             <input
+//               className="stock-buy-input"
+//               type="number"
+//               onChange={this.handleChange()}
+//               value={this.state.numShares} />
+//               <button className={activeBuy ? "buy-button-active" : "buy-button"}
+//                     onClick={() => this.handleClick(true)}>Buy</button>
+//             {sellButton}
+//           </div>
+//           {submitButton}
+//         </form>
+//       </div>
+//       );
+//     return (
+//       <div>
+//         {theDetails}
+//       </div>
+//     );
+//   }

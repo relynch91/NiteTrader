@@ -112,40 +112,29 @@ export default class StockSearch extends React.Component {
         </div>
       </div>
     );
-
-    // let theStockNames = !this.props.stocks.stockNameSearch ? null : (
-    //     <div>
-    //       <ul>
-    //         {this.props.stocks.stockNameSearch.map(compObj => {
-    //           return (<li>
-    //             <div>
-    //               <span>{compObj['1. symbol:']}</span>
-    //               <span>{compObj['2. name']}</span>
-    //               <span>{compObj['9. matchScore']}</span>
-    //             </div>
-    //           </li>)
-    //         })
-    //         }
-    //       </ul>
-    //     </div>
-    // )
     
     return (
       <div className="stock-search-container">
           <form onSubmit={this.getStockTicker} className="stock-search-form">
-            <span>Search Stocks:</span>
-            <input
+            <div>
+              <h1>Enter a Company Name or Ticker: </h1>
+            </div>
+            <div>
+              <input
               type="text"
               value={this.state.stock}
               onChange={this.update()}
               className="stock-search-form-input"
               placeholder="Enter a Stock Company Name or Ticker"
               />
-            <input
-              type="submit"
-              value="Submit"
-              className="stock-form-submit"
-            />
+            </div>
+            <div>
+              < input
+              type = "submit"
+              value = "Submit"
+              className = "stock-form-submit" /
+                >
+            </div>
           </form>
           <StockNameContainer
             getStockDetails={this.getStockDetails}

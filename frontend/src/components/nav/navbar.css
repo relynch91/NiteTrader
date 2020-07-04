@@ -1,19 +1,26 @@
-.navbar-main {
-    background: whitesmoke;
-    padding: 20px 10px 10px 10px;
+.navbar-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    background: whitesmoke;
+    height: 8vh;
+    min-height: 50px;
 }
 
-.navbar-link{
+.navbar-main {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    margin-left: 10px;
+}
+
+.navbar-link {
     color: #A3333D;
     padding-right: 20px;
     font-size: 16px;
     font-weight: 400;
 }
 
-.navbar-link:hover{
+.navbar-link:hover {
     color: #3d6883;
 }
 

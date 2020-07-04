@@ -1,13 +1,24 @@
 #root {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+}
+
+html body {
+    min-height: 100vh;
 }
 
 .main-app {
     display: flex;
     flex-direction: column;
-    min-width: 800px;
+    min-width: 950px;
+    height: 100%;
 }
+
+/* .home-page {
+    height: 68vh;
+} */
+
 .hero-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.719), rgba(0, 0, 0, 0.815)), url("./banner.png");
   height: 50%;
@@ -15,13 +26,13 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-
 }
 
-.banner-img{
+.banner-img {
     max-height: 800px;
     display: flex;
     flex-direction: column;
+    height: 78vh;
 }
 
 .hero-text {
