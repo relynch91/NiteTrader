@@ -11,6 +11,8 @@
     min-width: 950px;
     background-color: #778899;
     padding: 10px 0 10px 0;
+    height: 3vh;
+    min-height: 15px;
 }
 
 .stock-search-form-input {
@@ -45,24 +47,22 @@
     display:flex;
     justify-content: space-around;
     margin: 50px 0 30px 80px;
+    height: 63vh;
 }
 
 .stock-search-landing {
     display: flex;
     flex-direction: column;
-    height: 60vh;
+    height: 73vh;
     background-color: lightblue;
     min-width: 950px;
+    font-weight: 700;
+    color: blue;
 }
 
 .stockName-search-results {
     display: flex;
     flex-direction: column;
-}
-
-.stock-search-landing {
-    font-weight: 700;
-    color: blue;
 }
 
 .stock-search-background {

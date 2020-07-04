@@ -1,14 +1,16 @@
 .navbar-container {
     display: flex;
     flex-direction: column;
+    background: whitesmoke;
+    height: 8vh;
+    min-height: 50px;
 }
 
 .navbar-main {
-    background: whitesmoke;
-    padding: 20px 10px 10px 10px;
-    display: flex;
     justify-content: space-between;
     align-items: center;
+    display: flex;
+    margin-left: 10px;
 }
 
 .navbar-link {
