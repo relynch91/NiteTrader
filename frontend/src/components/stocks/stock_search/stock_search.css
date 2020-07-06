@@ -26,7 +26,7 @@
   border-radius: 2px;
 }
 
-.stock-form-submit{
+.stock-form-submit {
     background: #A3333D;
     border: none;
     border-radius: 2px;
@@ -39,7 +39,7 @@
     cursor: pointer;
 }
 
-.stock-form-submit:hover{
+.stock-form-submit:hover {
     background: #3d6883;
 }
 
@@ -47,17 +47,31 @@
     display:flex;
     justify-content: space-around;
     margin: 50px 0 30px 80px;
-    height: 63vh;
+    height: 67vh;
+    
 }
 
 .stock-search-landing {
     display: flex;
     flex-direction: column;
-    height: 73vh;
+    align-items: center;
+    height: 75vh;
     background-color: lightblue;
-    min-width: 950px;
+    min-width: 1000px;
     font-weight: 700;
     color: blue;
+}
+
+.stock-search-landing h1 {
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.stock-search-landing p {
+    display: block;
+    font-size: 20px;
+    margin: 30px;
+    max-width: 1000px;
 }
 
 .stockName-search-results {

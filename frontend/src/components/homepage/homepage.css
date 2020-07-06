@@ -32,7 +32,7 @@ html body {
     max-height: 800px;
     display: flex;
     flex-direction: column;
-    height: 78vh;
+    height: 80vh;
 }
 
 .hero-text {

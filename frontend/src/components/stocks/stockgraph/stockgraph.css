@@ -17,3 +17,7 @@
 .stockgraph-time-button:hover{
     color: #3d6883;
 }
+
+.recharts-legends-wrapper li {
+    background-color: blue;
+}
