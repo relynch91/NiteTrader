@@ -12,6 +12,7 @@ import { RECEIVE_INTRADAY,
 let preLoadedState = {
     intraDay: {},
     timeSeriesMonthly: {},
+    stockNameSearch: []
 }
 
 export default function (oldState = preLoadedState, action) {

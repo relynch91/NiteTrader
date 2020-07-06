@@ -64,6 +64,7 @@ export default class StockSearch extends React.Component {
 
   getStockDetails(e){
     if (e) { e.preventDefault() };
+    debugger
     const intraDayAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.ticker}&interval=15min&outputsize=full&apikey=${key}`;
     this.props.intraDayAPICall(intraDayAPI);
     const timeSeriesMonthlyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${this.state.ticker}&apikey=${key}`;
@@ -118,7 +119,7 @@ export default class StockSearch extends React.Component {
                 >
             </div>
           </form>
-          <StockNameContainer getStockDetails={this.getStockDetails} />
+          <StockNameContainer/>
           {stockSearchLanding}
           {theStockDetailsAndGraph}
       </div>
