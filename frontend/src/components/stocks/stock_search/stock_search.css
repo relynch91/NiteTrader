@@ -64,7 +64,7 @@
     min-width: 1000px;
     font-weight: 700;
     background-image: url('./stock-search-landing.jpg');
-    background-repeat: no-repeat;
+    background-repeat: repeat-x;
     background-size: cover;
 }
 

@@ -6,7 +6,8 @@ import { RECEIVE_INTRADAY,
     RECEIVE_STOCK_NAME_SUCCESS,
     RECEIVE_INTRADAY_FAILURE,
     RECEIVE_TIME_SERIES_FAILURE,
-    RECEIVE_STOCK_NAME_FAILURE
+    RECEIVE_STOCK_NAME_FAILURE,
+    RECEIVE_CLEAR_STOCKS
 } from '../actions/alphaApi_actions';
 
 let preLoadedState = {
@@ -20,6 +21,9 @@ export default function (oldState = preLoadedState, action) {
     let nextState = Object.assign({}, oldState);
 
     switch (action.type) {
+
+        case RECEIVE_CLEAR_STOCKS: 
+            return preLoadedState;
         
         case RECEIVE_INTRADAY:
             Object.assign(nextState, {

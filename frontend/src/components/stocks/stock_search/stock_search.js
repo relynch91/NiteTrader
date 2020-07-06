@@ -22,16 +22,17 @@ export default class StockSearch extends React.Component {
   }
   
   componentWillUnmount() {
-    this.setState(() => {
-      return { 
-        ticker: "",
-        loading: false,
-        stocks: {
-          stockNameSearch: []
-        },
-        stock: ''
-      }
-    })
+    // this.setState(() => {
+    //   return { 
+    //     ticker: "",
+    //     loading: false,
+    //     stocks: {
+    //       stockNameSearch: []
+    //     },
+    //     stock: ''
+    //   }
+    // })
+    this.props.receiveClearStocks();
   }
 
   async tickerCall(apiURL) {
@@ -89,14 +90,15 @@ export default class StockSearch extends React.Component {
     ) : null;
 
     let stockSearchLanding = (!!firstCheck && !!secondCheck) ? null : (
-      <div className="stock-search-landing">
-          <h1>Seek And You Shall Find</h1>
-          <p> Enter a company's ticker to access real-time information.  Due
-            to API Limitations, we are unable to process more than 2 stock ticker 
-            searches per minute.  So if a response is not rendered, please stand by 
-            then try again! Thank you for your patience. 
-          </p>
-      </div>
+      // <div className="stock-search-landing">
+      //     <h1>Seek And You Shall Find</h1>
+      //     <p> Enter a company's ticker to access real-time information.  Due
+      //       to API Limitations, we are unable to process more than 2 stock ticker 
+      //       searches per minute.  So if a response is not rendered, please stand by 
+      //       then try again! Thank you for your patience. 
+      //     </p>
+      // </div>
+          < StockNameContainer />
     );
     
     return (
@@ -115,11 +117,9 @@ export default class StockSearch extends React.Component {
               />
             </div>
             <div>
-              < input type = "submit" value = "Submit" className = "stock-form-submit" /
-                >
+              < input type="submit" value="Submit" className="stock-form-submit" />
             </div>
           </form>
-          <StockNameContainer/>
           {stockSearchLanding}
           {theStockDetailsAndGraph}
       </div>
