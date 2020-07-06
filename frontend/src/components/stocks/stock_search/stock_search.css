@@ -15,6 +15,11 @@
     min-height: 15px;
 }
 
+.stock-search-form > div > h1 {
+    color: white;
+    font-size: 18px;
+}
+
 .stock-search-form-input {
   width: 225px;
   font-size: 12px;
@@ -22,14 +27,14 @@
   padding: 7px 7px;
   margin-left: 40px;
   background: #fafafa;
-  border: 1px solid lightgrey;
-  border-radius: 2px;
+  border: 2px solid darkgray;
+  border-radius: 3px;
 }
 
 .stock-form-submit {
     background: #A3333D;
     border: none;
-    border-radius: 2px;
+    border-radius: 3px;
     font-size: 16px;
     outline: 0;
     padding: 5px 20px;
@@ -37,6 +42,7 @@
     color: whitesmoke;
     text-align: center;
     cursor: pointer;
+    border: 2px solid rgb(143, 40, 49);
 }
 
 .stock-form-submit:hover {
@@ -48,7 +54,6 @@
     justify-content: space-around;
     margin: 50px 0 30px 80px;
     height: 67vh;
-    
 }
 
 .stock-search-landing {
@@ -56,10 +61,11 @@
     flex-direction: column;
     align-items: center;
     height: 75vh;
-    background-color: lightblue;
     min-width: 1000px;
     font-weight: 700;
-    color: blue;
+    background-image: url('./stock-search-landing.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .stock-search-landing h1 {

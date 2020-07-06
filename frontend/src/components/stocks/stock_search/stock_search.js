@@ -3,7 +3,6 @@ import StockDetailsContainer from './stock_details_container';
 import StockGraphContainer from '../stockgraph/stockgraph_container';
 import key from '../../../frontConfig/frontKeys';
 import './stock_search.css';
-import stockSearchLandingPic from './stock-search-landing.jpg';
 import { figureAPICall } from './../../../util/stocks_api_util';
 import StockNameContainer from './stock_name_container';
 

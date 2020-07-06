@@ -34,7 +34,9 @@ class NavBar extends React.Component {
     } else {
       return (
         <div className="navbar-main">
-        <NavLink className="home-logo" to="/">NiteTrader</NavLink>
+          <div>
+            <NavLink className="home-logo" to="/">NiteTrader</NavLink>
+          </div>
           <div className='navbar-links'>
             <button className="navbar-link" onClick={() => openModal('login')}>Sign In</button>
             <button className="navbar-link" onClick={() => openModal('signup')}>Get started</button>

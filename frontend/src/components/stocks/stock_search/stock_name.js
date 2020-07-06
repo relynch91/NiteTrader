@@ -30,9 +30,7 @@ export default class StockName extends React.Component {
                                 <span>{compObj['2. name']}</span>
                                 <span>{compObj['9. matchScore']}</span>
                             </li>
-                        )
-                })
-                }
+                        )})}
                 </ul>
             </div>
         )
