@@ -72,7 +72,7 @@ export default class StockGraph extends React.Component {
           <XAxis dataKey="date" />
           <YAxis dataKey="close"/>
           <YAxis type="number" domain={[0, 'dataMax']} />
-          {/* <Tooltip /> */}
+          <Tooltip />
           <Legend />
           <Line type="monotone" dataKey="high"  stroke="#C4D6BO" activeDot={{ r: 8 }} />
           <Line type="monotone" dataKey="low" stroke="#F64740" />
