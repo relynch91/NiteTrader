@@ -15,7 +15,7 @@ export default class StockGraph extends React.Component {
     if (stockData) {
       stockDataFromState = stockData
     } else{
-      stockDataFromState = StockUtil.threeMonths(this.props.stockInfo.intraDay);
+      stockDataFromState = StockUtil.twoYears(this.props.stockInfo.timeSeriesMonthly);
     }
     let theDays = Object.keys(stockDataFromState)
     let structuredProps = theDays.map((dateKey) => ({
