@@ -6,7 +6,7 @@ const globalEndPointObject = rawStocks => {
     const lowData = rawStocks["04. low"];
     const priceData = rawStocks["05. price"];
     const volumeData = rawStocks["06. volume"];
-    const latestTradingDayData = rawStocks["07. latest trading day"];
+    const latestTradingDay = rawStocks["07. latest trading day"];
     const previousCloseData = rawStocks["08. previous close"];
     const changeData = rawStocks["09. change"];
     const changePercentData = rawStocks["10. change percent"];
@@ -18,7 +18,7 @@ const globalEndPointObject = rawStocks => {
         low: lowData,
         price: priceData,
         volume: volumeData,
-        latestTradingDay: latestTradingDayData,
+        latestTradingDay: latestTradingDay,
         previousClose: previousCloseData,
         change: changeData,
         changePercent: changePercentData

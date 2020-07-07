@@ -31,7 +31,7 @@ function timeout(ms) {
 }
 
 async function fireAPI(ticker) {
-    await timeout(15000)
+    await timeout(18000)
     let value = await axios.get(`
     https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key}`);
     return value;
@@ -42,6 +42,7 @@ async function updateDatabase(tickers) {
         let stockData = await fireAPI(tickers[i]);
         let formattedData = globalEndPointObject(stockData.data['Global Quote']);
         console.log(formattedData);
+        debugger
         await axios.patch(
             'https://nitetrader.herokuapp.com/api/stock_api/quoteendpointstock/update', formattedData);
     }

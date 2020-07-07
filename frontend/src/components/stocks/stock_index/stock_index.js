@@ -23,7 +23,7 @@ export default class StockIndex extends React.Component {
         {Object.keys(myPortfolio).map((ticker, idx) => (
           <div className="stock-box-owned" key={idx * 392}>
             <div className='stock-box-owned-ticker'>
-              Ticker: {ticker}
+              Ticker: {ticker} 
             </div>
             <div className = 'portfolio-specific-details'>
               <div className='stock-box-owned-details'>
@@ -59,7 +59,7 @@ export default class StockIndex extends React.Component {
                   </li>
                   <li>
                     Last Trading Date: {
-                      myPortfolio[ticker].quoteEndPointData.date
+                      myPortfolio[ticker].quoteEndPointData.latestTradingDay
                       }
                   </li>
                   < li >
