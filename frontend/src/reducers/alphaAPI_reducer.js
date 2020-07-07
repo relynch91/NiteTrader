@@ -12,6 +12,9 @@ import { RECEIVE_INTRADAY,
 
 let preLoadedState = {
     intraDay: {},
+    intraLoading: false,
+    timeLoading: false,
+    nameLoading: false,
     timeSeriesMonthly: {},
     stockNameSearch: []
 }
@@ -27,60 +30,67 @@ export default function (oldState = preLoadedState, action) {
         
         case RECEIVE_INTRADAY:
             Object.assign(nextState, {
-                stockNameSearch: []
+                stockNameSearch: [],
+                intraLoading: true
             });
             return nextState;
 
         case RECEIVE_INTRADAY_SUCCESS:
             Object.assign(nextState, { 
                 intraDay: action.stock.data,
-                loading: false,
+                intraLoading: false,
                 stockNameSearch: []
             })
             return nextState;
+            
         case RECEIVE_INTRADAY_FAILURE:
             Object.assign(nextState, {
-                loading: false,
+                intraLoading: false,
                 intraDay: {}
             })
             return nextState;
 
         case RECEIVE_TIME_SERIES:
             Object.assign(nextState, {
-                stockNameSearch: []
+                stockNameSearch: [],
+                timeLoading: true
             });
             return nextState;
+
         case RECEIVE_TIME_SERIES_SUCCESS:
             Object.assign(nextState, { 
                 timeSeriesMonthly: action.stock.data,
-                loading: false,
+                timeLoading: false,
                 stockNameSearch: []
             });
             return nextState;
+
         case RECEIVE_TIME_SERIES_FAILURE:
             Object.assign(nextState, {
                 timeSeriesMonthly: {},
-                loading: false,
+                timeLoading: false,
             });
             return nextState;
 
         case RECEIVE_STOCK_NAME:
             Object.assign(nextState, {
-                loading: true,
+                nameLoading: true,
                 stock: '',
                 stockNameSearch: [],
                 ticker: ""
             });
             return nextState;
+
         case RECEIVE_STOCK_NAME_SUCCESS:
             Object.assign(nextState, {
-                loading: false,
+                nameLoading: false,
                 stockNameSearch: action.name.data.bestMatches
             })
             return nextState;
+
         case RECEIVE_STOCK_NAME_FAILURE:
             Object.assign(nextState, {
-                loading: false,
+                nameLoading: false,
             });
             return nextState;
 

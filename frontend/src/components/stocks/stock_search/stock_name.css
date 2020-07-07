@@ -11,9 +11,34 @@
     font-weight: 700;
 }
 
+.loader-holder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('./stock-search-landing.jpg');
+    background-repeat: repeat-x;
+    background-size: cover;
+    height: 75vh;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #3498db;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .stock-search-landing-results h1 {
     font-size: 24px;
-    margin: 20px;
+    margin: 40px 20px 20px 20px;
 }
 
 .stock-search-results-container {
@@ -24,6 +49,7 @@
     overflow: auto;
     background-color: whitesmoke;
     border-radius: 3px;
+    border: 2px solid darkgray;
 }
 
 .stock-search-results-container > li {

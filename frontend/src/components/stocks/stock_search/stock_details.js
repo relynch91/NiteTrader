@@ -75,10 +75,10 @@ export default class StockDetails extends React.Component {
       <div className="stock-box-container">
         <div>Today's Information for {ticker}</div>     
         <div className="stock-details">
-          <p>Open: {(parseFloat(data["1. open"]))}</p>
-          <p>High: {(parseFloat(data["2. high"]))}</p>
-          <p>Low: {(parseFloat(data["3. low"]))}</p>
-          <p>Price: {(parseFloat(data["4. close"]))}</p>
+          <p>Open: {(parseFloat(data["1. open"]).toFixed(2))}</p>
+          <p>High: {(parseFloat(data["2. high"]).toFixed(2))}</p>
+          <p>Low: {(parseFloat(data["3. low"]).toFixed(2))}</p>
+          <p>Price: {(parseFloat(data["4. close"]).toFixed(2))}</p>
           <p>Volume: {parseFloat(data["5. volume"])}</p>
         </div>
         <form >
