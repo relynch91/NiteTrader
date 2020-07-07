@@ -18,7 +18,6 @@ export default class StockIndex extends React.Component {
   render(){
     let { myPortfolio } = this.props;
     if (Object.keys(myPortfolio).length === 0) {return null};
-    debugger
     return (
       <div className="stock-index-main">
         {Object.keys(myPortfolio).map((ticker, idx) => (
@@ -54,21 +53,30 @@ export default class StockIndex extends React.Component {
                     Stock Information:
                   </li>
                   <li>
-                    Price Per Share: ${(parseFloat(myPortfolio[ticker].pricePerShare).toFixed(2))}
+                    Percent Change:  {
+                      parseFloat(myPortfolio[ticker].quoteEndPointData.changePercent).toFixed(2)
+                    } %
                   </li>
                   <li>
-                    Shares Owned: {
-                      myPortfolio[ticker].quoteEndPointData.symbol
+                    Last Trading Date: {
+                      myPortfolio[ticker].quoteEndPointData.date
                       }
                   </li>
-                  {(myPortfolio[ticker]['priceDiff'] > 0) ? 
-                    <li>
-                      Gain Per Share: ${myPortfolio[ticker]['priceDiff'].toFixed(2)}
-                    </li> :
-                    <li className='stock-box-owned-price-change-negative'>
-                      Loss Loss Per Share: ${myPortfolio[ticker]['priceDiff']}
-                    </li>
-                  }
+                  < li >
+                    High: {
+                      parseFloat(myPortfolio[ticker].quoteEndPointData.high).toFixed(2)
+                    } 
+                  </li>
+                  <li>
+                    Low: {
+                      parseFloat(myPortfolio[ticker].quoteEndPointData.low).toFixed(2)
+                    } 
+                  </li>
+                  <li>
+                    Previous Close: {
+                      parseFloat(myPortfolio[ticker].quoteEndPointData.previousClose).toFixed(2)
+                    } 
+                  </li>
                 </ul>
               </div>
             </div>
