@@ -4,11 +4,14 @@ import PortfolioBarChartContainer from './portfolio_barchart_container'
 import './portfolio.css'
 
 class Portfolio extends React.Component {
+
   render() {
+    let username = this.props.user;
+    console.log(username);
     return (
         <div className="portfolio-container">
           <div className="portfolio-header">
-            <h1>Your Current Portfolio:</h1>  
+            <h1>Hello {}</h1>  
           </div>
           <div className='portfolio-data'>
             <StockIndexContainer />
