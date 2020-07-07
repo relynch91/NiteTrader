@@ -14,9 +14,6 @@ class Portfolio extends React.Component {
             <StockIndexContainer />
             <PortfolioBarChartContainer />
           </div>
-          <div className='performance-data'>
-            
-          </div>
       </div>
     );
   }

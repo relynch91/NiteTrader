@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const QuoteEndPointStockSchema = new Schema({
+const QuoteEndPointStockSchema = new Schema ({
     symbol: { type: String, index: {unique: true}, required: true},
     open: { type: Number },
     high: { type: String },
