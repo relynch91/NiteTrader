@@ -15,7 +15,7 @@ export default class StockGraph extends React.Component {
     if (stockData) {
       stockDataFromState = stockData
     } else{
-      stockDataFromState = StockUtil.threeMonths(this.props.stockInfo.intraDay);
+      stockDataFromState = StockUtil.twoYears(this.props.stockInfo.timeSeriesMonthly);
     }
     let theDays = Object.keys(stockDataFromState)
     let structuredProps = theDays.map((dateKey) => ({
@@ -72,7 +72,7 @@ export default class StockGraph extends React.Component {
           <XAxis dataKey="date" />
           <YAxis dataKey="close"/>
           <YAxis type="number" domain={[0, 'dataMax']} />
-          {/* <Tooltip /> */}
+          <Tooltip />
           <Legend />
           <Line type="monotone" dataKey="high"  stroke="#C4D6BO" activeDot={{ r: 8 }} />
           <Line type="monotone" dataKey="low" stroke="#F64740" />
