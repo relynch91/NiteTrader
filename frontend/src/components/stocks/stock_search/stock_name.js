@@ -47,15 +47,15 @@ export default class StockName extends React.Component {
             )
         }
         return (
-            <div className='stock-name-search-results'>
+            <div className='stock-search-landing-results'>
                 <h1>Click on the company below to search their stock data</h1>
-                <ul>
+                <ul className='stock-search-results-container'>
                     {this.props.stocks.stockNameSearch.map(compObj => {
                         return (
                             <li onClick={() => this.handleClick(compObj['1. symbol'])}>
-                                <span>{compObj['1. symbol:']}</span>
-                                <span>{compObj['2. name']}</span>
-                                <span>{compObj['9. matchScore']}</span>
+                                <p>Ticker: {compObj['1. symbol']} </p>
+                                <p>Company Name: {compObj['2. name']} </p>
+                                <p>Search Score Match {(parseFloat(compObj['9. matchScore']) * 100).toFixed(2)}% </p>
                             </li>
                         )})}
                 </ul>
