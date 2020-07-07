@@ -59,7 +59,6 @@ export default class StockDetails extends React.Component {
     
     let { activeBuy, activeSell } = this.state;
     let { data, ticker } = this.state.mostRecentStockApiData;
-
     let sellButton = (!Object.keys(this.props.portfolio).includes(ticker)) ? null : (
         <button className={activeSell ? "sell-button-active" : "sell-button"} 
           onClick={() => this.handleClick(false)}
