@@ -3,7 +3,6 @@ import StockDetailsContainer from './stock_details_container';
 import StockGraphContainer from '../stockgraph/stockgraph_container';
 import key from '../../../frontConfig/frontKeys';
 import './stock_search.css';
-import stockSearchLandingPic from './stock-search-landing.jpg';
 import { figureAPICall } from './../../../util/stocks_api_util';
 import StockNameContainer from './stock_name_container';
 
@@ -23,16 +22,7 @@ export default class StockSearch extends React.Component {
   }
   
   componentWillUnmount() {
-    this.setState(() => {
-      return { 
-        ticker: "",
-        loading: false,
-        stocks: {
-          stockNameSearch: []
-        },
-        stock: ''
-      }
-    })
+    this.props.receiveClearStocks();
   }
 
   async tickerCall(apiURL) {
@@ -42,6 +32,7 @@ export default class StockSearch extends React.Component {
 
   async getStockTicker(e) {
     if (e) { e.preventDefault() }
+    this.props.receiveClearStocks();
     const stockSearchAPI = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${this.state.stock}&apikey=${key}`;
     const stockSearch = await (this.tickerCall(stockSearchAPI));
     this.apiLogic(stockSearch);
@@ -66,9 +57,9 @@ export default class StockSearch extends React.Component {
   getStockDetails(e){
     if (e) { e.preventDefault() };
     const intraDayAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.ticker}&interval=15min&outputsize=full&apikey=${key}`;
-    const intraDay = this.props.intraDayAPICall(intraDayAPI);
+    this.props.intraDayAPICall(intraDayAPI);
     const timeSeriesMonthlyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${this.state.ticker}&apikey=${key}`;
-    const timeSeries = this.props.timeSeriesInfoAPICall(timeSeriesMonthlyAPI);
+    this.props.timeSeriesInfoAPICall(timeSeriesMonthlyAPI);
   }
   
   update() {
@@ -89,28 +80,7 @@ export default class StockSearch extends React.Component {
     ) : null;
 
     let stockSearchLanding = (!!firstCheck && !!secondCheck) ? null : (
-      <div className="stock-search-landing">
-          <span>
-            {/* <img 
-            src={stockSearchLandingPic} 
-            alt='stock search' 
-            className="stock-search-background" /> */}
-          </span> 
-           {/* <span>
-            <img 
-            src={stockSearchLandingPic} 
-            alt='stock search' 
-            className="stock-search-background" />
-          </span> */}
-        <div>
-          <h1>Seek And You Shall Find</h1>
-          <div>Enter a company's ticker to access real-time information.  Due
-            to API Limitations, we are unable to process more than 2 stock ticker 
-            searches per minute.  So if a response is not rendered, please stand by 
-            then try again! Thank you for your patience. 
-          </div>
-        </div>
-      </div>
+      < StockNameContainer />
     );
     
     return (
@@ -129,16 +99,9 @@ export default class StockSearch extends React.Component {
               />
             </div>
             <div>
-              < input
-              type = "submit"
-              value = "Submit"
-              className = "stock-form-submit" /
-                >
+              < input type="submit" value="Submit" className="stock-form-submit" />
             </div>
           </form>
-          <StockNameContainer
-            getStockDetails={this.getStockDetails}
-          />
           {stockSearchLanding}
           {theStockDetailsAndGraph}
       </div>

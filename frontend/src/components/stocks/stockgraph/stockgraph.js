@@ -32,15 +32,8 @@ export default class StockGraph extends React.Component {
     this.formatGraphData()
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.stockInfo !== prevProps.stockInfo){
-  //     this.formatGraphData()
-  //   }
-  // }
-
   handleClick(stockData){
     this.formatGraphData(stockData);
-    // return this.render()
   }
 
   render() {
@@ -79,7 +72,7 @@ export default class StockGraph extends React.Component {
           <XAxis dataKey="date" />
           <YAxis dataKey="close"/>
           <YAxis type="number" domain={[0, 'dataMax']} />
-          <Tooltip />
+          {/* <Tooltip /> */}
           <Legend />
           <Line type="monotone" dataKey="high"  stroke="#C4D6BO" activeDot={{ r: 8 }} />
           <Line type="monotone" dataKey="low" stroke="#F64740" />

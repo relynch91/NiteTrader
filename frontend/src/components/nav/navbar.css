@@ -4,6 +4,7 @@
     background: whitesmoke;
     height: 8vh;
     min-height: 50px;
+    justify-content: center;
 }
 
 .navbar-main {

@@ -15,31 +15,37 @@
     min-height: 15px;
 }
 
+.stock-search-form > div > h1 {
+    color: white;
+    font-size: 18px;
+}
+
 .stock-search-form-input {
   width: 225px;
   font-size: 12px;
   font-weight: 500;
   padding: 7px 7px;
-  margin-left: 40px;
+  /* margin-left: 40px; */
   background: #fafafa;
-  border: 1px solid lightgrey;
-  border-radius: 2px;
+  border: 2px solid darkgray;
+  border-radius: 3px;
 }
 
-.stock-form-submit{
+.stock-form-submit {
     background: #A3333D;
     border: none;
-    border-radius: 2px;
+    border-radius: 3px;
     font-size: 16px;
     outline: 0;
     padding: 5px 20px;
-    margin-left: 40px;
+    /* margin-left: 40px; */
     color: whitesmoke;
     text-align: center;
     cursor: pointer;
+    border: 2px solid rgb(143, 40, 49);
 }
 
-.stock-form-submit:hover{
+.stock-form-submit:hover {
     background: #3d6883;
 }
 
@@ -47,17 +53,31 @@
     display:flex;
     justify-content: space-around;
     margin: 50px 0 30px 80px;
-    height: 63vh;
+    height: 67vh;
 }
 
 .stock-search-landing {
     display: flex;
     flex-direction: column;
-    height: 73vh;
-    background-color: lightblue;
-    min-width: 950px;
+    align-items: center;
+    height: 75vh;
+    min-width: 1000px;
     font-weight: 700;
-    color: blue;
+    background-image: url('./stock-search-landing.jpg');
+    background-repeat: repeat-x;
+    background-size: cover;
+}
+
+.stock-search-landing h1 {
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.stock-search-landing p {
+    display: block;
+    font-size: 20px;
+    margin: 30px;
+    max-width: 1000px;
 }
 
 .stockName-search-results {

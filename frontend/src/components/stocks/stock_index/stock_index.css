@@ -5,9 +5,11 @@
     background-color: rgb(232, 232, 232);
     padding: 20px;
     margin:10px 0 0 0px;
+    border-radius: 3px;
 }
 
 .stock-index-main {
     display: flex;
     flex-direction: column;
+    min-width: 195px;
 }

@@ -9,6 +9,11 @@ export const RECEIVE_TIME_SERIES_FAILURE = 'RECEIVE_TIME_SERIES_FAILURE';
 export const RECEIVE_STOCK_NAME = 'RECEIEVE_STOCK_NAME';
 export const RECEIVE_STOCK_NAME_SUCCESS = 'RECEIEVE_STOCK_NAME_SUCCESS';
 export const RECEIVE_STOCK_NAME_FAILURE = 'RECEIEVE_STOCK_NAME_FAILURE';
+export const RECEIVE_CLEAR_STOCKS = 'RECEIVE_CLEAR_STOCKS'
+
+export const receiveClearStocks = () => ({
+    type: RECEIVE_CLEAR_STOCKS
+})
 
 export const receiveStock = (stock) => ({
     type: RECEIVE_STOCK,

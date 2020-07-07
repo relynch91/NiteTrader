@@ -12,8 +12,8 @@ class Homepage extends React.Component {
                         <img src={nyse} className="banner-img" alt="stock-market-graph" />
                 </div>
                     <div className="hero-text">
-                        <h1 >Learn To Invest</h1>
-                        <p>Set Your Goals | Test Your Skills</p>
+                        <h1>Learn To Invest</h1>
+                        <h1>Test Your Skills</h1>
                         {this.props.signUpButton}
                     </div>
             </div>
