@@ -8,7 +8,7 @@ const QuoteEndPointStockSchema = new Schema({
     low: { type: String },
     price: { type: String },
     volume: { type: String },
-    latestTradingDay: { type: Date },
+    latestTradingDay: { type: String },
     previousClose: { type: String },
     change: { type: String },
     changePercent: { type: String},

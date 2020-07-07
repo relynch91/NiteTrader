@@ -15,12 +15,18 @@ router.post('/new', (req, res) => {
         low: req.body.low,
         price: req.body.price,
         volume: req.body.volume,
-        lastTradingDay: req.body.lastTradingDay,
+        latestTradingDay: req.body.latestTradingDay,
         previousClose: req.body.previousClose,
         change: req.body.change,
         changePercent: req.body.changePercent
     });
-    newStock.save().then(newStock => res.json(newStock));
+    newStock.save()
+        .then(newStock => res.json(newStock))
+        .catch(() =>
+            res.status(404).json({
+                notickersfound: 'There was a globalEndPointError'
+            })
+        );
 });
 
 router.patch('/update', (req, res) => {
@@ -32,17 +38,23 @@ router.patch('/update', (req, res) => {
         low: req.body.low,
         price: req.body.price,
         volume: req.body.volume,
-        lastTradingDay: req.body.lastTradingDay,
         previousClose: req.body.previousClose,
         change: req.body.change,
-        changePercent: req.body.changePercent
+        changePercent: req.body.changePercent,
+        latestTradingDay: req.body.latestTradingDay
     };
 
     const updatedStock = QuoteEndPointStock.replaceOne(
         query, update, { upsert: true }
         );
 
-    updatedStock.then(updatedStock => res.json(updatedStock));
+    updatedStock
+        .then(updatedStock => res.json(updatedStock))
+        .catch(() =>
+            res.status(404).json({
+                notickersfound: 'There was a globalEndPointError'
+            })
+        );
 })
 
 router.get('/', (req, res) => { 
@@ -53,7 +65,7 @@ router.get('/', (req, res) => {
 router.post('/stock', (req, res) => {
     QuoteEndPointStock.findOne({ symbol: { $eq: req.body.symbol } })
     .then(aStock => (res.json(aStock)))
-    .catch(err =>
+    .catch(() =>
         res.status(404).json({
             notickersfound: 'No stocks found from that ticker'
         })
