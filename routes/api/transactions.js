@@ -33,7 +33,8 @@ router.post('/trade', function(req, res){
         shares: parseInt(req.body.shares),
         buy: req.body.buy 
     })
-    newTransaction.save().then(newTrans => res.json(newTrans));
+    newTransaction.save()
+    .then(newTrans => res.json(newTrans));
 })
 
 module.exports = router;
