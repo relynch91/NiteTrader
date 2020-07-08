@@ -53,8 +53,8 @@ class SignupForm extends React.Component {
     //   .then(() => (this.props.closeModal()))
     // the above code works and signs in/up a user.  Dont touch!
     this.props.signup(user)
-      .then(() => (this.props.login(user)))
-      .then(() => (this.props.closeModal()))
+      // .then(() => (this.props.login(user)))
+      // .then(() => (this.props.closeModal()))
     // this.props.signup(user, this.props.history)
     // this.props.signup(user)
       // .then((user) => (this.userLogin(user)))

@@ -34,8 +34,8 @@ export const signup = user => dispatch => (
         .then((user) => ( 
             dispatch(receiveUserSignIn(user))))
             // return res.status(400).json(errors);
-        .catch((res) => (
-            dispatch(receiveSessionErrors(res.data))
+        .catch((err) => (
+            dispatch(receiveSessionErrors(err.response.data))
         ))
         
 );
