@@ -24,6 +24,15 @@ class SignupForm extends React.Component {
     this.setState({errors: nextProps.errors})
   }
 
+    // componentDidUpdate(prevProps) {
+    //   if (prevProps.signedIn !== this.props.signedIn) {
+    //     this.props.history.push('/login');
+    //   }
+    //   this.setState({
+    //     errors: this.props.errors
+    //   })
+    // }
+
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
@@ -38,13 +47,17 @@ class SignupForm extends React.Component {
       password: this.state.password,
       password2: this.state.password2
     };
-
+    // the below code works and signs in/up a user.  Dont touch!
     // this.props.signup(user, this.props.history)
     //   .then(() => (this.props.login(user)))
     //   .then(() => (this.props.closeModal()))
-    // this.props.signup(user, this.props.history)
+    // the above code works and signs in/up a user.  Dont touch!
     this.props.signup(user)
-      .then((user) => (this.userLogin(user)))
+      .then(() => (this.props.login(user)))
+      .then(() => (this.props.closeModal()))
+    // this.props.signup(user, this.props.history)
+    // this.props.signup(user)
+      // .then((user) => (this.userLogin(user)))
       // .then(() => (this.props.closeModal()))
   }
 

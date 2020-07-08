@@ -20,7 +20,7 @@ class LoginForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
-    this.renderErrors = this.renderErrors.bind(this);
+    // this.renderErrors = this.renderErrors.bind(this);
   }
 
   // Once the user has been authenticated, redirect to the Portfolio page
@@ -56,7 +56,12 @@ class LoginForm extends React.Component {
     };
 
     this.props.login(user)
-      .then(() => this.props.closeModal())
+      .then((res) => this.handleLoggin(res));
+    // .catch (err => )
+  }
+
+  handleLoggin(res) {
+    console.log(res);
   }
 
   // Render the session errors if there are any
@@ -127,37 +132,6 @@ class LoginForm extends React.Component {
           </div>
         </div>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-      // <div>
-      //   <form onSubmit={this.handleSubmit}>
-      //     <div>
-      //         <input type="text"
-      //           value={this.state.username}
-      //           onChange={this.update('username')}
-      //           placeholder="Username"
-      //         />
-      //       <br/>
-      //         <input type="password"
-      //           value={this.state.password}
-      //           onChange={this.update('password')}
-      //           placeholder="Password"
-      //         />
-      //       <br/>
-      //       <input type="submit" value="Submit" />
-      //       {this.renderErrors()}
-      //     </div>
-      //   </form>
-      // </div>
     );
   }
 }

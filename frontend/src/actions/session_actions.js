@@ -18,7 +18,7 @@ export const receiveUserSignIn = () => ({
 });
 
 // We dispatch this one to show authentication errors on the frontend
-export const receiveErrors = errors => ({
+export const receiveSessionErrors = errors => ({
     type: RECEIVE_SESSION_ERRORS,
     errors
 });
@@ -32,11 +32,9 @@ export const logoutUser = () => ({
 export const signup = user => dispatch => (
     APIUtil.signup(user)
     .then((res) => ( 
-        dispatch(receiveUserSignIn()),
-        console.log('i am here also'))
+        dispatch(receiveUserSignIn()))
     .catch((res) => (
-        console.log('i am here'),
-        dispatch(receiveErrors(res.data))
+        dispatch(receiveSessionErrors(res.data))
     )))
 );
 
@@ -52,7 +50,7 @@ export const login = user => dispatch => (
         dispatch(receiveCurrentUser(decoded))
     })
     .catch(err => {
-        dispatch(receiveErrors(err.response.data));
+        dispatch(receiveSessionErrors(err.response.data));
     })
 )
 
