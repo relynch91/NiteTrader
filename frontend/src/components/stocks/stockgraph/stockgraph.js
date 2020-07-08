@@ -15,7 +15,7 @@ export default class StockGraph extends React.Component {
     if (stockData) {
       stockDataFromState = stockData
     } else{
-      stockDataFromState = StockUtil.twoYears(this.props.stockInfo.timeSeriesMonthly);
+      stockDataFromState = StockUtil.oneWeek(this.props.stockInfo.intraDay);
     }
     let theDays = Object.keys(stockDataFromState)
     let structuredProps = theDays.map((dateKey) => ({
@@ -48,11 +48,13 @@ export default class StockGraph extends React.Component {
           <button className="stockgraph-time-button" 
             onClick={() => this.handleClick(StockUtil.oneMonth(intraDay))}>1 Month</button>
           <button className="stockgraph-time-button" 
-            onClick={() => this.handleClick(StockUtil.threeMonths(intraDay))}>3 Months</button>
+            onClick={() => this.handleClick(StockUtil.sixMonths(timeSeriesMonthly))}>6 Months</button>
           <button className="stockgraph-time-button" 
             onClick={() => this.handleClick(StockUtil.oneYear(timeSeriesMonthly))}>1 Year</button>
           <button className="stockgraph-time-button" 
             onClick={() => this.handleClick(StockUtil.twoYears(timeSeriesMonthly))}>2 Years</button>
+          {/* <button className="stockgraph-time-button" 
+            onClick={() => this.handleClick(StockUtil.tenYears(timeSeriesMonthly))}>10 Years</button> */}
         </div> : null;
     return (
       <div className="stock-graph-main">
@@ -70,8 +72,8 @@ export default class StockGraph extends React.Component {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" />
-          <YAxis dataKey="close"/>
-          <YAxis type="number" domain={[0, 'dataMax']} />
+          {/* https://stackoverflow.com/questions/50078787/recharts-set-y-axis-range */}
+          <YAxis type="number" domain={['dataMin - 10', 'dataMax + 10']} />
           <Tooltip />
           <Legend />
           <Line type="monotone" dataKey="high"  stroke="#C4D6BO" activeDot={{ r: 8 }} />
