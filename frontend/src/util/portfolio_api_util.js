@@ -43,7 +43,7 @@ export const fetchDBStockData = (transactions) => {
 export const formatPortfolioData = (portfolio) => {
     let res = [];
     Object.keys(portfolio).forEach(ticker => {
-        let key = portfolio[ticker].priceDiff > 0 ? 'Gain' : 'Loss';
+        let key = parseFloat(portfolio[ticker].quoteEndPointData.changePercent) > 0 ? 'Gain' : 'Loss';
         // res.push({ name: ticker, [key]: portfolio[ticker].priceDiff })
         res.push({
             name: ticker,
