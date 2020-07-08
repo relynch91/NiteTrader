@@ -20,7 +20,7 @@
     display: flex;
 }
 
-#portfolio-graph {
+.portfolio-graph {
     display: flex;
     flex-direction: column;
     justify-content: center;

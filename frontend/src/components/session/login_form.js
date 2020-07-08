@@ -20,19 +20,17 @@ class LoginForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
-    this.renderErrors = this.renderErrors.bind(this);
+    // this.renderErrors = this.renderErrors.bind(this);
   }
 
-  // Once the user has been authenticated, redirect to the Portfolio page
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.currentUser === true) {
-      this.props.history.push('/');
+  componentDidUpdate(prevProps) {
+    if (this.props.currentUser !== prevProps.currentUser) {
+         this.props.history.push('/');
+      this.setState({
+        errors: this.props.errors
+      });
     }
-
-    // Set or clear errors
-    this.setState({errors: nextProps.errors})
   }
-
   // Handle field updates (called in the render method)
   update(field) {
     return e => this.setState({
@@ -45,37 +43,21 @@ class LoginForm extends React.Component {
     this.props.demoLogin(this.demoUser)
       .then(() => this.props.closeModal())
   }
-
   // Handle form submission
   handleSubmit(e) {
     e.preventDefault();
-
     let user = {
       username: this.state.username,
       password: this.state.password
     };
 
     this.props.login(user)
-      .then(() => this.props.closeModal())
-  }
-
-  // Render the session errors if there are any
-  renderErrors() {
-    return(
-      <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>
-            {this.state.errors[error]}
-          </li>
-        ))}
-      </ul>
-    );
+      // .then((res) => this.props.closeModal());
   }
 
   render() {
-
+    
     const { formType, closeModal, otherForm } = this.props;
-
     const message = formType === 'Sign Up' ? 'Already have an account?' : 'No account?';
     const button_text = formType === 'Sign Up' ? 'Sign up' : 'Sign in';
     const intro = formType === 'Sign Up'
@@ -93,7 +75,6 @@ class LoginForm extends React.Component {
           <div className="modal-intro">{intro}</div>
           <div className="modal-quote">The World is Yours.</div>
           <br />
-          <ul>{this.renderErrors()}</ul>
           <br />
           <form className="modal-form" onSubmit={this.handleSubmit}>
             <div className="session-info">
@@ -101,7 +82,6 @@ class LoginForm extends React.Component {
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
-                // placeholder="Username"
                 className="modal-input"
               />
             </div>
@@ -111,7 +91,6 @@ class LoginForm extends React.Component {
               <input type="password"
                 value={this.state.password}
                 onChange={this.update("password")}
-                // placeholder="Password"
                 className="modal-input"
               />
             </div>
@@ -127,37 +106,6 @@ class LoginForm extends React.Component {
           </div>
         </div>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-      // <div>
-      //   <form onSubmit={this.handleSubmit}>
-      //     <div>
-      //         <input type="text"
-      //           value={this.state.username}
-      //           onChange={this.update('username')}
-      //           placeholder="Username"
-      //         />
-      //       <br/>
-      //         <input type="password"
-      //           value={this.state.password}
-      //           onChange={this.update('password')}
-      //           placeholder="Password"
-      //         />
-      //       <br/>
-      //       <input type="submit" value="Submit" />
-      //       {this.renderErrors()}
-      //     </div>
-      //   </form>
-      // </div>
     );
   }
 }

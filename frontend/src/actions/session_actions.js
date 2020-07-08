@@ -18,7 +18,7 @@ export const receiveUserSignIn = () => ({
 });
 
 // We dispatch this one to show authentication errors on the frontend
-export const receiveErrors = errors => ({
+export const receiveSessionErrors = errors => ({
     type: RECEIVE_SESSION_ERRORS,
     errors
 });
@@ -31,28 +31,25 @@ export const logoutUser = () => ({
 // Upon signup, dispatch the approporiate action depending on which type of response we receieve from the backend
 export const signup = user => dispatch => (
     APIUtil.signup(user)
-    .then((res) => ( 
-        dispatch(receiveUserSignIn()),
-        console.log('i am here also'))
-    .catch((res) => (
-        console.log('i am here'),
-        dispatch(receiveErrors(res.data))
-    )))
+        .then((user) => ( 
+            dispatch(receiveUserSignIn(user))))
+            // return res.status(400).json(errors);
+        .catch((err) => (
+            dispatch(receiveSessionErrors(err.response.data))
+        ))
+        
 );
 
 // Upon login, set the session token and dispatch the current user. Dispatch errors on failure.
 export const login = user => dispatch => (
-    APIUtil.login(user).then(res => {
-        const {
-            token
-        } = res.data;
+    APIUtil.login(user).then(res => { const { token} = res.data;
         localStorage.setItem('jwtToken', token);
         APIUtil.setAuthToken(token);
         const decoded = jwt_decode(token);
         dispatch(receiveCurrentUser(decoded))
     })
     .catch(err => {
-        dispatch(receiveErrors(err.response.data));
+        dispatch(receiveSessionErrors(err.response.data));
     })
 )
 

@@ -17,13 +17,6 @@ class SignupForm extends React.Component {
     this.clearedErrors = false;
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.signedIn === true) {
-      this.props.history.push('/login');
-    }
-    this.setState({errors: nextProps.errors})
-  }
-
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
@@ -38,45 +31,32 @@ class SignupForm extends React.Component {
       password: this.state.password,
       password2: this.state.password2
     };
-
+    // the below code works and signs in/up a user.  Dont touch!
     // this.props.signup(user, this.props.history)
     //   .then(() => (this.props.login(user)))
     //   .then(() => (this.props.closeModal()))
-    // this.props.signup(user, this.props.history)
-    this.props.signup(user)
-      .then((user) => (this.userLogin(user)))
-      // .then(() => (this.props.closeModal()))
+    // the above code works and signs in/up a user.  Dont touch!
+    this.props.signup(user, this.props.history)
+      .then(() => (this.props.login(user)))
+    //   .then(() => (this.props.closeModal()))
+   
   }
 
   userLogin(user) {
     this.props.login(user)
-      .then((loggedInUser) => this.props.closeModal())
+      .then(() => this.props.closeModal())
       .catch(error => console.log(error))
   }
 
-  // renderErrors() {
-  //   return(
-  //     <ul>
-  //       {Object.keys(this.state.errors).map((error, i) => (
-  //         <li key={`error-${i}`}>
-  //           {this.state.errors[error]}
-  //         </li>
-  //       ))}
-  //     </ul>
-  //   );
-  // }
-
   render() {
-    
+    // let errors = this.props.errors;
     const { formType, closeModal, otherForm } = this.props;
-
     const message = formType === 'Sign Up' ? 'Already have an account?' : 'No account?';
     const button_text = formType === 'Sign Up' ? 'Sign up' : 'Sign in';
     const intro = formType === 'Sign Up'
     const login_intro = formType === 'Sign Up' ? 'Join NiteTrader!' : 'Welcome Back!'
     
     return (
-
       <div className="modal-child">
         <div onClick={closeModal} className="close-x">
           &times;
@@ -86,7 +66,6 @@ class SignupForm extends React.Component {
           <div className="modal-intro">{intro}</div>
           <div className="modal-quote">The World is Yours.</div>
           <br />
-          {/* <ul>{this.renderErrors()}</ul> */}
           <br />
           <form className="modal-form" onSubmit={this.handleSubmit}>
             <div className="session-info">
