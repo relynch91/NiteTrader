@@ -17,12 +17,12 @@ class SignupForm extends React.Component {
     this.clearedErrors = false;
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.signedIn === true) {
-      this.props.history.push('/login');
-    }
-    this.setState({errors: nextProps.errors})
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.signedIn === true) {
+  //     this.props.history.push('/login');
+  //   }
+  //   this.setState({errors: nextProps.errors})
+  // }
 
     // componentDidUpdate(prevProps) {
     //   if (prevProps.signedIn !== this.props.signedIn) {
@@ -52,32 +52,29 @@ class SignupForm extends React.Component {
     //   .then(() => (this.props.login(user)))
     //   .then(() => (this.props.closeModal()))
     // the above code works and signs in/up a user.  Dont touch!
-    this.props.signup(user)
-      // .then(() => (this.props.login(user)))
-      // .then(() => (this.props.closeModal()))
-    // this.props.signup(user, this.props.history)
-    // this.props.signup(user)
-      // .then((user) => (this.userLogin(user)))
-      // .then(() => (this.props.closeModal()))
+    this.props.signup(user, this.props.history)
+      .then(() => (this.props.login(user)))
+    //   .then(() => (this.props.closeModal()))
+   
   }
 
   userLogin(user) {
     this.props.login(user)
-      .then((loggedInUser) => this.props.closeModal())
+      .then(() => this.props.closeModal())
       .catch(error => console.log(error))
   }
 
-  renderErrors() {
-    return(
-      <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>
-            {this.state.errors[error]}
-          </li>
-        ))}
-      </ul>
-    );
-  }
+  // renderErrors() {
+  //   return(
+  //     <ul>
+  //       {Object.keys(this.state.errors).map((error, i) => (
+  //         <li key={`error-${i}`}>
+  //           {this.state.errors[error]}
+  //         </li>
+  //       ))}
+  //     </ul>
+  //   );
+  // }
 
   render() {
     // let errors = this.props.errors;
@@ -97,7 +94,7 @@ class SignupForm extends React.Component {
           <div className="modal-intro">{intro}</div>
           <div className="modal-quote">The World is Yours.</div>
           <br />
-          <ul>{this.renderErrors()}</ul>
+          {/* <ul>{this.renderErrors()}</ul> */}
           <br />
           <form className="modal-form" onSubmit={this.handleSubmit}>
             <div className="session-info">
