@@ -78,7 +78,6 @@
 }
 
 .session-info {
-    border-radius: 4px;
     font-size: 16px;
     text-align: center;
 }
@@ -88,14 +87,6 @@
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 15px;
-    /* width: 100px;
-    font-size: 12px;
-    font-weight: 500;
-    padding: 7px 7px;
-    margin-left: 40px;
-    background: #fafafa;
-    border: 1px solid lightgrey;
-    border-radius: 2px; */
 }
 
 .modal-submit {

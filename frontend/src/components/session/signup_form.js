@@ -39,22 +39,32 @@ class SignupForm extends React.Component {
       password2: this.state.password2
     };
 
-    this.props.signup(user, this.props.history)
-      .then( () => (this.props.login(user)))
-      .then(() => (this.props.closeModal()))
+    // this.props.signup(user, this.props.history)
+    //   .then(() => (this.props.login(user)))
+    //   .then(() => (this.props.closeModal()))
+    // this.props.signup(user, this.props.history)
+    this.props.signup(user)
+      .then((user) => (this.userLogin(user)))
+      // .then(() => (this.props.closeModal()))
   }
 
-  renderErrors() {
-    return(
-      <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>
-            {this.state.errors[error]}
-          </li>
-        ))}
-      </ul>
-    );
+  userLogin(user) {
+    this.props.login(user)
+      .then((loggedInUser) => this.props.closeModal())
+      .catch(error => console.log(error))
   }
+
+  // renderErrors() {
+  //   return(
+  //     <ul>
+  //       {Object.keys(this.state.errors).map((error, i) => (
+  //         <li key={`error-${i}`}>
+  //           {this.state.errors[error]}
+  //         </li>
+  //       ))}
+  //     </ul>
+  //   );
+  // }
 
   render() {
     
@@ -76,7 +86,7 @@ class SignupForm extends React.Component {
           <div className="modal-intro">{intro}</div>
           <div className="modal-quote">The World is Yours.</div>
           <br />
-          <ul>{this.renderErrors()}</ul>
+          {/* <ul>{this.renderErrors()}</ul> */}
           <br />
           <form className="modal-form" onSubmit={this.handleSubmit}>
             <div className="session-info">

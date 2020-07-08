@@ -12,7 +12,6 @@ router.get("/test", (req, res) => res.json({
     msg: "This is the users route"
 }));
 
-// You may want to start commenting in information about your routes so that you can find the appropriate ones quickly.
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
     res.json({
         id: req.user.id,
@@ -26,10 +25,11 @@ router.post("/register", (req, res) => {
         errors,
         isValid
     } = validateRegisterInput(req.body);
-
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
+    console.log(errors);
+    console.log(isValid);
+    // if (!isValid) {
+    //     return res.status(400).json(errors);
+    // }
 
     User.findOne({
         username: req.body.username

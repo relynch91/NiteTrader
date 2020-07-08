@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => {
       <button className="modal-switch-button" onClick={() => {
         dispatch(openModal('login'))
         dispatch(clearErrors())
-      }}>Sign in        
+      }}> Sign in        
       </button>
     ),
     closeModal: () => dispatch(closeModal())
