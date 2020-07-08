@@ -26,6 +26,8 @@
 
 .stock-index-main {
     display: flex;
+    overflow: scroll;
+    height: 74vh;
     flex-direction: column;
 }
 

@@ -11,10 +11,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   tradeStock: (transaction) => dispatch(tradeStock(transaction))
-  // Depending on the route the user takes, we might have to call these to populate portfolio 
-  // in order to know if user can sell a stock, but if visit portfolio first: no need
-    // buildPortfolio: (transactions) => dispatch(buildPortfolio(transactions))
-    // fetchTrades: (userId) => dispatch(fetchTrades(userId))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(StockDetails));
