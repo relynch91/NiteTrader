@@ -33,15 +33,14 @@ class LoginForm extends React.Component {
   //   this.setState({errors: nextProps.errors})
   // }
 
-   componentDidUpdate(prevProps) {
-     if (this.props.currentUser !== prevProps.currentUser) {
-          this.props.history.push('/');
-       this.setState({
-         errors: this.props.errors
-       });
-     }
-   }
-
+  componentDidUpdate(prevProps) {
+    if (this.props.currentUser !== prevProps.currentUser) {
+         this.props.history.push('/');
+      this.setState({
+        errors: this.props.errors
+      });
+    }
+  }
   // Handle field updates (called in the render method)
   update(field) {
     return e => this.setState({
@@ -54,42 +53,34 @@ class LoginForm extends React.Component {
     this.props.demoLogin(this.demoUser)
       .then(() => this.props.closeModal())
   }
-
   // Handle form submission
   handleSubmit(e) {
     e.preventDefault();
-
     let user = {
       username: this.state.username,
       password: this.state.password
     };
 
     this.props.login(user)
-      .then((res) => this.handleLoggin(res));
-    // .catch (err => )
-  }
-
-  handleLoggin(res) {
-    console.log(res);
+      .then((res) => this.props.closeModal());
   }
 
   // Render the session errors if there are any
-  renderErrors() {
-    return(
-      <ul>
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>
-            {this.state.errors[error]}
-          </li>
-        ))}
-      </ul>
-    );
-  }
+  // renderErrors() {
+  //   return(
+  //     <ul>
+  //       {Object.keys(this.state.errors).map((error, i) => (
+  //         <li key={`error-${i}`}>
+  //           {this.state.errors[error]}
+  //         </li>
+  //       ))}
+  //     </ul>
+  //   );
+  // }
 
   render() {
-
+    
     const { formType, closeModal, otherForm } = this.props;
-
     const message = formType === 'Sign Up' ? 'Already have an account?' : 'No account?';
     const button_text = formType === 'Sign Up' ? 'Sign up' : 'Sign in';
     const intro = formType === 'Sign Up'
@@ -107,7 +98,7 @@ class LoginForm extends React.Component {
           <div className="modal-intro">{intro}</div>
           <div className="modal-quote">The World is Yours.</div>
           <br />
-          <ul>{this.renderErrors()}</ul>
+          {/* <ul>{this.state.errors}</ul> */}
           <br />
           <form className="modal-form" onSubmit={this.handleSubmit}>
             <div className="session-info">
