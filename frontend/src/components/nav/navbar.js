@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom'
 import './navbar.css'
-import { session } from 'passport';
 
 class NavBar extends React.Component {
   constructor(props) {
