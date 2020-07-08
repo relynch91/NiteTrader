@@ -20,7 +20,10 @@ export default class PortfolioBarChart extends PureComponent {
         let { portfolio } = this.props;
         if (Object.keys(portfolio).length === 0) { return null };
         return (
-            <div id='portfolio-graph'>   
+            <div className='portfolio-graph'>
+                <h1>
+                    Currently Owned Stocks Performance (Single Day)
+                </h1>
                 <BarChart
                     width={500}
                     height={300}

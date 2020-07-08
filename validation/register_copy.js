@@ -1,7 +1,14 @@
 const Validator = require('validator');
 const validText = require('./valid-text');
 
-module.exports = function validateRegisterInput(data) {
+const data = {
+    email: 'helloasdffasd@google.com',
+    username: '',
+    password: 'itHasBeenAWhile',
+    password2: 'itHasBeenAWhile'
+};
+
+function validateRegisterInput(data) {
     let errors = {};
 
     data.username = validText(data.username) ? data.username : '';
@@ -46,9 +53,12 @@ module.exports = function validateRegisterInput(data) {
     if (!Validator.equals(data.password, data.password2)) {
         errors.password2 = 'Passwords must match';
     }
-    
+    // console.log(errors);
+    // console.log(isValid);
     return {
         errors,
         isValid: Object.keys(errors).length === 0
     };
 };
+
+console.log(validateRegisterInput(data));

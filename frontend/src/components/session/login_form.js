@@ -62,7 +62,7 @@ class LoginForm extends React.Component {
     };
 
     this.props.login(user)
-      .then((res) => this.props.closeModal());
+      // .then((res) => this.props.closeModal());
   }
 
   // Render the session errors if there are any
