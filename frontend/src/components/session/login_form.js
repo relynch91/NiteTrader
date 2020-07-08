@@ -23,16 +23,6 @@ class LoginForm extends React.Component {
     // this.renderErrors = this.renderErrors.bind(this);
   }
 
-  // Once the user has been authenticated, redirect to the Portfolio page
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.currentUser === true) {
-  //     this.props.history.push('/');
-  //   }
-
-  //   // Set or clear errors
-  //   this.setState({errors: nextProps.errors})
-  // }
-
   componentDidUpdate(prevProps) {
     if (this.props.currentUser !== prevProps.currentUser) {
          this.props.history.push('/');
@@ -65,19 +55,6 @@ class LoginForm extends React.Component {
       // .then((res) => this.props.closeModal());
   }
 
-  // Render the session errors if there are any
-  // renderErrors() {
-  //   return(
-  //     <ul>
-  //       {Object.keys(this.state.errors).map((error, i) => (
-  //         <li key={`error-${i}`}>
-  //           {this.state.errors[error]}
-  //         </li>
-  //       ))}
-  //     </ul>
-  //   );
-  // }
-
   render() {
     
     const { formType, closeModal, otherForm } = this.props;
@@ -98,7 +75,6 @@ class LoginForm extends React.Component {
           <div className="modal-intro">{intro}</div>
           <div className="modal-quote">The World is Yours.</div>
           <br />
-          {/* <ul>{this.state.errors}</ul> */}
           <br />
           <form className="modal-form" onSubmit={this.handleSubmit}>
             <div className="session-info">
@@ -106,7 +82,6 @@ class LoginForm extends React.Component {
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
-                // placeholder="Username"
                 className="modal-input"
               />
             </div>
@@ -116,7 +91,6 @@ class LoginForm extends React.Component {
               <input type="password"
                 value={this.state.password}
                 onChange={this.update("password")}
-                // placeholder="Password"
                 className="modal-input"
               />
             </div>
