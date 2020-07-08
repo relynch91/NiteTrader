@@ -24,14 +24,23 @@ class LoginForm extends React.Component {
   }
 
   // Once the user has been authenticated, redirect to the Portfolio page
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.currentUser === true) {
-      this.props.history.push('/');
-    }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.currentUser === true) {
+  //     this.props.history.push('/');
+  //   }
 
-    // Set or clear errors
-    this.setState({errors: nextProps.errors})
-  }
+  //   // Set or clear errors
+  //   this.setState({errors: nextProps.errors})
+  // }
+
+   componentDidUpdate(prevProps) {
+     if (this.props.currentUser !== prevProps.currentUser) {
+          this.props.history.push('/');
+       this.setState({
+         errors: this.props.errors
+       });
+     }
+   }
 
   // Handle field updates (called in the render method)
   update(field) {

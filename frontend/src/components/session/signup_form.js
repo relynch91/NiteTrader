@@ -82,14 +82,12 @@ class SignupForm extends React.Component {
   render() {
     
     const { formType, closeModal, otherForm } = this.props;
-
     const message = formType === 'Sign Up' ? 'Already have an account?' : 'No account?';
     const button_text = formType === 'Sign Up' ? 'Sign up' : 'Sign in';
     const intro = formType === 'Sign Up'
     const login_intro = formType === 'Sign Up' ? 'Join NiteTrader!' : 'Welcome Back!'
     
     return (
-
       <div className="modal-child">
         <div onClick={closeModal} className="close-x">
           &times;
