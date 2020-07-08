@@ -2,7 +2,6 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import '../modal/modal.css';
 
-
 class SignupForm extends React.Component {
   constructor(props) {
     super(props);
@@ -64,8 +63,6 @@ class SignupForm extends React.Component {
     const message = formType === 'Sign Up' ? 'Already have an account?' : 'No account?';
     const button_text = formType === 'Sign Up' ? 'Sign up' : 'Sign in';
     const intro = formType === 'Sign Up'
-      // ? 'Create an account to begin making trades with real stock data!'
-      // : 'Sign in to see your portfolio.'
     const login_intro = formType === 'Sign Up' ? 'Join NiteTrader!' : 'Welcome Back!'
     
     return (
@@ -87,7 +84,6 @@ class SignupForm extends React.Component {
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
-                // placeholder="Email"
                 className="modal-input"
               />
             </div>
@@ -97,7 +93,6 @@ class SignupForm extends React.Component {
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
-                // placeholder="Username"
                 className="modal-input"
               />
             </div>
@@ -107,7 +102,6 @@ class SignupForm extends React.Component {
               <input type="password"
                 value={this.state.password}
                 onChange={this.update("password")}
-                // placeholder="Password"
                 className="modal-input"
               />
             </div>
@@ -117,7 +111,6 @@ class SignupForm extends React.Component {
               <input type="password"
                 value={this.state.password2}
                 onChange={this.update("password2")}
-                // placeholder="Confirm Password"
                 className="modal-input"
               />
             </div>
