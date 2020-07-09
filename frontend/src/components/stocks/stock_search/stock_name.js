@@ -72,7 +72,6 @@ export default class StockName extends React.Component {
                             >
                                 <p>Ticker: {compObj['1. symbol']} </p>
                                 <p>Company Name: {compObj['2. name']} </p>
-                                {/* <p>Match Score {Math.floor(parseFloat(compObj['9. matchScore']) * 100)}% </p> */}
                                 <p>Match Score {(parseFloat(compObj['9. matchScore']) * 100).toFixed(2)}% </p>
                             </li>
                         )})}
