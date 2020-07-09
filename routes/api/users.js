@@ -35,7 +35,7 @@ router.post("/register", (req, res) => {
         username: req.body.username
     }).then(user => {
         if (user) {
-            errors.username = "User already exists";
+            errors.username = "* This username is taken. *";
             return res.status(400).json(errors);
         } else {
             const newUser = new User({
@@ -91,7 +91,7 @@ router.post("/login", (req, res) => {
         username
     }).then(user => {
         if (!user) {
-            errors.username = "This user does not exist";
+            errors.username = "* This user does not exist. *";
             return res.status(400).json(errors);
         }
 
@@ -111,7 +111,7 @@ router.post("/login", (req, res) => {
                     });
                 });
             } else {
-                errors.password = "Incorrect password";
+                errors.password = "* Incorrect password. *";
                 return res.status(400).json(errors);
             }
         });

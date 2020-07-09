@@ -1,7 +1,7 @@
 import {
   RECEIVE_CURRENT_USER,
   RECEIVE_USER_LOGOUT,
-  RECEIVE_USER_SIGN_IN,
+  RECEIVE_USER_SIGN_UP,
 } from '../actions/session_actions';
 
 const initialState = {
@@ -22,7 +22,7 @@ export default function (state = initialState, action) {
         isAuthenticated: false,
         user: undefined
       };
-    case RECEIVE_USER_SIGN_IN:
+    case RECEIVE_USER_SIGN_UP:
       return {
         ...state,
         isSignedIn: true
