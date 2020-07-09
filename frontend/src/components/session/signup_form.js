@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import '../modal/modal.css';
+import './login_signup.css'
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class SignupForm extends React.Component {
     //   .then(() => (this.props.login(user)))
     //   .then(() => (this.props.closeModal()))
     // the above code works and signs in/up a user.  Dont touch!
-    this.props.signup(user, this.props.history)
+    this.props.signup(user)
       .then(() => (this.props.login(user)))
     //   .then(() => (this.props.closeModal()))
    
@@ -63,47 +64,44 @@ class SignupForm extends React.Component {
         </div>
         <div className="modal-content">
           <div className="modal-title">{login_intro}</div>
-          <div className="modal-intro">{intro}</div>
           <div className="modal-quote">The World is Yours.</div>
-          <br />
-          <br />
           <form className="modal-form" onSubmit={this.handleSubmit}>
             <div className="session-info">
               <label htmlFor="email">Email</label>
+              <div className='login-signup-form-errors'> {this.props.errors['email']} </div>
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
                 className="modal-input"
               />
             </div>
-            <br />
             <div className="session-info">
               <label htmlFor="username">Username</label>
+              <div className='login-signup-form-errors'> {this.props.errors['username']} </div>
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
                 className="modal-input"
               />
             </div>
-            <br />
             <div className="session-info">
               <label htmlFor="password">Password</label>
+              <div className='login-signup-form-errors'> {this.props.errors['password']} </div>
               <input type="password"
                 value={this.state.password}
                 onChange={this.update("password")}
                 className="modal-input"
               />
             </div>
-            <br />
             <div className="session-info">
               <label htmlFor="password2">Confirm Password</label>
+              <div className='login-signup-form-errors'> {this.props.errors['password2']} </div>
               <input type="password"
                 value={this.state.password2}
                 onChange={this.update("password2")}
                 className="modal-input"
               />
             </div>
-            <br />
             <input type="submit" className="modal-submit" value={button_text} />
           </form>
           <div className="modal-bottom">

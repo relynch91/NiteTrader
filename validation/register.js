@@ -40,7 +40,7 @@ module.exports = function validateRegisterInput(data) {
     }
 
     if (Validator.isEmpty(data.password2)) {
-        errors.password2 = 'Confirm Password field is required.';
+        errors.password2 = 'Confirm Password is required.';
     }
 
     if (!Validator.equals(data.password, data.password2)) {

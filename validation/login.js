@@ -8,11 +8,11 @@ module.exports = function validateLoginInput(data) {
     data.password = validText(data.password) ? data.password : '';
 
     if (Validator.isEmpty(data.username)) {
-        errors.username = 'username field is required';
+        errors.username = 'Sorry, a username is required to login';
     }
 
     if (Validator.isEmpty(data.password)) {
-        errors.password = 'Password field is required';
+        errors.password = 'Sorry, a password is required to login';
     }
 
     return {
