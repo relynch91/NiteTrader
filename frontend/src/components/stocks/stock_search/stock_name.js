@@ -49,13 +49,15 @@ export default class StockName extends React.Component {
                return ( 
                     <div className = "stock-search-landing" >
                         <StockSearchErrorsContainer />
-                        <h1 > Seek And You Shall Find </h1> 
-                        <p> Enter a company 's ticker to access real-time information.  Due
+                        <h1> Welcome to the Stock Portal</h1> 
+                        <p>Research a company's performance over time </p>
+                        <p>Buy &amp; Sell Stock</p>
+                        {/* <p> Enter a company 's ticker to access real-time information.  Due
                         to API Limitations, we are unable to process more than 2 stock ticker 
                         searches per minute.So
                         if a response is not rendered, please stand by then
                         try again!Thank you
-                        for your patience. </p> 
+                        for your patience. </p>  */}
                    </div>
                )
            } else
