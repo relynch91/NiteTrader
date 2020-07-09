@@ -63,7 +63,7 @@ export default class StockName extends React.Component {
            } else
         return (
             <div className='stock-search-landing-results'>
-                <h1>Click on a company below to search their stock data</h1>
+                <h1>Click on a company below to view stock data</h1>
                 <ul className='stock-search-results-container'>
                     {this.props.stocks.stockNameSearch.map((compObj, idx) => {
                         return (
@@ -72,7 +72,7 @@ export default class StockName extends React.Component {
                             >
                                 <p>Ticker: {compObj['1. symbol']} </p>
                                 <p>Company Name: {compObj['2. name']} </p>
-                                <p>Search Score Match {(parseFloat(compObj['9. matchScore']) * 100).toFixed(2)}% </p>
+                                <p>Match Score {(parseFloat(compObj['9. matchScore']) * 100).toFixed(2)}% </p>
                             </li>
                         )})}
                 </ul>
