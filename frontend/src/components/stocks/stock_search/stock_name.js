@@ -1,6 +1,7 @@
 import React from 'react';
 import key from '../../../frontConfig/frontKeys';
 import './stock_name.css';
+import StockSearchErrorsContainer from './stock_search_errors_container'
 
 export default class StockName extends React.Component {
     
@@ -45,13 +46,16 @@ export default class StockName extends React.Component {
                 
             )
         } else if (this.props.stocks.stockNameSearch.length === 0) {
-               return ( <div className = "stock-search-landing" >
-                   <h1 > Seek And You Shall Find </h1> 
-                   <p> Enter a company 's ticker to access real-time information.  Due
-                   to API Limitations, we are unable to process more than 2 stock ticker searches per minute.So
-                   if a response is not rendered, please stand by then
-                   try again!Thank you
-                   for your patience. </p> 
+               return ( 
+                    <div className = "stock-search-landing" >
+                        <StockSearchErrorsContainer />
+                        <h1 > Seek And You Shall Find </h1> 
+                        <p> Enter a company 's ticker to access real-time information.  Due
+                        to API Limitations, we are unable to process more than 2 stock ticker 
+                        searches per minute.So
+                        if a response is not rendered, please stand by then
+                        try again!Thank you
+                        for your patience. </p> 
                    </div>
                )
            } else

@@ -7,7 +7,7 @@ import {
     RECEIVE_STOCK_NAME_FAILURE
 } from '../actions/alphaApi_actions';
 
-const _nullErrors = [];
+const _nullErrors = {};
 
 const alphaAPIErrorsReducer = (state = _nullErrors, action) => {
     Object.freeze(state);
@@ -16,7 +16,7 @@ const alphaAPIErrorsReducer = (state = _nullErrors, action) => {
         case RECEIVE_TIME_SERIES_FAILURE:
             return {
                 error: "You reached your maximum per minute call. Please Try again in 30 seconds",
-                actual: action
+                // actual: action
             }
 
         case RECEIVE_TIME_SERIES_SUCCESS:
@@ -25,7 +25,7 @@ const alphaAPIErrorsReducer = (state = _nullErrors, action) => {
         case RECEIVE_INTRADAY_FAILURE:
             return {
                 error: "You reached your maximum per minute call. Please Try again in 30 seconds",
-                actual: action
+                // actual: action
             }
 
         case RECEIVE_INTRADAY_SUCCESS:
@@ -35,7 +35,7 @@ const alphaAPIErrorsReducer = (state = _nullErrors, action) => {
             
             return {
                 error: "You reached your maximum per minute call. Please Try again in 30 seconds",
-                actual: action
+                // actual: action
             }
         case RECEIVE_STOCK_NAME_SUCCESS:
             return _nullErrors;
