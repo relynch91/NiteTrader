@@ -1,7 +1,9 @@
 import * as APIUtil from '../util/session_api_util';
 import { closeModal } from './modal_actions';
 import jwt_decode from 'jwt-decode';
-import { clearErrors } from './error_actions'
+import { clearErrors } from './error_actions';
+import { clearPortfolio } from './portfolio_actions';
+import { clearTransactions } from './transaction_actions'
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
@@ -36,11 +38,9 @@ export const signup = user => dispatch => (
         .then((user) => ( 
             dispatch(receiveUserSignUp(user))),
             dispatch(clearErrors))
-            // return res.status(400).json(errors);
         .catch((err) => (
             dispatch(receiveSessionErrors(err.response.data))
         ))
-        
 );
 
 // Upon login, set the session token and dispatch the current user. Dispatch errors on failure.
@@ -60,7 +60,9 @@ export const login = user => dispatch => (
 
 // We wrote this one earlier
 export const logout = () => dispatch => {
-    localStorage.removeItem('jwtToken')
-    APIUtil.setAuthToken(false)
-    dispatch(logoutUser())
+    localStorage.removeItem('jwtToken');
+    APIUtil.setAuthToken(false);
+    dispatch(logoutUser());
+    dispatch(clearPortfolio());
+    dispatch(clearTransactions());
 };
