@@ -1,4 +1,11 @@
+.stock-search-errors-container{
+    display: flex;
+    justify-content: center;
+}
+
 .stock-search-errors-container p{
+    position: absolute;
     color: #A3333D;
     margin: 20px 0px;
+    font-size: 20px;
 }
