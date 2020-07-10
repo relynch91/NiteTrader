@@ -1,4 +1,4 @@
-import { RECEIVE_ALL_TRADES } from '../actions/transaction_actions';
+import { RECEIVE_ALL_TRADES, CLEAR_TRANSACTIONS } from '../actions/transaction_actions';
 
 const TransactionsReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -6,6 +6,8 @@ const TransactionsReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_ALL_TRADES:
             return Object.assign(nextState, action.transactions.data);
+        case CLEAR_TRANSACTIONS:
+            return {};
         default:
             return state;
     }

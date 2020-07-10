@@ -3,6 +3,7 @@ import * as APIUtil from '../util/transaction_api_util';
 export const RECEIVE_TRADE = 'RECEIVE_TRADE';
 export const RECEIVE_ALL_TRADES = 'RECEIVE_ALL_TRADES';
 export const RECEIVE_TRANSACTION_ERRORS = "RECEIVE_TRANSACTION_ERRORS";
+export const CLEAR_TRANSACTIONS = 'CLEAR_TRANSACTIONS';
 
 export const receiveTransaction = transaction => {
     return ({
@@ -17,6 +18,12 @@ export const receiveAllUserTransactions = transactions => {
         transactions
     });
 };
+
+export const clearTransactions = () => {
+    return ({
+        type: CLEAR_TRANSACTIONS,
+    });
+}
 
 export const receiveErrors = errors => ({
     type: RECEIVE_TRANSACTION_ERRORS,

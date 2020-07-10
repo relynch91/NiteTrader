@@ -1,4 +1,7 @@
-import { RECEIVE_PORTFOLIO } from '../actions/portfolio_actions';
+import { 
+    RECEIVE_PORTFOLIO, 
+    CLEAR_PORTFOLIO 
+    } from '../actions/portfolio_actions';
 
 const PortfolioReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -6,6 +9,8 @@ const PortfolioReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_PORTFOLIO:
             return Object.assign(nextState, action.transactions);
+        case CLEAR_PORTFOLIO:
+            return {}
         default:
             return state;
     }
