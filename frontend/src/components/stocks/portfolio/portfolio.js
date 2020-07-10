@@ -11,7 +11,15 @@ class Portfolio extends React.Component {
   }
 
   render() {
-    // let username = this.props.user.username;
+    let newUser = Object.keys(this.props.trades).length === 0 ? true : false;
+    if (newUser) {
+      return (
+        <div className="new-user-welcome-container">
+          <h1>Welcome To NiteTrader</h1>
+          <p>Begin building your portfolio by navigating to the Search Stocks Page</p>
+        </div>
+      )
+    }
     return (
         <div className="portfolio-container">
           <div className="portfolio-header">

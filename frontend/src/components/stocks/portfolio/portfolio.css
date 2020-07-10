@@ -28,12 +28,27 @@
 }
 
 .new-user-welcome-container{
-    background-image: url('./portfolio_background.png');
+    background-image: url('./portfolio_background.jpg');
     background-repeat: repeat-x;
     background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     height: 75vh;
     min-width: 1000px
+}
+
+.new-user-welcome-container > h1{
+    font-size: 45px;
+    /* margin: 50px 0px 10px 0px; */
+    font-weight: 700;
+    color: #2a5976;
+}
+
+.new-user-welcome-container > p{
+    font-size: 30px;
+    margin: 10px;
+    color: #2a5976;
+    font-weight: 600;
 }

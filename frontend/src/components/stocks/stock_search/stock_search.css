@@ -55,38 +55,27 @@
     height: 67vh;
 }
 
-.stock-search-landing {
+.stock-search-landing{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 75vh;
+    justify-content: center;
+     height: 75vh;
     min-width: 1000px;
     font-weight: 700;
     background-image: url('./stock-search-landing.jpg');
     background-repeat: repeat-x;
     background-size: cover;
 }
+.stock-search-landing > h1{
+    font-size: 45px;
+    font-weight: 700;
+    color: #2a5976;
+}
 
-.stock-search-landing h1 {
+.stock-search-landing > p{
     font-size: 30px;
-    margin-top: 20px;
-}
-
-.stock-search-landing p {
-    display: block;
-    font-size: 20px;
-    margin: 30px;
-    max-width: 1000px;
-}
-
-.stockName-search-results {
-    display: flex;
-    flex-direction: column;
-}
-
-.stock-search-background {
-    width: 100%;
-    max-height: 600px;
-    overflow: hidden;
-    background-repeat: repeat-x;
+    margin: 10px;
+    color: #2a5976;
+    font-weight: 600;
 }
