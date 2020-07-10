@@ -1,6 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import '../modal/modal.css';
+import './login_signup.css';
+
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -62,8 +64,9 @@ class LoginForm extends React.Component {
     const button_text = formType === 'Sign Up' ? 'Sign up' : 'Sign in';
     const intro = formType === 'Sign Up'
       ? 'Create an account to learn about the stock market and build a portfolio!'
-      : ''
-    const login_intro = formType === 'Sign Up' ? 'Join NiteTrader!' : 'Welcome back!'
+      : '';
+    const login_intro = formType === 'Sign Up' ? 'Join NiteTrader!' : 'Welcome back!';
+    // const displayErrors = errors ? console.log(errors) : null;
 
     return (
       <div className="modal-child">
@@ -74,27 +77,25 @@ class LoginForm extends React.Component {
           <div className="modal-title">{login_intro}</div>
           <div className="modal-intro">{intro}</div>
           <div className="modal-quote">The World is Yours.</div>
-          <br />
-          <br />
           <form className="modal-form" onSubmit={this.handleSubmit}>
             <div className="session-info">
               <label htmlFor="username">Username</label>
+              <div className='login-signup-form-errors'> {this.props.errors['username']} </div>
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
                 className="modal-input"
               />
             </div>
-            <br />
             <div className="session-info">
               <label htmlFor="password">Password</label>
+              <div className='login-signup-form-errors' >{this.props.errors['password']}</div>
               <input type="password"
                 value={this.state.password}
                 onChange={this.update("password")}
                 className="modal-input"
               />
             </div>
-            <br />
             <input type="submit" className="modal-submit" value={button_text} />
           </form>
           <button className="modal-submit-demo" onClick={this.handleDemo}>
