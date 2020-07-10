@@ -26,7 +26,7 @@ export default class StockDetails extends React.Component {
     let { stockDetails } = this.props;
     if (stockDetails !== prevProps.stockDetails) {
       this.setState({
-        mostRecentStockApiData: StockUtil.mostRecent(this.props.stockDetails.intraDay)
+        mostRecentStockApiData: (StockUtil.mostRecent(this.props.stockDetails.intraDay) || StockUtil.mostRecent(this.props.stockDetails.timeSeriesMonthly))
       })
     }
   }
@@ -61,12 +61,11 @@ export default class StockDetails extends React.Component {
     let { data, ticker } = this.state.mostRecentStockApiData;
     let sellButton = (!Object.keys(this.props.portfolio).includes(ticker)) ? null : (
         <button className={activeSell ? "sell-button-active" : "sell-button"} 
-          onClick={() => this.handleClick(false)}
-        >Sell</button>);
+          onClick={() => this.handleClick(false)}> Sell</button>);
 
     let submitButton = (activeSell || activeBuy) ?
        <button className="trade-submit-button" 
-        onClick={this.handleSubmit}>Submit Trade
+        onClick={this.handleSubmit}> Submit Trade
       </button> :
       null;
     

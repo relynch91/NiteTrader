@@ -65,4 +65,6 @@ export const logout = () => dispatch => {
     dispatch(logoutUser());
     dispatch(clearPortfolio());
     dispatch(clearTransactions());
+    dispatch(clearErrors());
+
 };
