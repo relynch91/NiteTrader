@@ -53,8 +53,8 @@ export default class StockGraph extends React.Component {
             onClick={() => this.handleClick(StockUtil.oneYear(timeSeriesMonthly))}>1 Year</button>
           <button className="stockgraph-time-button" 
             onClick={() => this.handleClick(StockUtil.twoYears(timeSeriesMonthly))}>2 Years</button>
-          <button className="stockgraph-time-button" 
-            onClick={() => this.handleClick(StockUtil.fiveYears(timeSeriesMonthly))}>5 Years</button>
+          {/* <button className="stockgraph-time-button"  */}
+            {/* onClick={() => this.handleClick(StockUtil.fiveYears(timeSeriesMonthly))}>5 Years</button> */}
         </div> : null;
     return (
       <div className="stock-graph-main">
