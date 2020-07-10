@@ -22,7 +22,7 @@ export default class PortfolioBarChart extends PureComponent {
         return (
             <div className='portfolio-graph'>
                 <h1>
-                    Currently Owned Stocks Performance (Single Day)
+                    Currently Owned Stocks Performance (Single Day Percentage)
                 </h1>
                 <BarChart
                     width={500}
