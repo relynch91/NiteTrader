@@ -26,3 +26,14 @@
     justify-content: center;
     align-items: center;
 }
+
+.new-user-welcome-container{
+    background-image: url('./portfolio_background.png');
+    background-repeat: repeat-x;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 75vh;
+    min-width: 1000px
+}

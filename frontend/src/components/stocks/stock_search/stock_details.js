@@ -81,7 +81,7 @@ export default class StockDetails extends React.Component {
           <p>Volume: {parseFloat(data["5. volume"])}</p>
         </div>
         <form >
-          <p>Number of Shares You intend to buy or sell</p>
+          <p>Number of shares you intend to buy or sell</p>
           <div>
             <input
               className="stock-buy-input"

@@ -5,13 +5,26 @@ import './portfolio.css'
 
 class Portfolio extends React.Component {
 
+  componentDidMount(){
+    let { fetchTrades, userId } = this.props;
+    fetchTrades(userId);
+  }
+
   render() {
-    let username = this.props.user;
-    console.log(username);
+    let newUser = Object.keys(this.props.trades).length === 0 ? true : false;
+    if (newUser){
+      return (
+        <div className="new-user-welcome-container">
+          <p>Welcome {this.props.user.username}</p>
+          <p>Begin building your portfolio by navigating to the Search Stocks Page</p>
+        </div>
+      )
+    }
+
     return (
         <div className="portfolio-container">
           <div className="portfolio-header">
-            <h1>Hello {}</h1>  
+            <h1>Hello</h1>  
           </div>
           <div className='portfolio-data'>
             <StockIndexContainer />
