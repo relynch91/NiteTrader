@@ -99,19 +99,19 @@ export const fiveYears = (stockData) => {
     return result;
 }
 
-// export const tenYears = (stockData) => {
-//     let todaysDate = Date.now();
-//     let tenYears = 10 * oneYearInMilliseconds;
-//     let result = {};
-//     Object.keys(stockData["Monthly Time Series"]).filter(rawDate => {
-//             if (Date.parse(rawDate) >= todaysDate - tenYears) {
-//                 result[rawDate] = stockData["Monthly Time Series"][rawDate];
-//             }
-//             return true;
-//         }
-//     );
-//     return result;
-// }
+export const tenYears = (stockData) => {
+    let todaysDate = Date.now();
+    let tenYears = 10 * oneYearInMilliseconds;
+    let result = {};
+    Object.keys(stockData["Monthly Time Series"]).filter(rawDate => {
+            if (Date.parse(rawDate) >= todaysDate - tenYears) {
+                result[rawDate] = stockData["Monthly Time Series"][rawDate];
+            }
+            return true;
+        }
+    );
+    return result;
+}
 
 export const figureAPICall = (apiArray = []) => {
     if (apiArray.length === 0  || apiArray[0]['9. matchScore'] !== '1.0000') {
