@@ -5,12 +5,13 @@
 .stockgraph-time-button-container{
     display: flex;
     justify-content: space-around;
-    margin: 10px 10px 20px 10px;
+    margin: 10px 10px 20px 20px;
+    padding-left: 30px;
 }
 
 .stockgraph-time-button{
     color: #A3333D;
-    padding-right: 20px;
+    /* padding-right: 20px; */
     font-size: 16px;
     font-weight: 400;
 }
@@ -19,6 +20,6 @@
     color: #3d6883;
 }
 
-.recharts-wrapper {
-    
+.recharts-legend-wrapper {
+    bottom: -5px;
 }

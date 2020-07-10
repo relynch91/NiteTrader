@@ -8,11 +8,15 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    min-width: 950px;
+    min-width: 990px;
     background-color: #778899;
     padding: 10px 0 10px 0;
     height: 3vh;
     min-height: 15px;
+}
+
+.stock-search-form-box {
+    margin-left: -154px;
 }
 
 .stock-search-form > div > h1 {
@@ -52,7 +56,7 @@
     display:flex;
     justify-content: space-around;
     margin: 25px 25px 25px 25px;
-    height: 67vh;
+    height: 68vh;
 }
 
 .stock-search-landing{
@@ -60,20 +64,28 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-     height: 75vh;
+    height: 75vh;
     min-width: 1000px;
     font-weight: 700;
     background-image: url('./stock-search-landing.jpg');
     background-repeat: repeat-x;
     background-size: cover;
 }
-.stock-search-landing > h1{
+.stock-search-landing-details {
+    margin-top: -50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.stock-search-landing-details > h1{
     font-size: 45px;
     font-weight: 700;
     color: #2a5976;
 }
 
-.stock-search-landing > p{
+.stock-search-landing-details > p{
     font-size: 30px;
     margin: 10px;
     color: #2a5976;

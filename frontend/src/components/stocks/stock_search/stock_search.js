@@ -34,6 +34,9 @@ export default class StockSearch extends React.Component {
     if (e) { e.preventDefault() }
     this.props.receiveClearStocks();
     const stockSearchAPI = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${this.state.stock}&apikey=${key}`;
+    if (this.state.stock === '') {
+      return;
+    }
     const stockSearch = await (this.tickerCall(stockSearchAPI));
     this.apiLogic(stockSearch);
   }
@@ -89,7 +92,7 @@ export default class StockSearch extends React.Component {
             <div>
               <h1>Enter a Company Name or Ticker: </h1>
             </div>
-            <div>
+            <div className='stock-search-form-box'>
               <input
               type="text"
               value={this.state.stock}
