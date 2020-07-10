@@ -43,10 +43,6 @@ export const oneMonth = (stockData) => {
     return result;
 }
 
-// export const threeMonths = (stockData) => {
-//     return stockData["Time Series (15min)"]
-// }
-
 export const sixMonths = (stockData) => {
     let todaysDate = Date.now();
     let sixMonths = 6 * oneMonthInMilliseconds
@@ -89,6 +85,20 @@ export const twoYears = (stockData) => {
     );
     return result;
 }
+
+export const fiveYears = (stockData) => {
+    let todaysDate = Date.now();
+    let fiveYearsAgo = 5 * oneYearInMilliseconds;
+    let result = {};
+    Object.keys(stockData["Monthly Time Series"]).filter(rawDate => {
+        if (Date.parse(rawDate) >= todaysDate - fiveYearsAgo) {
+            result[rawDate] = stockData["Monthly Time Series"][rawDate];
+        }
+        return true;
+    });
+    return result;
+}
+
 // export const tenYears = (stockData) => {
 //     let todaysDate = Date.now();
 //     let tenYears = 10 * oneYearInMilliseconds;
