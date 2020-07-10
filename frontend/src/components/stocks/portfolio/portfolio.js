@@ -6,12 +6,11 @@ import './portfolio.css'
 class Portfolio extends React.Component {
 
   render() {
-    let username = this.props.user;
-    console.log(username);
+    // let username = this.props.user.username;
     return (
         <div className="portfolio-container">
           <div className="portfolio-header">
-            <h1>Hello {}</h1>  
+            <h1>Hello!  Here you can find data about how the Stocks you currently own are doing!</h1>  
           </div>
           <div className='portfolio-data'>
             <StockIndexContainer />
