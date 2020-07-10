@@ -19,6 +19,6 @@
     color: #3d6883;
 }
 
-.recharts-wrapper {
-    
+.recharts-legend-wrapper {
+    bottom: -5px;
 }

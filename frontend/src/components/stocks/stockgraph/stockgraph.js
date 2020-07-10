@@ -19,6 +19,7 @@ export default class StockGraph extends React.Component {
     }
     let theDays = Object.keys(stockDataFromState)
     let structuredProps = theDays.map((dateKey) => ({
+      // dates 
       date: dateKey,
       open: stockDataFromState[dateKey]["1. open"],
       high: stockDataFromState[dateKey]["2. high"],
@@ -70,16 +71,18 @@ export default class StockGraph extends React.Component {
             bottom: 10,
           }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid strokeDasharray="5 5" />
           <XAxis dataKey="date" />
           {/* https://stackoverflow.com/questions/50078787/recharts-set-y-axis-range */}
-          <YAxis type="number" domain={['dataMin - 10', 'dataMax + 10']} />
+          {/* <YAxis type="number" domain={['dataMin - 10', 'dataMax + 10']} /> */}
+          <YAxis type="number" domain={['auto', 'auto']} />
+
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="high"  stroke="#C4D6BO" activeDot={{ r: 8 }} />
-          <Line type="monotone" dataKey="low" stroke="#F64740" />
-          <Line type="monotone" dataKey="open" stroke="#291F1E" />
-          <Line type="monotone" dataKey="close" stroke="#477998" />
+          {/* <Line type="monotone" dataKey="high"  stroke="#C4D6BO"  /> */}
+          {/* <Line type="monotone" dataKey="low" stroke="#F64740" /> */}
+          {/* <Line type="monotone" dataKey="open" stroke="#291F1E" /> */}
+          <Line type="monotone" dataKey="close" stroke="#477998"  dot={false}/>
         </LineChart>
       </div>
     );
