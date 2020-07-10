@@ -1,10 +1,12 @@
 import * as APIUtil from '../util/session_api_util';
+import { closeModal } from './modal_actions';
 import jwt_decode from 'jwt-decode';
+import { clearErrors } from './error_actions'
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
-export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
+export const RECEIVE_USER_SIGN_UP = "RECEIVE_USER_SIGN_UP";
 
 // We'll dispatch this when our user signs in
 export const receiveCurrentUser = currentUser => ({
@@ -13,8 +15,8 @@ export const receiveCurrentUser = currentUser => ({
 });
 
 // This will be used to redirect the user to the login page upon signup
-export const receiveUserSignIn = () => ({
-    type: RECEIVE_USER_SIGN_IN
+export const receiveUserSignUp = () => ({
+    type: RECEIVE_USER_SIGN_UP
 });
 
 // We dispatch this one to show authentication errors on the frontend
@@ -32,7 +34,8 @@ export const logoutUser = () => ({
 export const signup = user => dispatch => (
     APIUtil.signup(user)
         .then((user) => ( 
-            dispatch(receiveUserSignIn(user))))
+            dispatch(receiveUserSignUp(user))),
+            dispatch(clearErrors))
             // return res.status(400).json(errors);
         .catch((err) => (
             dispatch(receiveSessionErrors(err.response.data))
@@ -46,7 +49,9 @@ export const login = user => dispatch => (
         localStorage.setItem('jwtToken', token);
         APIUtil.setAuthToken(token);
         const decoded = jwt_decode(token);
-        dispatch(receiveCurrentUser(decoded))
+        dispatch(receiveCurrentUser(decoded));
+        dispatch(clearErrors);
+        dispatch(closeModal());
     })
     .catch(err => {
         dispatch(receiveSessionErrors(err.response.data));

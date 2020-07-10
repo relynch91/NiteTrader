@@ -11,20 +11,11 @@ class Portfolio extends React.Component {
   }
 
   render() {
-    let newUser = Object.keys(this.props.trades).length === 0 ? true : false;
-    if (newUser){
-      return (
-        <div className="new-user-welcome-container">
-          <p>Welcome {this.props.user.username}</p>
-          <p>Begin building your portfolio by navigating to the Search Stocks Page</p>
-        </div>
-      )
-    }
-
+    // let username = this.props.user.username;
     return (
         <div className="portfolio-container">
           <div className="portfolio-header">
-            <h1>Hello</h1>  
+            <h1>Hello!  Here you can find data about how the Stocks you currently own are doing!</h1>  
           </div>
           <div className='portfolio-data'>
             <StockIndexContainer />
