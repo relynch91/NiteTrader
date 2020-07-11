@@ -92,17 +92,18 @@
     margin-right: 20px;
 }
 .stock-details {
-    max-width: 400px;
+    max-width: 100%;
 }
 
 .stock-box-container{
     color: #2a5976;
     margin-top: 10px;
+    max-width: 80%;
 }
 .stock-box-container div:first-child{
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 .stock-box-container form > p{
     font-size: 20px;

@@ -54,9 +54,11 @@
 
 .stock-details-and-graph {
     display:flex;
-    justify-content: space-around;
-    margin: 25px 25px 25px 25px;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 25px 100px;
     height: 68vh;
+    /* max-width: 1000px; */
 }
 
 .stock-search-landing{
