@@ -39,6 +39,7 @@ export default class StockSearch extends React.Component {
     }
     const stockSearch = await (this.tickerCall(stockSearchAPI));
     this.apiLogic(stockSearch);
+    this.setState({ stock: "" });
   }
 
   searchIsTicker (ticker) {
@@ -63,6 +64,7 @@ export default class StockSearch extends React.Component {
     this.props.intraDayAPICall(intraDayAPI);
     const timeSeriesMonthlyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${this.state.ticker}&apikey=${key}`;
     this.props.timeSeriesInfoAPICall(timeSeriesMonthlyAPI);
+    this.setState({ stock: ""});
   }
   
   update() {
