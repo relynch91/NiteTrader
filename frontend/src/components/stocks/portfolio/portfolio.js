@@ -23,7 +23,7 @@ class Portfolio extends React.Component {
     return (
         <div className="portfolio-container">
           <div className="portfolio-header">
-            <h1>Hello!  Here you can find data about how the Stocks you currently own are doing!</h1>  
+            <h1>Portfolio Performance</h1>  
           </div>
           <div className='portfolio-data'>
             <StockIndexContainer />
