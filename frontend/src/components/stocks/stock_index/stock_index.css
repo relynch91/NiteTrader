@@ -3,7 +3,8 @@
     flex-direction: column;
     justify-content: center;
     border: 1px solid gray;
-    background-color: rgb(232, 232, 232);
+    /* background-color: rgb(232, 232, 232); */
+    background-color: whitesmoke;
     padding: 08px;
     margin: 10px 10px 0px 0px;
     border-radius: 3px;
@@ -27,7 +28,8 @@
 .stock-index-main {
     display: flex;
     overflow: scroll;
-    height: 74vh;
+    /* height: 74vh; */
+    height: 68vh;
     flex-direction: column;
 }
 

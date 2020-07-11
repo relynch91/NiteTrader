@@ -5,10 +5,19 @@
     align-items: center;
     height: 80vh;
     width: 100vw;
+    background-image: url('./portfolio_background.jpg');
+    background-repeat: repeat-x;
+    background-size: cover;
+    border-top: 1px solid darkgray;
 }
-
+.BarChart{
+    width: 300px;
+    height: 500px;
+}
 .portfolio-header h1 {
-    font-size: 20px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #2a5976;
 }
 
 .portfolio-header {
@@ -17,9 +26,25 @@
 }
 
 .portfolio-data {
+    min-width: 1000px;
     display: flex;
+    justify-content: space-between;
 }
 
+.portfolio-graph-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 3px;
+    padding-right: 30px;
+    border: 1px solid gray;
+    background-color: whitesmoke;
+    height: 65vh;
+}
+
+.portfolio-graph-container > h1{
+    margin: 10px 0 10px 60px;
+}
 .portfolio-graph {
     display: flex;
     flex-direction: column;
@@ -51,4 +76,8 @@
     margin: 10px;
     color: #2a5976;
     font-weight: 600;
+}
+
+.recharts-default-legend{
+    margin-top: 8px
 }

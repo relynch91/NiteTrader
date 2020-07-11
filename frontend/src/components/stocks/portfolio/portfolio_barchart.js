@@ -21,24 +21,26 @@ export default class PortfolioBarChart extends PureComponent {
         if (Object.keys(portfolio).length === 0) { return null };
         return (
             <div className='portfolio-graph'>
+                <div className="portfolio-graph-container">
                 <h1>
                     Currently Owned Stocks Performance (Single Day Percentage)
                 </h1>
                 <BarChart
-                    width={500}
-                    height={300}
+                    width={450}
+                    height={410}
                     data={this.state.data}
                 >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
                 <YAxis type='number' />
                 <Tooltip />
-                <Legend />
+                {/* <Legend /> */}
                 <ReferenceLine y={0} stroke="#000" />
                 <Bar dataKey="Loss" fill="#A3333D" />
                 <Bar dataKey="Gain" fill="#82ca9d" />
                 </BarChart>
 
+            </div>
             </div>
         );
     }
