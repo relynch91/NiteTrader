@@ -21,6 +21,10 @@ export const timeSeriesInfo = apiURL => {
     return axios.get(apiURL)
 }
 
+export const weeklyAPICall = apiURL => {
+    return axios.get(apiURL)
+}
+
 export const stockName = apiURL => {
     return axios.get(apiURL)
 }

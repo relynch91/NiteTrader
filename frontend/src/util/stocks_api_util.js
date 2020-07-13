@@ -47,10 +47,10 @@ export const sixMonths = (stockData) => {
     let todaysDate = Date.now();
     let sixMonths = 6 * oneMonthInMilliseconds
     let result = {};
-    Object.keys(stockData["Monthly Time Series"])
+    Object.keys(stockData["Weekly Time Series"])
         .filter(rawDate => {
             if (Date.parse(rawDate) >= todaysDate - sixMonths) {
-                result[rawDate] = stockData["Monthly Time Series"][rawDate];
+                result[rawDate] = stockData["Weekly Time Series"][rawDate];
             }
             return true;
         }
@@ -61,10 +61,10 @@ export const sixMonths = (stockData) => {
 export const oneYear = (stockData) => {
     let todaysDate = Date.now();
     let result = {};
-    Object.keys(stockData["Monthly Time Series"])
+    Object.keys(stockData["Weekly Time Series"])
         .filter(rawDate => {
             if (Date.parse(rawDate) >= todaysDate - oneYearInMilliseconds) {
-                result[rawDate] = stockData["Monthly Time Series"][rawDate];
+                result[rawDate] = stockData["Weekly Time Series"][rawDate];
             }
             return true;
         }
@@ -76,9 +76,9 @@ export const twoYears = (stockData) => {
     let todaysDate = Date.now();
     let twoYearsAgo = 2 * oneYearInMilliseconds;
     let result = {};
-    Object.keys(stockData["Monthly Time Series"]).filter(rawDate => {
+    Object.keys(stockData["Weekly Time Series"]).filter(rawDate => {
             if (Date.parse(rawDate) >= todaysDate - twoYearsAgo) {
-                result[rawDate] = stockData["Monthly Time Series"][rawDate];
+                result[rawDate] = stockData["Weekly Time Series"][rawDate];
             }
             return true;
         }
@@ -90,9 +90,9 @@ export const fiveYears = (stockData) => {
     let todaysDate = Date.now();
     let fiveYearsAgo = 5 * oneYearInMilliseconds;
     let result = {};
-    Object.keys(stockData["Monthly Time Series"]).filter(rawDate => {
+    Object.keys(stockData["Weekly Time Series"]).filter(rawDate => {
         if (Date.parse(rawDate) >= todaysDate - fiveYearsAgo) {
-            result[rawDate] = stockData["Monthly Time Series"][rawDate];
+            result[rawDate] = stockData["Weekly Time Series"][rawDate];
         }
         return true;
     });
@@ -103,9 +103,9 @@ export const tenYears = (stockData) => {
     let todaysDate = Date.now();
     let tenYears = 10 * oneYearInMilliseconds;
     let result = {};
-    Object.keys(stockData["Monthly Time Series"]).filter(rawDate => {
+    Object.keys(stockData["Weekly Time Series"]).filter(rawDate => {
             if (Date.parse(rawDate) >= todaysDate - tenYears) {
-                result[rawDate] = stockData["Monthly Time Series"][rawDate];
+                result[rawDate] = stockData["Weekly Time Series"][rawDate];
             }
             return true;
         }

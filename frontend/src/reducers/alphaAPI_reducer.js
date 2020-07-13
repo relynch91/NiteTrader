@@ -1,21 +1,26 @@
 import { RECEIVE_INTRADAY, 
-    RECEIVE_TIME_SERIES, 
+    // RECEIVE_TIME_SERIES, 
     RECEIVE_STOCK_NAME, 
     RECEIVE_INTRADAY_SUCCESS, 
-    RECEIVE_TIME_SERIES_SUCCESS, 
+    // RECEIVE_TIME_SERIES_SUCCESS, 
     RECEIVE_STOCK_NAME_SUCCESS,
     RECEIVE_INTRADAY_FAILURE,
-    RECEIVE_TIME_SERIES_FAILURE,
+    // RECEIVE_TIME_SERIES_FAILURE,
     RECEIVE_STOCK_NAME_FAILURE,
+    RECEIVE_WEEKLY_FAILURE,
+    RECEIVE_WEEKLY,
+    RECEIVE_WEEKLY_SUCCESS,
     RECEIVE_CLEAR_STOCKS
 } from '../actions/alphaApi_actions';
 
 let preLoadedState = {
     intraDay: {},
     intraLoading: false,
-    timeLoading: false,
+    // timeLoading: false,
+    weeklyLoading: false,
+    weeklySeries: {},
     nameLoading: false,
-    timeSeriesMonthly: {},
+    // timeSeriesMonthly: {},
     stockNameSearch: []
 }
 
@@ -50,27 +55,48 @@ export default function (oldState = preLoadedState, action) {
             })
             return nextState;
 
-        case RECEIVE_TIME_SERIES:
+        // case RECEIVE_TIME_SERIES:
+        //     Object.assign(nextState, {
+        //         stockNameSearch: [],
+        //         timeLoading: true
+        //     });
+        //     return nextState;
+
+        // case RECEIVE_TIME_SERIES_SUCCESS:
+        //     Object.assign(nextState, { 
+        //         timeSeriesMonthly: action.stock.data,
+        //         timeLoading: false,
+        //         stockNameSearch: []
+        //     });
+        //     return nextState;
+
+        // case RECEIVE_TIME_SERIES_FAILURE:
+        //     Object.assign(nextState, {
+        //         timeSeriesMonthly: {},
+        //         timeLoading: false,
+        //     });
+        //     return nextState;
+
+        case RECEIVE_WEEKLY:
             Object.assign(nextState, {
-                stockNameSearch: [],
-                timeLoading: true
+                weeklySeries: {},
+                weeklyLoading: true
             });
             return nextState;
 
-        case RECEIVE_TIME_SERIES_SUCCESS:
-            Object.assign(nextState, { 
-                timeSeriesMonthly: action.stock.data,
-                timeLoading: false,
-                stockNameSearch: []
-            });
-            return nextState;
+         case RECEIVE_WEEKLY_FAILURE:
+             Object.assign(nextState, {
+                weeklySeries: {},
+                weeklyLoading: false
+             });
+         return nextState;
 
-        case RECEIVE_TIME_SERIES_FAILURE:
-            Object.assign(nextState, {
-                timeSeriesMonthly: {},
-                timeLoading: false,
-            });
-            return nextState;
+         case RECEIVE_WEEKLY_SUCCESS:
+             Object.assign(nextState, {
+                 weeklySeries: action.stock.data,
+                 weeklyLoading: false
+             });
+         return nextState;
 
         case RECEIVE_STOCK_NAME:
             Object.assign(nextState, {
@@ -93,7 +119,6 @@ export default function (oldState = preLoadedState, action) {
                 nameLoading: false,
             });
             return nextState;
-
         default:
             return oldState;
     }

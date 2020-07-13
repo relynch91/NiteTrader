@@ -62,8 +62,10 @@ export default class StockSearch extends React.Component {
     if (e) { e.preventDefault() };
     const intraDayAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.ticker}&interval=15min&outputsize=full&apikey=${key}`;
     this.props.intraDayAPICall(intraDayAPI);
-    const timeSeriesMonthlyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${this.state.ticker}&apikey=${key}`;
-    this.props.timeSeriesInfoAPICall(timeSeriesMonthlyAPI);
+    const weeklyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=${this.state.ticker}&apikey=${key}`;
+    this.props.weeklyAPICall(weeklyAPI);
+    // const timeSeriesMonthlyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${this.state.ticker}&apikey=${key}`;
+    // this.props.timeSeriesInfoAPICall(timeSeriesMonthlyAPI);
     this.setState({ stock: ""});
   }
   
@@ -75,7 +77,9 @@ export default class StockSearch extends React.Component {
 
   render() {
     let firstCheck = (Object.keys(this.props.stockDetails.intraDay).length !== 0);
-    let secondCheck = (Object.keys(this.props.stockDetails.timeSeriesMonthly).length !== 0);
+    // let secondCheck = (Object.keys(this.props.stockDetails.timeSeriesMonthly).length !== 0);
+    let secondCheck = (Object.keys(this.props.stockDetails.weeklySeries).length !== 0);
+
     
     let theStockDetailsAndGraph = (!!firstCheck && !!secondCheck) ? (
       <div className="stock-details-and-graph">
