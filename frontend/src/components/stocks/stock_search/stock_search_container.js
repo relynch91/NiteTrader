@@ -1,6 +1,9 @@
 import { connect } from "react-redux";
 import StockSearch from "./stock_search";
-import { intraDayAPICall, timeSeriesInfoAPICall, stockNameAPICall, receiveClearStocks} from '../../../actions/alphaApi_actions';
+import { intraDayAPICall, 
+    timeSeriesInfoAPICall, 
+    stockNameAPICall, receiveClearStocks, 
+    weeklyAPICall} from '../../../actions/alphaApi_actions';
 
 const mapStateToProps = (state) => ({
     stockDetails: state.stocks,
@@ -9,6 +12,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     intraDayAPICall: (apiURL) => dispatch(intraDayAPICall(apiURL)),
     timeSeriesInfoAPICall: (apiURL) => dispatch(timeSeriesInfoAPICall(apiURL)),
+    weeklyAPICall: (apiURL) => dispatch(weeklyAPICall(apiURL)),
     stockNameSearchAPICall: (apiURL) => dispatch(stockNameAPICall(apiURL)),
     receiveClearStocks: () => dispatch(receiveClearStocks())
 })

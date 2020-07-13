@@ -35,12 +35,11 @@ export default class StockName extends React.Component {
     }
 
     render(){
-        let { nameLoading, intraLoading, timeLoading } = this.props.stocks
-        if (nameLoading || intraLoading || timeLoading) {
+        let { nameLoading, intraLoading, weeklyLoading } = this.props.stocks
+        if (nameLoading || intraLoading || weeklyLoading) {
             return (
                 <div className='loader-holder'>
                     < div className='loader'>
-
                     </div>
                 </div>
                 

@@ -24,9 +24,6 @@ export default class StockGraph extends React.Component {
         date: dateKey.split(" ")[0],
         close: (parseFloat(parseFloat(stockDataFromState[dateKey]["4. close"]).toFixed(2))),
       })
-      // open: stockDataFromState[dateKey]["1. open"],
-      // high: stockDataFromState[dateKey]["2. high"],
-      // low: stockDataFromState[dateKey]["3. low"],
     });
     this.setState( { stock: structuredProps.reverse() });
   }
@@ -43,23 +40,23 @@ export default class StockGraph extends React.Component {
     if (!this.props.stockInfo.intraDay){
       return null;
     }
-    let { intraDay, timeSeriesMonthly} = this.props.stockInfo;
-      let theButtons = (!!timeSeriesMonthly) ?
+    let { intraDay, weeklySeries} = this.props.stockInfo;
+      let theButtons = (!!weeklySeries) ?
         <div className="stockgraph-time-button-container">
           <button className="stockgraph-time-button" 
             onClick={() => this.handleClick(StockUtil.oneWeek(intraDay))}>1 Week</button>
           <button className="stockgraph-time-button" 
             onClick={() => this.handleClick(StockUtil.oneMonth(intraDay))}>1 Month</button>
           <button className="stockgraph-time-button" 
-            onClick={() => this.handleClick(StockUtil.sixMonths(timeSeriesMonthly))}>6 Months</button>
+            onClick={() => this.handleClick(StockUtil.sixMonths(weeklySeries))}>6 Months</button>
           <button className="stockgraph-time-button" 
-            onClick={() => this.handleClick(StockUtil.oneYear(timeSeriesMonthly))}>1 Year</button>
+            onClick={() => this.handleClick(StockUtil.oneYear(weeklySeries))}>1 Year</button>
           <button className="stockgraph-time-button" 
-            onClick={() => this.handleClick(StockUtil.twoYears(timeSeriesMonthly))}>2 Years</button>
+            onClick={() => this.handleClick(StockUtil.twoYears(weeklySeries))}>2 Years</button>
           <button className="stockgraph-time-button" 
-            onClick={() => this.handleClick(StockUtil.fiveYears(timeSeriesMonthly))}>5 Years</button>
+            onClick={() => this.handleClick(StockUtil.fiveYears(weeklySeries))}>5 Years</button>
             <button className="stockgraph-time-button" 
-            onClick={() => this.handleClick(StockUtil.tenYears(timeSeriesMonthly))}>10 Years</button>
+            onClick={() => this.handleClick(StockUtil.tenYears(weeklySeries))}>10 Years</button>
         </div> : null;
     return (
       <div className="stock-graph-main">
@@ -68,24 +65,11 @@ export default class StockGraph extends React.Component {
           width={550}
           height={400}
           data={this.state.stock}
-          // margin={{
-          //   top: 10,
-          //   right: 30,
-          //   left: 20,
-          //   bottom: 10,
-          // }}
         >
           <CartesianGrid strokeDasharray="5 5" />
           <XAxis dataKey="date" dy={10}/>
-          {/* https://stackoverflow.com/questions/50078787/recharts-set-y-axis-range */}
-          {/* <YAxis type="number" domain={['dataMin - 10', 'dataMax + 10']} /> */}
           <YAxis type="number" domain={['auto', 'auto']}  />
-
           <Tooltip />
-          {/* <Legend /> */}
-          {/* <Line type="monotone" dataKey="high"  stroke="#C4D6BO"  /> */}
-          {/* <Line type="monotone" dataKey="low" stroke="#F64740" /> */}
-          {/* <Line type="monotone" dataKey="open" stroke="#291F1E" /> */}
           <Line type="monotone" dataKey="close" stroke="#477998"  dot={false}/>
         </LineChart>
       </div>

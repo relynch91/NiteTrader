@@ -5,7 +5,9 @@ import {
     RECEIVE_TIME_SERIES,
     RECEIVE_STOCK_NAME,
     RECEIVE_STOCK_NAME_FAILURE,
-    CLEAR_API_ERRORS
+    CLEAR_API_ERRORS,
+    RECEIVE_WEEKLY_FAILURE,
+    RECEIVE_WEEKLY
 } from '../actions/alphaApi_actions';
 
 const _nullErrors = {};
@@ -39,8 +41,17 @@ const alphaAPIErrorsReducer = (oldState = _nullErrors, action) => {
         case RECEIVE_STOCK_NAME:
             return _nullErrors;
 
+        case RECEIVE_WEEKLY_FAILURE:
+                return {
+                    error: "You reached your maximum per minute call. Please Try again in 30 seconds",
+                }
+
+        case RECEIVE_WEEKLY:
+                return _nullErrors;
+        
         case CLEAR_API_ERRORS:
             return _nullErrors;
+
         default:
             return oldState;
     }

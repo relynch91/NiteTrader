@@ -10,7 +10,10 @@ export const RECEIVE_STOCK_NAME = 'RECEIEVE_STOCK_NAME';
 export const RECEIVE_STOCK_NAME_SUCCESS = 'RECEIEVE_STOCK_NAME_SUCCESS';
 export const RECEIVE_STOCK_NAME_FAILURE = 'RECEIEVE_STOCK_NAME_FAILURE';
 export const RECEIVE_CLEAR_STOCKS = 'RECEIVE_CLEAR_STOCKS';
-export const CLEAR_API_ERRORS = 'CLEAR_API_ERRORS'
+export const RECEIVE_WEEKLY = 'RECEIVE_WEEKLY';
+export const RECEIVE_WEEKLY_FAILURE = 'RECEIVE_WEEKLY_FAILURE';
+export const RECEIVE_WEEKLY_SUCCESS = 'RECEIVE_WEEKLY_SUCCESS';
+export const CLEAR_API_ERRORS = 'CLEAR_API_ERRORS';
 
 export const clearAPIErrors = () => ({
     type: CLEAR_API_ERRORS
@@ -31,6 +34,21 @@ export const receiveIntraDay = () => ({
 
 export const receiveIntraDaySuccess = stock => ({
     type: RECEIVE_INTRADAY_SUCCESS,
+    stock
+})
+
+export const receiveWeekly = stock => ({
+    type: RECEIVE_WEEKLY,
+    stock
+})
+
+export const receiveWeeklyFailure = stock => ({
+    type: RECEIVE_WEEKLY_FAILURE,
+    stock
+})
+
+export const receiveWeeklySuccess = stock => ({
+    type: RECEIVE_WEEKLY_SUCCESS,
     stock
 })
 
@@ -100,12 +118,26 @@ export const timeSeriesInfoAPICall = apiURL => dispatch => {
             } else {
                 dispatch(receiveTimeSeriesSuccess(stockData))
             }
-            
         })
         .catch(error => {
             dispatch(receiveTimeSeriesFailure(error))
         }
     )
+}
+
+export const weeklyAPICall = apiURL => dispatch => {
+    dispatch(receiveWeekly())
+    return AlphaAdvantageUtil.weeklyAPICall(apiURL)
+        .then(stockData => {
+            if (stockData.data.Note || stockData.data['Error Message']) {
+                dispatch(receiveWeeklyFailure(stockData))
+            } else {
+                dispatch(receiveWeeklySuccess(stockData))
+            }
+        })
+        .catch(error => {
+            dispatch(receiveWeeklyFailure(error))
+        })
 }
 
 export const stockNameAPICall = apiURL => dispatch => {
