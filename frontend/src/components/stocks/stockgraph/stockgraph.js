@@ -1,6 +1,6 @@
 import React from 'react';
 import './stockgraph.css'
-import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend, } from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid, Legend } from 'recharts';
 import * as StockUtil from '../../../util/stocks_api_util';
 
 export default class StockGraph extends React.Component {
@@ -59,9 +59,23 @@ export default class StockGraph extends React.Component {
             onClick={() => this.handleClick(StockUtil.tenYears(weeklySeries))}>10 Years</button>
         </div> : null;
     return (
+      // <div className="stock-graph-main">
+      //   {theButtons}
+      //   <LineChart
+      //     width={550}
+      //     height={400}
+      //     data={this.state.stock}
+      //   >
+      //     <CartesianGrid strokeDasharray="5 5" />
+      //     <XAxis dataKey="date" dy={10}/>
+      //     <YAxis type="number" domain={['auto', 'auto']}  />
+      //     <Tooltip />
+      //     <Line type="monotone" dataKey="close" stroke="#477998"  dot={false}/>
+      //   </LineChart>
+      // </div>
       <div className="stock-graph-main">
         {theButtons}
-        <LineChart
+        <AreaChart
           width={550}
           height={400}
           data={this.state.stock}
@@ -70,8 +84,8 @@ export default class StockGraph extends React.Component {
           <XAxis dataKey="date" dy={10}/>
           <YAxis type="number" domain={['auto', 'auto']}  />
           <Tooltip />
-          <Line type="monotone" dataKey="close" stroke="#477998"  dot={false}/>
-        </LineChart>
+          <Area type="monotone" dataKey="close" stroke="#477998"  dot={false}/>
+        </AreaChart>
       </div>
     );
   }
