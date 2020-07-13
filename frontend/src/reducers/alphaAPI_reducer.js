@@ -1,11 +1,8 @@
 import { RECEIVE_INTRADAY, 
-    // RECEIVE_TIME_SERIES, 
     RECEIVE_STOCK_NAME, 
     RECEIVE_INTRADAY_SUCCESS, 
-    // RECEIVE_TIME_SERIES_SUCCESS, 
     RECEIVE_STOCK_NAME_SUCCESS,
     RECEIVE_INTRADAY_FAILURE,
-    // RECEIVE_TIME_SERIES_FAILURE,
     RECEIVE_STOCK_NAME_FAILURE,
     RECEIVE_WEEKLY_FAILURE,
     RECEIVE_WEEKLY,
@@ -16,12 +13,11 @@ import { RECEIVE_INTRADAY,
 let preLoadedState = {
     intraDay: {},
     intraLoading: false,
-    // timeLoading: false,
     weeklyLoading: false,
     weeklySeries: {},
     nameLoading: false,
-    // timeSeriesMonthly: {},
-    stockNameSearch: []
+    stockNameSearch: [],
+    count: 0
 }
 
 export default function (oldState = preLoadedState, action) {
@@ -36,7 +32,7 @@ export default function (oldState = preLoadedState, action) {
         case RECEIVE_INTRADAY:
             Object.assign(nextState, {
                 stockNameSearch: [],
-                intraLoading: true
+                intraLoading: true,
             });
             return nextState;
 
@@ -54,28 +50,6 @@ export default function (oldState = preLoadedState, action) {
                 intraDay: {}
             })
             return nextState;
-
-        // case RECEIVE_TIME_SERIES:
-        //     Object.assign(nextState, {
-        //         stockNameSearch: [],
-        //         timeLoading: true
-        //     });
-        //     return nextState;
-
-        // case RECEIVE_TIME_SERIES_SUCCESS:
-        //     Object.assign(nextState, { 
-        //         timeSeriesMonthly: action.stock.data,
-        //         timeLoading: false,
-        //         stockNameSearch: []
-        //     });
-        //     return nextState;
-
-        // case RECEIVE_TIME_SERIES_FAILURE:
-        //     Object.assign(nextState, {
-        //         timeSeriesMonthly: {},
-        //         timeLoading: false,
-        //     });
-        //     return nextState;
 
         case RECEIVE_WEEKLY:
             Object.assign(nextState, {

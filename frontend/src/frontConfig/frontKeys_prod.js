@@ -1,3 +1,5 @@
 module.exports = {
-    alphaKeyMaster: process.env.ALPHA_KEY_MASTER
+    alphaKeyOne: process.env.ALPHA_KEY_ONE,
+    alphaKeyTwo: process.env.ALPHA_KEY_TWO,
+    alphaKeyThree: process.env.ALPHA_KEY_THREE,
 }

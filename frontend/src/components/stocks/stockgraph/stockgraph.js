@@ -59,20 +59,6 @@ export default class StockGraph extends React.Component {
             onClick={() => this.handleClick(StockUtil.tenYears(weeklySeries))}>10 Years</button>
         </div> : null;
     return (
-      // <div className="stock-graph-main">
-      //   {theButtons}
-      //   <LineChart
-      //     width={550}
-      //     height={400}
-      //     data={this.state.stock}
-      //   >
-      //     <CartesianGrid strokeDasharray="5 5" />
-      //     <XAxis dataKey="date" dy={10}/>
-      //     <YAxis type="number" domain={['auto', 'auto']}  />
-      //     <Tooltip />
-      //     <Line type="monotone" dataKey="close" stroke="#477998"  dot={false}/>
-      //   </LineChart>
-      // </div>
       <div className="stock-graph-main">
         {theButtons}
         <AreaChart

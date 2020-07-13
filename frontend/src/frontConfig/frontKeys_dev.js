@@ -1,6 +1,5 @@
 module.exports = {
-    nothtiskey: 'QU2KW0R97XR5187Y'
+    alphaKeyOne: 'QU2KW0R97XR5187Y',
+    alphaKeyTwo: '6UZKQ4BVOAS0Y9E8',
+    alphaKeyThree: 'S0C0BJGV6N3QYP18'
 }
-
-// Need to render the 4 stock api call routes and need to 
-// hid the key. 
