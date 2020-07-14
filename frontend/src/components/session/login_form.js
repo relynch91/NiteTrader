@@ -22,7 +22,6 @@ class LoginForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
-    // this.renderErrors = this.renderErrors.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -33,7 +32,6 @@ class LoginForm extends React.Component {
       });
     }
   }
-  // Handle field updates (called in the render method)
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
@@ -45,7 +43,7 @@ class LoginForm extends React.Component {
     this.props.demoLogin(this.demoUser)
       .then(() => this.props.closeModal())
   }
-  // Handle form submission
+
   handleSubmit(e) {
     e.preventDefault();
     let user = {
@@ -54,7 +52,6 @@ class LoginForm extends React.Component {
     };
 
     this.props.login(user)
-      // .then((res) => this.props.closeModal());
   }
 
   render() {
@@ -66,7 +63,6 @@ class LoginForm extends React.Component {
       ? 'Create an account to learn about the stock market and build a portfolio!'
       : '';
     const login_intro = formType === 'Sign Up' ? 'Join NiteTrader!' : 'Welcome back!';
-    // const displayErrors = errors ? console.log(errors) : null;
 
     return (
       <div className="modal-child">
