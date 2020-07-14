@@ -11,6 +11,7 @@ class Portfolio extends React.Component {
   }
 
   render() {
+
     let newUser = Object.keys(this.props.trades).length === 0 ? true : false;
     if (newUser) {
       return (
@@ -20,15 +21,16 @@ class Portfolio extends React.Component {
         </div>
       )
     }
+
     return (
-        <div className="portfolio-container">
-          <div className="portfolio-header">
-            <h1>Portfolio Performance</h1>  
-          </div>
-          <div className='portfolio-data'>
-            <StockIndexContainer />
-            <PortfolioBarChartContainer />
-          </div>
+      <div className="portfolio-container">
+        <div className="portfolio-header">
+          <h1>Your Stock's Performance</h1>  
+        </div>
+        <div className='portfolio-data'>
+          <StockIndexContainer />
+          <PortfolioBarChartContainer />
+        </div>
       </div>
     );
   }

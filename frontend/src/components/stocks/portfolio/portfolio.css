@@ -45,6 +45,7 @@
 .portfolio-graph-container > h1{
     margin: 10px 0 10px 60px;
 }
+
 .portfolio-graph {
     display: flex;
     flex-direction: column;

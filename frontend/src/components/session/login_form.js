@@ -3,11 +3,9 @@ import { withRouter } from 'react-router-dom';
 import '../modal/modal.css';
 import './login_signup.css';
 
-
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       username: '',
       password: '',
@@ -23,15 +21,6 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
   }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.currentUser !== prevProps.currentUser) {
-         this.props.history.push('/');
-      this.setState({
-        errors: this.props.errors
-      });
-    }
-  }
   
   update(field) {
     return e => this.setState({
@@ -41,8 +30,7 @@ class LoginForm extends React.Component {
 
   handleDemo(e) {
     e.preventDefault();
-    this.props.demoLogin(this.demoUser)
-      .then(() => this.props.closeModal())
+    this.props.login(this.demoUser)
   }
 
   handleSubmit(e) {
@@ -51,7 +39,6 @@ class LoginForm extends React.Component {
       username: this.state.username,
       password: this.state.password
     };
-
     this.props.login(user)
   }
 

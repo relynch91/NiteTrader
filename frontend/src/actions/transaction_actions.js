@@ -33,13 +33,18 @@ export const receiveErrors = errors => ({
 export const tradeStock = transaction => dispatch => {
     return APIUtil.tradeStock(transaction)
         .then(
-            (newTrade) => (dispatch(receiveTransaction(newTrade))),
-            (err) => (dispatch(receiveErrors(err.response.data))))
+            (newTrade) => (dispatch(receiveTransaction(newTrade)))
+        )
+        .catch(
+            (err) => (dispatch(receiveErrors(err.response.data)))
+        )
     };
 
 export const fetchTrades = userId => dispatch => {
     return APIUtil.fetchTrades(userId)
         .then(
-            (allTrades) => (dispatch(receiveAllUserTransactions(allTrades))),
-            (err) => (dispatch(receiveErrors(err.response.data))))
+            (allTrades) => (dispatch(receiveAllUserTransactions(allTrades))))
+        .catch(
+            (err) => (dispatch(receiveErrors(err.response.data)))
+        )
 };

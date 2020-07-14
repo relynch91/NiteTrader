@@ -1,5 +1,7 @@
 import React from 'react';
 import './profile.css';
+import ProfileDataContainer from './profile_data_container';
+import ProfileChartContainer from './profile_chart_container';
 
 class Profile extends React.Component {
 
@@ -8,14 +10,24 @@ class Profile extends React.Component {
     fetchTrades(userId);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.myStocks !== prevProps.myStocks) {
+      this.props.buildPortfolio(this.props.myStocks);
+    }
+  }
+
   render() {
-      return (
-        <div className='profile-container'>
-          <h1>
-            Profile Page
-          </h1>
+    return (
+      <div className="profile-container">
+        <div className="profile-header">
+          <h1>Your Profile Page</h1>  
         </div>
-      )
+        <div className='profile-info'>
+          <ProfileDataContainer />
+          <ProfileChartContainer />
+        </div>
+      </div>
+    )  
   }
 }
 

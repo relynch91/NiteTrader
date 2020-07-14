@@ -10,3 +10,50 @@
     background-size: cover;
     border-top: 1px solid darkgray;
 }
+
+.profile-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2a5976;
+}
+
+.profile-header {
+    margin-bottom: 4px;
+    margin-top: 8px;
+}
+
+.profile-info {
+    display: flex;
+    justify-content: space-around;
+    min-width: 1000px;
+}
+
+.profile-data {
+    display: flex;
+    justify-content: space-between;
+    height: 65vh;
+    width: 450px;
+    border: 1px solid darkgray;
+}
+
+.profile-graph-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 3px;
+    border: 1px solid gray;
+    background-color: whitesmoke;
+    height: 65vh;
+    width: 450px;
+}
+
+.profile-graph-container > h1 {
+    margin: 10px 0 10px 60px;
+}
+
+.profile-graph {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
