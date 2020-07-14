@@ -18,7 +18,6 @@ class NavBar extends React.Component {
   getLinks() {
     const { openModal, loggedIn } = this.props;
     if (loggedIn) {
-      // const user = {this.state.session.user.username};
       return (
         <div className="navbar-main">
           <div className="navbar-logo">
@@ -26,6 +25,7 @@ class NavBar extends React.Component {
             <h1></h1>
           </div>
           <div className='navbar-links'>
+            <Link className="navbar-link" to={'/profile'}> Profile </Link>
             <Link className="navbar-link" to={'/portfolio'}> Portfolio </Link>
             <Link className="navbar-link" to={'/search'}>Search Stocks</Link>
             <button className="navbar-button" onClick={this.logoutUser}>Logout</button>

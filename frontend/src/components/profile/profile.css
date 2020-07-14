@@ -1,0 +1,12 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 80vh;
+    width: 100vw;
+    background-image: url('../stocks/portfolio/portfolio_background.jpg');
+    background-repeat: repeat-x;
+    background-size: cover;
+    border-top: 1px solid darkgray;
+}
