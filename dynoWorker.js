@@ -41,8 +41,6 @@ async function updateDatabase(tickers) {
     for(let i = 0; i < tickers.length; i++){
         let stockData = await fireAPI(tickers[i]);
         let formattedData = globalEndPointObject(stockData.data['Global Quote']);
-        console.log(formattedData);
-        debugger
         await axios.patch(
             'https://nitetrader.herokuapp.com/api/stock_api/quoteendpointstock/update', formattedData);
     }
@@ -55,4 +53,4 @@ async function candle() {
     return true;
 }
 
-console.log(candle());
+candle();

@@ -27,7 +27,7 @@ export default class StockDetails extends React.Component {
     if (stockDetails !== prevProps.stockDetails) {
       this.setState({
         mostRecentStockApiData: (StockUtil.mostRecent(this.props.stockDetails.intraDay) ||
-          StockUtil.mostRecent(this.props.stockDetails.weeklySeries))
+        StockUtil.mostRecent(this.props.stockDetails.weeklySeries))
       })
     }
   }
@@ -60,6 +60,7 @@ export default class StockDetails extends React.Component {
     
     let { activeBuy, activeSell } = this.state;
     let { data, ticker } = this.state.mostRecentStockApiData;
+    
     let sellButton = (!Object.keys(this.props.portfolio).includes(ticker)) ? null : (
         <button className={activeSell ? "sell-button-active" : "sell-button"} 
           onClick={() => this.handleClick(false)}> Sell</button>);
@@ -80,20 +81,22 @@ export default class StockDetails extends React.Component {
           <p>Price: ${(parseFloat(data["4. close"]).toFixed(2))}</p>
           <p>Volume: {parseFloat(data["5. volume"])}</p>
         </div>
-        <form >
-          <p>Number of shares you intend to buy or sell</p>
-          <div>
-            <input
-              className="stock-buy-input"
-              type="number"
-              onChange={this.handleChange()}
-              value={this.state.numShares} />
-              <button className={activeBuy ? "buy-button-active" : "buy-button"}
-                    onClick={() => this.handleClick(true)}>Buy</button>
-            {sellButton}
-          </div>
-          {submitButton}
-        </form>
+        <div className='stock-buy-sell'> 
+          <form >
+            <p>Number of shares you intend to buy or sell</p>
+            <div>
+              <input
+                className="stock-buy-input"
+                type="number"
+                onChange={this.handleChange()}
+                value={this.state.numShares} />
+                <button className={activeBuy ? "buy-button-active" : "buy-button"}
+                      onClick={() => this.handleClick(true)}>Buy</button>
+              {sellButton}
+            </div>
+            {submitButton}
+          </form>
+        </div>
       </div>
       );
     return (

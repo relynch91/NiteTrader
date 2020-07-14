@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 5
 app.use("/api/users", users);
 app.use("/api/stock_api/quoteendpointstock", endPointStocks);
 app.use("/api/transactions", transactions);
-app.use("/api/stock_api/intradayapi", intraDayAPI);
+// app.use("/api/stock_api/intradayapi", intraDayAPI);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));

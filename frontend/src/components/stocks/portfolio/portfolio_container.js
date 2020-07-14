@@ -3,7 +3,6 @@ import Portfolio from './portfolio.js';
 import { fetchTrades } from '../../../actions/transaction_actions';
 
 const mapStateToProps = (state) => ({
-    // user: state.session.user,
     userId: state.session.user.id,
     trades: state.transactions
 })
