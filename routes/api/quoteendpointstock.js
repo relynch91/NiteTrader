@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const QuoteEndPointStock = require('../../../models/stock_api_requests/QuoteEndPointStock');
+const QuoteEndPointStock = require('../../models/QuoteEndPointStock');
 
 router.get("/test", (req, res) => res.json({
     msg: "This is the stocks route"
