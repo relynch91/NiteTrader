@@ -10,6 +10,7 @@ export default class StockIndex extends React.Component {
     let { fetchTrades, userId } = this.props
     fetchTrades(userId)
   }
+  
   componentDidUpdate(prevProps) {
     if (this.props.myStocks !== prevProps.myStocks) {
       this.props.buildPortfolio(this.props.myStocks);
