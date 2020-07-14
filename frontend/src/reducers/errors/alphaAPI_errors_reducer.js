@@ -8,7 +8,7 @@ import {
     CLEAR_API_ERRORS,
     RECEIVE_WEEKLY_FAILURE,
     RECEIVE_WEEKLY
-} from '../actions/alphaApi_actions';
+} from '../../actions/alphaApi_actions';
 
 const _nullErrors = {};
 

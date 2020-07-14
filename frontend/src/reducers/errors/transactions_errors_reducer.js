@@ -2,7 +2,7 @@ import {
     RECEIVE_TRANSACTION_ERRORS,
     RECEIVE_TRADE,
     RECEIVE_ALL_TRADES
-} from '../actions/transaction_actions';
+} from '../../actions/transaction_actions';
 
 const _nullErrors = [];
 

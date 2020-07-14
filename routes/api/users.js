@@ -114,7 +114,6 @@ router.post("/login", (req, res) => {
     });
 });
 
-// For testing only:
 router.get('/finduser', function(req, res){
     User.find({username: req.body.username}, function(err, user){
         if(err){

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import session from './session_reducer';
-import errors from './errors_reducer';
+import errors from './errors/errors_reducer.js';
 import ui from './ui_reducer';
 import stocks from './alphaAPI_reducer'
 import transactions from './transactions_reducer'

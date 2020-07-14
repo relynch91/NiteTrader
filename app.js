@@ -4,11 +4,11 @@ const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
 const passport = require('passport');
-const endPointStocks = require("./routes/api/stock_api/quoteendpointstock");
+const endPointStocks = require("./routes/api/quoteendpointstock");
 const users = require("./routes/api/users");
 const transactions = require("./routes/api/transactions");
+const profile = require('./routes/api/profile');
 const path = require('path');
-const intraDayAPI = require('./routes/api/stock_api/intradayapi');
 
 mongoose
     .connect(db, {
@@ -34,7 +34,8 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 5
 app.use("/api/users", users);
 app.use("/api/stock_api/quoteendpointstock", endPointStocks);
 app.use("/api/transactions", transactions);
-// app.use("/api/stock_api/intradayapi", intraDayAPI);
+app.use("/api/profile", profile);
+
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));
