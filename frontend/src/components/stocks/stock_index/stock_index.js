@@ -74,9 +74,9 @@ export default class StockIndex extends React.Component {
                     } 
                   </li>
                   <li>
-                    Previous Close: {
-                      parseFloat(myPortfolio[ticker].quoteEndPointData.previousClose).toFixed(2)
-                    } 
+                    Price: {
+                      parseFloat(myPortfolio[ticker].quoteEndPointData.price).toFixed(2)
+                    }
                   </li>
                 </ul>
               </div>

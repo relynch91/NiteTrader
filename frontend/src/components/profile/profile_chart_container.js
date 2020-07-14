@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Profile from './profile';
+import ProfileChart from './profile_chart';
 import { fetchTrades } from '../../actions/transaction_actions';
 import { buildPortfolio } from '../../actions/portfolio_actions'
 
@@ -18,4 +18,4 @@ const mapDispatchToProps = dispatch => ({
   buildPortfolio: (transactions) => dispatch(buildPortfolio(transactions))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileChart);

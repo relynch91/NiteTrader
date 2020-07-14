@@ -4,9 +4,12 @@ import PortfolioBarChartContainer from './portfolio_barchart_container'
 import './portfolio.css'
 
 class Portfolio extends React.Component {
-
-  componentDidMount(){
-    let { fetchTrades, userId } = this.props;
+  
+  componentDidMount() {
+    let {
+      fetchTrades,
+      userId
+    } = this.props;
     fetchTrades(userId);
   }
 
@@ -19,18 +22,19 @@ class Portfolio extends React.Component {
           <p>Begin building your portfolio by navigating to the Search Stocks Page</p>
         </div>
       )
-    }
-    return (
+    }else {
+      return (
         <div className="portfolio-container">
           <div className="portfolio-header">
-            <h1>Portfolio Performance</h1>  
+            <h1>Your Stock's Performance</h1>  
           </div>
           <div className='portfolio-data'>
             <StockIndexContainer />
             <PortfolioBarChartContainer />
           </div>
-      </div>
-    );
+        </div>
+      );
+    }
   }
 }
 

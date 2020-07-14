@@ -21,12 +21,8 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
 })
 
 router.post("/register", (req, res) => {
-    // const { errors, isValid } = validateRegisterInput(req.body);
 
     let { isValid, errors } = validateRegisterInput(req.body);
-    // console.log('server response')
-    // console.log(isValid);
-    // console.log(isValid);
     if (!isValid) {
         return res.status(400).json(errors);
     }
@@ -118,7 +114,6 @@ router.post("/login", (req, res) => {
     });
 });
 
-// For testing only:
 router.get('/finduser', function(req, res){
     User.find({username: req.body.username}, function(err, user){
         if(err){

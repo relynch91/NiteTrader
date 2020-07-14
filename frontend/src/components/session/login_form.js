@@ -3,11 +3,9 @@ import { withRouter } from 'react-router-dom';
 import '../modal/modal.css';
 import './login_signup.css';
 
-
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       username: '',
       password: '',
@@ -22,18 +20,8 @@ class LoginForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
-    // this.renderErrors = this.renderErrors.bind(this);
   }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.currentUser !== prevProps.currentUser) {
-         this.props.history.push('/');
-      this.setState({
-        errors: this.props.errors
-      });
-    }
-  }
-  // Handle field updates (called in the render method)
+  
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
@@ -42,19 +30,16 @@ class LoginForm extends React.Component {
 
   handleDemo(e) {
     e.preventDefault();
-    this.props.demoLogin(this.demoUser)
-      .then(() => this.props.closeModal())
+    this.props.login(this.demoUser)
   }
-  // Handle form submission
+
   handleSubmit(e) {
     e.preventDefault();
     let user = {
       username: this.state.username,
       password: this.state.password
     };
-
     this.props.login(user)
-      // .then((res) => this.props.closeModal());
   }
 
   render() {
@@ -66,7 +51,6 @@ class LoginForm extends React.Component {
       ? 'Create an account to learn about the stock market and build a portfolio!'
       : '';
     const login_intro = formType === 'Sign Up' ? 'Join NiteTrader!' : 'Welcome back!';
-    // const displayErrors = errors ? console.log(errors) : null;
 
     return (
       <div className="modal-child">

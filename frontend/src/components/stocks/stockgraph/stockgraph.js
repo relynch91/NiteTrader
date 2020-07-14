@@ -1,6 +1,6 @@
 import React from 'react';
 import './stockgraph.css'
-import { AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid, Legend } from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 import * as StockUtil from '../../../util/stocks_api_util';
 
 export default class StockGraph extends React.Component {
