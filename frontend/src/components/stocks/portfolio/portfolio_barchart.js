@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import {
-    BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine,
+    BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ReferenceLine,
 } from 'recharts';
 import { formatPortfolioData } from '../../../util/portfolio_api_util'
 
@@ -34,13 +34,11 @@ export default class PortfolioBarChart extends PureComponent {
                 <XAxis dataKey="name" />
                 <YAxis type='number' />
                 <Tooltip />
-                {/* <Legend /> */}
                 <ReferenceLine y={0} stroke="#000" />
                 <Bar dataKey="Loss" fill="#A3333D" />
                 <Bar dataKey="Gain" fill="#82ca9d" />
                 </BarChart>
-
-            </div>
+                </div>
             </div>
         );
     }

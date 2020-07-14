@@ -32,29 +32,14 @@ class SignupForm extends React.Component {
       password: this.state.password,
       password2: this.state.password2
     };
-    // the below code works and signs in/up a user.  Dont touch!
-    // this.props.signup(user, this.props.history)
-    //   .then(() => (this.props.login(user)))
-    //   .then(() => (this.props.closeModal()))
-    // the above code works and signs in/up a user.  Dont touch!
     this.props.signup(user)
-      .then(() => (this.props.login(user)))
-    //   .then(() => (this.props.closeModal()))
-   
+      .then(() => (this.props.login(user)))   
   }
 
-  // userLogin(user) {
-  //   this.props.login(user)
-      // .then(() => this.props.closeModal())
-      // .catch(error => console.log(error))
-  // }
-
   render() {
-    // let errors = this.props.errors;
     const { formType, closeModal, otherForm } = this.props;
     const message = formType === 'Sign Up' ? 'Already have an account?' : 'No account?';
     const button_text = formType === 'Sign Up' ? 'Sign up' : 'Sign in';
-    const intro = formType === 'Sign Up'
     const login_intro = formType === 'Sign Up' ? 'Join NiteTrader!' : 'Welcome Back!'
     
     return (

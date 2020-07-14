@@ -22,7 +22,6 @@ class NavBar extends React.Component {
         <div className="navbar-main">
           <div className="navbar-logo">
             <NavLink className = "home-logo" to = "/"> NiteTrader </NavLink>
-            <h1></h1>
           </div>
           <div className='navbar-links'>
             <Link className="navbar-link" to={'/profile'}> Profile </Link>
