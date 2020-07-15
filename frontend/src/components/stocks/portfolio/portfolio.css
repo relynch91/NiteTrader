@@ -8,8 +8,8 @@
     background-image: url('./portfolio_background.jpg');
     background-repeat: repeat-x;
     background-size: cover;
-    border-top: 1px solid darkgray;
 }
+
 .BarChart{
     width: 300px;
     height: 500px;
@@ -31,6 +31,14 @@
     justify-content: space-between;
 }
 
+.portfolio-graph {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
 .portfolio-graph-container{
     display: flex;
     flex-direction: column;
@@ -39,18 +47,11 @@
     padding-right: 30px;
     border: 1px solid gray;
     background-color: whitesmoke;
-    height: 65vh;
+    height: 59vh;
 }
 
 .portfolio-graph-container > h1{
-    margin: 10px 0 10px 60px;
-}
-
-.portfolio-graph {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin: 10px -40px 10px 0px;
 }
 
 .new-user-welcome-container{
@@ -61,7 +62,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 79vh;
+    height: 82vh;
     min-width: 1000px
 }
 

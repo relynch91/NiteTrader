@@ -8,7 +8,6 @@
     background-image: url('../stocks/portfolio/portfolio_background.jpg');
     background-repeat: repeat-x;
     background-size: cover;
-    border-top: 1px solid darkgray;
 }
 
 .profile-header h1 {

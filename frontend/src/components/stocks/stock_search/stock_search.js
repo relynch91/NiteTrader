@@ -63,6 +63,10 @@ export default class StockSearch extends React.Component {
 
   getStockDetails(e){
     if (e) { e.preventDefault() };
+    console.log(key.alphaKeyOne);
+    console.log(key.alphaKeyTwo);
+    console.log(key.alphaKeyThree);
+
     const intraDayAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.ticker}&interval=15min&outputsize=full&apikey=${key.alphaKeyTwo}`;
     this.props.intraDayAPICall(intraDayAPI);
     const weeklyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=${this.state.ticker}&apikey=${key.alphaKeyThree}`;

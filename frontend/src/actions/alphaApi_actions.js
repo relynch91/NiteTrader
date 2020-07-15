@@ -130,8 +130,10 @@ export const weeklyAPICall = apiURL => dispatch => {
     return AlphaAdvantageUtil.weeklyAPICall(apiURL)
         .then(stockData => {
             if (stockData.data.Note || stockData.data['Error Message']) {
+                console.log(stockData);
                 dispatch(receiveWeeklyFailure(stockData))
             } else {
+                console.log(stockData);
                 dispatch(receiveWeeklySuccess(stockData))
             }
         })

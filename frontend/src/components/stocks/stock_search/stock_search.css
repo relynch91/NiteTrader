@@ -13,6 +13,7 @@
     padding: 10px 0 10px 0;
     height: 3vh;
     min-height: 15px;
+    border-bottom: 1px solid darkgray;
 }
 
 .stock-search-form-box {
