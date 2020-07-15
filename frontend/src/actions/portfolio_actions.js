@@ -1,4 +1,5 @@
 import * as PortUtil from '../util/portfolio_api_util';
+import { buildProfile } from './profile_actions';
 
 export const RECEIVE_PORTFOLIO = 'RECEIVE_PORTFOLIO';
 export const RECEIVE_PORTFOLIO_ERRORS = 'RECEIVE_PORTFOLIO_ERRORS';
@@ -19,7 +20,6 @@ export const clearPortfolio = () => {
 
 export const buildPortfolio = transactions => dispatch => {
     let ownedStocks = PortUtil.activeShares(transactions)
-    console.log(ownedStocks);
     PortUtil.fetchDBStockData(ownedStocks)
         .then((stockApiArray) => {
             stockApiArray.forEach(stockObj => {
@@ -28,5 +28,6 @@ export const buildPortfolio = transactions => dispatch => {
                 ownedStocks[sym]['priceDiff'] = PortUtil.overUnder(ownedStocks[sym]);
             })
             dispatch(receivePortfolio(ownedStocks));
+            dispatch(buildProfile(ownedStocks));
         })
 };

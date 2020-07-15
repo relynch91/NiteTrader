@@ -5,7 +5,7 @@ export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 export const receiveProfile = stocks => {
     return ({
         type: RECEIVE_PROFILE,
-        stocks
+        // stocks
     });
 };
 
@@ -25,6 +25,6 @@ export const buildProfile = (stocks) => {
     //             ownedStocks[sym]['quoteEndPointData'] = stockObj.data;
     //             ownedStocks[sym]['priceDiff'] = PortUtil.overUnder(ownedStocks[sym]);
     //         })
-    // console.log(stocks);
-    // (receiveProfile(stocks));
+    console.log('here');
+    (receiveProfile(stocks));
 };
