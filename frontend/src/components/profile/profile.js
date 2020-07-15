@@ -11,8 +11,8 @@ class Profile extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.myStocks !== prevProps.myStocks) {
-      this.props.buildPortfolio(this.props.myStocks);
+    if (this.props.myTransactions !== prevProps.myTransactions) { //myTransacitons is the trnsaction state list
+      this.props.buildPortfolio(this.props.myTransactions);
     }
   }
 
@@ -23,12 +23,12 @@ class Profile extends React.Component {
           <h1>Your Profile Page</h1>  
         </div>
         <div className='profile-info'>
-          <ProfileDataContainer />
-          <ProfileChartContainer />
+          <ProfileDataContainer/>
+          <ProfileChartContainer/>
         </div>
       </div>
     )  
-  }
+  };
 }
 
 export default Profile;

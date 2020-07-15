@@ -16,6 +16,7 @@ export default class StockIndex extends React.Component {
       this.props.buildPortfolio(this.props.myStocks);
     }
   }
+  
   render(){
     let { myPortfolio } = this.props;
     if (Object.keys(myPortfolio).length === 0) {return null};
@@ -26,8 +27,8 @@ export default class StockIndex extends React.Component {
             <div className='stock-box-owned-ticker'>
               Ticker: {ticker} 
             </div>
-            <div className = 'portfolio-specific-details'>
-              <div className='stock-box-owned-details'>
+            {/* <div className = 'portfolio-specific-details'> */}
+              {/* <div className='stock-box-owned-details'>
                 <ul>
                   <li>
                     Portfolio Information:
@@ -47,41 +48,56 @@ export default class StockIndex extends React.Component {
                     </li>
                   }
                 </ul>
-              </div>
-              <div className='global-end-point-details'>
-                <ul>
-                    <li>
-                    Stock Information:
-                  </li>
-                  <li>
-                    Percent Change:  {
-                      parseFloat(myPortfolio[ticker].quoteEndPointData.changePercent).toFixed(2)
-                    } %
-                  </li>
-                  <li>
-                    Last Trading Date: {
-                      myPortfolio[ticker].quoteEndPointData.latestTradingDay
-                      }
-                  </li>
-                  < li >
-                    High: {
-                      parseFloat(myPortfolio[ticker].quoteEndPointData.high).toFixed(2)
-                    } 
-                  </li>
-                  <li>
-                    Low: {
-                      parseFloat(myPortfolio[ticker].quoteEndPointData.low).toFixed(2)
-                    } 
-                  </li>
-                  <li>
-                    Price: {
-                      parseFloat(myPortfolio[ticker].quoteEndPointData.price).toFixed(2)
-                    }
-                  </li>
-                </ul>
-              </div>
+              </div> */}
+            <div className='global-end-point-details'>
+              <ul>
+                <li>
+                  Last Trading Date: {
+                    myPortfolio[ticker].quoteEndPointData.latestTradingDay}
+                </li>
+                < li >
+                  Change: {
+                    parseFloat(myPortfolio[ticker].quoteEndPointData.change).toFixed(2)
+                  }
+                </li>
+                <li>
+                  Percent Change:  {
+                    parseFloat(myPortfolio[ticker].quoteEndPointData.changePercent).toFixed(2)
+                  } %
+                </li>
+                < li >
+                  Volume: {
+                    parseFloat(myPortfolio[ticker].quoteEndPointData.volume).toFixed(2)
+                  } </li>
+              </ul>
+              <ul>
+                < li >
+                  High: {
+                    parseFloat(myPortfolio[ticker].quoteEndPointData.high).toFixed(2) }
+                </li>
+                <li>
+                  Low: {
+                    parseFloat(myPortfolio[ticker].quoteEndPointData.low).toFixed(2) }
+                </li>
+                <li>
+                  Open: {
+                    parseFloat(myPortfolio[ticker].quoteEndPointData.open).toFixed(2)
+                  } 
+                </li>
+                <li>
+                  Price: {
+                    parseFloat(myPortfolio[ticker].quoteEndPointData.price).toFixed(2)
+                  }
+                </li>
+                < li >
+                  Previous Close: {
+                    parseFloat(myPortfolio[ticker].quoteEndPointData.previousClose).toFixed(2)
+                  } 
+                </li>
+              </ul>
             </div>
           </div>
+        // </div>
         ))}
       </div>
     );

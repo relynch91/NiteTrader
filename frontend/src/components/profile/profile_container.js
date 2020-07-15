@@ -6,7 +6,7 @@ import { buildPortfolio } from '../../actions/portfolio_actions'
 
 const mapStateToProps = (state) => {
   return {
-    myStocks: state.transactions,
+    myTransactions: state.transactions,
     myPortfolio: state.portfolio,
     userId: state.session.user.id,
     trades: state.transactions

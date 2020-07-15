@@ -26,7 +26,7 @@ export default class PortfolioBarChart extends PureComponent {
                     Currently Owned Stocks Performance (Single Day Percentage)
                 </h1>
                 <BarChart
-                    width={450}
+                    width={420}
                     height={410}
                     data={this.state.data}
                 >
