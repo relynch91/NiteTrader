@@ -56,3 +56,9 @@
     justify-content: center;
     align-items: center;
 }
+
+.profile-details-and-graph {
+    min-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+}

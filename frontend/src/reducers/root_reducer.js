@@ -2,9 +2,10 @@ import { combineReducers } from 'redux';
 import session from './session_reducer';
 import errors from './errors/errors_reducer.js';
 import ui from './ui_reducer';
-import stocks from './alphaAPI_reducer'
-import transactions from './transactions_reducer'
-import portfolio from './portfolio_reducer'
+import stocks from './alphaAPI_reducer';
+import transactions from './transactions_reducer';
+import portfolio from './portfolio_reducer';
+import profile from './profile_reducer';
 
 const RootReducer = combineReducers({
     session,
@@ -12,7 +13,8 @@ const RootReducer = combineReducers({
     ui,
     stocks,
     transactions,
-    portfolio
+    portfolio,
+    profile
 });
 
 export default RootReducer;

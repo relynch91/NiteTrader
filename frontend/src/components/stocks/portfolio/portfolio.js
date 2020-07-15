@@ -4,14 +4,6 @@ import PortfolioBarChartContainer from './portfolio_barchart_container'
 import './portfolio.css'
 
 class Portfolio extends React.Component {
-  
-  // componentDidMount() {
-  //   let {
-  //     fetchTrades,
-  //     userId
-  //   } = this.props;
-  //   fetchTrades(userId);
-  // }
 
   render() {
     let newUser = Object.keys(this.props.trades).length === 0 ? true : false;

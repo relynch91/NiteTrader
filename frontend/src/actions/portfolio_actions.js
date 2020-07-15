@@ -19,6 +19,7 @@ export const clearPortfolio = () => {
 
 export const buildPortfolio = transactions => dispatch => {
     let ownedStocks = PortUtil.activeShares(transactions)
+    console.log(ownedStocks);
     PortUtil.fetchDBStockData(ownedStocks)
         .then((stockApiArray) => {
             stockApiArray.forEach(stockObj => {
@@ -28,5 +29,4 @@ export const buildPortfolio = transactions => dispatch => {
             })
             dispatch(receivePortfolio(ownedStocks));
         })
-    
 };
