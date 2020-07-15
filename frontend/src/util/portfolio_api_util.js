@@ -30,7 +30,6 @@ export const fetchDBStockData = (transactions) => {
 
     let activeTickers = Object.keys(transactions).filter(ticker => transactions[ticker].ownedShares > 0)
     let allPromises = activeTickers.map(ticker => QuoteEP.fetchQuoteEndPointDB(ticker))
-
     return Promise.all(allPromises);
 }
 
@@ -44,7 +43,6 @@ export const formatPortfolioData = (portfolio) => {
     let res = [];
     Object.keys(portfolio).forEach(ticker => {
         let key = parseFloat(portfolio[ticker].quoteEndPointData.changePercent) > 0 ? 'Gain' : 'Loss';
-        // res.push({ name: ticker, [key]: portfolio[ticker].priceDiff })
         res.push({
             name: ticker,
             [key]: parseFloat(portfolio[ticker].quoteEndPointData.changePercent)

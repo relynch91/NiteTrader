@@ -57,7 +57,7 @@
     justify-content: space-evenly;
     align-items: center;
     margin: 25px 100px;
-    height: 70vh;
+    height: 68vh;
 }
 
 .stock-search-landing{
@@ -65,7 +65,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 75vh;
+    height: 77vh;
     min-width: 1000px;
     font-weight: 700;
     background-image: url('./stock-search-landing.jpg');
