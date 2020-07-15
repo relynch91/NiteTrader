@@ -22,3 +22,7 @@
 .recharts-legend-wrapper {
     bottom: -5px;
 }
+
+.recharts-cartesian-axis-ticks {
+    /* display: none; */
+}

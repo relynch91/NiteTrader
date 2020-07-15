@@ -12,11 +12,11 @@ class MainPageLanding extends React.Component {
             <div className="main-components">
                 <Link to="/portfolio" className="baby-button1">
                     <span><img src={Portfolio} alt='portfolio' className="baby-button-img1"/></span>
-                    <span className="baby-button-text1">Build Your Portfolio</span> 
+                    <span className="baby-button-text1">View Your Portfolio</span> 
                 </Link>
                 <Link to="/search" className="baby-button2">
                     <span><img src={Unicorn} alt='unicorn' className="baby-button-img2"/></span>
-                    <span className="baby-button-text2">Find The Next Unicorn</span> 
+                    <span className="baby-button-text2">Find The Next Unicorn</span>
                 </Link>
             </div>
         </div>
