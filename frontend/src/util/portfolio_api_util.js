@@ -35,8 +35,8 @@ export const fetchDBStockData = (transactions) => {
 
  export const overUnder = (stockObj) => {
         let purchased = stockObj.pricePerShare;
-        let current = Math.floor(parseInt(stockObj.quoteEndPointData.price))
-        return Math.round(parseFloat(current - purchased));
+        let current = (parseInt(stockObj.quoteEndPointData.price).toFixed(2))
+        return (parseFloat(current - purchased)).toFixed(2);
 }
 
 export const formatPortfolioData = (portfolio) => {
