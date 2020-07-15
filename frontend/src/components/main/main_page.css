@@ -1,6 +1,11 @@
 .main-landing {
     min-width: 900px;
     height: 80vh;
+    width: 100vw;
+    background-image: url('../stocks/portfolio/portfolio_background.jpg');
+    background-repeat: repeat-x;
+    background-size: cover;
+    border-top: 1px solid darkgray;
 }
 
 .baby-button1{

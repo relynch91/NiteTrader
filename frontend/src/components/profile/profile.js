@@ -23,12 +23,12 @@ class Profile extends React.Component {
           <h1>Your Profile Page</h1>  
         </div>
         <div className='profile-info'>
-          <ProfileDataContainer />
-          <ProfileChartContainer />
+          <ProfileDataContainer/>
+          <ProfileChartContainer/>
         </div>
       </div>
     )  
-  }
+  };
 }
 
 export default Profile;
