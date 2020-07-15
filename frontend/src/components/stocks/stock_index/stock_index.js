@@ -16,6 +16,7 @@ export default class StockIndex extends React.Component {
       this.props.buildPortfolio(this.props.myStocks);
     }
   }
+  
   render(){
     let { myPortfolio } = this.props;
     if (Object.keys(myPortfolio).length === 0) {return null};

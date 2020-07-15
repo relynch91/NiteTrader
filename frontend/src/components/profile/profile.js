@@ -11,8 +11,8 @@ class Profile extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.myStocks !== prevProps.myStocks) {
-      this.props.buildPortfolio(this.props.myStocks);
+    if (this.props.myTransactions !== prevProps.myTransactions) { //myTransacitons is the trnsaction state list
+      this.props.buildPortfolio(this.props.myTransactions);
     }
   }
 
