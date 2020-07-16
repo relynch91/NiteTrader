@@ -48,7 +48,7 @@
     padding-right: 30px;
     border: 1px solid gray;
     background-color: whitesmoke;
-    height: 59vh;
+    /* height: 59vh; */
 }
 
 .portfolio-graph-container > h1{
