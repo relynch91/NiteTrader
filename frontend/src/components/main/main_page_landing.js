@@ -7,7 +7,7 @@ import Profile from './profile.jpg';
 class MainPageLanding extends React.Component {
   render() {
     return (
-        <div>
+        <div className='main-welcome'>
             <p className="main-welcome-message">Welcome to NiteTrader</p>
             <div className="main-components">
                 <Link to="/profile" className="baby-button1">
