@@ -26,8 +26,7 @@ export const buildPortfolio = transactions => dispatch => {
                 let sym = stockObj.data.symbol;
                 ownedStocks[sym]['quoteEndPointData'] = stockObj.data;
                 ownedStocks[sym]['priceDiff'] = PortUtil.overUnder(ownedStocks[sym]);
-            })
+            });
             dispatch(receivePortfolio(ownedStocks));
-            dispatch(buildProfile(ownedStocks));
         })
 };

@@ -11,15 +11,9 @@ class Profile extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    // if (this.props.myTransactions !== prevProps.myTransactions) {
-    //   this.props.buildPortfolio(this.props.myTransactions);
-    // } else if (Object.keys((this.props.myPortfolio).length) !== (Object.keys(prevProps.myPortfolio).length) &&
-    //  (Object.keys(this.props.myPortfolio).length > 0)) {
-    //   this.props.buildProfile(this.props.myPortfolio);
-    // }
     if (this.props.myTransactions !== prevProps.myTransactions) {
       this.props.buildPortfolio(this.props.myTransactions);
-    } 
+    }
   }
 
   render() {
