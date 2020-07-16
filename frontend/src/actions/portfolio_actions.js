@@ -1,5 +1,4 @@
 import * as PortUtil from '../util/portfolio_api_util';
-import { buildProfile } from './profile_actions';
 
 export const RECEIVE_PORTFOLIO = 'RECEIVE_PORTFOLIO';
 export const RECEIVE_PORTFOLIO_ERRORS = 'RECEIVE_PORTFOLIO_ERRORS';
@@ -24,6 +23,7 @@ export const buildPortfolio = transactions => dispatch => {
         .then((stockApiArray) => {
             stockApiArray.forEach(stockObj => {
                 let sym = stockObj.data.symbol;
+                // console.log(sym);
                 ownedStocks[sym]['quoteEndPointData'] = stockObj.data;
                 ownedStocks[sym]['priceDiff'] = PortUtil.overUnder(ownedStocks[sym]);
             });
