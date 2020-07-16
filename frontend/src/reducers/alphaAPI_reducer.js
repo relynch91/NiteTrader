@@ -10,7 +10,7 @@ import { RECEIVE_INTRADAY,
     RECEIVE_CLEAR_STOCKS
 } from '../actions/alphaApi_actions';
 
-let preLoadedState = {
+let preLoadedStateAlpha = {
     intraDay: {},
     intraLoading: false,
     weeklyLoading: false,
@@ -20,14 +20,14 @@ let preLoadedState = {
     count: 0
 }
 
-export default function (oldState = preLoadedState, action) {
+export default function (oldState = preLoadedStateAlpha, action) {
     Object.freeze(oldState);
     let nextState = Object.assign({}, oldState);
 
     switch (action.type) {
 
         case RECEIVE_CLEAR_STOCKS: 
-            return preLoadedState;
+            return preLoadedStateAlpha;
         
         case RECEIVE_INTRADAY:
             Object.assign(nextState, {

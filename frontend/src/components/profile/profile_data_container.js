@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import ProfileData from './profile_data';
 import { fetchTrades } from '../../actions/transaction_actions';
-import { buildPortfolio } from '../../actions/portfolio_actions'
+import { buildProfile } from '../../actions/profile_actions'
 
 
 const mapStateToProps = (state) => {
@@ -9,13 +9,14 @@ const mapStateToProps = (state) => {
     myStocks: state.transactions,
     myPortfolio: state.portfolio,
     userId: state.session.user.id,
-    trades: state.transactions
+    trades: state.transactions,
+    myProfile: state.profile
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   fetchTrades: (userId) => dispatch(fetchTrades(userId)),
-  buildPortfolio: (transactions) => dispatch(buildPortfolio(transactions))
+  buildProfile: (stocks) => dispatch(buildProfile(stocks))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileData);

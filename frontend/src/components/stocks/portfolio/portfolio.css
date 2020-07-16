@@ -36,7 +36,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+    overflow: scroll;
+    min-height: 450px;
 }
 
 .portfolio-graph-container{
