@@ -24,9 +24,8 @@
 .profile-data {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     height: 65vh;
-    width: 450px;
+    width: 500px;
     border: 1px solid darkgray;
 }
 
@@ -71,3 +70,18 @@
     align-items: center;
     height: 50%;
 }
+
+.profile-transactions-container {
+    overflow: scroll;
+    width: 100%;
+}
+
+.profile-transaction-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid gray;
+    background-color: whitesmoke;
+    margin: 10px;
+}
+
