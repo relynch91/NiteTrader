@@ -12,9 +12,17 @@ class ProfileData extends React.Component {
   }
 
   render() {
+    let transactions = this.props.trades;
+
     return (
       <div className='profile-data'>
-        <h1>Profile Data</h1>
+        <div className='profile-info'> 
+          <h1 >Profile Data</h1>
+        </div>
+        <div className='profile-transactions'> 
+          <h1>Your Transactions: </h1>
+
+        </div>
       </div>
     )  
   }

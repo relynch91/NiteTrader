@@ -24,13 +24,12 @@ class Profile extends React.Component {
       </div>
     ) : null;
 
-
     return (
       <div className="profile-container">
         <div className="profile-header">
           <h1>Your Profile Page</h1>  
         </div>
-          {theProfileDetailsAndGraph}
+        {theProfileDetailsAndGraph}
       </div>
     )  
   };

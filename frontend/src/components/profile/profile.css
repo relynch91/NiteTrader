@@ -21,15 +21,10 @@
     margin-top: 8px;
 }
 
-.profile-info {
-    display: flex;
-    justify-content: space-around;
-    min-width: 1000px;
-}
-
 .profile-data {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-around;
     height: 65vh;
     width: 450px;
     border: 1px solid darkgray;
@@ -61,4 +56,18 @@
     min-width: 1000px;
     display: flex;
     justify-content: space-between;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50%;
+}
+
+.profile-transactions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50%;
 }
