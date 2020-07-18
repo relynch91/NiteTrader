@@ -8,7 +8,7 @@ router.get("/test", (req, res) => res.json({
 
 router.post('/new', (req, res) => {
     const newProfile = new Profile({
-        
+        // symbol:
     })
 })
 
