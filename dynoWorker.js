@@ -1,6 +1,7 @@
 const axios = require('axios').default;
 const key = require('./config/keys');
-const globalEndPointObject = require('./config/endPointRestructure.js')
+const globalEndPointObject = require('./config/endPointRestructure.js');
+const { update } = require('./models/User');
 
 function unpackTickers(argument) {
     let tickers = [];
@@ -38,19 +39,48 @@ async function fireAPI(ticker) {
 };
 
 async function updateDatabase(tickers) {
+    let tickerPrice = {};
     for(let i = 0; i < tickers.length; i++){
         let stockData = await fireAPI(tickers[i]);
         let formattedData = globalEndPointObject(stockData.data['Global Quote']);
+        tickerPrice[formattedData['symbol']] = formattedData.price;
         await axios.patch(
             'https://nitetrader.herokuapp.com/api/stock_api/quoteendpointstock/update', formattedData);
     }
-    return true;
+    return tickerPrice;
 }
 
 async function candle() {
     let ticker = await tickerCalls();
-    updateDatabase(ticker);
+    let updated = await updateDatabase(ticker);
+    updatePortfolio(updated);
     return true;
 }
 
-candle();
+// candle();
+
+let updatedTestData = {
+    'TSLA': '1500.8400',
+    'AAPL': '385.3100',
+    'NKE': '96.2800',
+    'IBM': '125.1100',
+    'BKE': '16.0700',
+    'NFLX': '492.9900',
+    'DIS': '118.6400',
+    'RIG': '1.9600',
+    'KO': '46.8200',
+    'FXAIX': '111.5500'
+}
+
+// --------------------- above updates DB w/ all tickers ---------------------
+// 1) get all usernames
+// 2) get all stock tickers for each username, 
+
+async function updatePortfolio(updatedTestData) { // test data ticker(key) price(value);
+    let theKeys = Object.keys(updatedTestData); //theKeys are all the tickers
+    console.log(theKeys);
+    let users = await axios.get("https://nitetrader.herokuapp.com/api/users/allUsernames")
+    console.log(users);
+}
+
+updatePortfolio(updatedTestData);

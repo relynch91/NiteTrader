@@ -123,4 +123,16 @@ router.get('/finduser', function(req, res){
         }
     })
 })
+
+router.get('allusernames', function(req, res) {
+
+    User.find({}).then(users => {
+        res.json({msg: "here"});
+    })
+    .catch(errors => {
+        res.json(errors);
+    })
+
+})
+
 module.exports = router;

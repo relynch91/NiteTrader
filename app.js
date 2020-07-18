@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 5
 app.use("/api/users", users);
 app.use("/api/stock_api/quoteendpointstock", endPointStocks);
 app.use("/api/transactions", transactions);
-app.use("/api/profile", profile);
+
 
 
 const port = process.env.PORT || 5000;

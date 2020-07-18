@@ -21,22 +21,6 @@ class ProfileData extends React.Component {
 
   render() {
     let transactions = this.props.trades;
-    debugger
-    // <div className='stock-search-landing-results'>
-    //    <h1>Click on a company below to view stock data</h1>
-    //    <ul className='stock-search-results-container'>
-    //       {this.props.stocks.stockNameSearch.map((compObj, idx) => {
-    //         return (
-    //            <li onClick={() => this.handleClick(compObj['1. symbol'])}
-    //                key={idx*23}
-    //            >
-    //                <p>Ticker: {compObj['1. symbol']} </p>
-    //                <p>Company Name: {compObj['2. name']} </p>
-    //                <p>Match Score {(parseFloat(compObj['9. matchScore']) * 100).toFixed(2)}% </p>
-    //            </li>
-    //         })}
-    //    </ul>
-    // </div>
 
     return (
       <div className='profile-data'>
