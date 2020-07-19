@@ -28,7 +28,6 @@ export const buildProfile = (stocks) => dispatch => {
     }
     let value = profileValue;
     if (stocks) {
-        console.log(value);
         dispatch(receiveProfile(value));
     }
 }
