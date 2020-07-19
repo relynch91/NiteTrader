@@ -124,10 +124,11 @@ router.get('/finduser', function(req, res){
     })
 })
 
-router.get('allusernames', function(req, res) {
+router.get('/allusernames', function(req, res) {
 
-    User.find({}).then(users => {
-        res.json({msg: "here"});
+    User.find({}, { username: 1 } ).then(users => {
+        console.log(users);
+        res.json(users);
     })
     .catch(errors => {
         res.json(errors);

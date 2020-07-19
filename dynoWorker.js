@@ -79,7 +79,9 @@ let updatedTestData = {
 async function updatePortfolio(updatedTestData) { // test data ticker(key) price(value);
     let theKeys = Object.keys(updatedTestData); //theKeys are all the tickers
     console.log(theKeys);
-    let users = await axios.get("https://nitetrader.herokuapp.com/api/users/allUsernames")
+    let users = await axios.get('https://nitetrader.herokuapp.com/api/users/allusernames')
+    // let users = await axios.get("https://localhost:5000/api/users/allusernames")
+
     console.log(users);
 }
 
