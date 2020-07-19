@@ -80,11 +80,21 @@ async function updatePortfolio(updatedTestData) { // test data ticker(key) price
     let theKeys = Object.keys(updatedTestData); //theKeys are all the tickers
     // console.log(theKeys);
     let users = await axios.get('https://nitetrader.herokuapp.com/api/users/allusernames')
-    // console.log(users.data)
-    let usernames = [];
+    console.log(users.data)
+    let userIds = [];
     users.data.forEach(obj => {
-        usernames.push(obj.username)
+        let transactions = await axios.get(
+            `https://nitetrader.herokuapp.com/api/transactions/${obj._id}`);
+        console.log(transactions);
     })
+
+    // async functions don't work in forEach loops.  need to use obj._id bc
+    // transactions are stored w/ userID.  
+    // console.log(userIds)
+
+    // for (let i = 0; i < usernames.length; i + 0{
+
+    // }
 }
 
 updatePortfolio(updatedTestData);

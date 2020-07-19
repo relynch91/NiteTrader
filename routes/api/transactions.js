@@ -25,6 +25,21 @@ router.get('/:userId', (req, res) => {
         );   
 })
 
+router.get('/:username', (req, res) => {
+    Transaction.find({
+            username: req.params.username
+        })
+        .sort({
+            date: 1
+        })
+        .then(trades => res.json(trades))
+        .catch(err =>
+            res.status(404).json({
+                noTradesFound: 'No trades found from that user'
+            })
+        );
+})
+
 router.post('/trade', function(req, res){
     let newTransaction = new Transaction({
         userId: req.body.userId,
