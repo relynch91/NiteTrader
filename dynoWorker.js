@@ -57,51 +57,51 @@ async function candle() {
     return true;
 }
 
-// candle();  light fuse baby
+candle();
 
-let updatedTestData = {
-    'TSLA': '1500.8400',
-    'AAPL': '385.3100',
-    'NKE': '96.2800',
-    'IBM': '125.1100',
-    'BKE': '16.0700',
-    'NFLX': '492.9900',
-    'DIS': '118.6400',
-    'RIG': '1.9600',
-    'KO': '46.8200',
-    'FXAIX': '111.5500'
-}
+// let updatedTestData = {
+//     'TSLA': '1500.8400',
+//     'AAPL': '385.3100',
+//     'NKE': '96.2800',
+//     'IBM': '125.1100',
+//     'BKE': '16.0700',
+//     'NFLX': '492.9900',
+//     'DIS': '118.6400',
+//     'RIG': '1.9600',
+//     'KO': '46.8200',
+//     'FXAIX': '111.5500'
+// }
 
 // --------------------- above updates DB w/ all tickers ---------------------
 // 1) get all usernames
 // 2) get all stock tickers for each username
 
-async function updatePortfolio(updatedTestData) { // test data ticker(key) price(value);
-    let theKeys = Object.keys(updatedTestData); //theKeys are all the tickers
-    let users = await axios.get('https://nitetrader.herokuapp.com/api/users/allusernames')
-    let userIds = [];
-    users.data.forEach(obj => {
-        userIds.push(obj._id);
-    })
+// async function updatePortfolio(updatedTestData) { // test data ticker(key) price(value);
+//     let theKeys = Object.keys(updatedTestData); //theKeys are all the tickers
+//     let users = await axios.get('https://nitetrader.herokuapp.com/api/users/allusernames')
+//     let userIds = [];
+//     users.data.forEach(obj => {
+//         userIds.push(obj._id);
+//     })
 
-    for (let i = 0; i < userIds.length; i ++) {
-        let response = await axios.get(
-            `https://nitetrader.herokuapp.com/api/transactions/${userIds[i]}`)
-        let tickers = await sortResponse(response.data);
-        let stock
-        console.log(tickers)
-    }
-}
+//     for (let i = 0; i < userIds.length; i ++) {
+//         let response = await axios.get(
+//             `https://nitetrader.herokuapp.com/api/transactions/${userIds[i]}`)
+//         let tickers = await sortResponse(response.data);
+//         let stock
+//         console.log(tickers)
+//     }
+// }
 
-async function sortResponse(transactions) { //transactions is an array of objects that are transactions
-    let tickers = {};
+// async function sortResponse(transactions) { //transactions is an array of objects that are transactions
+//     let tickers = {};
     
-    for (let i = 0; i < transactions.length; i ++) {
-        if (!tickers.includes(transactions[i]['ticker'])) {
-            tickers.push(transactions[i]['ticker'])
-        }
-    }
-    return tickers;
-}
+//     for (let i = 0; i < transactions.length; i ++) {
+//         if (!tickers.includes(transactions[i]['ticker'])) {
+//             tickers.push(transactions[i]['ticker'])
+//         }
+//     }
+//     return tickers;
+// }
 
-updatePortfolio(updatedTestData);
+// updatePortfolio(updatedTestData);
