@@ -64,7 +64,7 @@
     align-items: center;
     justify-content: center;
     height: 82vh;
-    min-width: 1000px
+    min-width: 100%;
 }
 
 .new-user-welcome-container > h1{
