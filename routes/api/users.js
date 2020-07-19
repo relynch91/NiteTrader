@@ -130,9 +130,11 @@ router.get('/allusernames', function(req, res) {
         // console.log(users.data);
         res.json(users);
     })
+ 
     .catch(errors => {
         res.json(errors);
     })
+    
 
 })
 
