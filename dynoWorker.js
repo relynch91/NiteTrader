@@ -79,29 +79,32 @@ let updatedTestData = {
 async function updatePortfolio(updatedTestData) { // test data ticker(key) price(value);
     let theKeys = Object.keys(updatedTestData); //theKeys are all the tickers
     let users = await axios.get('https://nitetrader.herokuapp.com/api/users/allusernames')
+    // let users = await axios.get('localhost:5000/api/users/allusernames')
+
     let userIds = [];
-    users.data.forEach(obj => {
-        userIds.push(obj._id);
-    })
+    console.log(users);
+    // users.data.forEach(obj => {
+    //     userIds.push(obj._id);
+    // })
 
-    for (let i = 0; i < userIds.length; i ++) {
-        let response = await axios.get(
-            `https://nitetrader.herokuapp.com/api/transactions/${userIds[i]}`)
-        let tickers = await sortResponse(response.data);
-        // let stock
-        console.log(tickers)
-    }
+    // for (let i = 0; i < userIds.length; i ++) {
+    //     let response = await axios.get(
+    //         `https://nitetrader.herokuapp.com/api/transactions/${userIds[i]}`)
+    //     let tickers = await sortResponse(response.data);
+    //     // let stock
+    //     console.log(tickers)
+    // }
 }
 
-async function sortResponse(transactions) { //transactions is an array of objects that are transactions
-    let tickers = {};
+// async function sortResponse(transactions) { //transactions is an array of objects that are transactions
+//     let tickers = {};
     
-    for (let i = 0; i < transactions.length; i ++) {
-        if (!tickers.includes(transactions[i]['ticker'])) {
-            tickers.push(transactions[i]['ticker'])
-        }
-    }
-    return tickers;
-}
+//     for (let i = 0; i < transactions.length; i ++) {
+//         if (!tickers.includes(transactions[i]['ticker'])) {
+//             tickers.push(transactions[i]['ticker'])
+//         }
+//     }
+//     return tickers;
+// }
 
 updatePortfolio(updatedTestData);
