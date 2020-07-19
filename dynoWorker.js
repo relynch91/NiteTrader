@@ -1,7 +1,7 @@
 const axios = require('axios').default;
 const key = require('./config/keys');
 const globalEndPointObject = require('./config/endPointRestructure.js');
-const { update } = require('./models/User');
+// const { update } = require('./models/User');
 
 function unpackTickers(argument) {
     let tickers = [];
@@ -57,7 +57,7 @@ async function candle() {
     return true;
 }
 
-// candle();
+// candle();  light fuse baby
 
 let updatedTestData = {
     'TSLA': '1500.8400',
@@ -74,15 +74,17 @@ let updatedTestData = {
 
 // --------------------- above updates DB w/ all tickers ---------------------
 // 1) get all usernames
-// 2) get all stock tickers for each username, 
+// 2) get all stock tickers for each username
 
 async function updatePortfolio(updatedTestData) { // test data ticker(key) price(value);
     let theKeys = Object.keys(updatedTestData); //theKeys are all the tickers
-    console.log(theKeys);
+    // console.log(theKeys);
     let users = await axios.get('https://nitetrader.herokuapp.com/api/users/allusernames')
-    // let users = await axios.get("https://localhost:5000/api/users/allusernames")
-
-    console.log(users);
+    // console.log(users.data)
+    let usernames = [];
+    users.data.forEach(obj => {
+        usernames.push(obj.username)
+    })
 }
 
 updatePortfolio(updatedTestData);
