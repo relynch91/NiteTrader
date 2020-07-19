@@ -3,6 +3,13 @@ const Schema = mongoose.Schema;
 
 const ProfileSchema = new Schema ({
     userId: { type: String, index: { unique: true }, required: true },
-    cash: { type: Number, default: 50000 },
-    stockValue: { default: [] }
+    profileValue: [{
+        date: { type: Date, default: Date.now },
+        profileValue: { type: Number, default: 0 }
+    }]
 })
+
+
+
+module.exports = ProfileData = mongoose.model(
+    'ProfileData', ProfileSchema); 
