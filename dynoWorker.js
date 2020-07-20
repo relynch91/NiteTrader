@@ -53,6 +53,7 @@ async function updateDatabase(tickers) {
 async function candle() {
     let ticker = await tickerCalls();
     let updated = await updateDatabase(ticker);
+    console.log(updated);
     updatePortfolio(updated);
     return true;
 }
@@ -73,38 +74,73 @@ let updatedTestData = {
 }
 
 // --------------------- above updates DB w/ all tickers ---------------------
-// 1) get all usernames
-// 2) get all stock tickers for each username
 
 async function updatePortfolio(updatedTestData) { // test data ticker(key) price(value);
-    let theKeys = Object.keys(updatedTestData); //theKeys are all the tickers
+    let theKeys = (updatedTestData); //theKeys are all the tickers
     let users = await axios.get('https://nitetrader.herokuapp.com/api/users/allusernames')
-    // let users = await axios.get('localhost:5000/api/users/allusernames')
 
     let userIds = [];
-    console.log(users);
-    // users.data.forEach(obj => {
-    //     userIds.push(obj._id);
-    // })
+    users.data.forEach(obj => {
+        userIds.push(obj._id);
+    })
 
-    // for (let i = 0; i < userIds.length; i ++) {
-    //     let response = await axios.get(
-    //         `https://nitetrader.herokuapp.com/api/transactions/${userIds[i]}`)
-    //     let tickers = await sortResponse(response.data);
-    //     // let stock
-    //     console.log(tickers)
-    // }
+    for (let i = 0; i < userIds.length; i ++) {
+        let response = await axios.get(
+            `https://nitetrader.herokuapp.com/api/transactions/${userIds[i]}`)
+        let tickerSharesObj = sortResponse(response.data);
+        let value = calculateValue(tickerSharesObj, theKeys);
+        let data = {
+            profileValue: value,
+            userID: userIds[i] 
+        }
+        
+    }
+
 }
 
-// async function sortResponse(transactions) { //transactions is an array of objects that are transactions
-//     let tickers = {};
-    
-//     for (let i = 0; i < transactions.length; i ++) {
-//         if (!tickers.includes(transactions[i]['ticker'])) {
-//             tickers.push(transactions[i]['ticker'])
-//         }
-//     }
-//     return tickers;
+function sortResponse(transactions) { //transactions is an array of objects that are transactions
+    let tickers = {};
+    for (let i = 0; i < transactions.length; i ++) {
+        if (transactions[i]['buy']) {
+            let ticker = transactions[i]['ticker'];
+            tickers[ticker] = 0;
+            tickers[ticker] += transactions[i]['shares'];
+        }
+    }
+    return tickers;
+}
+
+function calculateValue (tickerSharesObj, theKeys) {
+    let totalValue = 0;
+    let ownedStocks = Object.keys(tickerSharesObj);
+    if (ownedStocks.length === 0) {
+        return 0;
+    }
+    for (let i = 0; i < ownedStocks.length; i ++) {
+        let ticker = ownedStocks[i];
+        let quantity = parseFloat(tickerSharesObj[ticker]);
+        let value = parseFloat(theKeys[ticker]);
+        totalValue += (quantity * value);
+    }
+    return totalValue;
+}
+
+// { TSLA: 6, AAPL: 2, NFLX: 4, DIS: 2, RIG: 2 }
+// { AAPL: 3, TSLA: 10000, KO: 3, FXAIX: 4, RIG: 3 }
+// { }
+// { AAPL: 1 }
+
+// let updatedTestData = {
+//     'TSLA': '1500.8400',
+//     'AAPL': '385.3100',
+//     'NKE': '96.2800',
+//     'IBM': '125.1100',
+//     'BKE': '16.0700',
+//     'NFLX': '492.9900',
+//     'DIS': '118.6400',
+//     'RIG': '1.9600',
+//     'KO': '46.8200',
+//     'FXAIX': '111.5500'
 // }
 
 updatePortfolio(updatedTestData);
