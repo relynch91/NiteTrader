@@ -9,9 +9,7 @@ router.get("/test", (req, res) => res.json({
 router.post('/new', (req, res) => {
     const newProfile = new Profile({
         userID: req.body.userID,
-        // profileValue: req.body.profileValue
     })
-
     newProfile.save()
         .then(newProfile => res.json(newProfile))
         .catch(() =>
