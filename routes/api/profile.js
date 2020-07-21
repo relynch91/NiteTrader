@@ -15,32 +15,8 @@ router.post('/new', (req, res) => {
     newProfile.save()
         .then(newProfile => res.json(newProfile))
         .catch((error) =>
-            res.status(404).json({
-                error: "I am here"
-            })
+            res.status(404).json(error)
         );
-})
-
-router.patch('/update', (req, res) => {
-    const query = { userId: req.body.userId };
-
-    const update = {
-        profileValue: req.body.profileValue
-    };
-
-    res.json(query, update);
-    // console.log(update);
-    // const updatedStock = Profile.updateOne(
-    //     query, update, { upsert: true }
-    // );
-
-    // updatedStock
-    //     .then(updatedStock => res.json(updatedStock))
-    //     .catch((error) =>
-    //         res.status(404).json(
-    //             error
-    //         )
-    //     );
 })
 
 module.exports = router;

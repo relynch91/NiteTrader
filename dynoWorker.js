@@ -1,7 +1,6 @@
 const axios = require('axios').default;
 const key = require('./config/keys');
 const globalEndPointObject = require('./config/endPointRestructure.js');
-// const { update } = require('./models/User');
 
 function unpackTickers(argument) {
     let tickers = [];
@@ -128,23 +127,5 @@ function calculateValue (tickerSharesObj, theKeys) {
     }
     return totalValue;
 }
-
-// { TSLA: 6, AAPL: 2, NFLX: 4, DIS: 2, RIG: 2 }
-// { AAPL: 3, TSLA: 10000, KO: 3, FXAIX: 4, RIG: 3 }
-// { }
-// { AAPL: 1 }
-
-// let updatedTestData = {
-//     'TSLA': '1500.8400',
-//     'AAPL': '385.3100',
-//     'NKE': '96.2800',
-//     'IBM': '125.1100',
-//     'BKE': '16.0700',
-//     'NFLX': '492.9900',
-//     'DIS': '118.6400',
-//     'RIG': '1.9600',
-//     'KO': '46.8200',
-//     'FXAIX': '111.5500'
-// }
 
 updatePortfolio(updatedTestData);
