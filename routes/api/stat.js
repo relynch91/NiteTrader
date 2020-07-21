@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const Stats = require('../../models/Stats.js');
+const StatSchema = require('../../models/Stat.js');
 
 router.get("/test", (req, res) => res.json({
     msg: "This is the Profile route"
 }));
 
 router.post('/new', (req, res) => {
-    const newStats = new Stats({
+    const newStats = new StatSchema({
         userID: req.body.userID,
         value: req.body.value
     })
@@ -20,34 +20,31 @@ router.post('/new', (req, res) => {
 })
 
 router.patch('/update', (req, res) => {
-    const query = { userID: req.body.userID };
-    const update = {
-        value: req.body.value
-    };
-
-    const updatedStock = Stats.replaceOne(
-        query, update, { upsert: true }
+    // const query = { userID: req.body.userID };
+    // const update = {
+    //     value: req.body.value
+    // };
+    StatSchema.updateOne(
+        { userID: req.body.userID }, // query  
+        { $set: {value: req.body.value } }, //update
+        { 
+            upsert: true 
+        }
+    ).then(updatedStock => res.json(updatedStock))
+    .catch((error) =>
+        res.status(404).json({
+            noUsersFound: error
+        })
     );
-
-    updatedStock
-        .then(updatedStock => res.json(updatedStock))
-        .catch((error) =>
-            res.status(404).json({
-                noUsersFound: error
-            })
-        );
 })
 
 router.get('/:userId', (req, res) => {
-    Stats.find({ userID: req.params.userID })
-        .sort({ date: 1 })
+    StatSchema.findOne({ userID: req.params.userID })
         .then(trades => res.json(trades))
         .catch(err =>
             res.status(404).json({ noStatsFound: 'No trades found from that user' }
             )
         );
 })
-
-
 
 module.exports = router;
