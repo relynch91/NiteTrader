@@ -103,7 +103,7 @@ async function updatePortfolio(updatedTestData) { // test data ticker(key) price
         let tickerSharesObj = sortResponse(response.data);
         let userValue = calculateValue(tickerSharesObj, theKeys);
         let user = { userID: userIds[i]}
-        let userCash = await axios.patch(
+        let userCash = await axios.post(
             'https://nitetrader.herokuapp.com/api/stat/new', user
         )
         console.log(userIds[i])
