@@ -102,18 +102,18 @@ async function updatePortfolio(updatedTestData) { // test data ticker(key) price
             `https://nitetrader.herokuapp.com/api/transactions/${userIds[i]}`)
         let tickerSharesObj = sortResponse(response.data);
         let userValue = calculateValue(tickerSharesObj, theKeys);
-        let userCash = await axios.get(
-            `https://nitetrader.herokuapp.com/api/stats/${userIds[i]}`
+        let userCash = await axios.patch(
+            'https://nitetrader.herokuapp.com/api/stat/update', userIds[i]
         )
         console.log(userIds[i])
-        console.log(userCash.data)
+        // console.log(userCash.data)
         let data = {
             value: userValue,
             userID: userIds[i] 
         }
         // the cash value needs to be added to the profile post and then it is good to go. 
         // console.log(data);
-        await axios.post('https://nitetrader.herokuapp.com/api/profile/new', data).catch(err => console.log(err))
+        // await axios.post('https://nitetrader.herokuapp.com/api/profile/new', data).catch(err => console.log(err))
     }
     console.log('The candle has been lit');
     return true
