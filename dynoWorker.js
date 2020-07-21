@@ -110,9 +110,8 @@ async function updatePortfolio(updatedTestData) { // test data ticker(key) price
         //     'https://nitetrader.herokuapp.com/api/stat/new', user
         // ).catch(error => console.log(error))
         let userID = userIds[i]
-        let userCash = await axios.post( 
-            `https://nitetrader.herokuapp.com/api/stat/getUser`, userID
-        )
+        let userCash = await axios.get( 
+            `https://nitetrader.herokuapp.com/api/stat/${userID}`)
         .catch(error => console.log(error))
         console.log(userCash)
         let data = {
