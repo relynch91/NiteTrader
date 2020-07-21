@@ -19,12 +19,12 @@ router.post('/new', (req, res) => {
         );
 })
 
-router.get('/:userId', (req, res) => {
-    Profile.find({ userID: req.params.userID })
+router.get('/:userID', (req, res) => {
+    ProfileData.find({ userID: req.params.userID })
         .sort({ date: 1 })
-        .then(trades => res.json(trades))
+        .then(profile => res.json(profile))
         .catch(err =>
-            res.status(404).json({ noTradesFound: 'No data found from that user' }
+            res.status(404).json({ profileNotFound: 'No data found from that user' }
             )
         );
 })

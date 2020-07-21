@@ -27,7 +27,5 @@ export const buildProfile = (stocks) => dispatch => {
         profileValue += totalValue;
     }
     let value = profileValue;
-    if (stocks) {
-        dispatch(receiveProfile(value));
-    }
+    dispatch(receiveProfile(value));
 }

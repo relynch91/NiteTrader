@@ -8,6 +8,7 @@ const endPointStocks = require("./routes/api/quoteendpointstock");
 const users = require("./routes/api/users");
 const transactions = require("./routes/api/transactions");
 const profile = require('./routes/api/profile');
+const stats = require('./routes/api/stats');
 const path = require('path');
 
 mongoose
@@ -35,6 +36,8 @@ app.use("/api/users", users);
 app.use("/api/stock_api/quoteendpointstock", endPointStocks);
 app.use("/api/transactions", transactions);
 app.use('/api/profile', profile);
+app.use('/api/stats', stats);
+
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));
