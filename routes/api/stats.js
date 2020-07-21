@@ -39,8 +39,7 @@ router.patch('/update', (req, res) => {
 })
 
 router.get('/:userId', (req, res) => {
-    Stats.find({ userID: req.params.userID })
-        .sort({ date: 1 })
+    Stats.findOne({ userID: req.params.userID })
         .then(trades => res.json(trades))
         .catch(err =>
             res.status(404).json({ noStatsFound: 'No trades found from that user' }
