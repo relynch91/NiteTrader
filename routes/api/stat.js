@@ -38,7 +38,7 @@ router.patch('/update', (req, res) => {
     );
 })
 
-router.get('/:userId', (req, res) => {
+router.post('/getUser', (req, res) => {
     StatSchema.findOne({ userID: req.params.userID })
         .then(trades => res.json(trades))
         .catch(err =>
