@@ -98,11 +98,14 @@ async function updatePortfolio(updatedTestData) { // test data ticker(key) price
     })
 
     for (let i = 0; i < userIds.length; i ++) {
-
         let response = await axios.get(
             `https://nitetrader.herokuapp.com/api/transactions/${userIds[i]}`)
         let tickerSharesObj = sortResponse(response.data);
         let userValue = calculateValue(tickerSharesObj, theKeys);
+        let userCash = await axios.get(
+            `https://nitetrader.herokuapp.com/api/stats/${userIds[i]}`
+        )
+        console.log(response.data['value'])
         let data = {
             value: userValue,
             userID: userIds[i] 
