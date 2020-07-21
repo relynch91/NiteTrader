@@ -50,27 +50,41 @@ async function updateDatabase(tickers) {
 }
 
 async function candle() {
+    console.log('Light the candle.')
     let ticker = await tickerCalls();
     let updated = await updateDatabase(ticker);
-    console.log(updated);
+    // console.log(updated);
     updatePortfolio(updated);
     return true;
 }
 
-// candle();
+candle();
 
-let updatedTestData = {
-    'TSLA': '1500.8400',
-    'AAPL': '385.3100',
-    'NKE': '96.2800',
-    'IBM': '125.1100',
-    'BKE': '16.0700',
-    'NFLX': '492.9900',
-    'DIS': '118.6400',
-    'RIG': '1.9600',
-    'KO': '46.8200',
-    'FXAIX': '111.5500'
-}
+// let updatedTestData = {
+//     'TSLA': '1500.8400',
+//     'AAPL': '385.3100',
+//     'NKE': '96.2800',
+//     'IBM': '125.1100',
+//     'BKE': '16.0700',
+//     'NFLX': '492.9900',
+//     'DIS': '118.6400',
+//     'RIG': '1.9600',
+//     'KO': '46.8200',
+//     'FXAIX': '111.5500'
+// }
+
+// {
+//   TSLA: '1643.0000',
+//   AAPL: '393.4300',
+//   NKE: '95.6500',
+//   IBM: '126.3700',
+//   BKE: '15.2400',
+//   NFLX: '502.4100',
+//   DIS: '117.7700',
+//   RIG: '1.9700',
+//   KO: '46.1200',
+//   FXAIX: '111.8700'
+// }
 
 // --------------------- above updates DB w/ all tickers ---------------------
 
@@ -84,6 +98,7 @@ async function updatePortfolio(updatedTestData) { // test data ticker(key) price
     })
 
     for (let i = 0; i < userIds.length; i ++) {
+
         let response = await axios.get(
             `https://nitetrader.herokuapp.com/api/transactions/${userIds[i]}`)
         let tickerSharesObj = sortResponse(response.data);
@@ -92,12 +107,9 @@ async function updatePortfolio(updatedTestData) { // test data ticker(key) price
             value: userValue,
             userID: userIds[i] 
         }
-        console.log(data);
-        await axios.post('https://nitetrader.herokuapp.com/api/profile/new', data).then(
-            res => console.log(res)
-        )
+        await axios.post('https://nitetrader.herokuapp.com/api/profile/new', data).catch(err => console.log(err))
     }
-    console.log('Done')
+    console.log('The candle has been lit');
     return true
 }
 
@@ -127,5 +139,3 @@ function calculateValue (tickerSharesObj, theKeys) {
     }
     return totalValue;
 }
-
-updatePortfolio(updatedTestData);
