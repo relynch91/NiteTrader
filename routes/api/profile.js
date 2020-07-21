@@ -9,33 +9,38 @@ router.get("/test", (req, res) => res.json({
 router.post('/new', (req, res) => {
     const newProfile = new Profile({
         userID: req.body.userID,
+        value: req.body.value
     })
+
     newProfile.save()
         .then(newProfile => res.json(newProfile))
-        .catch(() =>
+        .catch((error) =>
             res.status(404).json({
-                notickersfound: 'There was a globalEndPointError'
+                error: "I am here"
             })
         );
 })
 
 router.patch('/update', (req, res) => {
-    const query = { symbol: req.body.userID };
+    const query = { userId: req.body.userId };
+
     const update = {
         profileValue: req.body.profileValue
     };
 
-    const updatedStock = QuoteEndPointStock.replaceOne(
-        query, update, { upsert: true }
-    );
+    res.json(query, update);
+    // console.log(update);
+    // const updatedStock = Profile.updateOne(
+    //     query, update, { upsert: true }
+    // );
 
-    updatedStock
-        .then(updatedStock => res.json(updatedStock))
-        .catch(() =>
-            res.status(404).json({
-                notickersfound: 'There was a globalEndPointError'
-            })
-        );
+    // updatedStock
+    //     .then(updatedStock => res.json(updatedStock))
+    //     .catch((error) =>
+    //         res.status(404).json(
+    //             error
+    //         )
+    //     );
 })
 
 module.exports = router;
