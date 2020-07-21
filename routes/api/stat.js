@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const Stats = require('../../models/Stats.js');
+const StatSchema = require('../../models/Stat.js');
 
 router.get("/test", (req, res) => res.json({
     msg: "This is the Profile route"
 }));
 
 router.post('/new', (req, res) => {
-    const newStats = new Stats({
+    const newStats = new StatSchema({
         userID: req.body.userID,
         value: req.body.value
     })
@@ -24,11 +24,10 @@ router.patch('/update', (req, res) => {
     const update = {
         value: req.body.value
     };
-
-    const updatedStock = Stats.replaceOne(
+    const updatedStock = StatSchema.replaceOne(
         query, update, { upsert: true }
     );
-
+    
     updatedStock
         .then(updatedStock => res.json(updatedStock))
         .catch((error) =>
@@ -39,14 +38,12 @@ router.patch('/update', (req, res) => {
 })
 
 router.get('/:userId', (req, res) => {
-    Stats.findOne({ userID: req.params.userID })
+    StatSchema.findOne({ userID: req.params.userID })
         .then(trades => res.json(trades))
         .catch(err =>
             res.status(404).json({ noStatsFound: 'No trades found from that user' }
             )
         );
 })
-
-
 
 module.exports = router;
