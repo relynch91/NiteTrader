@@ -58,20 +58,20 @@ async function candle() {
     return true;
 }
 
-candle();
+// candle();
 
-// let updatedTestData = {
-//     'TSLA': '1500.8400',
-//     'AAPL': '385.3100',
-//     'NKE': '96.2800',
-//     'IBM': '125.1100',
-//     'BKE': '16.0700',
-//     'NFLX': '492.9900',
-//     'DIS': '118.6400',
-//     'RIG': '1.9600',
-//     'KO': '46.8200',
-//     'FXAIX': '111.5500'
-// }
+let updatedTestData = {
+    'TSLA': '1500.8400',
+    'AAPL': '385.3100',
+    'NKE': '96.2800',
+    'IBM': '125.1100',
+    'BKE': '16.0700',
+    'NFLX': '492.9900',
+    'DIS': '118.6400',
+    'RIG': '1.9600',
+    'KO': '46.8200',
+    'FXAIX': '111.5500'
+}
 
 // {
 //   TSLA: '1643.0000',
@@ -107,6 +107,7 @@ async function updatePortfolio(updatedTestData) { // test data ticker(key) price
             value: userValue,
             userID: userIds[i] 
         }
+        console.log(data);
         await axios.post('https://nitetrader.herokuapp.com/api/profile/new', data).catch(err => console.log(err))
     }
     console.log('The candle has been lit');
@@ -139,3 +140,5 @@ function calculateValue (tickerSharesObj, theKeys) {
     }
     return totalValue;
 }
+
+updatePortfolio(updatedTestData)
