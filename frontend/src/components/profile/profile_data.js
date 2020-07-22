@@ -37,7 +37,7 @@ class ProfileData extends React.Component {
                       <h4>Ticker: {transactions[compObj]['ticker']} </h4>
                       <h4>Date: {transactions[compObj]['date'].split('T')[0]} </h4>
                       <h4>Type: {this.buyOrSell(transactions[compObj]['buy'])} </h4>
-                      <h4>Price: {transactions[compObj]['price']} </h4>
+                      <h4>Price: {parseFloat(transactions[compObj]['price']).toFixed(2)} </h4>
                       <h4>Shares: {transactions[compObj]['shares']} </h4>
                     </li>
                   </div>

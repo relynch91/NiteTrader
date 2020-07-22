@@ -10,9 +10,15 @@
     align-items: center
 }
 
-/* .stock-box-owned-details {
-    margin: 10px 10px 10px 10px;
-} */
+.stock-box-owned-ticker {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.stock-box-owned-ticker h1 {
+    margin-right: 20px;
+}
 
 .portfolio-specific-details {
     display: flex;

@@ -1,7 +1,8 @@
 import {
     RECEIVE_PROFILE,
     CLEAR_PROFILE,
-    RECEIVE_PROFILE_STAT
+    RECEIVE_PROFILE_STAT,
+    RECEIVE_PROFILE_VALUES
 } from '../actions/profile_actions';
 
 const ProfileReducer = (state = {}, action) => {
@@ -18,6 +19,11 @@ const ProfileReducer = (state = {}, action) => {
         case RECEIVE_PROFILE_STAT:
             Object.assign(nextState, {
                 profileValueStat: action.profileValueStat
+            })
+            return nextState;
+        case RECEIVE_PROFILE_VALUES:
+            Object.assign(nextState, {
+                profileValues: action.profileValues
             })
             return nextState;
         case CLEAR_PROFILE:
