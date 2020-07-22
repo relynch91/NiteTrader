@@ -37,31 +37,24 @@ export default class StockDetails extends React.Component {
   }
 
   handleClick(type){
+    let data = {}
+    data['type'] = type
     this.setState({ transactionType: type })
-    type ? this.setState({ activeBuy: true, activeSell: false }) : 
-    this.setState({ activeBuy: false, activeSell: true });
-    this.handleSubmit();
+
+    this.handleSubmit(type);
   }
 
-  handleClickBuy(type) {
-    this.setState({ transactionType: type })
-    type ? this.setState({ activeBuy: true, activeSell: false }) :
-      this.setState({ activeBuy: false, activeSell: true })
-    .then(state => this.handleSubmit())
-  
-  }
-
-  handleSubmit(e){
-    if (e) {
-      e.preventDefault();
-    }
+  handleSubmit(buy) {
+    // if (e) {
+    //   e.preventDefault();
+    // }
     let { data, ticker } = this.state.mostRecentStockApiData;
     let transactionData = {
       'userId': this.props.userId,
       'ticker': ticker,
       'price': parseFloat(data["4. close"]), // most previous close from most recent
       'shares': this.state.numShares, // set in state using handleChange() as numShares
-      'buy': this.state.transactionType //set in state true or false
+      'buy': buy //set in state true or false
     }
     this.props.tradeStock(transactionData)
       .then(() => this.props.history.push('/portfolio/'))
@@ -94,7 +87,7 @@ export default class StockDetails extends React.Component {
               <button className="buy-button"
                 onClick={() => this.handleClick(true)} > Buy
               </button>
-              <button className="sell-button-active"
+              <button className="sell-button"
                 onClick={() => this.handleClick(false)}> Sell
               </button>);
             </div>
