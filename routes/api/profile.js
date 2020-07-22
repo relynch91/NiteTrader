@@ -29,4 +29,14 @@ router.get('/:userID', (req, res) => {
         );
 })
 
+// router.get('/:userId', (req, res) => {
+//     ProfileData.find({ userID: req.params.userID })
+//         .sort({ date: 1 })
+//         .then(trades => res.json(trades))
+//         .catch(err =>
+//             res.status(404).json({ noTradesFound: 'No trades found from that user' }
+//             )
+//         );
+// })
+
 module.exports = router;
