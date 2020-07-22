@@ -1,7 +1,15 @@
 import * as APIUtil from '../util/session_api_util';
 export const RECEIVE_PROFILE = 'RECEIVE_PROFILE';
-export const RECEIVE_PROFILE_ERRORS = 'RECEIVE_PROFILE_ERRORS';
+export const RECEIVE_PROFILE_ERROR = 'RECEIVE_PROFILE_ERROR';
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
+export const RECEIVE_PROFILE_STAT = 'RECEIVE_PROFILE_STAT'
+
+export const receiveProfileError = profileError => {
+    return ({
+        type:RECEIVE_PROFILE_ERROR,
+        profileError
+    })
+}
 
 export const receiveProfile = (profileValue) => {
     return ({
@@ -9,6 +17,13 @@ export const receiveProfile = (profileValue) => {
         profileValue
     });
 };
+
+export const receiveProfileStat = profileValueStat => {
+    return ({
+        type: RECEIVE_PROFILE_STAT,
+        profileValueStat
+    })
+}
 
 export const clearProfile = () => {
     return ({
@@ -19,14 +34,14 @@ export const clearProfile = () => {
 export const buildStat = (user) => dispatch => {
     let userID = {userID: user.data.userID};
     APIUtil.statCreate(userID).then(
-        theUser => console.log(theUser))
-        .catch(error => console.log(error))
+        theUser => receiveProfileStat(theUser))
+        .catch(error => dispatch(receiveProfileError(error)))
 }
 
 export const getStat = userID => dispatch => {
     APIUtil.statFetch(userID).then(
-        stat => console.log(stat))
-        .catch(error => console.log(error))
+        stat => dispatch(receiveProfileStat(stat.data[0]['value'])))
+        .catch(error => dispatch(receiveProfileError(error)))
 }
 
 export const buildProfile = (stocks) => dispatch => {

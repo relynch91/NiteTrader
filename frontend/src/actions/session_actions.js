@@ -3,6 +3,7 @@ import { closeModal } from './modal_actions';
 import jwt_decode from 'jwt-decode';
 import { clearErrors } from './error_actions';
 import { clearPortfolio } from './portfolio_actions';
+import { clearProfile } from './profile_actions';
 import { clearTransactions } from './transaction_actions';
 import { buildStat } from './profile_actions';
 
@@ -62,4 +63,5 @@ export const logout = () => dispatch => {
     dispatch(clearPortfolio());
     dispatch(clearTransactions());
     dispatch(clearErrors());
+    dispatch(clearProfile());
 };

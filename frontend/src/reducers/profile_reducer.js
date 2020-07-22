@@ -1,6 +1,7 @@
 import {
     RECEIVE_PROFILE,
-    CLEAR_PROFILE
+    CLEAR_PROFILE,
+    RECEIVE_PROFILE_STAT
 } from '../actions/profile_actions';
 
 const ProfileReducer = (state = {}, action) => {
@@ -10,11 +11,14 @@ const ProfileReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_PROFILE:
-           
             Object.assign(nextState, {
                 profileValue: action.profileValue
             })
-           
+            return nextState
+        case RECEIVE_PROFILE_STAT:
+            Object.assign(nextState, {
+                profileValueStat: action.profileValueStat
+            })
             return nextState;
         case CLEAR_PROFILE:
             return {}

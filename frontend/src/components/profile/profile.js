@@ -6,9 +6,9 @@ import ProfileChartContainer from './profile_chart_container';
 class Profile extends React.Component {
 
   componentDidMount(){
-    let { fetchTrades, userId } = this.props;
+    let { fetchTrades, userId, getStat } = this.props;
     fetchTrades(userId);
-    
+    getStat(userId);
   }
 
   componentDidUpdate(prevProps) {
