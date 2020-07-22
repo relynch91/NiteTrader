@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const ProfileSchema = new Schema ({
     userID: { type: String, index: true },
-    date: { type: String, default: Date.now },
+    date: { type: String, default: new Date() },
     value: { type: Number },
     cash: { type: Number }
 })
