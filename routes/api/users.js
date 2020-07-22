@@ -59,11 +59,12 @@ router.post("/register", (req, res) => {
                             }, (err, token) => {
                                 res.json({
                                     success: true,
-                                    token: "Bearer " + token
+                                    token: "Bearer " + token,
+                                    userID: user.id
                                 });
                             });
                         })
-                        .catch(err => console.log(err));
+                        .catch(err => console.log(err))
                 });
             });
         }

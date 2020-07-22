@@ -110,15 +110,26 @@ async function updatePortfolio(updatedTestData) { // test data ticker(key) price
         //     'https://nitetrader.herokuapp.com/api/stat/new', user
         // ).catch(error => console.log(error))
         let userID = userIds[i]
+        // console.log(userID)
         let userCash = await axios.get( 
             `https://nitetrader.herokuapp.com/api/stat/${userID}`)
         .catch(error => console.log(error))
-        console.log(userCash)
-        let data = {
-            value: userValue,
-            userID: userIds[i],
-            // cash: userCash
+        // console.log(userCash)
+        if (userCash.data.length === 0) {
+            console.log("i have no value");
+            console.log(userID);
+            let newUser = await axios.post(
+                'https://nitetrader.herokuapp.com/api/stat/new', userID
+            )
+            console.log(newUser);
         }
+        // console.log(userCash);
+        // let profileInfo = {
+        //     value: userValue,
+        //     userID: userIds[i],
+        //     // cash: userCash.data[0]['value']
+        // }
+        // console.log(profileInfo);
         
         // await axios.post('https://nitetrader.herokuapp.com/api/profile/new', data).catch(err => console.log(err))
     }

@@ -20,10 +20,6 @@ router.post('/new', (req, res) => {
 })
 
 router.patch('/update', (req, res) => {
-    // const query = { userID: req.body.userID };
-    // const update = {
-    //     value: req.body.value
-    // };
     Stat.updateOne(
         { userID: req.body.userID }, // query  
         { $set: {value: req.body.value } }, //update
