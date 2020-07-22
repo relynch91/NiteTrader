@@ -5,7 +5,7 @@ import ProfileChartContainer from './profile_chart_container';
 
 class Profile extends React.Component {
 
-  componentDidMount(){
+  componentDidMount() {
     let { fetchTrades, userId, getStat } = this.props;
     fetchTrades(userId);
     getStat(userId);
