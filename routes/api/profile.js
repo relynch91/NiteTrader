@@ -12,7 +12,6 @@ router.post('/new', (req, res) => {
         value: req.body.value,
         cash: req.body.cash
     })
-
     newProfile.save()
         .then(newProfile => res.json(newProfile))
         .catch((error) =>
