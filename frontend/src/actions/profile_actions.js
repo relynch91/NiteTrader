@@ -18,9 +18,10 @@ export const clearProfile = () => {
 
 export const buildStat = (user) => dispatch => {
     console.log('build stat:')
-    console.log(user.username);
-    APIUtil.userIDGet(user.username).then(res => console.log(res))
-    // APIUtil.statCreate(user.username)
+    let userID = {userID: user.data.userID};
+    APIUtil.statCreate(userID).then(
+        theUser => console.log(theUser))
+        .catch(error => console.log(error))
 }
 
 export const buildProfile = (stocks) => dispatch => {
