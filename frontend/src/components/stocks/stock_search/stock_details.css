@@ -93,7 +93,7 @@
     margin-top: 10px;
     max-width: 80%;
 }
-.stock-box-container div:first-child{
+.stock-box-container div h1 {
     font-size: 28px;
     font-weight: 600;
     margin-bottom: 30px;
