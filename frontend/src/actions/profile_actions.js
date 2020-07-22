@@ -25,8 +25,8 @@ export const buildStat = (user) => dispatch => {
 
 export const getStat = userID => dispatch => {
     APIUtil.statFetch(userID).then(
-        stat => res.json(stat))
-        .catch(error => res.json)
+        stat => console.log(stat))
+        .catch(error => console.log(error))
 }
 
 export const buildProfile = (stocks) => dispatch => {
