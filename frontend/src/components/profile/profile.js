@@ -8,6 +8,7 @@ class Profile extends React.Component {
   componentDidMount(){
     let { fetchTrades, userId } = this.props;
     fetchTrades(userId);
+    
   }
 
   componentDidUpdate(prevProps) {
