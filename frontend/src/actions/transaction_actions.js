@@ -1,5 +1,5 @@
 import * as APIUtil from '../util/transaction_api_util';
-
+import { getStat } from './profile_actions';
 export const RECEIVE_BUY_TRANSACTION = 'RECEIVE_BUY_TRANSACTION';
 export const RECEIVE_SELL_TRANSACTION = 'RECEIVE_SELL_TRANSACTION';
 export const RECEIVE_ALL_TRADES = 'RECEIVE_ALL_TRADES';
@@ -50,12 +50,33 @@ export const buyStock = transaction => dispatch => {
 };
 
 const addCash = trade => {
-    console.log('addcash');
-    console.log(trade.data)
+    let quantity = parseFloat(trade.data.shares);
+    let price = parseFloat(trade.data.price);
+
+    if (trade.data.buy) {
+        price = (price * (-1))
+    }
+    let sum = quantity * price; 
+    let update = {
+        userID: trade.data.userId,
+        value: sum
+    }
+
+    // data {
+    // buy: false
+    // date: "2020-07-22T22:59:28.816Z"
+    // price: 388.7
+    // shares: 1
+    // ticker: "AAPL"
+    // userId: "5ec0787f47f79a57e6d2dfbb"
+    // __v: 0
+    // _id: "5f18c4d0d68a60c5963c8f8e"
+    // }
+    console.log(update);
+    // updateStat(trade.data);
 }
 
 export const sellStock = transaction => dispatch => {
-    // console.log(transaction);
     return APIUtil.sellStock(transaction)
         .then(
             (newTrade) => (addCash(newTrade), dispatch(receiveSellTransaction(newTrade)))

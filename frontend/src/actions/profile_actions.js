@@ -53,6 +53,12 @@ export const getStat = userID => dispatch => {
         .catch(error => dispatch(receiveProfileError(error)))
 }
 
+export const updateStat = update => dispatch => {
+    APIUtil.statUpdate(update).then(
+        updated => dispatch(receiveProfileStat(updated)))
+        .catch(error => dispatch(receiveProfileError(error)))
+}
+
 
 //returns value of all currently owned stocks
 export const buildProfile = (stocks) => dispatch => { 
