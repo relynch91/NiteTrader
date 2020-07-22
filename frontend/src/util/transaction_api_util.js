@@ -1,11 +1,18 @@
 import axios from 'axios';
 
-export const tradeStock = (transaction) => {
-    return axios.post('/api/transactions/trade', transaction);
+// export const tradeStock = (transaction) => {
+//     return axios.post('/api/transactions/trade', transaction)
+// };
+export const buyStock = (transaction) => {
+    return axios.post('/api/transactions/buy', transaction)
+};
+
+export const sellStock = (transaction) => {
+    return axios.post('/api/transactions/sell', transaction)
 };
 
 export const fetchTrades = (userId) => {
-    return axios.get(`/api/transactions/${userId}`);
+    return axios.get(`/api/transactions/${userId}`)
 };
 
 export const allStocks = () => {

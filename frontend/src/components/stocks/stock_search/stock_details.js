@@ -11,8 +11,6 @@ export default class StockDetails extends React.Component {
       numShares: 0,
       transactionType: true,
       mostRecentStockApiData: {},
-      // activeBuy: false,
-      // activeSell: false,
     };
   }
 
@@ -40,30 +38,41 @@ export default class StockDetails extends React.Component {
     let data = {}
     data['type'] = type
     this.setState({ transactionType: type })
-
     this.handleSubmit(type);
   }
 
   handleSubmit(buy) {
-    // if (e) {
-    //   e.preventDefault();
-    // }
     let { data, ticker } = this.state.mostRecentStockApiData;
+    let cash = this.props.profile
+    let numberOwned;
+    if (this.props.portfolio[ticker]) {
+      numberOwned = this.props.portfolio[ticker];
+    } else {
+      numberOwned = { ownedShares: 0 }
+    }
     let transactionData = {
       'userId': this.props.userId,
       'ticker': ticker,
+      'cash': cash,
       'price': parseFloat(data["4. close"]), // most previous close from most recent
+      'ownedShares': numberOwned,
       'shares': this.state.numShares, // set in state using handleChange() as numShares
-      'buy': buy //set in state true or false
+      'buy': buy //set in state true or false true: buy, sell: false 
     }
-    this.props.tradeStock(transactionData)
-      .then(() => this.props.history.push('/portfolio/'))
+    // console.log(transactionData);
+    if (transactionData['buy']) {
+      // console.log('buy')
+      this.props.buyStock(transactionData);
+    } else {
+      // console.log('sell')
+      this.props.sellStock(transactionData);
+    }
+    // .then(() => this.props.history.push('/portfolio/'));
+
   }
   
   render() {
-    // let { activeBuy, activeSell } = this.state;
     let { data, ticker } = this.state.mostRecentStockApiData;
-    
     let theDetails = (Object.keys(this.state.mostRecentStockApiData).length === 0) ? null : ( //only thing rendered in return div
       <div className="stock-box-container">
         <div className="stock-details">
@@ -94,7 +103,7 @@ export default class StockDetails extends React.Component {
           </form>
         </div>
       </div>
-      );
+    );
     return (
       <div className='the-details-stock-api'>
         {theDetails}
