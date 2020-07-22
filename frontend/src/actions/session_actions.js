@@ -3,7 +3,8 @@ import { closeModal } from './modal_actions';
 import jwt_decode from 'jwt-decode';
 import { clearErrors } from './error_actions';
 import { clearPortfolio } from './portfolio_actions';
-import { clearTransactions } from './transaction_actions'
+import { clearTransactions } from './transaction_actions';
+import { buildStat } from './profile_actions';
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
@@ -32,7 +33,8 @@ export const signup = user => dispatch => (
     APIUtil.signup(user)
         .then((user) => ( 
             dispatch(receiveUserSignUp(user))),
-            dispatch(clearErrors))
+            dispatch(clearErrors),
+            dispatch(buildStat(user)))
         .catch((err) => (
             dispatch(receiveSessionErrors(err.response.data))
         ))

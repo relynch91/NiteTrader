@@ -1,3 +1,4 @@
+import * as APIUtil from '../util/session_api_util';
 export const RECEIVE_PROFILE = 'RECEIVE_PROFILE';
 export const RECEIVE_PROFILE_ERRORS = 'RECEIVE_PROFILE_ERRORS';
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
@@ -13,6 +14,13 @@ export const clearProfile = () => {
     return ({
         type: CLEAR_PROFILE,
     })
+}
+
+export const buildStat = (user) => dispatch => {
+    console.log('build stat:')
+    console.log(user.username);
+    APIUtil.userIDGet(user.username).then(res => console.log(res))
+    // APIUtil.statCreate(user.username)
 }
 
 export const buildProfile = (stocks) => dispatch => {

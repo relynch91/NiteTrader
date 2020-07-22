@@ -58,20 +58,20 @@ async function candle() {
     return true;
 }
 
-// candle();
+candle();
 
-let updatedTestData = {
-    'TSLA': '1500.8400',
-    'AAPL': '385.3100',
-    'NKE': '96.2800',
-    'IBM': '125.1100',
-    'BKE': '16.0700',
-    'NFLX': '492.9900',
-    'DIS': '118.6400',
-    'RIG': '1.9600',
-    'KO': '46.8200',
-    'FXAIX': '111.5500'
-}
+// let updatedTestData = {
+//     'TSLA': '1500.8400',
+//     'AAPL': '385.3100',
+//     'NKE': '96.2800',
+//     'IBM': '125.1100',
+//     'BKE': '16.0700',
+//     'NFLX': '492.9900',
+//     'DIS': '118.6400',
+//     'RIG': '1.9600',
+//     'KO': '46.8200',
+//     'FXAIX': '111.5500'
+// }
 
 // {
 //   TSLA: '1643.0000',
@@ -102,36 +102,26 @@ async function updatePortfolio(updatedTestData) { // test data ticker(key) price
             `https://nitetrader.herokuapp.com/api/transactions/${userIds[i]}`)
         let tickerSharesObj = sortResponse(response.data);
         let userValue = calculateValue(tickerSharesObj, theKeys);
-        // let user =  {
-        //     userID: userIds[i]
-        // }
-        // console.log(user);
+    
         // let userCash = await axios.post(
         //     'https://nitetrader.herokuapp.com/api/stat/new', user
         // ).catch(error => console.log(error))
         let userID = userIds[i]
-        // console.log(userID)
         let userCash = await axios.get( 
             `https://nitetrader.herokuapp.com/api/stat/${userID}`)
         .catch(error => console.log(error))
-        // console.log(userCash)
         if (userCash.data.length === 0) {
-            console.log("i have no value");
-            console.log(userID);
-            let newUser = await axios.post(
-                'https://nitetrader.herokuapp.com/api/stat/new', userID
-            )
-            console.log(newUser);
+            userCash.data[0] = {'value': 50000};
         }
-        // console.log(userCash);
-        // let profileInfo = {
-        //     value: userValue,
-        //     userID: userIds[i],
-        //     // cash: userCash.data[0]['value']
-        // }
-        // console.log(profileInfo);
+        let profileInfo = {
+            userID: userIds[i],
+            value: userValue,
+            cash: userCash.data[0]['value']
+        }
+        console.log(profileInfo);
         
-        // await axios.post('https://nitetrader.herokuapp.com/api/profile/new', data).catch(err => console.log(err))
+        await axios.post('https://nitetrader.herokuapp.com/api/profile/new', 
+            profileInfo).catch(err => console.log(err))
     }
     console.log('The candle has been lit');
     return true
@@ -164,4 +154,4 @@ function calculateValue (tickerSharesObj, theKeys) {
     return totalValue;
 }
 
-updatePortfolio(updatedTestData)
+// updatePortfolio(updatedTestData)

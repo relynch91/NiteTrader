@@ -9,7 +9,8 @@ router.get("/test", (req, res) => res.json({
 router.post('/new', (req, res) => {
     const newProfile = new ProfileData({
         userID: req.body.userID,
-        value: req.body.value
+        value: req.body.value,
+        cash: req.body.cash
     })
 
     newProfile.save()

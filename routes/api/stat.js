@@ -15,7 +15,9 @@ router.post('/new', (req, res) => {
     newStats.save()
         .then(newStats => res.json(newStats))
         .catch((error) =>
-            res.status(404).json(error)
+            res.status(404).json({
+                newUserError: error
+            })
         );
 })
 
