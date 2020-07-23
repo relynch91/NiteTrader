@@ -1,6 +1,9 @@
 import * as TransactionAPIUtil from '../util/transaction_api_util';
 import * as ProfileAPIUtil from '../util/profile_api_util';
 import { receiveProfileStat, receiveProfileError } from './profile_actions';
+import  globalEndPoint  from '../frontConfig/endPointRestructure';
+import { key } from '../frontConfig/frontKeys';
+const axios = require('axios').default;
 
 // import { updateStat } from './profile_actions';
 export const RECEIVE_BUY_TRANSACTION = 'RECEIVE_BUY_TRANSACTION';
@@ -55,7 +58,7 @@ export const cashValue = trade => dispatch => {
     console.log('I am runing');
     let quantity = parseFloat(trade.data.shares);
     let price = parseFloat(trade.data.price);
-
+    let ticker = trade.data.ticker;
     if (trade.data.buy) {
         price = (price * (-1))
     }
@@ -80,8 +83,26 @@ export const cashValue = trade => dispatch => {
     // }
     console.log(update);
     ProfileAPIUtil.statUpdate(update).then(
-        updated => dispatch(receiveProfileStat(update)))
+        () => dispatch(receiveProfileStat(update)),
+            updateDB(ticker)
+        )
         .catch(error => dispatch(receiveProfileError(error)))
+}
+
+async function fireAPI(ticker) {
+    let value = await axios.get(`
+    https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key}`);
+    return value;
+};
+
+async function updateDB(ticker) {
+    let stockData = await fireAPI(ticker);
+    console.log(stockData);
+    let formattedData = globalEndPoint(stockData.data['Global Quote']);
+    let result = await axios.patch(
+        'https://nitetrader.herokuapp.com/api/stock_api/quoteendpointstock/update', 
+        formattedData);
+    console.log(result);
 }
 
 export const sellStock = transaction => dispatch => {
