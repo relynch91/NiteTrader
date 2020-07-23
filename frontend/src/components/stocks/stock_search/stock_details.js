@@ -59,16 +59,25 @@ export default class StockDetails extends React.Component {
       'shares': this.state.numShares, // set in state using handleChange() as numShares
       'buy': buy //set in state true or false true: buy, sell: false 
     }
-    // console.log(transactionData);
-    if (transactionData['buy']) {
-      // console.log('buy')
-      this.props.buyStock(transactionData);
-    } else {
-      // console.log('sell')
-      this.props.sellStock(transactionData);
-    }
-    // .then(() => this.props.history.push('/portfolio/'));
 
+    // buy: true
+    // cash: 555
+    // ownedShares:
+    // ownedShares: 0
+    // __proto__: Object
+    // price: 388.3
+    // shares: "1"
+    // ticker: "AAPL"
+    // userId: "5eb9c3a0a86f753c84eabed2"
+    
+    console.log(transactionData);
+    if (transactionData['buy']) {
+      this.props.buyStock(transactionData)
+        // .then(() => push('/profile/'));
+    } else {
+      this.props.sellStock(transactionData)
+        // .then(() => push('/profile/'));
+    }
   }
   
   render() {
@@ -98,7 +107,7 @@ export default class StockDetails extends React.Component {
               </button>
               <button className="sell-button"
                 onClick={() => this.handleClick(false)}> Sell
-              </button>);
+              </button>
             </div>
           </form>
         </div>

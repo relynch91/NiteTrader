@@ -10,7 +10,9 @@
 
 # production
 /build
-.src/config/keys_dev.js
+.src/frontConfig/frontKeys_dev.js
+/src/frontConfig/frontKeys_dev.js
+
 
 # misc
 .DS_Store

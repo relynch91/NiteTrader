@@ -5,7 +5,6 @@ export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 export const RECEIVE_PROFILE_STAT = 'RECEIVE_PROFILE_STAT';
 export const RECEIVE_PROFILE_VALUES = 'RECEIVE_PROFILE_VALUES';
 
-
 export const receiveProfileError = profileError => {
     return ({
         type:RECEIVE_PROFILE_ERROR,
@@ -54,11 +53,11 @@ export const getStat = userID => dispatch => {
 }
 
 export const updateStat = update => dispatch => {
+
     APIUtil.statUpdate(update).then(
         updated => dispatch(receiveProfileStat(updated)))
         .catch(error => dispatch(receiveProfileError(error)))
 }
-
 
 //returns value of all currently owned stocks
 export const buildProfile = (stocks) => dispatch => { 

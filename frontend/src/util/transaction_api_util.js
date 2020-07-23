@@ -1,8 +1,5 @@
 import axios from 'axios';
 
-// export const tradeStock = (transaction) => {
-//     return axios.post('/api/transactions/trade', transaction)
-// };
 export const buyStock = (transaction) => {
     return axios.post('/api/transactions/buy', transaction)
 };

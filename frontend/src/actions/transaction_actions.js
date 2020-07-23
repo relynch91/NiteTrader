@@ -1,5 +1,8 @@
-import * as APIUtil from '../util/transaction_api_util';
-import { getStat } from './profile_actions';
+import * as TransactionAPIUtil from '../util/transaction_api_util';
+import * as ProfileAPIUtil from '../util/profile_api_util';
+import { receiveProfileStat, receiveProfileError } from './profile_actions';
+
+// import { updateStat } from './profile_actions';
 export const RECEIVE_BUY_TRANSACTION = 'RECEIVE_BUY_TRANSACTION';
 export const RECEIVE_SELL_TRANSACTION = 'RECEIVE_SELL_TRANSACTION';
 export const RECEIVE_ALL_TRADES = 'RECEIVE_ALL_TRADES';
@@ -39,17 +42,17 @@ export const receiveErrors = errors => ({
 });
 
 export const buyStock = transaction => dispatch => {
-    // console.log(transaction);
-    return APIUtil.buyStock(transaction)
+    return TransactionAPIUtil.buyStock(transaction)
         .then(
-            (newTrade) => (dispatch(receiveBuyTransaction(newTrade)))
+            (newTrade) => dispatch(cashValue(newTrade), dispatch(receiveBuyTransaction(newTrade)))
         )
         .catch(
-            (err) => (dispatch(receiveErrors(err.response.data)))
+            (err) => (dispatch(receiveErrors(err.response)))
         )
 };
 
-const addCash = trade => {
+export const cashValue = trade => dispatch => {
+    console.log('I am runing');
     let quantity = parseFloat(trade.data.shares);
     let price = parseFloat(trade.data.price);
 
@@ -62,6 +65,9 @@ const addCash = trade => {
         value: sum
     }
 
+    // userID: "5eb9c3a0a86f753c84eabed2"
+    // value: -388.3
+
     // data {
     // buy: false
     // date: "2020-07-22T22:59:28.816Z"
@@ -73,13 +79,15 @@ const addCash = trade => {
     // _id: "5f18c4d0d68a60c5963c8f8e"
     // }
     console.log(update);
-    // updateStat(trade.data);
+    ProfileAPIUtil.statUpdate(update).then(
+        updated => dispatch(receiveProfileStat(update)))
+        .catch(error => dispatch(receiveProfileError(error)))
 }
 
 export const sellStock = transaction => dispatch => {
-    return APIUtil.sellStock(transaction)
+    return TransactionAPIUtil.sellStock(transaction)
         .then(
-            (newTrade) => (addCash(newTrade), dispatch(receiveSellTransaction(newTrade)))
+            (newTrade) => (dispatch(cashValue(newTrade)), dispatch(receiveSellTransaction(newTrade)))
         )
         .catch(
             (err) => (dispatch(receiveErrors(err)))
@@ -87,7 +95,7 @@ export const sellStock = transaction => dispatch => {
 };
 
 export const fetchTrades = userId => dispatch => {
-    return APIUtil.fetchTrades(userId)
+    return TransactionAPIUtil.fetchTrades(userId)
         .then(
             (allTrades) => (dispatch(receiveAllUserTransactions(allTrades))))
         .catch(
