@@ -31,7 +31,7 @@ function timeout(ms) {
 }
 
 async function fireAPI(ticker) {
-    await timeout(18000)
+    await timeout(8000)
     let value = await axios.get(`
     https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key}`);
     return value;
@@ -41,6 +41,7 @@ async function updateDatabase(tickers) {
     let tickerPrice = {};
     for(let i = 0; i < tickers.length; i++){
         let stockData = await fireAPI(tickers[i]);
+        console.log(stockData.data);
         let formattedData = globalEndPointObject(stockData.data['Global Quote']);
         tickerPrice[formattedData['symbol']] = formattedData.price;
         await axios.patch(
