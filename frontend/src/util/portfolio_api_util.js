@@ -1,4 +1,4 @@
-import * as QuoteEP from '../util/quote_end_point_util'
+import * as QuoteEP from '../util/quote_end_point_util';
 
 export const activeShares = (trades) => {
     let res = {}

@@ -23,7 +23,6 @@ export const buildPortfolio = transactions => dispatch => {
         .then((stockApiArray) => {
             stockApiArray.forEach(stockObj => {
                 let sym = stockObj.data.symbol;
-                // console.log(sym);
                 ownedStocks[sym]['quoteEndPointData'] = stockObj.data;
                 ownedStocks[sym]['priceDiff'] = PortUtil.overUnder(ownedStocks[sym]);
             });

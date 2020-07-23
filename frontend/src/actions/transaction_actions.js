@@ -99,6 +99,7 @@ async function updateDB(ticker) {
     let stockData = await fireAPI(ticker);
     console.log(stockData);
     let formattedData = globalEndPoint(stockData.data['Global Quote']);
+    console.log(formattedData);
     axios.patch(
         'https://nitetrader.herokuapp.com/api/stock_api/quoteendpointstock/update', 
         formattedData).then(
