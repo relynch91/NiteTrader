@@ -18,12 +18,10 @@ export const activeShares = (trades) => {
         }
     })
     Object.keys(res).forEach((ticker) => {
-        console.log(res[ticker].ownedShares > 0)
         if (res[ticker].ownedShares > 0) {
             answer[ticker] = res[ticker];
         }
     })
-    console.log(answer);
     return answer;
 }
 

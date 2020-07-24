@@ -11,6 +11,7 @@ const mapStateToProps = (state) => {
     myTransactions: state.transactions,
     myPortfolio: state.portfolio,
     userId: state.session.user.id,
+    username: state.session.user.username,
     trades: state.transactions
   };
 };
