@@ -7,8 +7,10 @@ export default class StockIndex extends React.Component {
     this.state = {};
   }
   componentDidMount(){
-    let { fetchTrades, userId } = this.props
-    fetchTrades(userId)
+    let { fetchTrades, userId, buildPortfolio } = this.props;
+    // fetchTrades(userId)
+    // buildPortfolio(userId)
+    
   }
   
   componentDidUpdate(prevProps) {

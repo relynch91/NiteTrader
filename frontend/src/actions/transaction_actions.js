@@ -6,7 +6,6 @@ import key from '../frontConfig/frontKeys';
 import { receiveEndPointSuccess, receiveEndPointFailure } from './alphaApi_actions';
 const axios = require('axios').default;
 
-// import { updateStat } from './profile_actions';
 export const RECEIVE_BUY_TRANSACTION = 'RECEIVE_BUY_TRANSACTION';
 export const RECEIVE_SELL_TRANSACTION = 'RECEIVE_SELL_TRANSACTION';
 export const RECEIVE_ALL_TRADES = 'RECEIVE_ALL_TRADES';
@@ -48,7 +47,8 @@ export const receiveErrors = errors => ({
 export const buyStock = transaction => dispatch => {
     return TransactionAPIUtil.buyStock(transaction)
         .then(
-            (newTrade) => dispatch(cashValue(newTrade), dispatch(receiveBuyTransaction(newTrade)))
+            (newTrade) => dispatch(cashValue(newTrade), 
+            dispatch(receiveBuyTransaction(newTrade)))
         )
         .catch(
             (err) => (dispatch(receiveErrors(err.response)))
@@ -68,19 +68,22 @@ export const cashValue = trade => dispatch => {
         value: sum
     }
 
-    console.log(update);
     ProfileAPIUtil.statUpdate(update).then(
-        () => dispatch(receiveProfileStat(update)),
-            fireAPI(ticker)
+        () => 
+        fireAPI(ticker),
+        dispatch(receiveProfileStat(update))
         )
         .catch(error => dispatch(receiveProfileError(error)))
 }
 
-async function fireAPI(ticker) {
-    let value = await axios.get(`
-    https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key.alphaVantage}`);
-    updateDB(value);
-    return true;
+export const fireAPI = (ticker) => dispatch => {
+    console.log('fireapiticker');
+    axios.get(`
+    https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key.alphaVantage}`)
+    .then(
+        stockData => dispatch(updateDB(stockData))
+    )
+    // return updateDB(value);
 };
 
 // async function updateDB(ticker) {

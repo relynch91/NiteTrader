@@ -21,11 +21,31 @@ class ProfileData extends React.Component {
 
   render() {
     let transactions = this.props.trades;
+    let profile = this.props.myProfile;
+    let portfolio = this.props.myPortfolio;
 
     return (
       <div className='profile-data'>
         <div className='profile-info'> 
-          <h1 >Profile Data</h1>
+          <div className='profile-info-data'>
+            <h1>
+              Profile Data
+            </h1>
+          </div>
+          <div className='profile-info-stocks'>
+            <h1> Profile Stocks </h1>
+              <ul className='profile-info-stocks-container'>
+              {Object.keys(portfolio).map(compObj => {
+                return (
+                  <div className='profile-info-stocks-items-list'>
+                    <li className='profile-info-stocks-item'>
+                      <p>we here fam</p>
+                    </li>
+                  </div>
+                )
+              })}
+              </ul>
+          </div>
         </div>
         <div className='profile-transactions'> 
           <h1>Your Transactions: </h1>
