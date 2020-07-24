@@ -56,7 +56,6 @@ export const buyStock = transaction => dispatch => {
 };
 
 export const cashValue = trade => dispatch => {
-    console.log('I am runing');
     let quantity = parseFloat(trade.data.shares);
     let price = parseFloat(trade.data.price);
     let ticker = trade.data.ticker;

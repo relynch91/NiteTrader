@@ -1,7 +1,8 @@
 import * as QuoteEP from '../util/quote_end_point_util';
 
 export const activeShares = (trades) => {
-    let res = {}
+    let res = {};
+    let answer = {};
     Object.values(trades).forEach((trade) => {
         let stock = res[trade.ticker];
         if (!stock && trade.buy === true) {
@@ -16,7 +17,14 @@ export const activeShares = (trades) => {
             stock.ownedShares -= trade.shares
         }
     })
-    return res;
+    Object.keys(res).forEach((ticker) => {
+        console.log(res[ticker].ownedShares > 0)
+        if (res[ticker].ownedShares > 0) {
+            answer[ticker] = res[ticker];
+        }
+    })
+    console.log(answer);
+    return answer;
 }
 
 function newPricePerShareBuy(existingStock, newStock) {
