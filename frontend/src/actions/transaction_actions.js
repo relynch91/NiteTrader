@@ -1,8 +1,8 @@
 import * as TransactionAPIUtil from '../util/transaction_api_util';
 import * as ProfileAPIUtil from '../util/profile_api_util';
 import { receiveProfileStat, receiveProfileError } from './profile_actions';
-import  globalEndPoint  from '../frontConfig/endPointRestructure';
-import { key } from '../frontConfig/frontKeys';
+import globalEndPoint  from '../frontConfig/endPointRestructure';
+import key from '../frontConfig/frontKeys';
 const axios = require('axios').default;
 
 // import { updateStat } from './profile_actions';
@@ -91,7 +91,7 @@ export const cashValue = trade => dispatch => {
 
 async function fireAPI(ticker) {
     let value = await axios.get(`
-    https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key}`);
+    https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key.alphaVantage}`);
     return value;
 };
 

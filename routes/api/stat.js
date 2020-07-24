@@ -3,7 +3,7 @@ const router = express.Router();
 const Stat = require('../../models/Stat');
 
 router.get("/test", (req, res) => res.json({
-    msg: "This is the Profile route"
+    msg: "This is the Stat route"
 }));
 
 router.post('/new', (req, res) => {

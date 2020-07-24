@@ -36,7 +36,7 @@ export default class StockIndex extends React.Component {
                 </li>
                 <li>
                   Last Trading Date: {
-                    myPortfolio[ticker].quoteEndPointData.latestTradingDay}
+                    myPortfolio[ticker].quoteEndPointData.latestTradingDay || null }
                 </li>
                 < li >
                   Change: {
