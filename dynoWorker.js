@@ -31,7 +31,7 @@ function timeout(ms) {
 }
 
 async function fireAPI(ticker) {
-    await timeout(3000)
+    await timeout(18000)
     let value = await axios.get(`
     https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key}`);
     return value;

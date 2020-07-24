@@ -2,13 +2,13 @@ import React from 'react';
 import './profile.css';
 import ProfileDataContainer from './profile_data_container';
 import ProfileChartContainer from './profile_chart_container';
-// import { getProfileValues } from '../../actions/profile_actions';
 
 class Profile extends React.Component {
 
   componentDidMount() {
     let { fetchTrades, userId, getStat, getProfileValues } = this.props;
     fetchTrades(userId);
+    buildPortfolio(userId);
     getStat(userId);
     getProfileValues(userId);
   }

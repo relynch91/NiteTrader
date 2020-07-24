@@ -18,7 +18,7 @@ export const clearPortfolio = () => {
 }
 
 export const buildPortfolio = transactions => dispatch => {
-    let ownedStocks = PortUtil.activeShares(transactions)
+    let ownedStocks = PortUtil.activeShares(transactions);
     PortUtil.fetchDBStockData(ownedStocks)
         .then((stockApiArray) => {
             stockApiArray.forEach(stockObj => {
