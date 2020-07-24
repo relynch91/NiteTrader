@@ -2,6 +2,7 @@ import React from 'react';
 import './profile.css';
 import ProfileDataContainer from './profile_data_container';
 import ProfileChartContainer from './profile_chart_container';
+import { buildPortfolio } from '../../actions/portfolio_actions';
 
 class Profile extends React.Component {
 
