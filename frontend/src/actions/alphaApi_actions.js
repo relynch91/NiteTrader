@@ -13,6 +13,10 @@ export const RECEIVE_CLEAR_STOCKS = 'RECEIVE_CLEAR_STOCKS';
 export const RECEIVE_WEEKLY = 'RECEIVE_WEEKLY';
 export const RECEIVE_WEEKLY_FAILURE = 'RECEIVE_WEEKLY_FAILURE';
 export const RECEIVE_WEEKLY_SUCCESS = 'RECEIVE_WEEKLY_SUCCESS';
+export const RECEIVE_END_POINT_SUCCESS = 'RECEIVE_END_POINT_SUCCESS';
+export const RECEIVE_END_POINT_FAILURE = 'RECEIVE_END_POINT_FAILURE';
+
+
 export const CLEAR_API_ERRORS = 'CLEAR_API_ERRORS';
 
 export const clearAPIErrors = () => ({
@@ -23,8 +27,13 @@ export const receiveClearStocks = () => ({
     type: RECEIVE_CLEAR_STOCKS
 })
 
-export const receiveStock = (stock) => ({
-    type: RECEIVE_STOCK,
+export const receiveEndPointSuccess = (stock) => ({
+    type: RECEIVE_END_POINT_SUCCESS,
+    stock
+})
+
+export const receiveEndPointFailure = (stock) => ({
+    type: RECEIVE_END_POINT_FAILURE,
     stock
 })
 
@@ -87,9 +96,11 @@ export const receiveStockNameFailure = error => ({
 })
 
 export const getQuoteEndPointAlpha = stockURL => dispatch => (
-    AlphaAdvantageUtil.quoteEndPoint(stockURL).then((stockData) => (
-        dispatch(receiveStock(stockData))
+    AlphaAdvantageUtil.quoteEndPoint(stockURL)
+    .then((stockData) => (
+        dispatch(receiveEndPointSuccess(stockData))
     ))
+    .catch( errors => dispatch(receiveEndPointFailure(errors)))
 )
 
 export const intraDayAPICall = apiURL => dispatch => {

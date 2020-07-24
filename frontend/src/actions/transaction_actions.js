@@ -3,6 +3,7 @@ import * as ProfileAPIUtil from '../util/profile_api_util';
 import { receiveProfileStat, receiveProfileError } from './profile_actions';
 import globalEndPoint  from '../frontConfig/endPointRestructure';
 import key from '../frontConfig/frontKeys';
+import { receiveEndPointSuccess, receiveEndPointFailure } from './alphaApi_actions';
 const axios = require('axios').default;
 
 // import { updateStat } from './profile_actions';
@@ -68,23 +69,10 @@ export const cashValue = trade => dispatch => {
         value: sum
     }
 
-    // userID: "5eb9c3a0a86f753c84eabed2"
-    // value: -388.3
-
-    // data {
-    // buy: false
-    // date: "2020-07-22T22:59:28.816Z"
-    // price: 388.7
-    // shares: 1
-    // ticker: "AAPL"
-    // userId: "5ec0787f47f79a57e6d2dfbb"
-    // __v: 0
-    // _id: "5f18c4d0d68a60c5963c8f8e"
-    // }
     console.log(update);
     ProfileAPIUtil.statUpdate(update).then(
         () => dispatch(receiveProfileStat(update)),
-            updateDB(ticker)
+            fireAPI(ticker)
         )
         .catch(error => dispatch(receiveProfileError(error)))
 }
@@ -92,20 +80,21 @@ export const cashValue = trade => dispatch => {
 async function fireAPI(ticker) {
     let value = await axios.get(`
     https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key.alphaVantage}`);
-    return value;
+    updateDB(value);
+    return true;
 };
 
-async function updateDB(ticker) {
-    let stockData = await fireAPI(ticker);
+// async function updateDB(ticker) {
+export const updateDB = (stockData) => dispatch => {
     console.log(stockData);
     let formattedData = globalEndPoint(stockData.data['Global Quote']);
     console.log(formattedData);
     axios.patch(
         'https://nitetrader.herokuapp.com/api/stock_api/quoteendpointstock/update', 
         formattedData).then(
-            result => console.log(result)
+            result => dispatch(receiveEndPointSuccess(result))
         )
-        .catch(error => console.log(error));
+        .catch(error => dispatch(receiveEndPointFailure(error)))
     return true
 }
 
@@ -124,6 +113,6 @@ export const fetchTrades = userId => dispatch => {
         .then(
             (allTrades) => (dispatch(receiveAllUserTransactions(allTrades))))
         .catch(
-            (err) => (dispatch(receiveErrors(err.response.data)))
+            (err) => (dispatch(receiveErrors(err)))
         )
 };

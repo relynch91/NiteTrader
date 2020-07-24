@@ -23,7 +23,6 @@ export const buildPortfolio = transactions => dispatch => {
     PortUtil.fetchDBStockData(ownedStocks)
         .then((stockApiArray) => {
             stockApiArray.forEach(stockObj => {
-                console.log(stockObj);
                 if (stockObj.data) {
                     let sym = stockObj.data.symbol;
                     ownedStocks[sym]['quoteEndPointData'] = stockObj.data;

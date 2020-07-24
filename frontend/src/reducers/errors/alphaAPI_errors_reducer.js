@@ -7,7 +7,8 @@ import {
     RECEIVE_STOCK_NAME_FAILURE,
     CLEAR_API_ERRORS,
     RECEIVE_WEEKLY_FAILURE,
-    RECEIVE_WEEKLY
+    RECEIVE_WEEKLY,
+    RECEIVE_END_POINT_FAILURE
 } from '../../actions/alphaApi_actions';
 
 const _nullErrors = {};
@@ -20,23 +21,22 @@ const alphaAPIErrorsReducer = (oldState = _nullErrors, action) => {
             return {
                 error: "You reached your maximum per minute call. Please Try again in 30 seconds",
             }
-
         case RECEIVE_TIME_SERIES:
             return _nullErrors;
-
         case RECEIVE_INTRADAY_FAILURE:
             return {
                 error: "You reached your maximum per minute call. Please Try again in 30 seconds",
             }
-
+        case RECEIVE_END_POINT_FAILURE:
+            return {
+                error: "Sorry there was a Global EndPoint Error(no stock data came back).  Please Try again. ",
+            }
         case RECEIVE_INTRADAY:
             return _nullErrors;
 
         case RECEIVE_STOCK_NAME_FAILURE:
-            
             return {
                 error: "You reached your maximum per minute call. Please Try again in 30 seconds",
-                // actual: action
             }
         case RECEIVE_STOCK_NAME:
             return _nullErrors;
@@ -45,7 +45,6 @@ const alphaAPIErrorsReducer = (oldState = _nullErrors, action) => {
                 return {
                     error: "You reached your maximum per minute call. Please Try again in 30 seconds",
                 }
-
         case RECEIVE_WEEKLY:
                 return _nullErrors;
         

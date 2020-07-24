@@ -7,7 +7,9 @@ import { RECEIVE_INTRADAY,
     RECEIVE_WEEKLY_FAILURE,
     RECEIVE_WEEKLY,
     RECEIVE_WEEKLY_SUCCESS,
-    RECEIVE_CLEAR_STOCKS
+    RECEIVE_CLEAR_STOCKS,
+    RECEIVE_END_POINT_SUCCESS,
+    RECEIVE_END_POINT_FAILURE
 } from '../actions/alphaApi_actions';
 
 let preLoadedStateAlpha = {
@@ -17,7 +19,8 @@ let preLoadedStateAlpha = {
     weeklySeries: {},
     nameLoading: false,
     stockNameSearch: [],
-    count: 0
+    count: 0,
+    globalEndPoint: {}
 }
 
 export default function (oldState = preLoadedStateAlpha, action) {
@@ -48,6 +51,18 @@ export default function (oldState = preLoadedStateAlpha, action) {
             Object.assign(nextState, {
                 intraLoading: false,
                 intraDay: {}
+            })
+            return nextState;
+
+        case RECEIVE_END_POINT_SUCCESS:
+            Object.assign(nextState, {
+                globalEndPoint: action.stock.data,
+            })
+            return nextState;
+
+        case RECEIVE_END_POINT_FAILURE:
+            Object.assign(nextState, {
+                globalEndPoint: {}
             })
             return nextState;
 
