@@ -33,7 +33,6 @@ function newPricePerShareBuy(existingStock, newStock) {
 }
 
 export const fetchDBStockData = (transactions) => {
-
     let activeTickers = Object.keys(transactions).filter(ticker => transactions[ticker].ownedShares > 0)
     let allPromises = activeTickers.map(ticker => QuoteEP.fetchQuoteEndPointDB(ticker))
     return Promise.all(allPromises);
@@ -47,13 +46,25 @@ export const fetchDBStockData = (transactions) => {
 
 export const formatPortfolioData = (portfolio) => {
     let res = [];
-    Object.keys(portfolio).forEach(ticker => {
-        let key = parseFloat(portfolio[ticker].quoteEndPointData.changePercent) > 0 ? 'Gain' : 'Loss';
+    let keys = Object.keys(portfolio);
+    let numStocks = Object.keys(portfolio).length;
+    if (numStocks > 8) {
+        numStocks = 8
+    }
+    for (let i = 0; i < numStocks.length; i ++) {
+        let key = parseFloat(portfolio[keys[i]].quoteEndPointData.changePercent) > 0 ? 'Gain' : 'Loss';
         res.push({
-            name: ticker,
-            [key]: parseFloat(portfolio[ticker].quoteEndPointData.changePercent)
+            name: keys[i],
+            [key]: parseFloat(portfolio[keys[i]].quoteEndPointData.changePercent)
         })
+    }
 
-    })
+    // Object.keys(portfolio).forEach(ticker => {
+    //     let key = parseFloat(portfolio[ticker].quoteEndPointData.changePercent) > 0 ? 'Gain' : 'Loss';
+    //     res.push({
+    //         name: ticker,
+    //         [key]: parseFloat(portfolio[ticker].quoteEndPointData.changePercent)
+    //     })
+    // })
     return res;
 }

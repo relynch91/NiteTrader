@@ -90,8 +90,6 @@
 
 .stock-box-container{
     color: #2a5976;
-    margin-top: 10px;
-    max-width: 80%;
 }
 .stock-box-container div h1 {
     font-size: 28px;
@@ -104,4 +102,8 @@
 }
 .stock-box-container form div{
     margin-top: 20px;
+}
+
+.the-details-stock-api {
+    width: 600px;
 }
