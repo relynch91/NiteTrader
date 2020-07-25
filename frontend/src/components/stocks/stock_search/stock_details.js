@@ -14,11 +14,11 @@ export default class StockDetails extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.setState({
-      mostRecentStockApiData: StockUtil.mostRecent(this.props.stockDetails.intraDay)
-    })
-  }
+  // componentDidMount() {
+  //   this.setState({
+  //     mostRecentStockApiData: StockUtil.mostRecent(this.props.stockDetails.intraDay)
+  //   })
+  // }
 
   handleChange() {
     return (e) => this.setState({ numShares: e.currentTarget.value })
@@ -79,7 +79,7 @@ export default class StockDetails extends React.Component {
       ticker: stockTicker
     };
   }
-  
+
   render() {
     let stockData = this.latestUpdateTicker();
     let dayStock = stockData.value["4. close"];
@@ -89,10 +89,12 @@ export default class StockDetails extends React.Component {
     return (
       <div className='the-details-stock-api'>
         <div className="stock-details">
-          <h1>Today's Information for {ticker}:</h1>
-          <p>Week of {date} High: ${(parseFloat(data["2. high"]).toFixed(2))}</p>
-          <p>Week of {date} Low: ${(parseFloat(data["3. low"]).toFixed(2))}</p>
-          <p>Latest Price as of {recentDate}: ${(parseFloat(dayStock).toFixed(2))}</p>
+          <h1>Information for {ticker}:</h1>
+          <ul>
+            <li>Week of {date} High: ${(parseFloat(data["2. high"]).toFixed(2))}</li>
+            <li>Week of {date} Low: ${(parseFloat(data["3. low"]).toFixed(2))}</li>
+            <li>Latest Price as of {recentDate}: ${(parseFloat(dayStock).toFixed(2))}</li>
+          </ul>
         </div>
         <div className='stock-buy-sell'>
           <form >
