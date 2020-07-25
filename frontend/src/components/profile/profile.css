@@ -90,9 +90,9 @@
     align-items: center;
     border-radius: 3px;
     border: 1px solid gray;
-    background-color: whitesmoke;
-    height: 65vh;
-    width: 450px;
+    /* background-color: whitesmoke; */
+    height: 70vh;
+    width: 500px;
     border-radius: 5px;
 }
 
@@ -123,7 +123,7 @@
 }
 
 .profile-details-and-graph {
-    min-width: 1000px;
+    min-width: 1050px;
     display: flex;
     justify-content: space-between;
 }

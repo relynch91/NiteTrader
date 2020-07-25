@@ -23,7 +23,15 @@ class ProfileData extends React.Component {
     let transactions = this.props.trades;
     let profile = this.props.myProfile;
     let portfolio = this.props.myPortfolio;
-    let totalValue = parseFloat(profile['profileValue'] + profile['profileValueStat']);
+    let totalValue = parseFloat(profile['profileValue'] + parseFloat(profile['profileValueStat']));
+    let percentage;
+
+    if (totalValue > 50000) {
+      percentage = (parseFloat(profile['profileValue']) / 50000);
+    } else {
+      console.log(profile['profileValue'])
+      percentage = -(1 - (parseFloat(totalValue) / 50000)) * 100
+    }
     return (
       <div className='profile-data'>
         <div className='profile-data-wrapper'>
@@ -32,7 +40,7 @@ class ProfileData extends React.Component {
             <h2> Profile Total Value: { parseFloat(totalValue).toFixed(2) } $</h2>
             <h2>Profile Cash: { parseFloat(profile['profileValueStat']).toFixed(2) } $</h2>
             <h2>Profile Stock Value: { parseFloat(profile['profileValue']).toFixed(2) } $</h2>
-            <h2>Profile Growth: {parseFloat(profile['profileValue']).toFixed(2) } $</h2>
+            <h2>Profile Growth(Overall): {percentage.toFixed(2) } % </h2>
           </div>
         </div>
         <div className='profile-info-stocks'>

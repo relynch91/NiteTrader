@@ -1,6 +1,7 @@
 import React from 'react';
 import './stock_details.css'
 import * as StockUtil from '../../../util/stocks_api_util';
+import { compareSync } from 'bcryptjs';
 
 export default class StockDetails extends React.Component {
   constructor(props){
@@ -10,25 +11,14 @@ export default class StockDetails extends React.Component {
     this.state = {
       numShares: 0,
       transactionType: true,
-      mostRecentStockApiData: {},
     };
   }
 
-  componentDidMount() {
-    this.setState({
-      mostRecentStockApiData: StockUtil.mostRecent(this.props.stockDetails.intraDay)
-    })
-  }
-
-  componentDidUpdate(prevProps) {
-    let { stockDetails } = this.props;
-    if (stockDetails !== prevProps.stockDetails) {
-      this.setState({
-        mostRecentStockApiData: (StockUtil.mostRecent(this.props.stockDetails.intraDay) ||
-        StockUtil.mostRecent(this.props.stockDetails.weeklySeries))
-      })
-    }
-  }
+  // componentDidMount() {
+  //   this.setState({
+  //     mostRecentStockApiData: StockUtil.mostRecent(this.props.stockDetails.intraDay)
+  //   })
+  // }
 
   handleChange() {
     return (e) => this.setState({ numShares: e.currentTarget.value })
@@ -68,20 +58,45 @@ export default class StockDetails extends React.Component {
         // .then(() => push('/profile/'));
     }
   }
-  
+
+  latestUpdateTicker() {
+    let apiResult = this.props.stockDetails.intraDay['Time Series (15min)'];
+    let objKeys = Object.keys(apiResult);
+    console.log(objKeys[0]);
+    return {
+      value: apiResult[objKeys[0]],
+      date: objKeys[0]
+    }
+  }
+
+  lastWeek() {
+    let weekPrior = this.props.stockDetails.weeklySeries['Weekly Time Series'];
+    let stockTicker = this.props.stockDetails.weeklySeries['Meta Data']['2. Symbol'];
+    let weekKeys = Object.keys(weekPrior);
+    return { 
+      data: weekPrior[weekKeys[0]],
+      date: weekKeys[0],
+      ticker: stockTicker
+    };
+  }
+
   render() {
-    let { data, ticker } = this.state.mostRecentStockApiData;
-    let theDetails = (Object.keys(this.state.mostRecentStockApiData).length === 0) ? null : ( //only thing rendered in return div
-      <div className="stock-box-container">
+    let stockData = this.latestUpdateTicker();
+    let dayStock = stockData.value["4. close"];
+    let recentDate = stockData.date.split(" ")[0];
+    let weeklyStockData = this.lastWeek();
+    let { date, data, ticker } = weeklyStockData;
+    return (
+      <div className='the-details-stock-api'>
         <div className="stock-details">
-          <h1>Today's Information for {ticker}:</h1>
-          <p>Open: ${(parseFloat(data["1. open"]).toFixed(2))}</p>
-          <p>High: ${(parseFloat(data["2. high"]).toFixed(2))}</p>
-          <p>Low: ${(parseFloat(data["3. low"]).toFixed(2))}</p>
-          <p>Price: ${(parseFloat(data["4. close"]).toFixed(2))}</p>
-          <p>Volume: {parseFloat(data["5. volume"])}</p>
+          <h1>Information for {ticker}:</h1>
+          <ul>
+            <li>Week of {date} High: ${(parseFloat(data["2. high"]).toFixed(2))}</li>
+            <li>Week of {date} Low: ${(parseFloat(data["3. low"]).toFixed(2))}</li>
+            <li>Latest Price as of {recentDate}: ${(parseFloat(dayStock).toFixed(2))}</li>
+          </ul>
         </div>
-        <div className='stock-buy-sell'> 
+        <div className='stock-buy-sell'>
           <form >
             <p>Would you like to buy or sell shares?</p>
             <div>
@@ -89,7 +104,7 @@ export default class StockDetails extends React.Component {
                 className="stock-buy-input"
                 type="number"
                 onChange={this.handleChange()}
-                value={this.state.numShares} 
+                value={this.state.numShares}
               />
               <button className="buy-button"
                 onClick={() => this.handleClick(true)} > Buy
@@ -100,11 +115,6 @@ export default class StockDetails extends React.Component {
             </div>
           </form>
         </div>
-      </div>
-    );
-    return (
-      <div className='the-details-stock-api'>
-        {theDetails}
       </div>
     );
   }

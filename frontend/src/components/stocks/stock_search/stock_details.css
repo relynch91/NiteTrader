@@ -76,13 +76,11 @@
 
 .stock-details{
     display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    padding: 5px;
+    flex-direction: column;
+    height: 50%;
 }
-.stock-details p{
-    font-size: 20px;
-    margin-right: 20px;
+.stock-details h1 {
+    font-size: 30px;
 }
 .stock-details {
     max-width: 100%;
@@ -90,8 +88,6 @@
 
 .stock-box-container{
     color: #2a5976;
-    margin-top: 10px;
-    max-width: 80%;
 }
 .stock-box-container div h1 {
     font-size: 28px;
@@ -104,4 +100,9 @@
 }
 .stock-box-container form div{
     margin-top: 20px;
+}
+
+.the-details-stock-api {
+    width: 600px;
+    height: 50vh;
 }
