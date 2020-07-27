@@ -14,11 +14,11 @@ export default class StockDetails extends React.Component {
     };
   }
 
-  // componentDidMount() {
-  //   this.setState({
-  //     mostRecentStockApiData: StockUtil.mostRecent(this.props.stockDetails.intraDay)
-  //   })
-  // }
+  componentDidMount() {
+    this.setState({
+      mostRecentStockApiData: StockUtil.mostRecent(this.props.stockDetails.intraDay)
+    })
+  }
 
   handleChange() {
     return (e) => this.setState({ numShares: e.currentTarget.value })
@@ -33,6 +33,8 @@ export default class StockDetails extends React.Component {
 
   handleSubmit(buy) {
     let { data, ticker } = this.state.mostRecentStockApiData;
+    // let { data, ticker } = this.props.stockDetails.intraDay;
+
     let cash = this.props.profile
     let numberOwned;
     if (this.props.portfolio[ticker]) {
