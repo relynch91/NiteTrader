@@ -19,6 +19,7 @@
     text-align: center;
     cursor: pointer;
 }
+
 .buy-button-active{
     margin-left: 20px;
     border: 1px solid #3d6883;
@@ -41,6 +42,7 @@
     text-align: center;
     cursor: pointer;
 }
+
 .sell-button-active{
     margin-left: 20px;
     border: 1px solid #3d6883;
@@ -78,26 +80,29 @@
     display: flex;
     flex-direction: column;
     height: 50%;
+    max-width: 100%;
+    min-width: 250px;
 }
+
 .stock-details h1 {
     font-size: 30px;
-}
-.stock-details {
-    max-width: 100%;
 }
 
 .stock-box-container{
     color: #2a5976;
 }
+
 .stock-box-container div h1 {
     font-size: 28px;
     font-weight: 600;
     margin-bottom: 30px;
 }
+
 .stock-box-container form > p{
     font-size: 20px;
     margin-top: 20px;
 }
+
 .stock-box-container form div{
     margin-top: 20px;
 }

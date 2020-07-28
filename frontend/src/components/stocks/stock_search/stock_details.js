@@ -1,7 +1,6 @@
 import React from 'react';
 import './stock_details.css'
 import * as StockUtil from '../../../util/stocks_api_util';
-import { compareSync } from 'bcryptjs';
 
 export default class StockDetails extends React.Component {
   constructor(props){
@@ -33,7 +32,6 @@ export default class StockDetails extends React.Component {
 
   handleSubmit(buy) {
     let { data, ticker } = this.state.mostRecentStockApiData;
-    // let { data, ticker } = this.props.stockDetails.intraDay;
 
     let cash = this.props.profile
     let numberOwned;
@@ -46,10 +44,10 @@ export default class StockDetails extends React.Component {
       'userId': this.props.userId,
       'ticker': ticker,
       'cash': cash,
-      'price': parseFloat(data["4. close"]), // most previous close from most recent
+      'price': parseFloat(data["4. close"]), 
       'ownedShares': numberOwned,
-      'shares': this.state.numShares, // set in state using handleChange() as numShares
-      'buy': buy //set in state true or false true: buy, sell: false 
+      'shares': this.state.numShares, 
+      'buy': buy 
     }
     
     if (transactionData['buy']) {
@@ -64,7 +62,6 @@ export default class StockDetails extends React.Component {
   latestUpdateTicker() {
     let apiResult = this.props.stockDetails.intraDay['Time Series (15min)'];
     let objKeys = Object.keys(apiResult);
-    console.log(objKeys[0]);
     return {
       value: apiResult[objKeys[0]],
       date: objKeys[0]

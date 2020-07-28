@@ -29,7 +29,6 @@ class ProfileData extends React.Component {
     if (totalValue > 50000) {
       percentage = (parseFloat(profile['profileValue']) / 50000);
     } else {
-      console.log(profile['profileValue'])
       percentage = -(1 - (parseFloat(totalValue) / 50000)) * 100
     }
     return (
