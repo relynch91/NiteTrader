@@ -47,17 +47,6 @@ export const fetchDBStockData = (transactions) => {
 export const formatPortfolioData = (portfolio) => {
     let res = [];
     let keys = Object.keys(portfolio);
-    // let numStocks = Object.keys(portfolio).length;
-    // if (numStocks > 8) {
-    //     numStocks = 8
-    // }
-    // for (let i = 0; i < numStocks.length; i ++) {
-    //     let key = parseFloat(portfolio[keys[i]].quoteEndPointData.changePercent) > 0 ? 'Gain' : 'Loss';
-    //     res.push({
-    //         name: portfolio[keys[i]].quoteEndPointData.symbol,
-    //         [key]: parseFloat(portfolio[keys[i]].quoteEndPointData.changePercent)
-    //     })
-    // }
 
     Object.keys(portfolio).forEach(ticker => {
         let key = parseFloat(portfolio[ticker].quoteEndPointData.changePercent) > 0 ? 'Gain' : 'Loss';

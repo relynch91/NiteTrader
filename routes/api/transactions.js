@@ -40,18 +40,6 @@ router.get('/:username', (req, res) => {
         );
 })
 
-// router.post('/trade', function(req, res) {
-//     let newTransaction = new Transaction({
-//         userId: req.body.userId,
-//         ticker: req.body.ticker,
-//         price: parseFloat(req.body.price),
-//         shares: parseInt(req.body.shares),
-//         buy: req.body.buy 
-//     })
-//     newTransaction.save()
-//     .then(newTrans => res.json(newTrans));
-// })
-
 router.post('/sell', function(req, res) {
     // let cash = parseFloat(req.body.cash);
     let shares = req.body.shares;
@@ -99,49 +87,5 @@ router.post('/buy', function (req, res) {
             .catch(error => res.json(error));
     }
 })
-
-// router.post('/trade', function (req, res) {
-//     let cash = parseFloat(req.body.cash);
-//     let shares = req.body.shares;
-//     let price = req.body.price;
-//     let totalPrice = parseFloat(shares) * parseFloat(price);
-//     let flag = req.body.buy 
-//     let ownedShares = parseInt(req.body.ownedShares.ownedShares);
-
-//     if ( flag === 'true' && totalPrice > cash) {
-//         res.status(404).json({ 
-//             notEnoughFunds: 'There are not enough funds for that purchase.'
-//         })
-//     }  
-//     if ((flag === 'false') && (shares > ownedShares)){
-//         res.status(404).json({
-//             notEnoughShares: 'There are not enough shares for that sell.'
-//         })
-//     } 
-//     if ((flag === 'false') && (shares > ownedShares)) {
-//         let newTransaction = new Transaction({
-//             userId: req.body.userId,
-//             ticker: req.body.ticker,
-//             price: parseFloat(req.body.price),
-//             shares: parseInt(req.body.shares),
-//             buy: req.body.buy
-//         })
-//         newTransaction.save()
-//             .then(newTrans => res.json(newTrans))
-//             .catch( error => res.json(error));
-//     }
-//     if ((flag === 'true')) {
-//         let newTransaction = new Transaction({
-//             userId: req.body.userId,
-//             ticker: req.body.ticker,
-//             price: parseFloat(req.body.price),
-//             shares: parseInt(req.body.shares),
-//             buy: req.body.buy
-//         })
-//         newTransaction.save()
-//             .then(newTrans => res.json(newTrans));
-//     }
-//     res.json({error: 'we fooked'})
-// })
 
 module.exports = router;

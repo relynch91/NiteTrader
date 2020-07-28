@@ -1,7 +1,6 @@
 import React from 'react';
 import './stock_details.css'
 import * as StockUtil from '../../../util/stocks_api_util';
-import { compareSync } from 'bcryptjs';
 
 export default class StockDetails extends React.Component {
   constructor(props){
@@ -14,11 +13,11 @@ export default class StockDetails extends React.Component {
     };
   }
 
-  // componentDidMount() {
-  //   this.setState({
-  //     mostRecentStockApiData: StockUtil.mostRecent(this.props.stockDetails.intraDay)
-  //   })
-  // }
+  componentDidMount() {
+    this.setState({
+      mostRecentStockApiData: StockUtil.mostRecent(this.props.stockDetails.intraDay)
+    })
+  }
 
   handleChange() {
     return (e) => this.setState({ numShares: e.currentTarget.value })
@@ -33,6 +32,7 @@ export default class StockDetails extends React.Component {
 
   handleSubmit(buy) {
     let { data, ticker } = this.state.mostRecentStockApiData;
+
     let cash = this.props.profile
     let numberOwned;
     if (this.props.portfolio[ticker]) {
@@ -44,10 +44,10 @@ export default class StockDetails extends React.Component {
       'userId': this.props.userId,
       'ticker': ticker,
       'cash': cash,
-      'price': parseFloat(data["4. close"]), // most previous close from most recent
+      'price': parseFloat(data["4. close"]), 
       'ownedShares': numberOwned,
-      'shares': this.state.numShares, // set in state using handleChange() as numShares
-      'buy': buy //set in state true or false true: buy, sell: false 
+      'shares': this.state.numShares, 
+      'buy': buy 
     }
     
     if (transactionData['buy']) {
@@ -62,7 +62,6 @@ export default class StockDetails extends React.Component {
   latestUpdateTicker() {
     let apiResult = this.props.stockDetails.intraDay['Time Series (15min)'];
     let objKeys = Object.keys(apiResult);
-    console.log(objKeys[0]);
     return {
       value: apiResult[objKeys[0]],
       date: objKeys[0]
