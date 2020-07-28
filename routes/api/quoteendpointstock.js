@@ -43,11 +43,9 @@ router.patch('/update', (req, res) => {
         changePercent: req.body.changePercent,
         latestTradingDay: req.body.latestTradingDay
     };
-
     const updatedStock = QuoteEndPointStock.replaceOne(
         query, update, { upsert: true }
         );
-
     updatedStock
         .then(updatedStock => res.json(updatedStock))
         .catch(() =>

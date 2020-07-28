@@ -21,12 +21,10 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
 })
 
 router.post("/register", (req, res) => {
-
     let { isValid, errors } = validateRegisterInput(req.body);
     if (!isValid) {
         return res.status(400).json(errors);
     }
-
     User.findOne({
         username: req.body.username
     }).then(user => {
@@ -39,7 +37,6 @@ router.post("/register", (req, res) => {
                 email: req.body.email,
                 password: req.body.password
             });
-
             bcrypt.genSalt(10, (err, salt) => {
                 bcrypt.hash(newUser.password, salt, (err, hash) => {
                     if (err) throw err;
@@ -51,7 +48,6 @@ router.post("/register", (req, res) => {
                                 id: user.id,
                                 username: user.username
                             };
-
                             jwt.sign(payload, keys.secretOrKey, {
                                 expiresIn: 3600
                             }, (err, token) => {
@@ -74,14 +70,11 @@ router.post("/login", (req, res) => {
         errors,
         isValid
     } = validateLoginInput(req.body);
-
     if (!isValid) {
         return res.status(400).json(errors);
     }
-
     const username = req.body.username;
     const password = req.body.password;
-
     User.findOne({
         username
     }).then(user => {
@@ -89,7 +82,6 @@ router.post("/login", (req, res) => {
             errors.username = "* This user does not exist. *";
             return res.status(400).json(errors);
         }
-
         bcrypt.compare(password, user.password).then(isMatch => {
             if (isMatch) {
                 const payload = {
@@ -124,17 +116,13 @@ router.get('/finduser', function(req, res){
 })
 
 router.get('/allusernames', function(req, res) {
-
     User.find({}, { username: 1 } ).then(users => {
         // console.log(users.data);
         res.json(users);
     })
- 
     .catch(errors => {
         res.json(errors);
     })
-    
-
 })
 
 module.exports = router;

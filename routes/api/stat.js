@@ -22,10 +22,9 @@ router.post('/new', (req, res) => {
 })
 
 router.patch('/update', (req, res) => {
-    // let updatedValue = parseFloat(req.body.value
     Stat.updateOne(
-        { userID: req.body.userID }, // query  
-        { $inc: {value: req.body.value } }, //update
+        { userID: req.body.userID }, 
+        { $inc: {value: req.body.value } },
         { upsert: true }
     ).then(updatedStock => res.json(updatedStock))
     .catch((error) =>
