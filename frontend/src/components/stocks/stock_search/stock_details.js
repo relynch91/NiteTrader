@@ -84,35 +84,46 @@ export default class StockDetails extends React.Component {
     let dayStock = stockData.value["4. close"];
     let recentDate = stockData.date.split(" ")[0];
     let weeklyStockData = this.lastWeek();
-    let { date, data, ticker } = weeklyStockData;
+    let ownedStocks = Object.keys(this.props.portfolio);
+    let { data, ticker } = weeklyStockData;
+    let numberOwned;
+    let pricePerShare;
+
+    if (ownedStocks.includes(ticker)) {
+      numberOwned = this.props.portfolio[ticker]['ownedShares'];
+      pricePerShare= parseFloat(this.props.portfolio[ticker]['pricePerShare']).toFixed(2);
+    } else {
+      numberOwned = 0;
+      pricePerShare = "N/A";
+    }
     return (
       <div className='the-details-stock-api'>
-        <div className="stock-details">
+        <div className="stock-details-goods">
           <h1>Information for {ticker}:</h1>
-          <ul>
-            <li>Week of {date} High: ${(parseFloat(data["2. high"]).toFixed(2))}</li>
-            <li>Week of {date} Low: ${(parseFloat(data["3. low"]).toFixed(2))}</li>
-            <li>Latest Price as of {recentDate}: ${(parseFloat(dayStock).toFixed(2))}</li>
-          </ul>
+          <h4>Week High: ${(parseFloat(data["2. high"]).toFixed(2))}</h4>
+          <h4>Week Low: ${(parseFloat(data["3. low"]).toFixed(2))}</h4>
+          <h4>Latest Price as of {recentDate}: ${(parseFloat(dayStock).toFixed(2))}</h4>
+          <h4>Number of Shares Owned: {numberOwned}</h4>
+          <h4>Average Price Per Share: {pricePerShare}</h4>
         </div>
-        <div className='stock-buy-sell'>
-          <form >
-            <p>Would you like to buy or sell shares?</p>
-            <div>
-              <input
-                className="stock-buy-input"
-                type="number"
-                onChange={this.handleChange()}
-                value={this.state.numShares}
-              />
-              <button className="buy-button"
-                onClick={() => this.handleClick(true)} > Buy
-              </button>
-              <button className="sell-button"
-                onClick={() => this.handleClick(false)}> Sell
-              </button>
-            </div>
-          </form>
+        <div className='stock-buy-sell-container'>
+            <div className='stock-buy-sell'>
+              <h1>Would you like to buy or sell shares?</h1>
+              <div>
+                <input
+                  className="stock-buy-input"
+                  type="number"
+                  onChange={this.handleChange()}
+                  value={this.state.numShares}
+                />
+                <button className="buy-button"
+                  onClick={() => this.handleClick(true)} > Buy
+                </button>
+                <button className="sell-button"
+                  onClick={() => this.handleClick(false)}> Sell
+                </button>
+              </div>
+          </div>
         </div>
       </div>
     );

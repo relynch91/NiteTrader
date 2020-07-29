@@ -20,18 +20,6 @@
     cursor: pointer;
 }
 
-.buy-button-active{
-    margin-left: 20px;
-    border: 1px solid #3d6883;
-    border-radius: 2px;
-    font-size: 16px;
-    padding: 7px 10px;
-    color: #3d6883;
-    text-align: center;
-    cursor: pointer;
-    font-weight: 600;
-}
-
 .sell-button{
     margin-left: 20px;
     border: 1px solid #A3333D;
@@ -43,37 +31,14 @@
     cursor: pointer;
 }
 
-.sell-button-active{
-    margin-left: 20px;
-    border: 1px solid #3d6883;
-    border-radius: 2px;
-    font-size: 16px;
-    padding: 7px 7px;
-    color: #3d6883;
-    text-align: center;
-    cursor: pointer;
-    font-weight: 600;
+
+.sell-button:hover{
+    background: rgb(49, 130, 189);
+    ;
 }
 
-.trade-submit-button{
-    margin-top: 25px;
-    background: #A3333D;
-    border: none;
-    border-radius: 2px;
-    font-size: 16px;
-    outline: 0;
-    padding: 8px 20px;
-    color: whitesmoke;
-    text-align: center;
-    cursor: pointer;
-}
-
-.trade-submit-button:hover{
-    background: #3d6883;
-}
-
-.stock-buy-sumbit:hover{
-    background: #3d6883;
+.buy-button:hover{
+    background: rgb(49, 130, 189);
 }
 
 .stock-details{
@@ -82,32 +47,85 @@
     height: 50%;
     max-width: 100%;
     min-width: 250px;
+    justify-content: center;
+    align-items: center;
 }
 
-.stock-details h1 {
+.stock-details-header {
     font-size: 30px;
+}
+
+.stock-details-goods {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background: whitesmoke;
+    min-height: 50%vh;
+    width: 72%;
+    min-width: 300px;
+}
+
+.stock-details-goods h1 {
+font-size: 20px;
+margin: 10px 10px 0px 10px;
+border-bottom: 1px black solid;
+}
+
+.stock-details-goods > h4 {
+    margin: 10px 10px 10px 10px;
 }
 
 .stock-box-container{
     color: #2a5976;
 }
 
-.stock-box-container div h1 {
+.stock-details-header {
     font-size: 28px;
     font-weight: 600;
     margin-bottom: 30px;
 }
 
-.stock-box-container form > p{
-    font-size: 20px;
-    margin-top: 20px;
-}
-
-.stock-box-container form div{
-    margin-top: 20px;
-}
-
 .the-details-stock-api {
-    width: 600px;
+    width: 500px;
+    min-width: 300px;
     height: 50vh;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px 10px 10px;
+    align-items: center;
+}
+
+.stock-buy-sell-container {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.stock-buy-sell {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px black solid;
+    border-radius: 5px;
+    background: whitesmoke;
+    width: 72%;
+    min-width: 300px;
+}
+
+.stock-buy-sell > h1 {
+    margin: 10px 10px 10px 10px;
+    font-size: 16px;
+}
+
+.stock-buy-sell > div {
+    margin: 10px 10px 10px 10px;
+    font-size: 16px;
 }

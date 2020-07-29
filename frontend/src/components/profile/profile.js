@@ -24,12 +24,19 @@ class Profile extends React.Component {
   }
 
   render() {
-    let theProfileDetailsAndGraph = (Object.keys(this.props.myPortfolio).length > 0) ? (
+    // let theProfileDetailsAndGraph = (Object.keys(this.props.myPortfolio).length > 0) ? (
+    //   <div className="profile-details-and-graph">
+    //     <ProfileDataContainer/>
+    //     <ProfileChartContainer/>
+    //   </div>
+    // ) : null;
+
+    let theProfileDetailsAndGraph = (
       <div className="profile-details-and-graph">
-        <ProfileDataContainer/>
-        <ProfileChartContainer/>
+        <ProfileDataContainer />
+        <ProfileChartContainer />
       </div>
-    ) : null;
+    );
       let username = this.props.username;
     return (
       <div className="profile-container">

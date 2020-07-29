@@ -16,31 +16,7 @@ export default class PortfolioBarChart extends PureComponent {
 
     render() {
         let { portfolio } = this.props;
-        // console.log(portfolio);
-        // let res = [];
-        // let keys = Object.keys(portfolio);
-        // let numStocks = Object.keys(portfolio).length;
-
-        // console.log(numStocks);
-        // for (let i = 0; i < numStocks.length; i++) {
-        //     // let key = parseFloat(portfolio[keys[i]].quoteEndPointData.changePercent) > 0 ? 'Gain' : 'Loss';
-        //     console.log(portfolio[keys[i]].quoteEndPointData.symbol);
-        //     console.log(parseFloat(portfolio[keys[i]].quoteEndPointData.changePercent));
-        //     res.push({
-        //         name: portfolio[keys[i]].quoteEndPointData.symbol,
-        //         // [key]: parseFloat(portfolio[keys[i]].quoteEndPointData.changePercent)
-        //     })
-        // }
-
-
-        // console.log(portfolio[keys[0]].quoteEndPointData.symbol);
-        // console.log(portfolio[keys[0]].quoteEndPointData.changePercent);
         let data = formatPortfolioData(this.props.portfolio)
-
-
-
-
-        console.log(data);
 
         if (Object.keys(portfolio).length === 0) { return null };
         return (

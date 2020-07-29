@@ -34,7 +34,6 @@ export default class StockSearch extends React.Component {
   async getStockTicker(e) {
     if (e) { e.preventDefault() }
     this.props.receiveClearStocks();
-    // console.log(key)
     const stockSearchAPI = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${this.state.stock}&apikey=${key.alphaVantage}`;
     if (this.state.stock === '') {
       return;
@@ -63,7 +62,6 @@ export default class StockSearch extends React.Component {
 
   getStockDetails(e){
     if (e) { e.preventDefault() };
-
     const intraDayAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.ticker}&interval=15min&outputsize=full&apikey=${key.alphaVantage}`;
     this.props.intraDayAPICall(intraDayAPI);
     const weeklyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=${this.state.ticker}&apikey=${key.alphaVantage}`;

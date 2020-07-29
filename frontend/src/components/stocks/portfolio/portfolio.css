@@ -36,7 +36,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: scroll;
+   
     min-height: 450px;
 }
 
@@ -48,7 +48,6 @@
     padding-right: 30px;
     border: 1px solid gray;
     background-color: whitesmoke;
-    /* height: 59vh; */
 }
 
 .portfolio-graph-container > h1{
@@ -69,7 +68,6 @@
 
 .new-user-welcome-container > h1{
     font-size: 45px;
-    /* margin: 50px 0px 10px 0px; */
     font-weight: 700;
     color: #2a5976;
 }
