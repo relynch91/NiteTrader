@@ -84,15 +84,28 @@ export default class StockDetails extends React.Component {
     let dayStock = stockData.value["4. close"];
     let recentDate = stockData.date.split(" ")[0];
     let weeklyStockData = this.lastWeek();
-    let { date, data, ticker } = weeklyStockData;
+    let ownedStocks = Object.keys(this.props.portfolio);
+    let { data, ticker } = weeklyStockData;
+    let numberOwned;
+    let pricePerShare;
+
+    if (ownedStocks.includes(ticker)) {
+      numberOwned = this.props.portfolio[ticker]['ownedShares'];
+      pricePerShare= parseFloat(this.props.portfolio[ticker]['pricePerShare']).toFixed(2);
+    } else {
+      numberOwned = 0;
+      pricePerShare = "N/A";
+    }
     return (
       <div className='the-details-stock-api'>
         <div className="stock-details">
           <h1>Information for {ticker}:</h1>
           <ul>
-            <li>Week of {date} High: ${(parseFloat(data["2. high"]).toFixed(2))}</li>
-            <li>Week of {date} Low: ${(parseFloat(data["3. low"]).toFixed(2))}</li>
+            <li>Week High: ${(parseFloat(data["2. high"]).toFixed(2))}</li>
+            <li>Week Low: ${(parseFloat(data["3. low"]).toFixed(2))}</li>
             <li>Latest Price as of {recentDate}: ${(parseFloat(dayStock).toFixed(2))}</li>
+            <li>Number of Shares Owned: {numberOwned}</li>
+            <li>Average Price Per Share: {pricePerShare}</li>
           </ul>
         </div>
         <div className='stock-buy-sell'>

@@ -35,8 +35,8 @@ class ProfileData extends React.Component {
       <div className='profile-data'>
         <div className='profile-data-wrapper'>
           <div className='profile-info-data'>
-            <h1> Your Profile Data: </h1>
-            <h2> Profile Total Value: { parseFloat(totalValue).toFixed(2) } $</h2>
+            <h1>Your Profile Data: </h1>
+            <h2>Profile Total Value: { parseFloat(totalValue).toFixed(2) } $</h2>
             <h2>Profile Cash: { parseFloat(profile['profileValueStat']).toFixed(2) } $</h2>
             <h2>Profile Stock Value: { parseFloat(profile['profileValue']).toFixed(2) } $</h2>
             <h2>Profile Growth(Overall): {percentage.toFixed(2) } % </h2>
