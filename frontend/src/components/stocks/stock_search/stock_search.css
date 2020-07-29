@@ -57,8 +57,10 @@
     display:flex;
     justify-content: space-evenly;
     align-items: center;
-    margin: 25px 100px;
-    height: 68vh;
+    height: 76vh;
+    background-image: url(/static/media/stock-search-landing.b09feff0.jpg);
+    background-repeat: repeat-x;
+    background-size: cover;
 }
 
 .stock-search-landing{

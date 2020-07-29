@@ -98,15 +98,13 @@ export default class StockDetails extends React.Component {
     }
     return (
       <div className='the-details-stock-api'>
-        <div className="stock-details">
+        <div className="stock-details-goods">
           <h1>Information for {ticker}:</h1>
-          <ul>
-            <li>Week High: ${(parseFloat(data["2. high"]).toFixed(2))}</li>
-            <li>Week Low: ${(parseFloat(data["3. low"]).toFixed(2))}</li>
-            <li>Latest Price as of {recentDate}: ${(parseFloat(dayStock).toFixed(2))}</li>
-            <li>Number of Shares Owned: {numberOwned}</li>
-            <li>Average Price Per Share: {pricePerShare}</li>
-          </ul>
+          <h4>Week High: ${(parseFloat(data["2. high"]).toFixed(2))}</h4>
+          <h4>Week Low: ${(parseFloat(data["3. low"]).toFixed(2))}</h4>
+          <h4>Latest Price as of {recentDate}: ${(parseFloat(dayStock).toFixed(2))}</h4>
+          <h4>Number of Shares Owned: {numberOwned}</h4>
+          <h4>Average Price Per Share: {pricePerShare}</h4>
         </div>
         <div className='stock-buy-sell'>
           <form >

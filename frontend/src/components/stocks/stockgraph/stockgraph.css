@@ -2,6 +2,13 @@
     font-size: 18px;
 }
 
+.stock-graph-main {
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    margin-right: 10px;
+}
+
 .stockgraph-time-button-container{
     display: flex;
     justify-content: space-around;
@@ -23,6 +30,6 @@
     bottom: -5px;
 }
 
-.recharts-cartesian-axis-ticks {
-    /* display: none; */
+.recharts-wrapper {
+    margin-right: 25px;
 }
