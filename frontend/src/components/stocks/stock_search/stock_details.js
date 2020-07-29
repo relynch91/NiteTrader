@@ -106,24 +106,24 @@ export default class StockDetails extends React.Component {
           <h4>Number of Shares Owned: {numberOwned}</h4>
           <h4>Average Price Per Share: {pricePerShare}</h4>
         </div>
-        <div className='stock-buy-sell'>
-          <form >
-            <p>Would you like to buy or sell shares?</p>
-            <div>
-              <input
-                className="stock-buy-input"
-                type="number"
-                onChange={this.handleChange()}
-                value={this.state.numShares}
-              />
-              <button className="buy-button"
-                onClick={() => this.handleClick(true)} > Buy
-              </button>
-              <button className="sell-button"
-                onClick={() => this.handleClick(false)}> Sell
-              </button>
-            </div>
-          </form>
+        <div className='stock-buy-sell-container'>
+            <div className='stock-buy-sell'>
+              <h1>Would you like to buy or sell shares?</h1>
+              <div>
+                <input
+                  className="stock-buy-input"
+                  type="number"
+                  onChange={this.handleChange()}
+                  value={this.state.numShares}
+                />
+                <button className="buy-button"
+                  onClick={() => this.handleClick(true)} > Buy
+                </button>
+                <button className="sell-button"
+                  onClick={() => this.handleClick(false)}> Sell
+                </button>
+              </div>
+          </div>
         </div>
       </div>
     );
