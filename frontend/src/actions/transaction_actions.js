@@ -4,6 +4,8 @@ import { receiveProfileStat, receiveProfileError } from './profile_actions';
 import globalEndPoint  from '../frontConfig/endPointRestructure';
 import key from '../frontConfig/frontKeys';
 import { receiveEndPointSuccess, receiveEndPointFailure } from './alphaApi_actions';
+import { receiveRedirect } from './ui_actions';
+
 const axios = require('axios').default;
 
 export const RECEIVE_BUY_TRANSACTION = 'RECEIVE_BUY_TRANSACTION';
@@ -11,7 +13,6 @@ export const RECEIVE_SELL_TRANSACTION = 'RECEIVE_SELL_TRANSACTION';
 export const RECEIVE_ALL_TRADES = 'RECEIVE_ALL_TRADES';
 export const RECEIVE_TRANSACTION_ERRORS = "RECEIVE_TRANSACTION_ERRORS";
 export const CLEAR_TRANSACTIONS = 'CLEAR_TRANSACTIONS';
-export const RECEIVE_REDIRECT = 'RECEIVE_REDIRECT';
 
 export const receiveBuyTransaction = transaction => {
     return ({
@@ -34,13 +35,6 @@ export const receiveAllUserTransactions = transactions => {
     });
 };
 
-export const receiveRedirect = link => {
-    return ({
-        type: RECEIVE_REDIRECT,
-        payload: link
-    })
-}
-
 export const clearTransactions = () => {
     return ({
         type: CLEAR_TRANSACTIONS,
@@ -57,7 +51,7 @@ export const buyStock = transaction => dispatch => {
         .then(
             (newTrade) => (dispatch(cashValue(newTrade)), 
             dispatch(receiveBuyTransaction(newTrade)),
-            dispatch(receiveRedirect())
+            dispatch(receiveRedirect('/profile'))
             ))
         .catch(
             (err) => (dispatch(receiveErrors(err.response)))

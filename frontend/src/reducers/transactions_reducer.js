@@ -2,8 +2,7 @@ import {
     RECEIVE_ALL_TRADES, 
     CLEAR_TRANSACTIONS, 
     RECEIVE_SELL_TRANSACTION,
-    RECEIVE_BUY_TRANSACTION,
-    RECEIVE_REDIRECT
+    RECEIVE_BUY_TRANSACTION
 } from '../actions/transaction_actions';
 
 const TransactionsReducer = (state = {}, action) => {
@@ -17,8 +16,6 @@ const TransactionsReducer = (state = {}, action) => {
             return Object.assign(nextState, action.transactions);
         case RECEIVE_BUY_TRANSACTION:
             return Object.assign(nextState, action.transactions);
-        case RECEIVE_REDIRECT:
-            return { redirectTo: action.payload }
         case CLEAR_TRANSACTIONS:
             return {};
         default:

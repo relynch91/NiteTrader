@@ -20,6 +20,13 @@ export default class StockDetails extends React.Component {
     })
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.redirectTo !== prevProps.redirectTo) {
+      console.log(this.props.redirectTo);
+      return <Redirect to={this.props.redirectTo} />;
+    }
+  }
+
   handleChange() {
     return (e) => this.setState({ numShares: e.currentTarget.value })
   }
@@ -81,6 +88,7 @@ export default class StockDetails extends React.Component {
   }
 
   render() {
+
     let stockData = this.latestUpdateTicker();
     let dayStock = stockData.value["4. close"];
     let recentDate = stockData.date.split(" ")[0];
