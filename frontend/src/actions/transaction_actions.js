@@ -3,7 +3,6 @@ import * as ProfileAPIUtil from '../util/profile_api_util';
 import { receiveProfileStat, receiveProfileError } from './profile_actions';
 import globalEndPoint  from '../frontConfig/endPointRestructure';
 import key from '../frontConfig/frontKeys';
-import { push } from 'react-router-redux'
 import { receiveEndPointSuccess, receiveEndPointFailure } from './alphaApi_actions';
 const axios = require('axios').default;
 
@@ -12,6 +11,7 @@ export const RECEIVE_SELL_TRANSACTION = 'RECEIVE_SELL_TRANSACTION';
 export const RECEIVE_ALL_TRADES = 'RECEIVE_ALL_TRADES';
 export const RECEIVE_TRANSACTION_ERRORS = "RECEIVE_TRANSACTION_ERRORS";
 export const CLEAR_TRANSACTIONS = 'CLEAR_TRANSACTIONS';
+export const RECEIVE_REDIRECT = 'RECEIVE_REDIRECT';
 
 export const receiveBuyTransaction = transaction => {
     return ({
@@ -34,6 +34,13 @@ export const receiveAllUserTransactions = transactions => {
     });
 };
 
+export const receiveRedirect = link => {
+    return ({
+        type: RECEIVE_REDIRECT,
+        payload: link
+    })
+}
+
 export const clearTransactions = () => {
     return ({
         type: CLEAR_TRANSACTIONS,
@@ -48,10 +55,10 @@ export const receiveErrors = errors => ({
 export const buyStock = transaction => dispatch => {
     return TransactionAPIUtil.buyStock(transaction)
         .then(
-            (newTrade) => dispatch(cashValue(newTrade), 
-            dispatch(receiveBuyTransaction(newTrade))),
-            dispatch(push('/#/profile'))
-        )
+            (newTrade) => (dispatch(cashValue(newTrade)), 
+            dispatch(receiveBuyTransaction(newTrade)),
+            dispatch(receiveRedirect())
+            ))
         .catch(
             (err) => (dispatch(receiveErrors(err.response)))
         )
@@ -84,7 +91,6 @@ export const fireAPI = (ticker) => dispatch => {
     .then(
         stockData => dispatch(updateDB(stockData))
     )
-    // return updateDB(value);
 };
 
 // async function updateDB(ticker) {

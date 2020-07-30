@@ -1,6 +1,7 @@
 import React from 'react';
 import './stock_details.css'
 import * as StockUtil from '../../../util/stocks_api_util';
+import { Redirect } from "react-router";
 
 export default class StockDetails extends React.Component {
   constructor(props){
@@ -52,7 +53,7 @@ export default class StockDetails extends React.Component {
     
     if (transactionData['buy']) {
       this.props.buyStock(transactionData)
-        // .then(() => (push('/profile')));
+      .then(() => <Redirect to={ '/#/profile' }/>);
     } else {
       this.props.sellStock(transactionData)
         // .then(() => push('/profile/'));
