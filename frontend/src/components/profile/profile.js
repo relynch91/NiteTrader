@@ -10,16 +10,20 @@ class Profile extends React.Component {
   componentDidMount() {
     let { fetchTrades, userId, getStat, getProfileValues } = this.props;
     fetchTrades(userId);
-    buildPortfolio(userId);
     getStat(userId);
     getProfileValues(userId);
-    buildProfile(userId);
+    buildPortfolio(userId)
+    buildProfile();
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.myTransactions !== prevProps.myTransactions) {
       this.props.buildPortfolio(this.props.myTransactions);
       this.props.buildProfile()
+    }
+    if (Object.keys(this.props.myPortfolio) !== Object.keys(prevProps.myPortfolio)) {
+      console.log("I am here");
+      this.props.buildProfile();
     }
   }
 
