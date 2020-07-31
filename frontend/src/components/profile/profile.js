@@ -6,7 +6,6 @@ import { buildPortfolio } from '../../actions/portfolio_actions';
 import { buildProfile } from '../../actions/profile_actions';
 
 class Profile extends React.Component {
-
   componentDidMount() {
     let { fetchTrades, userId, getStat, getProfileValues } = this.props;
     fetchTrades(userId);
@@ -22,18 +21,11 @@ class Profile extends React.Component {
       this.props.buildProfile()
     }
     if (Object.keys(this.props.myPortfolio) !== Object.keys(prevProps.myPortfolio)) {
-      console.log("I am here");
       this.props.buildProfile();
     }
   }
 
   render() {
-    // let theProfileDetailsAndGraph = (Object.keys(this.props.myPortfolio).length > 0) ? (
-    //   <div className="profile-details-and-graph">
-    //     <ProfileDataContainer/>
-    //     <ProfileChartContainer/>
-    //   </div>
-    // ) : null;
 
     let theProfileDetailsAndGraph = (
       <div className="profile-details-and-graph">
