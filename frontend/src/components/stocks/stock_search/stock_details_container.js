@@ -7,7 +7,8 @@ const mapStateToProps = (state) => ({
     stockDetails: state.stocks,
     userId: state.session.user.id,
     portfolio: state.portfolio,
-    profile: state.profile.profileValueStat
+    profile: state.profile.profileValueStat,
+    redirectTo: state.ui.redirect.payload
 });
 
 const mapDispatchToProps = (dispatch) => ({

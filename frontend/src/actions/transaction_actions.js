@@ -4,6 +4,8 @@ import { receiveProfileStat, receiveProfileError } from './profile_actions';
 import globalEndPoint  from '../frontConfig/endPointRestructure';
 import key from '../frontConfig/frontKeys';
 import { receiveEndPointSuccess, receiveEndPointFailure } from './alphaApi_actions';
+import { receiveRedirect } from './ui_actions';
+
 const axios = require('axios').default;
 
 export const RECEIVE_BUY_TRANSACTION = 'RECEIVE_BUY_TRANSACTION';
@@ -47,9 +49,10 @@ export const receiveErrors = errors => ({
 export const buyStock = transaction => dispatch => {
     return TransactionAPIUtil.buyStock(transaction)
         .then(
-            (newTrade) => dispatch(cashValue(newTrade), 
-            dispatch(receiveBuyTransaction(newTrade)))
-        )
+            (newTrade) => (dispatch(cashValue(newTrade)), 
+            dispatch(receiveBuyTransaction(newTrade)),
+            dispatch(receiveRedirect('/profile'))
+            ))
         .catch(
             (err) => (dispatch(receiveErrors(err.response)))
         )
@@ -77,20 +80,16 @@ export const cashValue = trade => dispatch => {
 }
 
 export const fireAPI = (ticker) => dispatch => {
-    console.log('fireapiticker');
     axios.get(`
     https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key.alphaVantage}`)
     .then(
         stockData => dispatch(updateDB(stockData))
     )
-    // return updateDB(value);
 };
 
 // async function updateDB(ticker) {
 export const updateDB = (stockData) => dispatch => {
-    console.log(stockData);
     let formattedData = globalEndPoint(stockData.data['Global Quote']);
-    console.log(formattedData);
     axios.patch(
         'https://nitetrader.herokuapp.com/api/stock_api/quoteendpointstock/update', 
         formattedData).then(

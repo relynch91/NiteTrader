@@ -1,6 +1,7 @@
 import React from 'react';
 import './stock_details.css'
 import * as StockUtil from '../../../util/stocks_api_util';
+import { Redirect } from "react-router";
 
 export default class StockDetails extends React.Component {
   constructor(props){
@@ -19,6 +20,13 @@ export default class StockDetails extends React.Component {
     })
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.redirectTo !== prevProps.redirectTo) {
+      console.log(this.props.redirectTo);
+      return (<Redirect to={this.props.redirectTo} />)
+    }
+  }
+
   handleChange() {
     return (e) => this.setState({ numShares: e.currentTarget.value })
   }
@@ -32,7 +40,6 @@ export default class StockDetails extends React.Component {
 
   handleSubmit(buy) {
     let { data, ticker } = this.state.mostRecentStockApiData;
-
     let cash = this.props.profile
     let numberOwned;
     if (this.props.portfolio[ticker]) {
@@ -51,10 +58,9 @@ export default class StockDetails extends React.Component {
     }
     
     if (transactionData['buy']) {
-      this.props.buyStock(transactionData)
-        // .then(() => push('/profile/'));
+      return this.props.buyStock(transactionData)
     } else {
-      this.props.sellStock(transactionData)
+      return this.props.sellStock(transactionData)
         // .then(() => push('/profile/'));
     }
   }
