@@ -49,7 +49,7 @@ export const receiveErrors = errors => ({
 export const buyStock = transaction => dispatch => {
     return TransactionAPIUtil.buyStock(transaction)
         .then(
-            (newTrade) => (dispatch(cashValue(newTrade)), 
+            (newTrade) => (dispatch(cashValue(newTrade)),
             dispatch(receiveBuyTransaction(newTrade)),
             dispatch(receiveRedirect('/profile'))
             ))

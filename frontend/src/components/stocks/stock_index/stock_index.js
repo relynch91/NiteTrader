@@ -30,15 +30,23 @@ export default class StockIndex extends React.Component {
               <h1>
                 Ticker: {ticker}
               </h1>
+              <h2>
+                Shares Owned: {myPortfolio[ticker].ownedShares}
+              </h2>
+              <h2>
+                Price Per Share: {parseFloat(myPortfolio[ticker].pricePerShare).toFixed(2)}
+              </h2>
+              <h2>
+                Information for Trading Date {
+                  myPortfolio[ticker].quoteEndPointData.latestTradingDay || null}:
+              </h2>
             </div>
             <div className='global-end-point-details'>
               <ul>
                 <li>
-                  Shares Owned: {myPortfolio[ticker].ownedShares}
-                </li>
-                <li>
-                  Last Trading Date: {
-                    myPortfolio[ticker].quoteEndPointData.latestTradingDay || null }
+                  Price: {
+                    parseFloat(myPortfolio[ticker].quoteEndPointData.price).toFixed(2)
+                  }
                 </li>
                 < li >
                   Change: {
@@ -51,9 +59,10 @@ export default class StockIndex extends React.Component {
                   } %
                 </li>
                 < li >
-                  Volume: {
-                    parseFloat(myPortfolio[ticker].quoteEndPointData.volume).toFixed(2)
-                  } </li>
+                  Previous Close: {
+                    parseFloat(myPortfolio[ticker].quoteEndPointData.previousClose).toFixed(2)
+                  }
+                </li>
               </ul>
               <ul>
                 < li >
@@ -69,20 +78,14 @@ export default class StockIndex extends React.Component {
                     parseFloat(myPortfolio[ticker].quoteEndPointData.open).toFixed(2)
                   } 
                 </li>
-                <li>
-                  Price: {
-                    parseFloat(myPortfolio[ticker].quoteEndPointData.price).toFixed(2)
-                  }
-                </li>
                 < li >
-                  Previous Close: {
-                    parseFloat(myPortfolio[ticker].quoteEndPointData.previousClose).toFixed(2)
+                  Volume: {
+                    parseFloat(myPortfolio[ticker].quoteEndPointData.volume).toFixed(2)
                   } 
                 </li>
               </ul>
             </div>
           </div>
-        // </div>
         ))}
       </div>
     );

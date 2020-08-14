@@ -54,38 +54,11 @@ async function candle() {
     console.log('Light the candle.')
     let ticker = await tickerCalls();
     let updated = await updateDatabase(ticker);
-    // console.log(updated);
     updatePortfolio(updated);
     return true;
 }
 
 candle();
-
-// let updatedTestData = {
-//     'TSLA': '1500.8400',
-//     'AAPL': '385.3100',
-//     'NKE': '96.2800',
-//     'IBM': '125.1100',
-//     'BKE': '16.0700',
-//     'NFLX': '492.9900',
-//     'DIS': '118.6400',
-//     'RIG': '1.9600',
-//     'KO': '46.8200',
-//     'FXAIX': '111.5500'
-// }
-
-// {
-//   TSLA: '1643.0000',
-//   AAPL: '393.4300',
-//   NKE: '95.6500',
-//   IBM: '126.3700',
-//   BKE: '15.2400',
-//   NFLX: '502.4100',
-//   DIS: '117.7700',
-//   RIG: '1.9700',
-//   KO: '46.1200',
-//   FXAIX: '111.8700'
-// }
 
 // --------------------- above updates DB w/ all tickers ---------------------
 

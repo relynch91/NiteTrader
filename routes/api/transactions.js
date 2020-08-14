@@ -69,7 +69,7 @@ router.post('/buy', function (req, res) {
     let cash = parseFloat(req.body.cash);
     let shares = req.body.shares;
     let price = req.body.price;
-    let totalPrice = parseFloat(shares) * parseFloat(price);
+    let totalPrice = (parseFloat(shares) * parseFloat(price));
     if (totalPrice > cash) {
         res.status(404).json({
             notEnoughCash: 'You do not have enough cash for that transaction.'

@@ -152,7 +152,9 @@
 .profile-details-and-graph {
     min-width: 1050px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 }
 
 .profile-transactions {
