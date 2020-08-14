@@ -24,6 +24,7 @@ export default class StockDetails extends React.Component {
     if (this.props.redirectTo !== prevProps.redirectTo) {
       console.log(this.props.redirectTo);
       return (<Redirect to={this.props.redirectTo} />)
+    // } else if (this.props.)
     }
   }
 

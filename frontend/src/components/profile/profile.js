@@ -30,7 +30,7 @@ class Profile extends React.Component {
     let theProfileDetailsAndGraph = (
       <div className="profile-details-and-graph">
         <ProfileDataContainer />
-        <ProfileChartContainer />
+        {/* <ProfileChartContainer /> */}
       </div>
     );
       let username = this.props.username;

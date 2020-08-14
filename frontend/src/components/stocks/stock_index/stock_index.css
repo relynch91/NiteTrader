@@ -43,10 +43,10 @@
 
 .stock-index-main {
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     overflow: scroll;
     height: 68vh;
-    flex-direction: column;
-    /* justify-content: center; */
 }
 
 .stock-box-owned-details {
