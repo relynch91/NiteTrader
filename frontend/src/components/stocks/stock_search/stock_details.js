@@ -61,7 +61,6 @@ export default class StockDetails extends React.Component {
       return this.props.buyStock(transactionData)
     } else {
       return this.props.sellStock(transactionData)
-        // .then(() => push('/profile/'));
     }
   }
 
