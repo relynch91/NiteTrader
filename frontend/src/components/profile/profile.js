@@ -1,7 +1,6 @@
 import React from 'react';
 import './profile.css';
 import ProfileDataContainer from './profile_data_container';
-import ProfileChartContainer from './profile_chart_container';
 import { buildPortfolio } from '../../actions/portfolio_actions';
 import { buildProfile } from '../../actions/profile_actions';
 
@@ -30,7 +29,6 @@ class Profile extends React.Component {
     let theProfileDetailsAndGraph = (
       <div className="profile-details-and-graph">
         <ProfileDataContainer />
-        {/* <ProfileChartContainer /> */}
       </div>
     );
       let username = this.props.username;
