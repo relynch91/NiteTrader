@@ -114,7 +114,7 @@ export default class StockDetails extends React.Component {
         </div>
         <div className='stock-buy-sell-container'>
             <div className='stock-buy-sell'>
-              <h1>Would you like to buy or sell shares?</h1>
+              <h1>How many shares would you like to BUY/SELL?</h1>
               <div>
                 <input
                   className="stock-buy-input"
