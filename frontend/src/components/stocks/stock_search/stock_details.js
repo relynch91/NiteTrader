@@ -57,6 +57,9 @@ export default class StockDetails extends React.Component {
       'shares': this.state.numShares, 
       'buy': buy 
     }
+    let enoughMoney = false;
+    let cost = transactionData['price'] * transactionData['shares'];
+    console.log(cost);
     
     if (transactionData['buy']) {
       return this.props.buyStock(transactionData)
