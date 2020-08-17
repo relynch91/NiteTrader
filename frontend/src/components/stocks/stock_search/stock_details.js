@@ -61,7 +61,7 @@ export default class StockDetails extends React.Component {
     let cost = transactionData['price'] * transactionData['shares'];
     console.log(cost);
     
-    if (transactionData['buy']) {
+    if ((transactionData['buy']) && (cost < cash)) {
       return this.props.buyStock(transactionData)
     } else {
       return this.props.sellStock(transactionData)
@@ -90,6 +90,7 @@ export default class StockDetails extends React.Component {
 
   render() {
     let stockData = this.latestUpdateTicker();
+    let cash = this.props.profile;
     let dayStock = stockData.value["4. close"];
     let recentDate = stockData.date.split(" ")[0];
     let weeklyStockData = this.lastWeek();
@@ -100,10 +101,10 @@ export default class StockDetails extends React.Component {
 
     if (ownedStocks.includes(ticker)) {
       numberOwned = this.props.portfolio[ticker]['ownedShares'];
-      pricePerShare= parseFloat(this.props.portfolio[ticker]['pricePerShare']).toFixed(2);
+      pricePerShare = parseFloat(this.props.portfolio[ticker]['pricePerShare']).toFixed(2);
     } else {
       numberOwned = 0;
-      pricePerShare = "N/A";
+      pricePerShare = "0";
     }
     return (
       <div className='the-details-stock-api'>
@@ -114,6 +115,8 @@ export default class StockDetails extends React.Component {
           <h4>Latest Price as of {recentDate}: ${(parseFloat(dayStock).toFixed(2))}</h4>
           <h4>Number of Shares Owned: {numberOwned}</h4>
           <h4>Average Price Per Share: {pricePerShare}</h4>
+          <h4>Current amount of cash: $ {cash} </h4>
+
         </div>
         <div className='stock-buy-sell-container'>
             <div className='stock-buy-sell'>
