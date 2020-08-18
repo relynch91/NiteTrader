@@ -57,14 +57,13 @@ export default class StockDetails extends React.Component {
       'shares': this.state.numShares, 
       'buy': buy 
     }
-    let enoughMoney = false;
     let cost = transactionData['price'] * transactionData['shares'];
     console.log(cost);
     
-    if ((transactionData['buy']) && (cost < cash)) {
+    if (transactionData['buy']) {
       return this.props.buyStock(transactionData)
-    } else {
-      return this.props.sellStock(transactionData)
+    } else { 
+      return this.props.sellStock(transactionData)  
     }
   }
 
@@ -96,8 +95,12 @@ export default class StockDetails extends React.Component {
     let weeklyStockData = this.lastWeek();
     let ownedStocks = Object.keys(this.props.portfolio);
     let { data, ticker } = weeklyStockData;
+    let transactionErrors = this.props.transactionErrors
     let numberOwned;
     let pricePerShare;
+
+    if (Object.keys(transactionErrors).length === 0) {
+    }
 
     if (ownedStocks.includes(ticker)) {
       numberOwned = this.props.portfolio[ticker]['ownedShares'];
@@ -134,6 +137,9 @@ export default class StockDetails extends React.Component {
                 <button className="sell-button"
                   onClick={() => this.handleClick(false)}> Sell
                 </button>
+              </div>
+              <div>
+                <h1>{transactionErrors['notEnoughShares']}</h1>
               </div>
           </div>
         </div>

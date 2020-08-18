@@ -12,7 +12,7 @@ const TransactionsErrorsReducer = (state = _nullErrors, action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_TRANSACTION_ERRORS:
-            return action.errors.response.data;
+            return action.errors.transactions;
         case RECEIVE_ALL_TRADES:
             return _nullErrors;
         case RECEIVE_BUY_TRANSACTION:
