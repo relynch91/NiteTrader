@@ -8,7 +8,8 @@ const PortfolioReducer = (state = {}, action) => {
     let nextState = Object.assign({}, state);
     switch (action.type) {
         case RECEIVE_PORTFOLIO:
-            return Object.assign(nextState, action.transactions);
+            console.log(action);
+            return Object.assign(nextState, action.ownedStocks);
         case CLEAR_PORTFOLIO:
             return {}
         default:

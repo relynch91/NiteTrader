@@ -49,7 +49,7 @@ class ProfileData extends React.Component {
                   <h4>Ticker: {compObj}</h4>
                   <h4>Price Per Share: {parseFloat(portfolio[compObj]['pricePerShare']).toFixed(2)}</h4>
                   <h4>Shares Owned: {portfolio[compObj]['ownedShares']}</h4>
-                  <h4>Latest Price: {parseFloat(portfolio[compObj]['quoteEndPointData']['price']).toFixed(2)}</h4>
+                  {/* <h4>Latest Price: {parseFloat(portfolio[compObj]['quoteEndPointData']['price']).toFixed(2)}</h4> */}
                 </li>
               </div>
             )

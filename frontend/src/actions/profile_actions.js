@@ -56,9 +56,12 @@ export const buildStat = (user) => dispatch => {
 }
 // returns stat db request on login
 export const getStat = userID => dispatch => { 
-    APIUtil.statFetch(userID).then(
-        stat => dispatch(receiveProfileStat(stat.data[0]['value'])))
-        .catch(error => dispatch(receiveProfileError(error)))
+    APIUtil.statFetch(userID)
+        .then(
+            stat => dispatch(receiveProfileStat(stat.data[0]['value']))
+        ).catch(
+            error => dispatch(receiveProfileError(error))
+        )
 }
 
 export const updateStat = update => dispatch => {
