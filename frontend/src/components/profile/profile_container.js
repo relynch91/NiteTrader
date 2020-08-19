@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
   buildPortfolio: (transactions) => dispatch(buildPortfolio(transactions)),
   getStat: (userID) => dispatch(getStat(userID)),
   getProfileValues: (userID) => dispatch(getProfileValues(userID)),
-  buildProfile: userID => dispatch(buildProfile(userID)),
+  buildProfile: stocks => dispatch(buildProfile(stocks)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

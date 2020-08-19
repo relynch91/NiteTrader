@@ -19,9 +19,7 @@ export const clearPortfolio = () => {
 
 export const buildPortfolio = transactions => dispatch => {
     clearPortfolio();
-    console.log(transactions)
     let ownedStocks = PortUtil.activeShares(transactions);
-    console.log(ownedStocks);
     PortUtil.fetchDBStockData(ownedStocks)
         .then(stockApiArray =>
             stockApiArray.forEach(stockObj => {
@@ -31,8 +29,6 @@ export const buildPortfolio = transactions => dispatch => {
                     ownedStocks[sym]['priceDiff'] = PortUtil.overUnder(ownedStocks[sym]);
                 }
             }))
-        dispatch(receivePortfolio(ownedStocks));
-    // })
-    console.log(ownedStocks)
-    return true;
+    dispatch(receivePortfolio(ownedStocks));    
+    return ownedStocks;
 };

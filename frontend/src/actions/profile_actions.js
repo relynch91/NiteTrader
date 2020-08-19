@@ -80,14 +80,18 @@ export const buildProfile = (stocks) => dispatch => {
     let tickers = Object.keys(stocks);
     for (let i = 0; i < tickers.length; i ++) {
         let ticker = stocks[tickers[i]];
-        let pricePerShare = ticker['pricePerShare'];
+        console.log(ticker)
+
+        let pricePerShare = ticker['quoteEndPointData']['price'];
         let numberShares = ticker['ownedShares'];
         let totalValue = numberShares * pricePerShare;
         profileValue += totalValue;
     }
-    let value = profileValue;
-    dispatch(receiveProfileValue(value));
+    
+    // dispatch(receiveProfileValue(profileValue));
+
 }
+
 
 export const getProfileValues = userID => dispatch => {
     APIUtil.profilesFetch(userID).then(
