@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import ProfileData from './profile_data';
 import { fetchTrades } from '../../actions/transaction_actions';
-import { buildProfile } from '../../actions/profile_actions'
+import { buildProfile, getStat } from '../../actions/profile_actions'
 
 
 const mapStateToProps = (state) => {
@@ -16,7 +16,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
   fetchTrades: (userId) => dispatch(fetchTrades(userId)),
-  buildProfile: (stocks) => dispatch(buildProfile(stocks))
+  buildProfile: (stocks) => dispatch(buildProfile(stocks)),
+  getStat: (userID) => dispatch(getStat(userID)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileData);

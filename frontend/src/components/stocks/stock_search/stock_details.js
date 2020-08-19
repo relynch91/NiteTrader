@@ -57,14 +57,13 @@ export default class StockDetails extends React.Component {
       'shares': this.state.numShares, 
       'buy': buy 
     }
-    let enoughMoney = false;
     let cost = transactionData['price'] * transactionData['shares'];
     console.log(cost);
     
     if (transactionData['buy']) {
       return this.props.buyStock(transactionData)
-    } else {
-      return this.props.sellStock(transactionData)
+    } else { 
+      return this.props.sellStock(transactionData)  
     }
   }
 
@@ -90,20 +89,25 @@ export default class StockDetails extends React.Component {
 
   render() {
     let stockData = this.latestUpdateTicker();
+    let cash = this.props.profile;
     let dayStock = stockData.value["4. close"];
     let recentDate = stockData.date.split(" ")[0];
     let weeklyStockData = this.lastWeek();
     let ownedStocks = Object.keys(this.props.portfolio);
     let { data, ticker } = weeklyStockData;
+    let transactionErrors = this.props.transactionErrors
     let numberOwned;
     let pricePerShare;
 
+    if (Object.keys(transactionErrors).length === 0) {
+    }
+
     if (ownedStocks.includes(ticker)) {
       numberOwned = this.props.portfolio[ticker]['ownedShares'];
-      pricePerShare= parseFloat(this.props.portfolio[ticker]['pricePerShare']).toFixed(2);
+      pricePerShare = parseFloat(this.props.portfolio[ticker]['pricePerShare']).toFixed(2);
     } else {
       numberOwned = 0;
-      pricePerShare = "N/A";
+      pricePerShare = "0";
     }
     return (
       <div className='the-details-stock-api'>
@@ -114,6 +118,8 @@ export default class StockDetails extends React.Component {
           <h4>Latest Price as of {recentDate}: ${(parseFloat(dayStock).toFixed(2))}</h4>
           <h4>Number of Shares Owned: {numberOwned}</h4>
           <h4>Average Price Per Share: {pricePerShare}</h4>
+          <h4>Current amount of cash: $ {cash} </h4>
+
         </div>
         <div className='stock-buy-sell-container'>
             <div className='stock-buy-sell'>
@@ -131,6 +137,9 @@ export default class StockDetails extends React.Component {
                 <button className="sell-button"
                   onClick={() => this.handleClick(false)}> Sell
                 </button>
+              </div>
+              <div>
+                <h1>{transactionErrors['notEnoughShares']}</h1>
               </div>
           </div>
         </div>

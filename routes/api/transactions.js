@@ -60,7 +60,7 @@ router.post('/sell', function(req, res) {
             .catch(error => res.json(error));
     } else {
         res.status(404).json({
-            notEnoughShares: 'There are not enough shares for that sell.'
+            notEnoughShares: 'Sorry, you do not own enough shares for that trade.'
         })
     }
 })

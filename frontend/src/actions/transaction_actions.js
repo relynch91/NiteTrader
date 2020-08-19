@@ -41,20 +41,22 @@ export const clearTransactions = () => {
     });
 }
 
-export const receiveErrors = errors => ({
-    type: RECEIVE_TRANSACTION_ERRORS,
-    errors
-});
+export const receiveErrors = errors => {
+    return ({
+        type: RECEIVE_TRANSACTION_ERRORS,
+        errors
+    })
+};
 
 export const buyStock = transaction => dispatch => {
-    return TransactionAPIUtil.buyStock(transaction)
+    TransactionAPIUtil.buyStock(transaction)
         .then(
             (newTrade) => (dispatch(cashValue(newTrade)),
             dispatch(receiveBuyTransaction(newTrade)),
             dispatch(receiveRedirect('/profile'))
             ))
         .catch(
-            (err) => (dispatch(receiveErrors(err.response)))
+            (errors) => dispatch(receiveErrors(errors))
         )
 };
 

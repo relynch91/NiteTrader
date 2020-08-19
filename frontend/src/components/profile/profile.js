@@ -1,27 +1,13 @@
 import React from 'react';
 import './profile.css';
 import ProfileDataContainer from './profile_data_container';
-import { buildPortfolio } from '../../actions/portfolio_actions';
-import { buildProfile } from '../../actions/profile_actions';
 
 class Profile extends React.Component {
-  componentDidMount() {
-    let { fetchTrades, userId, getStat, getProfileValues } = this.props;
-    fetchTrades(userId);
+  async componentDidMount() {
+    let { fetchTrades, userId, getStat, getProfileValues, buildPortfolio, buildProfile } = this.props;
+    let trades = await fetchTrades(userId); //returns an array of transactions
+    let stockInfo = await buildPortfolio(trades.transactions.data);
     getStat(userId);
-    getProfileValues(userId);
-    buildPortfolio(userId)
-    buildProfile();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.myTransactions !== prevProps.myTransactions) {
-      this.props.buildPortfolio(this.props.myTransactions);
-      this.props.buildProfile()
-    }
-    if (Object.keys(this.props.myPortfolio) !== Object.keys(prevProps.myPortfolio)) {
-      this.props.buildProfile();
-    }
   }
 
   render() {
