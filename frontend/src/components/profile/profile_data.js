@@ -1,11 +1,26 @@
 import React from 'react';
 import './profile.css';
+// import { buildPortfolio } from '../../actions/portfolio_actions';
 
 class ProfileData extends React.Component {
   constructor(props) {
     super(props)
     this.state = {};
     this.buyOrSell = this.buyOrSell.bind(this);
+  }
+
+  async componentDidMount() {
+    let { fetchTrades, userId, getStat, buildPortfolio } = this.props;
+    let trades = await fetchTrades(userId);
+    let stockInfo = await buildPortfolio(trades.transactions.data);
+    console.log(stockInfo);
+    getStat(userId);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.myPortfolio !== prevProps.myPortfolio) {
+      this.props.buildProfile(this.props.myPortfolio)
+    }
   }
 
   buyOrSell(value) {
@@ -33,16 +48,13 @@ class ProfileData extends React.Component {
         <h1>Your Current Stocks:</h1>
         <ul className='profile-info-stocks-container'>
           {Object.keys(portfolio).map(compObj => {
-            if (!('quoteEndPointData' in portfolio[compObj])) {
-              portfolio[compObj]['quoteEndPointData'] = 0;
-            }
             return (
               <div>
                 <li className='profile-info-stocks-item'>
                   <h4>Ticker: {compObj}</h4>
                   <h4>Price Per Share: {parseFloat(portfolio[compObj]['pricePerShare']).toFixed(2)}</h4>
                   <h4>Shares Owned: {portfolio[compObj]['ownedShares']}</h4>
-                  <h4>Latest Price: {parseFloat(portfolio[compObj]['quoteEndPointData']['price'])}</h4>
+                  <h4>Latest Price: N/A </h4>
                 </li>
               </div>
             )

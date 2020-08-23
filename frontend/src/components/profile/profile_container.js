@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Profile from './profile';
 import { fetchTrades } from '../../actions/transaction_actions';
-import { buildPortfolio } from '../../actions/portfolio_actions'
+import { buildPortfolio } from '../../actions/portfolio_actions';
 import { getStat, getProfileValues, buildProfile } from '../../actions/profile_actions';
 
 const mapStateToProps = (state) => {

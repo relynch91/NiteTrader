@@ -70,16 +70,14 @@ export const updateStat = update => dispatch => {
         .catch(error => dispatch(receiveProfileError(error)))
 }
 
-export const buildProfile = (stocks) => dispatch => { 
+export const buildProfile = (stocks) => dispatch => {
+    console.log(stocks);
     let profileValue = 0;
     if (!stocks) {
         return null;
     }
     let tickers = Object.keys(stocks);
     tickers.forEach(ticker => {
-        if (stocks[ticker]['quoteEndPointData']) {
-            console.log(stocks[ticker]['quoteEndPointData'])
-        } 
     })
 }
 

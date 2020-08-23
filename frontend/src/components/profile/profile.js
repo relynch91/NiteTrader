@@ -5,12 +5,12 @@ import ProfileDataContainer from './profile_data_container';
 
 class Profile extends React.Component {
 
-  async componentDidMount() {
-    let { fetchTrades, userId, getStat, buildPortfolio } = this.props;
-    let trades = await fetchTrades(userId); 
-    let stockInfo = await buildPortfolio(trades.transactions.data);
-    getStat(userId);
-  }
+  // async componentDidMount() {
+  //   let { fetchTrades, userId, getStat, buildPortfolio } = this.props;
+  //   let trades = await fetchTrades(userId); 
+  //   let stockInfo = await buildPortfolio(trades.transactions.data);
+  //   getStat(userId);
+  // }
 
   render() {
     let theProfileDetailsAndGraph = (
