@@ -20,15 +20,16 @@ export const clearPortfolio = () => {
 export const buildPortfolio = transactions => dispatch => {
     clearPortfolio();
     let ownedStocks = PortUtil.activeShares(transactions);
-    PortUtil.fetchDBStockData(ownedStocks)
-        .then(stockApiArray =>
-            stockApiArray.forEach(stockObj => {
-                if (stockObj.data) {
-                    let sym = stockObj.data.symbol;
-                    ownedStocks[sym]['quoteEndPointData'] = stockObj.data;
-                    ownedStocks[sym]['priceDiff'] = PortUtil.overUnder(ownedStocks[sym]);
-                }
-            }))
-    dispatch(receivePortfolio(ownedStocks));    
+    console.log(ownedStocks);
+    PortUtil.fetchDBStockData(ownedStocks) // returns array of objects
+    .then(stockApiArray =>
+        stockApiArray.forEach(stockObj => {
+            if (stockObj.data) {
+                let sym = stockObj.data.symbol;
+                ownedStocks[sym]['quoteEndPointData'] = stockObj.data;
+                ownedStocks[sym]['priceDiff'] = PortUtil.overUnder(ownedStocks[sym]);
+            }
+    }))
+    dispatch(receivePortfolio(ownedStocks));
     return ownedStocks;
 };

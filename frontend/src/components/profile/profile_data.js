@@ -8,16 +8,6 @@ class ProfileData extends React.Component {
     this.buyOrSell = this.buyOrSell.bind(this);
   }
 
-  componentDidMount() {
-    this.props.buildProfile(this.props.myPortfolio);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.myPortfolio !== this.props.myPortfolio) {
-      this.props.buildProfile(this.props.myPortfolio);
-    }
-  }
-
   buyOrSell(value) {
     if (value) {
       return 'Buy'

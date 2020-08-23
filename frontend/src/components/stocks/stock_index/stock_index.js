@@ -6,17 +6,11 @@ export default class StockIndex extends React.Component {
     super(props)
     this.state = {};
   }
-  componentDidMount(){
-    let { fetchTrades, userId, buildPortfolio } = this.props;
-    // fetchTrades(userId)
-    // buildPortfolio(userId)
-    
-  }
   
-  componentDidUpdate(prevProps) {
-    if (this.props.myStocks !== prevProps.myStocks) {
+  componentDidMount() {
+    
       this.props.buildPortfolio(this.props.myStocks);
-    }
+    
   }
   
   render(){

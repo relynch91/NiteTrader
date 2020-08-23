@@ -3,7 +3,6 @@ import ProfileData from './profile_data';
 import { fetchTrades } from '../../actions/transaction_actions';
 import { buildProfile, getStat } from '../../actions/profile_actions'
 
-
 const mapStateToProps = (state) => {
   return {
     myStocks: state.transactions,
