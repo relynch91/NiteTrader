@@ -26,8 +26,19 @@ export const clearPortfolio = () => {
 };
 
 export const getStocks = (stocks) => dispatch => {
+    console.log(stocks);
     PortUtil.fetchDBStockData(stocks)
-    .then(endPointStocks => dispatch(receivePortfolioStocks(endPointStocks)))
+    .then(endPointStocks => unpackStocks(endPointStocks))
+    // .then(endPointStocks => dispatch(receivePortfolioStocks(endPointStocks)))
+}
+
+export const unpackStocks = stocks => dispatch => {
+    let answer = {};
+    stocks.forEach(stock => {
+        let symbol = stocks[stock]
+    //     answer[symbol] = stocks[stock];
+        
+    })
 }
 // export const buildPortfolio = transactions => dispatch => {
 //     // dispatch(clearPortfolio());

@@ -6,6 +6,8 @@ import stocks from './alphaAPI_reducer';
 import transactions from './transactions_reducer';
 import portfolio from './portfolio_reducer';
 import profile from './profile_reducer';
+import ownedStocks from './currentStocks_reducer';
+
 
 const RootReducer = combineReducers({
     session,
@@ -14,7 +16,8 @@ const RootReducer = combineReducers({
     stocks,
     transactions,
     portfolio,
-    profile
+    profile,
+    ownedStocks
 });
 
 export default RootReducer;

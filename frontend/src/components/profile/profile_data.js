@@ -1,6 +1,5 @@
 import React from 'react';
 import './profile.css';
-// import { buildPortfolio } from '../../actions/portfolio_actions';
 
 class ProfileData extends React.Component {
   constructor(props) {
@@ -10,10 +9,11 @@ class ProfileData extends React.Component {
   }
 
   async componentDidMount() {
-    let { fetchTrades, userId, getStat, buildPortfolio } = this.props;
+    let { fetchTrades, userId, getStat, buildPortfolio, getStocks } = this.props;
     let trades = await fetchTrades(userId);
     let stockInfo = await buildPortfolio(trades.transactions.data);
-    console.log(stockInfo);
+    let tickers = Object.keys(stockInfo);
+    getStocks(tickers);
     getStat(userId);
   }
 

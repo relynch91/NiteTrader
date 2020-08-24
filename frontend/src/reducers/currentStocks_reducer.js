@@ -8,6 +8,7 @@ const currentStocksReducer = (state = {}, action) => {
     let nextState = Object.assign({}, state);
     switch (action.type) {
         case RECEIVE_PORTFOLIO_STOCKS:
+            debugger
             return Object.assign(nextState, action.stocks);
         case CLEAR_PORTFOLIO:
             return {}
