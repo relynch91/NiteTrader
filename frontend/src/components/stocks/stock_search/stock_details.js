@@ -20,27 +20,27 @@ export default class StockDetails extends React.Component {
     })
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.redirectTo !== prevProps.redirectTo) {
-      console.log(this.props.redirectTo);
-      return (<Redirect to={this.props.redirectTo} />)
-    // } else if (this.props.)
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.redirectTo !== prevProps.redirectTo) {
+  //     console.log(this.props.redirectTo);
+  //     return (<Redirect to={this.props.redirectTo} />)
+  //   }
+  // }
 
   handleChange() {
     return (e) => this.setState({ numShares: e.currentTarget.value })
   }
 
   handleClick(type){
-    let data = {}
-    data['type'] = type
-    this.setState({ transactionType: type })
+    // let data = {}
+    // data['type'] = type
+    // this.setState({ transactionType: type })
     this.handleSubmit(type);
   }
 
   handleSubmit(buy) {
     let { data, ticker } = this.state.mostRecentStockApiData;
+    debugger
     let cash = this.props.profile
     let numberOwned;
     if (this.props.portfolio[ticker]) {
@@ -58,9 +58,8 @@ export default class StockDetails extends React.Component {
       'buy': buy 
     }
     let cost = transactionData['price'] * transactionData['shares'];
-    console.log(cost);
-    
     if (transactionData['buy']) {
+      debugger
       return this.props.buyStock(transactionData)
     } else { 
       return this.props.sellStock(transactionData)  

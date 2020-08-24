@@ -21,7 +21,7 @@ const TransactionsReducer = (state = {}, action) => {
         case RECEIVE_TRANSACTION_ERRORS:
             return nextState;
         default:
-            return nextState;
+            return {};
     }
 };
 
