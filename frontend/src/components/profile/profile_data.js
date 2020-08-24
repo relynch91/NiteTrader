@@ -47,7 +47,7 @@ class ProfileData extends React.Component {
       percentage = - (1 - (parseFloat(totalValue) / 50000)) * 100
     }
 
-    let currentStocks = (Object.keys(portfolio).length > 0) ? (
+    let currentStocks = (Object.keys(stocks).length > 0) ? (
       <div className='profile-info-stocks'>
         <h1>Your Current Stocks:</h1>
         <ul className='profile-info-stocks-container'>
