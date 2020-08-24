@@ -59,7 +59,7 @@ export default function (oldState = preLoadedStateAlpha, action) {
                 globalEndPoint: action.stock.data,
             })
             return nextState;
-
+            
         case RECEIVE_END_POINT_FAILURE:
             Object.assign(nextState, {
                 globalEndPoint: {}

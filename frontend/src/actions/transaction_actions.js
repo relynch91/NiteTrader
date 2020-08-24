@@ -116,6 +116,7 @@ export const fetchTrades = userId => dispatch => {
         .then(
             (allTrades) => (dispatch(receiveAllUserTransactions(allTrades))))
         .catch(
+            
             (err) => (dispatch(receiveErrors(err)))
         )
 };

@@ -33,8 +33,9 @@ function newPricePerShareBuy(existingStock, newStock) {
 }
 
 export const fetchDBStockData = (transactions) => {
-    let activeTickers = Object.keys(transactions).filter(ticker => transactions[ticker].ownedShares > 0)
-    let allPromises = activeTickers.map(ticker => QuoteEP.fetchQuoteEndPointDB(ticker))
+    // let activeTickers = Object.keys(transactions).filter(ticker => transactions[ticker].ownedShares > 0)
+    let allPromises = transactions.map(ticker => QuoteEP.fetchQuoteEndPointDB(ticker))
+    
     return Promise.all(allPromises);
 }
 

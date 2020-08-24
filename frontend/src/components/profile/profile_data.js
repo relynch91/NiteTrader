@@ -1,5 +1,6 @@
 import React from 'react';
 import './profile.css';
+import { buildProfile } from '../../actions/profile_actions';
 
 class ProfileData extends React.Component {
   constructor(props) {
@@ -8,13 +9,21 @@ class ProfileData extends React.Component {
     this.buyOrSell = this.buyOrSell.bind(this);
   }
 
-  componentDidMount() {
-    this.props.buildProfile(this.props.myPortfolio);
+  async componentDidMount() {
+    let { fetchTrades, userId, getStat, endPointState,
+      buildPortfolio, getStocks, buildProfile } = this.props;
+    let trades = await fetchTrades(userId);
+    let stockInfo = await buildPortfolio(trades.transactions.data);
+    let tickers = Object.keys(stockInfo);
+    let dbFetch = await getStocks(tickers);
+    let stocks = endPointState(dbFetch);
+    buildProfile(stocks, stockInfo);
+    getStat(userId);
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.myPortfolio !== this.props.myPortfolio) {
-      this.props.buildProfile(this.props.myPortfolio);
+    if (this.props.ownedStocks !== prevProps.ownedStocks) {
+      // buildProfile();
     }
   }
 
@@ -29,6 +38,7 @@ class ProfileData extends React.Component {
     let transactions = this.props.trades;
     let profile = this.props.myProfile;
     let portfolio = this.props.myPortfolio;
+    let stocks = this.props.ownedStocks;
     let totalValue = parseFloat(profile['profileValue'] + parseFloat(profile['profileValueStat']));
     let percentage;
 
@@ -43,16 +53,13 @@ class ProfileData extends React.Component {
         <h1>Your Current Stocks:</h1>
         <ul className='profile-info-stocks-container'>
           {Object.keys(portfolio).map(compObj => {
-            if (!('quoteEndPointData' in portfolio[compObj])) {
-              portfolio[compObj]['quoteEndPointData'] = 0;
-            }
             return (
               <div>
                 <li className='profile-info-stocks-item'>
                   <h4>Ticker: {compObj}</h4>
                   <h4>Price Per Share: {parseFloat(portfolio[compObj]['pricePerShare']).toFixed(2)}</h4>
                   <h4>Shares Owned: {portfolio[compObj]['ownedShares']}</h4>
-                  <h4>Latest Price: {parseFloat(portfolio[compObj]['quoteEndPointData']['price'])}</h4>
+                  {/* <h4>Latest Price: { value || null} </h4> */}
                 </li>
               </div>
             )

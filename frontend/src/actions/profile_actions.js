@@ -4,7 +4,6 @@ export const RECEIVE_PROFILE_ERROR = 'RECEIVE_PROFILE_ERROR';
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 export const RECEIVE_PROFILE_STAT = 'RECEIVE_PROFILE_STAT';
 export const RECEIVE_PROFILE_STAT_UPDATE = 'RECEIVE_PROFILE_STAT_UPDATE';
-
 export const RECEIVE_PROFILE_VALUES = 'RECEIVE_PROFILE_VALUES';
 
 export const receiveProfileError = profileError => {
@@ -47,14 +46,14 @@ export const clearProfile = () => {
         type: CLEAR_PROFILE,
     })
 }
-// create stat db entry when user signs up
+
 export const buildStat = (user) => dispatch => { 
     let userID = {userID: user.data.userID};
     APIUtil.statCreate(userID).then(
         theUser => receiveProfileStat(theUser))
         .catch(error => dispatch(receiveProfileError(error)))
 }
-// returns stat db request on login
+
 export const getStat = userID => dispatch => { 
     APIUtil.statFetch(userID)
         .then(
@@ -65,33 +64,22 @@ export const getStat = userID => dispatch => {
 }
 
 export const updateStat = update => dispatch => {
-
     APIUtil.statUpdate(update).then(
         updated => dispatch(receiveProfileStatUpdate(updated)))
         .catch(error => dispatch(receiveProfileError(error)))
 }
 
-//returns value of all currently owned stocks
-export const buildProfile = (stocks) => dispatch => { 
-    let profileValue = 0;
-    if (!stocks) {
-        return null;
-    }
+export const buildProfile = (stocks, info) => dispatch => {
     let tickers = Object.keys(stocks);
-    for (let i = 0; i < tickers.length; i ++) {
-        let ticker = stocks[tickers[i]];
-        console.log(ticker)
-
-        let pricePerShare = ticker['quoteEndPointData']['price'];
-        let numberShares = ticker['ownedShares'];
-        let totalValue = numberShares * pricePerShare;
-        profileValue += totalValue;
-    }
-    
-    // dispatch(receiveProfileValue(profileValue));
-
+    let total = 0;
+    tickers.forEach(ticker => {
+        let currentPrice = stocks[ticker]['price']
+        let numShares = info[ticker]['ownedShares'];
+        let value = (currentPrice * numShares);
+        total += value;
+    })
+    dispatch(receiveProfileValue(total))
 }
-
 
 export const getProfileValues = userID => dispatch => {
     APIUtil.profilesFetch(userID).then(
