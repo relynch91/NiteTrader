@@ -7,6 +7,7 @@ import { intraDayAPICall,
 
 const mapStateToProps = (state) => ({
     stockDetails: state.stocks,
+    stock: state.stock
 });
 
 const mapDispatchToProps = (dispatch) => ({

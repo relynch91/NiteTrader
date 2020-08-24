@@ -40,7 +40,6 @@ export default class StockDetails extends React.Component {
 
   handleSubmit(buy) {
     let { data, ticker } = this.state.mostRecentStockApiData;
-    debugger
     let cash = this.props.profile
     let numberOwned;
     if (this.props.portfolio[ticker]) {
@@ -57,9 +56,7 @@ export default class StockDetails extends React.Component {
       'shares': this.state.numShares, 
       'buy': buy 
     }
-    let cost = transactionData['price'] * transactionData['shares'];
     if (transactionData['buy']) {
-      debugger
       return this.props.buyStock(transactionData)
     } else { 
       return this.props.sellStock(transactionData)  
@@ -106,18 +103,18 @@ export default class StockDetails extends React.Component {
       pricePerShare = parseFloat(this.props.portfolio[ticker]['pricePerShare']).toFixed(2);
     } else {
       numberOwned = 0;
-      pricePerShare = "0";
+      pricePerShare = "0.00";
     }
     return (
       <div className='the-details-stock-api'>
         <div className="stock-details-goods">
-          <h1>Information for {ticker}:</h1>
-          <h4>Week High: ${(parseFloat(data["2. high"]).toFixed(2))}</h4>
-          <h4>Week Low: ${(parseFloat(data["3. low"]).toFixed(2))}</h4>
-          <h4>Latest Price as of {recentDate}: ${(parseFloat(dayStock).toFixed(2))}</h4>
-          <h4>Number of Shares Owned: {numberOwned}</h4>
-          <h4>Average Price Per Share: {pricePerShare}</h4>
-          <h4>Current amount of cash: $ {cash} </h4>
+          <h1>Information for { ticker }:</h1>
+          <h4>Week High: ${parseFloat(data["2. high"]).toFixed(2) }</h4>
+          <h4>Week Low: ${ parseFloat(data["3. low"]).toFixed(2) }</h4>
+          <h4>Latest Price as of {recentDate}: ${ parseFloat(dayStock).toFixed(2) }</h4>
+          <h4>Number of Shares Owned: { numberOwned }</h4>
+          <h4>Average Price Per Share: { parseFloat(pricePerShare).toFixed(2) }</h4>
+          <h4>Current amount of cash: $ { parseFloat(cash).toFixed(2) } </h4>
 
         </div>
         <div className='stock-buy-sell-container'>

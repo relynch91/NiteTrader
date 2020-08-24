@@ -10,15 +10,14 @@ export default class PortfolioBarChart extends PureComponent {
         this.state = {};
     }
 
-    componentDidMount(){
-        this.setState({ data: formatPortfolioData(this.props.portfolio) });
-    }
+    // componentDidMount(){
+    //     this.setState({ data: formatPortfolioData(this.props.portfolio) });
+    // }
 
     render() {
-        let { portfolio } = this.props;
-        let data = formatPortfolioData(this.props.portfolio)
+        let data = formatPortfolioData(this.props.ownedStocks)
 
-        if (Object.keys(portfolio).length === 0) { return null };
+        if (Object.keys(data).length === 0) { return null };
         return (
             <div className='portfolio-graph'>
                 <div className="portfolio-graph-container">

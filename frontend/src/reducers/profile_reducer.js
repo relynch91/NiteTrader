@@ -9,6 +9,7 @@ import {
 const ProfileReducer = (state = {}, action) => {
     Object.freeze(state);
     let nextState = Object.assign({}, state);
+    // debugger
     switch (action.type) {
         case RECEIVE_PROFILE_VALUE:
             Object.assign(nextState, {
@@ -31,15 +32,9 @@ const ProfileReducer = (state = {}, action) => {
             })
             return nextState;
         case CLEAR_PROFILE:
-            return {
-                profileValueStat: 0,
-                profileValue: 0
-            }
+            return {};
         default:
-            return {
-                profileValueStat: 0,
-                profileValue: 0
-            }
+            return nextState;
     }
 };
 
