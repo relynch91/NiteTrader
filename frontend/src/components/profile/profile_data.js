@@ -1,6 +1,5 @@
 import React from 'react';
 import './profile.css';
-import { buildProfile } from '../../actions/profile_actions';
 
 class ProfileData extends React.Component {
   constructor(props) {
@@ -17,7 +16,7 @@ class ProfileData extends React.Component {
     let tickers = Object.keys(stockInfo);
     let dbFetch = await getStocks(tickers);
     let stocks = endPointState(dbFetch);
-    buildProfile(stocks, stockInfo);
+    let theProfile = await buildProfile(stocks, stockInfo);
     getStat(userId);
   }
 
@@ -59,7 +58,7 @@ class ProfileData extends React.Component {
                   <h4>Ticker: {compObj}</h4>
                   <h4>Price Per Share: {parseFloat(portfolio[compObj]['pricePerShare']).toFixed(2)}</h4>
                   <h4>Shares Owned: {portfolio[compObj]['ownedShares']}</h4>
-                  {/* <h4>Latest Price: { value || null} </h4> */}
+                  <h4>Latest Price: {stocks[compObj]['price'] || null} </h4>
                 </li>
               </div>
             )
