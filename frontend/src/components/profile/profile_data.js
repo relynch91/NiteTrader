@@ -1,5 +1,6 @@
 import React from 'react';
 import './profile.css';
+import { buildProfile } from '../../actions/profile_actions';
 
 class ProfileData extends React.Component {
   constructor(props) {
@@ -9,17 +10,20 @@ class ProfileData extends React.Component {
   }
 
   async componentDidMount() {
-    let { fetchTrades, userId, getStat, buildPortfolio, getStocks } = this.props;
+    let { fetchTrades, userId, getStat, endPointState,
+      buildPortfolio, getStocks, buildProfile } = this.props;
     let trades = await fetchTrades(userId);
     let stockInfo = await buildPortfolio(trades.transactions.data);
     let tickers = Object.keys(stockInfo);
-    getStocks(tickers);
+    let dbFetch = await getStocks(tickers);
+    let stocks = endPointState(dbFetch);
+    buildProfile(stocks, stockInfo);
     getStat(userId);
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.myPortfolio !== prevProps.myPortfolio) {
-      this.props.buildProfile(this.props.myPortfolio)
+    if (this.props.ownedStocks !== prevProps.ownedStocks) {
+      // buildProfile();
     }
   }
 
@@ -34,6 +38,7 @@ class ProfileData extends React.Component {
     let transactions = this.props.trades;
     let profile = this.props.myProfile;
     let portfolio = this.props.myPortfolio;
+    let stocks = this.props.ownedStocks;
     let totalValue = parseFloat(profile['profileValue'] + parseFloat(profile['profileValueStat']));
     let percentage;
 
@@ -54,7 +59,7 @@ class ProfileData extends React.Component {
                   <h4>Ticker: {compObj}</h4>
                   <h4>Price Per Share: {parseFloat(portfolio[compObj]['pricePerShare']).toFixed(2)}</h4>
                   <h4>Shares Owned: {portfolio[compObj]['ownedShares']}</h4>
-                  <h4>Latest Price: N/A </h4>
+                  {/* <h4>Latest Price: { value || null} </h4> */}
                 </li>
               </div>
             )

@@ -64,21 +64,21 @@ export const getStat = userID => dispatch => {
 }
 
 export const updateStat = update => dispatch => {
-
     APIUtil.statUpdate(update).then(
         updated => dispatch(receiveProfileStatUpdate(updated)))
         .catch(error => dispatch(receiveProfileError(error)))
 }
 
-export const buildProfile = (stocks) => dispatch => {
-    console.log(stocks);
-    let profileValue = 0;
-    if (!stocks) {
-        return null;
-    }
+export const buildProfile = (stocks, info) => dispatch => {
     let tickers = Object.keys(stocks);
+    let total = 0;
     tickers.forEach(ticker => {
+        let currentPrice = stocks[ticker]['price']
+        let numShares = info[ticker]['ownedShares'];
+        let value = (currentPrice * numShares);
+        total += value;
     })
+    dispatch(receiveProfileValue(total))
 }
 
 export const getProfileValues = userID => dispatch => {
