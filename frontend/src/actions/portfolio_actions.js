@@ -32,7 +32,9 @@ export const getStocks = (stocks) => dispatch => {
 export const endPointState = dbStocks => dispatch => {
     let answer = {};
     dbStocks.forEach(stock => {
-        answer[stock.data.symbol] = stock.data
+        if (stock.data !== null) {
+            answer[stock.data.symbol] = stock.data
+        }
     })
     dispatch(receivePortfolioStocks(answer));
     return answer;

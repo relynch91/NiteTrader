@@ -4,8 +4,7 @@ import { receiveProfileStat, receiveProfileError } from './profile_actions';
 import globalEndPoint  from '../frontConfig/endPointRestructure';
 import key from '../frontConfig/frontKeys';
 import { receiveEndPointSuccess, receiveEndPointFailure } from './alphaApi_actions';
-import { receiveRedirect } from './ui_actions';
-
+import { getStat } from './profile_actions';
 const axios = require('axios').default;
 
 export const RECEIVE_BUY_TRANSACTION = 'RECEIVE_BUY_TRANSACTION';
@@ -48,37 +47,44 @@ export const receiveErrors = errors => {
     })
 };
 
+export const handleBuy = transactionDetails => dispatch => {
+    let quantity = parseFloat(transactionDetails.shares);
+    let price = parseFloat(transactionDetails.price);
+    let total = quantity * price;
+    if ((transactionDetails.cash - total) < 0) {
+        let error = { transactionError: "Sorry, you do not have enough money for that transaction." };
+        dispatch(receiveErrors(error));
+    } else {
+        dispatch(buyStock(transactionDetails));
+        dispatch(cashValue(transactionDetails));
+    }
+    // dispatch(receiveBuyTransaction(transactionDetails));
+}
+
 export const buyStock = transaction => dispatch => {
     TransactionAPIUtil.buyStock(transaction)
-        .then(
-            (newTrade) => (dispatch(cashValue(newTrade)),
-            dispatch(receiveBuyTransaction(newTrade)),
-            dispatch(receiveRedirect('/profile'))
-            ))
-        .catch(
-            (errors) => dispatch(receiveErrors(errors))
-        )
+        .then(newTrade => dispatch(receiveBuyTransaction(newTrade)))
+        .catch( errors => dispatch(receiveErrors(errors)))
 };
 
 export const cashValue = trade => dispatch => {
-    let quantity = parseFloat(trade.data.shares);
-    let price = parseFloat(trade.data.price);
-    let ticker = trade.data.ticker;
-    if (trade.data.buy) {
-        price = (price * (-1))
-    }
-    let sum = quantity * price; 
-    let update = {
-        userID: trade.data.userId,
-        value: sum
-    }
+    console.log(trade);
+    // let quantity = parseFloat(trade.data.shares);
+    // let price = parseFloat(trade.data.price);
+    // let ticker = trade.data.ticker;
+    // if (trade.data.buy) {
+    //     price = (price * (-1))
+    // }
+    // let sum = quantity * price;
+    // let update = {
+    //     userID: trade.data.userId,
+    //     value: sum
+    // }
 
-    ProfileAPIUtil.statUpdate(update).then(
-        () => 
-        fireAPI(ticker),
-        dispatch(receiveProfileStat(update))
-        )
-        .catch(error => dispatch(receiveProfileError(error)))
+    // ProfileAPIUtil.statUpdate(update).then(
+    //     () => dispatch(getStat(update.userID)),
+    //         fireAPI(ticker))
+    //     .catch(error => dispatch(receiveProfileError(error)))
 }
 
 export const fireAPI = (ticker) => dispatch => {

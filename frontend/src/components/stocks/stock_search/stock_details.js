@@ -1,12 +1,10 @@
 import React from 'react';
 import './stock_details.css'
 import * as StockUtil from '../../../util/stocks_api_util';
-import { Redirect } from "react-router";
 
 export default class StockDetails extends React.Component {
   constructor(props){
     super(props)
-    this.handleSubmit = this.handleSubmit.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.state = {
       numShares: 0,
@@ -20,25 +18,11 @@ export default class StockDetails extends React.Component {
     })
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.redirectTo !== prevProps.redirectTo) {
-  //     console.log(this.props.redirectTo);
-  //     return (<Redirect to={this.props.redirectTo} />)
-  //   }
-  // }
-
   handleChange() {
     return (e) => this.setState({ numShares: e.currentTarget.value })
   }
 
-  handleClick(type){
-    // let data = {}
-    // data['type'] = type
-    // this.setState({ transactionType: type })
-    this.handleSubmit(type);
-  }
-
-  handleSubmit(buy) {
+  handleClick(buy) {
     let { data, ticker } = this.state.mostRecentStockApiData;
     let cash = this.props.profile
     let numberOwned;
@@ -52,12 +36,14 @@ export default class StockDetails extends React.Component {
       'ticker': ticker,
       'cash': cash,
       'price': parseFloat(data["4. close"]), 
-      'ownedShares': numberOwned,
+      'ownedShares': numberOwned['ownedShares'],
       'shares': this.state.numShares, 
       'buy': buy 
     }
     if (transactionData['buy']) {
-      return this.props.buyStock(transactionData)
+      // return this.props.buyStock(transactionData)
+      return this.props.handleBuy(transactionData)
+
     } else { 
       return this.props.sellStock(transactionData)  
     }
@@ -134,9 +120,7 @@ export default class StockDetails extends React.Component {
                   onClick={() => this.handleClick(false)}> Sell
                 </button>
               </div>
-              <div>
-                <h1>{transactionErrors['notEnoughShares']}</h1>
-              </div>
+              <h1> { transactionErrors['transactionError'] } </h1>
           </div>
         </div>
       </div>
