@@ -58,7 +58,6 @@ export const handleBuy = transactionDetails => dispatch => {
         dispatch(buyStock(transactionDetails));
         dispatch(cashValue(transactionDetails));
     }
-    // dispatch(receiveBuyTransaction(transactionDetails));
 }
 
 export const buyStock = transaction => dispatch => {
@@ -69,22 +68,21 @@ export const buyStock = transaction => dispatch => {
 
 export const cashValue = trade => dispatch => {
     console.log(trade);
-    // let quantity = parseFloat(trade.data.shares);
-    // let price = parseFloat(trade.data.price);
-    // let ticker = trade.data.ticker;
-    // if (trade.data.buy) {
-    //     price = (price * (-1))
-    // }
-    // let sum = quantity * price;
-    // let update = {
-    //     userID: trade.data.userId,
-    //     value: sum
-    // }
-
-    // ProfileAPIUtil.statUpdate(update).then(
-    //     () => dispatch(getStat(update.userID)),
-    //         fireAPI(ticker))
-    //     .catch(error => dispatch(receiveProfileError(error)))
+    let quantity = parseFloat(trade.shares);
+    let price = parseFloat(trade.price);
+    let cash = trade.cash;
+    let sum = quantity * price;
+    // let value = cash - sum;
+    let update = {
+        userID: trade.userId,
+        value: (-sum)
+    }
+    let ticker = trade.ticker;
+    ProfileAPIUtil.statUpdate(update).then(
+        dispatch(getStat(update.userID)),
+        dispatch(fireAPI(ticker))
+        )
+        .catch(error => dispatch(receiveProfileError(error)))
 }
 
 export const fireAPI = (ticker) => dispatch => {
@@ -93,14 +91,17 @@ export const fireAPI = (ticker) => dispatch => {
     .then(
         stockData => dispatch(updateDB(stockData))
     )
+    .catch(error => dispatch(receiveErrors(error)))
 };
 
 // async function updateDB(ticker) {
 export const updateDB = (stockData) => dispatch => {
+
     let formattedData = globalEndPoint(stockData.data['Global Quote']);
+    console.log(formattedData);
     axios.patch(
-        'https://nitetrader.herokuapp.com/api/stock_api/quoteendpointstock/update', 
-        formattedData).then(
+        'https://nitetrader.herokuapp.com/api/stock_api/quoteendpointstock/update', formattedData)
+        .then(
             result => dispatch(receiveEndPointSuccess(result))
         )
         .catch(error => dispatch(receiveEndPointFailure(error)))

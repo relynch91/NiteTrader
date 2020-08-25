@@ -23,6 +23,7 @@ const globalEndPoint = rawStocks => {
         change: changeData,
         changePercent: changePercentData
     };
+    console.log(formatted);
     return formatted;
 }
 

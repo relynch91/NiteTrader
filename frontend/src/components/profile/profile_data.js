@@ -20,11 +20,11 @@ class ProfileData extends React.Component {
     getStat(userId);
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.ownedStocks !== prevProps.ownedStocks) {
-      // buildProfile();
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.myStocks !== prevProps.myStocks) {
+  //     // this.props.buildPortfolio(this.props.myStocks);
+  //   }
+  // }
 
   buyOrSell(value) {
     if (value) {
@@ -42,7 +42,7 @@ class ProfileData extends React.Component {
     let percentage;
 
     if (totalValue > 50000) {
-      percentage = (parseFloat(profile['profileValue']) / 50000);
+      percentage = ((totalValue / 50000) - 1) * 100;
     } else {
       percentage = - (1 - (parseFloat(totalValue) / 50000)) * 100
     }

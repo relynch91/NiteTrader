@@ -18,6 +18,12 @@ export default class StockDetails extends React.Component {
     })
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.myStocks !== prevProps.myStocks) {
+      // this.props.buildPortfolio(this.props.myStocks);
+    }
+  }
+
   handleChange() {
     return (e) => this.setState({ numShares: e.currentTarget.value })
   }
