@@ -1,12 +1,10 @@
 import React from 'react';
 import './stock_details.css'
 import * as StockUtil from '../../../util/stocks_api_util';
-import { Redirect } from "react-router";
 
 export default class StockDetails extends React.Component {
   constructor(props){
     super(props)
-    this.handleSubmit = this.handleSubmit.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.state = {
       numShares: 0,
@@ -21,10 +19,8 @@ export default class StockDetails extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.redirectTo !== prevProps.redirectTo) {
-      console.log(this.props.redirectTo);
-      return (<Redirect to={this.props.redirectTo} />)
-    // } else if (this.props.)
+    if (this.props.myStocks !== prevProps.myStocks) {
+      // this.props.buildPortfolio(this.props.myStocks);
     }
   }
 
@@ -32,14 +28,7 @@ export default class StockDetails extends React.Component {
     return (e) => this.setState({ numShares: e.currentTarget.value })
   }
 
-  handleClick(type){
-    let data = {}
-    data['type'] = type
-    this.setState({ transactionType: type })
-    this.handleSubmit(type);
-  }
-
-  handleSubmit(buy) {
+  handleClick(buy) {
     let { data, ticker } = this.state.mostRecentStockApiData;
     let cash = this.props.profile
     let numberOwned;
@@ -53,15 +42,14 @@ export default class StockDetails extends React.Component {
       'ticker': ticker,
       'cash': cash,
       'price': parseFloat(data["4. close"]), 
-      'ownedShares': numberOwned,
+      'ownedShares': numberOwned['ownedShares'],
       'shares': this.state.numShares, 
       'buy': buy 
     }
-    let cost = transactionData['price'] * transactionData['shares'];
-    console.log(cost);
-    
     if (transactionData['buy']) {
-      return this.props.buyStock(transactionData)
+      // return this.props.buyStock(transactionData)
+      return this.props.handleBuy(transactionData)
+
     } else { 
       return this.props.sellStock(transactionData)  
     }
@@ -107,18 +95,18 @@ export default class StockDetails extends React.Component {
       pricePerShare = parseFloat(this.props.portfolio[ticker]['pricePerShare']).toFixed(2);
     } else {
       numberOwned = 0;
-      pricePerShare = "0";
+      pricePerShare = "0.00";
     }
     return (
       <div className='the-details-stock-api'>
         <div className="stock-details-goods">
-          <h1>Information for {ticker}:</h1>
-          <h4>Week High: ${(parseFloat(data["2. high"]).toFixed(2))}</h4>
-          <h4>Week Low: ${(parseFloat(data["3. low"]).toFixed(2))}</h4>
-          <h4>Latest Price as of {recentDate}: ${(parseFloat(dayStock).toFixed(2))}</h4>
-          <h4>Number of Shares Owned: {numberOwned}</h4>
-          <h4>Average Price Per Share: {pricePerShare}</h4>
-          <h4>Current amount of cash: $ {cash} </h4>
+          <h1>Information for { ticker }:</h1>
+          <h4>Week High: ${parseFloat(data["2. high"]).toFixed(2) }</h4>
+          <h4>Week Low: ${ parseFloat(data["3. low"]).toFixed(2) }</h4>
+          <h4>Latest Price as of {recentDate}: ${ parseFloat(dayStock).toFixed(2) }</h4>
+          <h4>Number of Shares Owned: { numberOwned }</h4>
+          <h4>Average Price Per Share: { parseFloat(pricePerShare).toFixed(2) }</h4>
+          <h4>Current amount of cash: $ { parseFloat(cash).toFixed(2) } </h4>
 
         </div>
         <div className='stock-buy-sell-container'>
@@ -138,9 +126,7 @@ export default class StockDetails extends React.Component {
                   onClick={() => this.handleClick(false)}> Sell
                 </button>
               </div>
-              <div>
-                <h1>{transactionErrors['notEnoughShares']}</h1>
-              </div>
+              <h1> { transactionErrors['transactionError'] } </h1>
           </div>
         </div>
       </div>

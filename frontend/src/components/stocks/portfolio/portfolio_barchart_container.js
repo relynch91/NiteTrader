@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import PortfolioBarChart from './portfolio_barchart';
 
 const mapStateToProps = (state) => ({
-    portfolio: state.portfolio,
+    ownedStocks: state.ownedStocks,
 })
 
 export default connect(mapStateToProps, null)(PortfolioBarChart);

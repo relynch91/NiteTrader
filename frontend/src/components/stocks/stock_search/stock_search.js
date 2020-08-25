@@ -40,8 +40,8 @@ export default class StockSearch extends React.Component {
     }
     const stockSearch = await (this.tickerCall(stockSearchAPI));
     this.apiLogic(stockSearch);
-    this.setState({ stock: "", count: 
-      (this.props.stockDetails.count += 1) });
+    // this.setState({ stock: "", count: 
+    //   (this.props.stockDetails.count += 1) });
   }
 
   searchIsTicker (ticker) {
@@ -66,7 +66,6 @@ export default class StockSearch extends React.Component {
     this.props.intraDayAPICall(intraDayAPI);
     const weeklyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=${this.state.ticker}&apikey=${key.alphaVantage}`;
     this.props.weeklyAPICall(weeklyAPI);
-    this.setState({ stock: ""});
   }
   
   update() {
@@ -99,7 +98,7 @@ export default class StockSearch extends React.Component {
             <div className='stock-search-form-box'>
               <input
               type="text"
-              value={this.state.stock}
+              value={this.props.stock}
               onChange={this.update()}
               className="stock-search-form-input"
               placeholder="Enter a Stock Company Name or Ticker"

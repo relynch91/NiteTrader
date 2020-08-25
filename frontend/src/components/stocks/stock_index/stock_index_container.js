@@ -7,6 +7,7 @@ const mapStateToProps = (state) => ({
   myStocks: state.transactions,
   myPortfolio: state.portfolio,
   userId: state.session.user.id,
+  ownedStocks: state.ownedStocks
 });
 
 const mapDispatchToProps = dispatch => ({

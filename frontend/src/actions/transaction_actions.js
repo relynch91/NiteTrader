@@ -4,8 +4,7 @@ import { receiveProfileStat, receiveProfileError } from './profile_actions';
 import globalEndPoint  from '../frontConfig/endPointRestructure';
 import key from '../frontConfig/frontKeys';
 import { receiveEndPointSuccess, receiveEndPointFailure } from './alphaApi_actions';
-import { receiveRedirect } from './ui_actions';
-
+import { getStat } from './profile_actions';
 const axios = require('axios').default;
 
 export const RECEIVE_BUY_TRANSACTION = 'RECEIVE_BUY_TRANSACTION';
@@ -48,35 +47,40 @@ export const receiveErrors = errors => {
     })
 };
 
+export const handleBuy = transactionDetails => dispatch => {
+    let quantity = parseFloat(transactionDetails.shares);
+    let price = parseFloat(transactionDetails.price);
+    let total = quantity * price;
+    if ((transactionDetails.cash - total) < 0) {
+        let error = { transactionError: "Sorry, you do not have enough money for that transaction." };
+        dispatch(receiveErrors(error));
+    } else {
+        dispatch(buyStock(transactionDetails));
+        dispatch(cashValue(transactionDetails));
+    }
+}
+
 export const buyStock = transaction => dispatch => {
     TransactionAPIUtil.buyStock(transaction)
-        .then(
-            (newTrade) => (dispatch(cashValue(newTrade)),
-            dispatch(receiveBuyTransaction(newTrade)),
-            dispatch(receiveRedirect('/profile'))
-            ))
-        .catch(
-            (errors) => dispatch(receiveErrors(errors))
-        )
+        .then(newTrade => dispatch(receiveBuyTransaction(newTrade)))
+        .catch( errors => dispatch(receiveErrors(errors)))
 };
 
 export const cashValue = trade => dispatch => {
-    let quantity = parseFloat(trade.data.shares);
-    let price = parseFloat(trade.data.price);
-    let ticker = trade.data.ticker;
-    if (trade.data.buy) {
-        price = (price * (-1))
-    }
-    let sum = quantity * price; 
+    console.log(trade);
+    let quantity = parseFloat(trade.shares);
+    let price = parseFloat(trade.price);
+    let cash = trade.cash;
+    let sum = quantity * price;
+    // let value = cash - sum;
     let update = {
-        userID: trade.data.userId,
-        value: sum
+        userID: trade.userId,
+        value: (-sum)
     }
-
+    let ticker = trade.ticker;
     ProfileAPIUtil.statUpdate(update).then(
-        () => 
-        fireAPI(ticker),
-        dispatch(receiveProfileStat(update))
+        dispatch(getStat(update.userID)),
+        dispatch(fireAPI(ticker))
         )
         .catch(error => dispatch(receiveProfileError(error)))
 }
@@ -87,14 +91,17 @@ export const fireAPI = (ticker) => dispatch => {
     .then(
         stockData => dispatch(updateDB(stockData))
     )
+    .catch(error => dispatch(receiveErrors(error)))
 };
 
 // async function updateDB(ticker) {
 export const updateDB = (stockData) => dispatch => {
+
     let formattedData = globalEndPoint(stockData.data['Global Quote']);
+    console.log(formattedData);
     axios.patch(
-        'https://nitetrader.herokuapp.com/api/stock_api/quoteendpointstock/update', 
-        formattedData).then(
+        'https://nitetrader.herokuapp.com/api/stock_api/quoteendpointstock/update', formattedData)
+        .then(
             result => dispatch(receiveEndPointSuccess(result))
         )
         .catch(error => dispatch(receiveEndPointFailure(error)))
