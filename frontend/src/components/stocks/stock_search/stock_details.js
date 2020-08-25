@@ -20,6 +20,7 @@ export default class StockDetails extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.myStocks !== prevProps.myStocks) {
+      
     }
   }
 
@@ -87,7 +88,6 @@ export default class StockDetails extends React.Component {
 
     if (Object.keys(transactionErrors).length === 0) {
     }
-
     if (ownedStocks.includes(ticker)) {
       numberOwned = this.props.portfolio[ticker]['ownedShares'];
       pricePerShare = parseFloat(this.props.portfolio[ticker]['pricePerShare']).toFixed(2);

@@ -13,15 +13,8 @@ class Portfolio extends React.Component {
   }
 
   render() {
-    let ownedStocks = this.props.ownedStocks;
     let newUser = Object.keys(this.props.trades).length === 0 ? true : false;
-    let date;
-    if (ownedStocks) {
-      console.log(ownedStocks[Object.keys(ownedStocks)[0]].latestTradingDay);
-      // date = ownedStocks[Object.keys(ownedStocks)[0]].latestTradingDay;
-    } else {
-      date = null;
-    }
+
     if (newUser) {
       return (
         <div className="new-user-welcome-container">
@@ -33,7 +26,7 @@ class Portfolio extends React.Component {
       return (
         <div className="portfolio-container">
           <div className="portfolio-header">
-            <h1> Your Portfolio Performance {date} </h1>  
+            <h1> Your Portfolio Performance </h1>  
           </div>
           <div className='portfolio-data'>
             <StockIndexContainer />
