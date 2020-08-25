@@ -67,12 +67,10 @@ export const buyStock = transaction => dispatch => {
 };
 
 export const cashValue = trade => dispatch => {
-    console.log(trade);
     let quantity = parseFloat(trade.shares);
     let price = parseFloat(trade.price);
     let cash = trade.cash;
     let sum = quantity * price;
-    // let value = cash - sum;
     let update = {
         userID: trade.userId,
         value: (-sum)

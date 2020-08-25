@@ -32,9 +32,9 @@ export const receiveEndPointSuccess = (stock) => ({
     stock
 })
 
-export const receiveEndPointFailure = (stock) => ({
+export const receiveEndPointFailure = (error) => ({
     type: RECEIVE_END_POINT_FAILURE,
-    stock
+    error
 })
 
 export const receiveIntraDay = () => ({

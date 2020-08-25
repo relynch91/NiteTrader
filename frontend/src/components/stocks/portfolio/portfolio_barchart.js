@@ -10,19 +10,18 @@ export default class PortfolioBarChart extends PureComponent {
         this.state = {};
     }
 
-    // componentDidMount(){
-    //     this.setState({ data: formatPortfolioData(this.props.portfolio) });
-    // }
-
     render() {
-        let data = formatPortfolioData(this.props.ownedStocks)
 
+        let data = formatPortfolioData(this.props.ownedStocks)
+        let date = this.props.ownedStocks[Object.keys(this.props.ownedStocks)[0]].latestTradingDay;
+        console.log(date);
         if (Object.keys(data).length === 0) { return null };
+
         return (
             <div className='portfolio-graph'>
                 <div className="portfolio-graph-container">
                 <h1>
-                    Currently Owned Stocks Performance (Single Day Percentage)
+                    Stocks Performance for { date } (Single Day Percentage)
                 </h1>
                 <BarChart
                     width={420}

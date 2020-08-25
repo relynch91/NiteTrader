@@ -1,5 +1,5 @@
 const globalEndPoint = rawStocks => {
-    console.log(rawStocks);
+
     const symbolData = rawStocks["01. symbol"];
     const openData = parseInt(rawStocks["02. open"]);
     const highData = rawStocks["03. high"];
@@ -23,7 +23,6 @@ const globalEndPoint = rawStocks => {
         change: changeData,
         changePercent: changePercentData
     };
-    console.log(formatted);
     return formatted;
 }
 
