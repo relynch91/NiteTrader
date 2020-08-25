@@ -29,15 +29,16 @@ export default class StockDetails extends React.Component {
 
   handleClick(buy) {
     let { data, ticker } = this.state.mostRecentStockApiData;
-    let cash = this.props.profile
+    let { profile, portfolio, handleBuy, handleSell, userId } = this.props;
+    let cash = profile
     let numberOwned;
-    if (this.props.portfolio[ticker]) {
-      numberOwned = this.props.portfolio[ticker];
+    if (portfolio[ticker]) {
+      numberOwned = portfolio[ticker];
     } else {
       numberOwned = { ownedShares: 0 }
     }
     let transactionData = {
-      'userId': this.props.userId,
+      'userId': userId,
       'ticker': ticker,
       'cash': cash,
       'price': parseFloat(data["4. close"]), 
@@ -46,10 +47,9 @@ export default class StockDetails extends React.Component {
       'buy': buy 
     }
     if (transactionData['buy']) {
-      return this.props.handleBuy(transactionData)
-
+      return handleBuy(transactionData)
     } else { 
-      return this.props.sellStock(transactionData)  
+      return handleSell(transactionData)  
     }
   }
 

@@ -45,7 +45,7 @@ router.post('/sell', function(req, res) {
     let shares = req.body.shares;
     // let price = req.body.price;
     // let totalPrice = parseFloat(shares) * parseFloat(price);
-    let ownedShares = parseInt(req.body.ownedShares.ownedShares);
+    let ownedShares = parseInt(req.body.ownedShares);
 
     if (shares <= ownedShares) {
         let newTransaction = new Transaction({

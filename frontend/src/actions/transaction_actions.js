@@ -1,6 +1,6 @@
 import * as TransactionAPIUtil from '../util/transaction_api_util';
 import * as ProfileAPIUtil from '../util/profile_api_util';
-import { receiveProfileStat, receiveProfileError } from './profile_actions';
+import { receiveProfileError } from './profile_actions';
 import globalEndPoint  from '../frontConfig/endPointRestructure';
 import key from '../frontConfig/frontKeys';
 import { receiveEndPointSuccess, receiveEndPointFailure } from './alphaApi_actions';
@@ -56,9 +56,26 @@ export const handleBuy = transactionDetails => dispatch => {
         dispatch(receiveErrors(error));
     } else {
         dispatch(buyStock(transactionDetails));
-        dispatch(cashValue(transactionDetails));
+        dispatch(cashValueBuy(transactionDetails));
     }
 }
+
+export const handleSell = transactionDetails => dispatch => {
+    let { ownedShares, shares } = transactionDetails;
+    if ((ownedShares < shares) || (ownedShares < 1)) {
+        let error = { transactionError: "Sorry, you don't own enough shares for that trade." }
+        dispatch(receiveErrors(error));
+    } else {
+        dispatch(sellStock(transactionDetails));
+        dispatch(cashValueSell(transactionDetails));
+    }
+}
+
+export const sellStock = transaction => dispatch => {
+    TransactionAPIUtil.sellStock(transaction)
+        .then(newTrade =>  dispatch(receiveSellTransaction(newTrade)))
+        .catch( err => (dispatch(receiveErrors(err))))
+};
 
 export const buyStock = transaction => dispatch => {
     TransactionAPIUtil.buyStock(transaction)
@@ -66,62 +83,56 @@ export const buyStock = transaction => dispatch => {
         .catch( errors => dispatch(receiveErrors(errors)))
 };
 
-export const cashValue = trade => dispatch => {
+export const cashValueSell = trade => dispatch => {
+    console.log(trade);
     let quantity = parseFloat(trade.shares);
     let price = parseFloat(trade.price);
-    let cash = trade.cash;
+    let sum = quantity * price;
+    let update = {
+        userID: trade.userId,
+        value: (sum)
+    }
+    let ticker = trade.ticker;
+    ProfileAPIUtil.statUpdate(update)
+        .then(
+            dispatch(getStat(update.userID)),
+            dispatch(fireAPI(ticker)))
+        .catch(error => dispatch(receiveProfileError(error)))
+};
+
+export const cashValueBuy = trade => dispatch => {
+    let quantity = parseFloat(trade.shares);
+    let price = parseFloat(trade.price);
     let sum = quantity * price;
     let update = {
         userID: trade.userId,
         value: (-sum)
     }
     let ticker = trade.ticker;
-    ProfileAPIUtil.statUpdate(update).then(
-        dispatch(getStat(update.userID)),
-        dispatch(fireAPI(ticker))
-        )
+    ProfileAPIUtil.statUpdate(update)
+        .then(dispatch(getStat(update.userID)), dispatch(fireAPI(ticker)))
         .catch(error => dispatch(receiveProfileError(error)))
-}
+};
 
 export const fireAPI = (ticker) => dispatch => {
     axios.get(`
     https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key.alphaVantage}`)
-    .then(
-        stockData => dispatch(updateDB(stockData))
-    )
-    .catch(error => dispatch(receiveErrors(error)))
+    .then( stockData => dispatch(updateDB(stockData)) )
+    .catch( error => dispatch(receiveErrors(error)) )
 };
 
-// async function updateDB(ticker) {
 export const updateDB = (stockData) => dispatch => {
-
     let formattedData = globalEndPoint(stockData.data['Global Quote']);
     console.log(formattedData);
     axios.patch(
         'https://nitetrader.herokuapp.com/api/stock_api/quoteendpointstock/update', formattedData)
-        .then(
-            result => dispatch(receiveEndPointSuccess(result))
-        )
+        .then( result => dispatch(receiveEndPointSuccess(result)))
         .catch(error => dispatch(receiveEndPointFailure(error)))
     return true
 }
 
-export const sellStock = transaction => dispatch => {
-    return TransactionAPIUtil.sellStock(transaction)
-        .then(
-            (newTrade) => (dispatch(cashValue(newTrade)), dispatch(receiveSellTransaction(newTrade)))
-        )
-        .catch(
-            (err) => (dispatch(receiveErrors(err)))
-        )
-};
-
 export const fetchTrades = userId => dispatch => {
     return TransactionAPIUtil.fetchTrades(userId)
-        .then(
-            (allTrades) => (dispatch(receiveAllUserTransactions(allTrades))))
-        .catch(
-            
-            (err) => (dispatch(receiveErrors(err)))
-        )
+        .then( allTrades => (dispatch(receiveAllUserTransactions(allTrades))))
+        .catch( err => (dispatch(receiveErrors(err))))
 };
