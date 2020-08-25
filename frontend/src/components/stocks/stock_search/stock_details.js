@@ -20,7 +20,6 @@ export default class StockDetails extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.myStocks !== prevProps.myStocks) {
-      // this.props.buildPortfolio(this.props.myStocks);
     }
   }
 
@@ -47,7 +46,6 @@ export default class StockDetails extends React.Component {
       'buy': buy 
     }
     if (transactionData['buy']) {
-      // return this.props.buyStock(transactionData)
       return this.props.handleBuy(transactionData)
 
     } else { 

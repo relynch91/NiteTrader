@@ -20,12 +20,6 @@ class ProfileData extends React.Component {
     getStat(userId);
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.myStocks !== prevProps.myStocks) {
-  //     // this.props.buildPortfolio(this.props.myStocks);
-  //   }
-  // }
-
   buyOrSell(value) {
     if (value) {
       return 'Buy'

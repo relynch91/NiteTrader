@@ -29,7 +29,7 @@ const alphaAPIErrorsReducer = (oldState = _nullErrors, action) => {
             }
         case RECEIVE_END_POINT_FAILURE:
             return {
-                error: "Sorry there was a Global EndPoint Error(no stock data came back).  Please Try again. ",
+                error: action.error['Error']
             }
         case RECEIVE_INTRADAY:
             return _nullErrors;
