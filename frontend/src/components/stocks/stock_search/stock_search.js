@@ -40,8 +40,6 @@ export default class StockSearch extends React.Component {
     }
     const stockSearch = await (this.tickerCall(stockSearchAPI));
     this.apiLogic(stockSearch);
-    // this.setState({ stock: "", count: 
-    //   (this.props.stockDetails.count += 1) });
   }
 
   searchIsTicker (ticker) {
