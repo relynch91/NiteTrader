@@ -125,4 +125,4 @@ function calculateValue (tickerSharesObj, theKeys) {
     return totalValue;
 }
 
-updatePortfolio(updatedTestData)
+// updatePortfolio(updatedTestData)
