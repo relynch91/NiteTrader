@@ -67,7 +67,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
     height: 77vh;
     min-width: 1000px;
     font-weight: 700;
