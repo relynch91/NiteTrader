@@ -7,14 +7,12 @@ import { formatPortfolioData } from '../../../util/portfolio_api_util'
 export default class PortfolioBarChart extends PureComponent {
     constructor(props){
         super(props)
-        this.state = {};
     }
 
     render() {
 
         let data = formatPortfolioData(this.props.ownedStocks)
         let date = this.props.ownedStocks[Object.keys(this.props.ownedStocks)[0]].latestTradingDay;
-        console.log(date);
         if (Object.keys(data).length === 0) { return null };
 
         return (

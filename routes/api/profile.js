@@ -19,6 +19,19 @@ router.post('/new', (req, res) => {
         );
 })
 
+router.patch('/update', (req, res) => {
+    ProfileData.updateOne(
+        { userID: req.body.userID },
+        { $inc: { value: req.body.value } },
+        { upsert: true }
+    ).then(updatedStock => res.json(updatedStock))
+        .catch((error) =>
+            res.status(404).json({
+                noUsersFound: error
+            })
+        );
+})
+
 router.get('/:userID', (req, res) => {
     ProfileData.find({ userID: req.params.userID })
         .sort({ date: 1 })

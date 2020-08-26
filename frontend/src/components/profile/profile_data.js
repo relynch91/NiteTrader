@@ -11,9 +11,10 @@ class ProfileData extends React.Component {
   async componentDidMount() {
     let { fetchTrades, userId, getStat, endPointState,
       buildPortfolio, getStocks, buildProfile } = this.props;
-    let trades = await fetchTrades(userId);
-    let stockInfo = await buildPortfolio(trades.transactions.data);
+    let trades = await fetchTrades(userId); // build all transactions
+    let stockInfo = await buildPortfolio(trades.transactions.data); // stockInfo = AMZN: {pricePerShare: 3307.5, ownedShares: 3}
     let tickers = Object.keys(stockInfo);
+    // console.log(tickers); 
     let dbFetch = await getStocks(tickers);
     let stocks = endPointState(dbFetch);
     let theProfile = await buildProfile(stocks, stockInfo);
@@ -46,13 +47,20 @@ class ProfileData extends React.Component {
         <h1>Your Current Stocks:</h1>
         <ul className='profile-info-stocks-container'>
           {Object.keys(portfolio).map(compObj => {
+            let price;
+            if (!stocks[compObj]) {
+              price = 'N/A'
+            } else {
+              price = parseFloat(stocks[compObj]['price']).toFixed(2)
+            }
             return (
               <div>
                 <li className='profile-info-stocks-item'>
                   <h4>Ticker: {compObj}</h4>
                   <h4>Price Per Share: {parseFloat(portfolio[compObj]['pricePerShare']).toFixed(2)}</h4>
                   <h4>Shares Owned: {portfolio[compObj]['ownedShares']}</h4>
-                  <h4>Latest Price: {parseFloat(stocks[compObj]['price']).toFixed(2) || null} </h4>
+                  {/* <h4>Latest Price: { parseFloat(stocks[compObj]['price']).toFixed(2) } </h4> */}
+                  <h4>Latest Price: {price} </h4>
                 </li>
               </div>
             )

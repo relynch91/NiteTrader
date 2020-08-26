@@ -39,22 +39,6 @@ export const endPointState = dbStocks => dispatch => {
     dispatch(receivePortfolioStocks(answer));
     return answer;
 }
-// export const buildPortfolio = transactions => dispatch => {
-//     // dispatch(clearPortfolio());
-//     let ownedStocks = PortUtil.activeShares(transactions);
-//     PortUtil.fetchDBStockData(ownedStocks)
-//     .then(stockApiArray =>
-//         stockApiArray.forEach(stockObj => {
-//             if (stockObj.data) {
-//                 let sym = stockObj.data.symbol;
-//                 ownedStocks[sym]['quoteEndPointData'] = stockObj.data;
-//                 ownedStocks[sym]['priceDiff'] = PortUtil.overUnder(ownedStocks[sym]);
-//             }
-//     }
-//     ));
-//     dispatch(receivePortfolio(ownedStocks));
-//     return ownedStocks;
-// };
 
 export const buildPortfolio = transactions => dispatch => {
     let ownedStocks = PortUtil.activeShares(transactions);
