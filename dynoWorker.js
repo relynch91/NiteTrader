@@ -88,17 +88,16 @@ async function updatePortfolio(updatedTestData) { // test data ticker(key) price
             value: userValue,
             cash: parseFloat(userCash.data[0]['value'])
         }
-        
+        console.log(profileInfo);
         let res = await axios.post(
-            'https://nitetrader.herokuapp.com/api/profile/update', profileInfo)
+            'https://nitetrader.herokuapp.com/api/profile/new', profileInfo)
             .catch(err => console.log(err));
-        console.log(res);
     }
     console.log('The candle has been lit');
     return true
 }
 
-function sortResponse(transactions) { //transactions is an array of objects that are transactions. Nice. 
+function sortResponse(transactions) {
     let tickers = {};
     for (let i = 0; i < transactions.length; i ++) {
         if (transactions[i]['buy']) {
@@ -124,5 +123,3 @@ function calculateValue (tickerSharesObj, theKeys) {
     }
     return totalValue;
 }
-
-// updatePortfolio(updatedTestData)

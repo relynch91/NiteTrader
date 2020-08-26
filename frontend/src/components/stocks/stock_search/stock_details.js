@@ -12,16 +12,12 @@ export default class StockDetails extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.setState({
-      mostRecentStockApiData: StockUtil.mostRecent(this.props.stockDetails.intraDay)
-    })
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.myStocks !== prevProps.myStocks) {
-      
-    }
+  async componentDidMount() {
+    let { userId, fetchTrades, buildPortfolio, getStat } = this.props;
+    let trades = await fetchTrades(userId);
+    let stockInfo = await buildPortfolio(trades.transactions.data);
+    getStat(userId);
+    console.log(stockInfo);
   }
 
   handleChange() {
@@ -29,15 +25,16 @@ export default class StockDetails extends React.Component {
   }
 
   handleClick(buy) {
-    let { data, ticker } = this.state.mostRecentStockApiData;
+    let { data, ticker } = this.props.stockDetails.intraDay;
     let { profile, portfolio, handleBuy, handleSell, userId } = this.props;
-    let cash = profile
+    let cash = profile;
     let numberOwned;
     if (portfolio[ticker]) {
       numberOwned = portfolio[ticker];
     } else {
       numberOwned = { ownedShares: 0 }
     }
+    console.log(this.props.stockDetails['intraDay']);
     let transactionData = {
       'userId': userId,
       'ticker': ticker,
@@ -65,8 +62,11 @@ export default class StockDetails extends React.Component {
 
   lastWeek() {
     let weekPrior = this.props.stockDetails.weeklySeries['Weekly Time Series'];
+    // console.log(weekPrior)
     let stockTicker = this.props.stockDetails.weeklySeries['Meta Data']['2. Symbol'];
+    // console.log(stockTicker);
     let weekKeys = Object.keys(weekPrior);
+    // console.log(weekKeys);
     return { 
       data: weekPrior[weekKeys[0]],
       date: weekKeys[0],
@@ -81,7 +81,7 @@ export default class StockDetails extends React.Component {
     let recentDate = stockData.date.split(" ")[0];
     let weeklyStockData = this.lastWeek();
     let ownedStocks = Object.keys(this.props.portfolio);
-    let { data, ticker } = weeklyStockData;
+    let { data, ticker, date } = weeklyStockData;
     let transactionErrors = this.props.transactionErrors
     let numberOwned;
     let pricePerShare;
@@ -99,8 +99,8 @@ export default class StockDetails extends React.Component {
       <div className='the-details-stock-api'>
         <div className="stock-details-goods">
           <h1>Information for { ticker }:</h1>
-          <h4>Week High: ${parseFloat(data["2. high"]).toFixed(2) }</h4>
-          <h4>Week Low: ${ parseFloat(data["3. low"]).toFixed(2) }</h4>
+          <h4>Week of { date } High: ${parseFloat(data["2. high"]).toFixed(2) }</h4>
+          <h4>Week of { date } Low : ${ parseFloat(data["3. low"]).toFixed(2) }</h4>
           <h4>Latest Price as of {recentDate}: ${ parseFloat(dayStock).toFixed(2) }</h4>
           <h4>Number of Shares Owned: { numberOwned }</h4>
           <h4>Average Price Per Share: { parseFloat(pricePerShare).toFixed(2) }</h4>

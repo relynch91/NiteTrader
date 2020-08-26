@@ -84,7 +84,6 @@ export const buyStock = transaction => dispatch => {
 };
 
 export const cashValueSell = trade => dispatch => {
-    console.log(trade);
     let quantity = parseFloat(trade.shares);
     let price = parseFloat(trade.price);
     let sum = quantity * price;
@@ -95,8 +94,7 @@ export const cashValueSell = trade => dispatch => {
     let ticker = trade.ticker;
     ProfileAPIUtil.statUpdate(update)
         .then(
-            dispatch(getStat(update.userID)),
-            dispatch(fireAPI(ticker)))
+            dispatch(getStat(update.userID)))
         .catch(error => dispatch(receiveProfileError(error)))
 };
 

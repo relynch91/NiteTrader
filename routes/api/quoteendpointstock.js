@@ -2,11 +2,6 @@ const express = require("express");
 const router = express.Router();
 const QuoteEndPointStock = require('../../models/QuoteEndPointStock');
 
-router.get("/test", (req, res) => res.json({
-    msg: "This is the stocks route"
-    })
-);
-
 router.post('/new', (req, res) => {
     const newStock = new QuoteEndPointStock({
         symbol: req.body.symbol,

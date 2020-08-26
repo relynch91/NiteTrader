@@ -41,12 +41,8 @@ router.get('/:username', (req, res) => {
 })
 
 router.post('/sell', function(req, res) {
-    // let cash = parseFloat(req.body.cash);
     let shares = req.body.shares;
-    // let price = req.body.price;
-    // let totalPrice = parseFloat(shares) * parseFloat(price);
     let ownedShares = parseInt(req.body.ownedShares);
-
     if (shares <= ownedShares) {
         let newTransaction = new Transaction({
             userId: req.body.userId,

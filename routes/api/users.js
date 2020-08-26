@@ -117,7 +117,6 @@ router.get('/finduser', function(req, res){
 
 router.get('/allusernames', function(req, res) {
     User.find({}, { username: 1 } ).then(users => {
-        // console.log(users.data);
         res.json(users);
     })
     .catch(errors => {

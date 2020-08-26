@@ -14,7 +14,6 @@ class ProfileData extends React.Component {
     let trades = await fetchTrades(userId); // build all transactions
     let stockInfo = await buildPortfolio(trades.transactions.data); // stockInfo = AMZN: {pricePerShare: 3307.5, ownedShares: 3}
     let tickers = Object.keys(stockInfo);
-    // console.log(tickers); 
     let dbFetch = await getStocks(tickers);
     let stocks = endPointState(dbFetch);
     let theProfile = await buildProfile(stocks, stockInfo);

@@ -1,8 +1,9 @@
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
 import StockDetails from "./stock_details";
-import { buyStock, handleSell, handleBuy } from '../../../actions/transaction_actions';
-import { buildPortfolio } from '../../../actions/portfolio_actions'
+import { buyStock, handleSell, handleBuy, fetchTrades } from '../../../actions/transaction_actions.js';
+import { buildPortfolio } from '../../../actions/portfolio_actions.js'
+import { getStat } from '../../../actions/profile_actions.js'
 
 const mapStateToProps = (state) => ({
     stockDetails: state.stocks,
@@ -16,6 +17,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   buyStock: (transaction) => dispatch(buyStock(transaction)),
+  fetchTrades: userID => dispatch(fetchTrades(userID)),
+  getStat: (userID) => dispatch(getStat(userID)),
   handleSell: (transaction) => dispatch(handleSell(transaction)),
   handleBuy: (transaction) => dispatch(handleBuy(transaction)),
   buildPortfolio: (transactions) => dispatch(buildPortfolio(transactions))

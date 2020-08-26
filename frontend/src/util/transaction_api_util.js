@@ -5,7 +5,6 @@ export const buyStock = (transaction) => {
 };
 
 export const sellStock = (transaction) => {
-    console.log(transaction);
     return axios.post('/api/transactions/sell', transaction)
 };
 
