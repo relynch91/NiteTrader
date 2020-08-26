@@ -48,9 +48,9 @@ export default class StockName extends React.Component {
                        <StockSearchErrorsContainer />
                         <div className = "stock-search-landing" >
                             <div className='stock-search-landing-details'>
-                                <h1> Welcome to the Stock Portal</h1> 
-                                <p>Research a company's performance over time </p>
-                                <p>Buy &amp; Sell Stock</p>
+                                <h1> Welcome to the Stock Portal!</h1> 
+                                <p> Enter a company name or ticker. </p>
+                                {/* <p>Buy &amp; Sell Stock</p> */}
                             </div>
                         </div>
                    </div>

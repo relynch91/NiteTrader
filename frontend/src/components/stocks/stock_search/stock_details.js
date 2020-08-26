@@ -1,6 +1,5 @@
 import React from 'react';
 import './stock_details.css'
-import * as StockUtil from '../../../util/stocks_api_util';
 
 export default class StockDetails extends React.Component {
   constructor(props){
@@ -10,14 +9,27 @@ export default class StockDetails extends React.Component {
       numShares: 0,
       transactionType: true,
     };
+    this.findPrice = this.findPrice.bind(this);
   }
 
   async componentDidMount() {
     let { userId, fetchTrades, buildPortfolio, getStat } = this.props;
     let trades = await fetchTrades(userId);
-    let stockInfo = await buildPortfolio(trades.transactions.data);
+    await buildPortfolio(trades.transactions.data);
     getStat(userId);
-    console.log(stockInfo);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (Object.keys(this.props.myStocks) !== Object.keys(prevProps.myStocks)) {
+      this.oneMoreTime();
+    }
+  }
+
+  async oneMoreTime() {
+    let { userId, fetchTrades, buildPortfolio, getStat } = this.props;
+    let trades = await fetchTrades(userId);
+    await buildPortfolio(trades.transactions.data);
+    getStat(userId);
   }
 
   handleChange() {
@@ -25,7 +37,9 @@ export default class StockDetails extends React.Component {
   }
 
   handleClick(buy) {
-    let { data, ticker } = this.props.stockDetails.intraDay;
+    let price = this.findPrice(
+      this.props.stockDetails.intraDay["Time Series (15min)"]);
+    let ticker = this.props.stockDetails.intraDay["Meta Data"]['2. Symbol'];
     let { profile, portfolio, handleBuy, handleSell, userId } = this.props;
     let cash = profile;
     let numberOwned;
@@ -34,12 +48,12 @@ export default class StockDetails extends React.Component {
     } else {
       numberOwned = { ownedShares: 0 }
     }
-    console.log(this.props.stockDetails['intraDay']);
+
     let transactionData = {
       'userId': userId,
       'ticker': ticker,
       'cash': cash,
-      'price': parseFloat(data["4. close"]), 
+      'price': price, 
       'ownedShares': numberOwned['ownedShares'],
       'shares': this.state.numShares, 
       'buy': buy 
@@ -60,13 +74,18 @@ export default class StockDetails extends React.Component {
     }
   }
 
+  findPrice(obj) {
+    let keys = Object.keys(obj);
+    let lastKey = keys[0];
+    let price = (obj[lastKey]);
+    let last = price['4. close'];
+    return last
+  }
+
   lastWeek() {
     let weekPrior = this.props.stockDetails.weeklySeries['Weekly Time Series'];
-    // console.log(weekPrior)
     let stockTicker = this.props.stockDetails.weeklySeries['Meta Data']['2. Symbol'];
-    // console.log(stockTicker);
     let weekKeys = Object.keys(weekPrior);
-    // console.log(weekKeys);
     return { 
       data: weekPrior[weekKeys[0]],
       date: weekKeys[0],
@@ -109,7 +128,7 @@ export default class StockDetails extends React.Component {
         </div>
         <div className='stock-buy-sell-container'>
             <div className='stock-buy-sell'>
-              <h1>How many shares would you like to BUY/SELL?</h1>
+              <h1>How many shares would you like to Buy or Sell?</h1>
               <div>
                 <input
                   className="stock-buy-input"

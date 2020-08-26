@@ -4,16 +4,11 @@ import './stock_index.css';
 export default class StockIndex extends React.Component {
   constructor(props){
     super(props)
-    // this.state = {};
-  }
-  
-  componentDidMount() {
-      this.props.buildPortfolio(this.props.myStocks);
   }
   
   render(){
     let { myPortfolio, ownedStocks } = this.props;
-    if (Object.keys(myPortfolio).length === 0) {return null};
+    if (Object.keys(ownedStocks).length === 0) {return null};
     return (
       <div className="stock-index-main">
         {Object.keys(myPortfolio).map((ticker, idx) => (
