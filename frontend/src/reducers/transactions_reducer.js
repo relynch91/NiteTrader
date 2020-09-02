@@ -15,7 +15,8 @@ const TransactionsReducer = (state = {}, action) => {
         case RECEIVE_SELL_TRANSACTION:
             return Object.assign(nextState, action.transactions);
         case RECEIVE_BUY_TRANSACTION:
-            return Object.assign(nextState, action.transactions);
+            let answer = Object.assign(nextState, action.transaction.data )
+            return action.transaction.data;
         case CLEAR_TRANSACTIONS:
             return {};
         case RECEIVE_TRANSACTION_ERRORS:

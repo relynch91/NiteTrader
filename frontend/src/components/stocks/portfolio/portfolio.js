@@ -6,10 +6,15 @@ import './portfolio.css'
 class Portfolio extends React.Component {
 
   async componentDidMount() {
-    let { buildPortfolio, getStocks } = this.props;
-    let stockInfo = await buildPortfolio(this.props.trades);
+    let { buildPortfolio, getStocks,fetchTrades, userId, endPointState,
+          buildProfile, getStat  } = this.props;
+    let trades = await fetchTrades(userId);
+    let stockInfo = await buildPortfolio(trades.transactions.data);
     let tickers = Object.keys(stockInfo);
     let dbFetch = await getStocks(tickers);
+    let stocks = await endPointState(dbFetch);
+    await buildProfile(stocks, stockInfo);
+    await getStat(userId);
   }
 
   render() {
