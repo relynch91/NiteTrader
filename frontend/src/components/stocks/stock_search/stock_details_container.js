@@ -12,7 +12,8 @@ const mapStateToProps = (state) => ({
     portfolio: state.portfolio,
     profile: state.profile.profileValueStat,
     redirectTo: state.ui.redirect.payload,
-    transactionErrors: state.errors.transactions
+    transactionErrors: state.errors.transactions,
+    flag: false
 });
 
 const mapDispatchToProps = (dispatch) => ({

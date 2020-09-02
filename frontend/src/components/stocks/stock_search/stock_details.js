@@ -8,6 +8,7 @@ export default class StockDetails extends React.Component {
     this.state = {
       numShares: 0,
       transactionType: true,
+      flag: false,
     };
     this.findPrice = this.findPrice.bind(this);
   }
@@ -17,19 +18,29 @@ export default class StockDetails extends React.Component {
     let trades = await fetchTrades(userId);
     await buildPortfolio(trades.transactions.data);
     getStat(userId);
+    console.log(this.props.flag);
   }
 
   componentDidUpdate(prevProps) {
-    if (Object.keys(this.props.myStocks) !== Object.keys(prevProps.myStocks)) {
+    if (this.state.flag) {
+      console.log('yes');
       this.oneMoreTime();
+      this.state.flag = false;
     }
   }
+
+  // componentDidUpdate(prevProps) {
+  //   if (Object.keys(this.props.myStocks) !== Object.keys(prevProps.myStocks)) {
+  //     this.oneMoreTime();
+  //   }
+  // }
 
   async oneMoreTime() {
     let { userId, fetchTrades, buildPortfolio, getStat } = this.props;
     let trades = await fetchTrades(userId);
     await buildPortfolio(trades.transactions.data);
     getStat(userId);
+    this.state.flag = false;
   }
 
   handleChange() {
@@ -59,8 +70,11 @@ export default class StockDetails extends React.Component {
       'buy': buy 
     }
     if (transactionData['buy']) {
+      console.log(this.props.flag)
+      this.setState()
       return handleBuy(transactionData)
     } else { 
+      this.props.flag = true;
       return handleSell(transactionData)  
     }
   }

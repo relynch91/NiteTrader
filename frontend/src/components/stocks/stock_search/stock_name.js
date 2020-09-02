@@ -50,7 +50,6 @@ export default class StockName extends React.Component {
                             <div className='stock-search-landing-details'>
                                 <h1> Welcome to the Stock Portal!</h1> 
                                 <p> Enter a company name or ticker. </p>
-                                {/* <p>Buy &amp; Sell Stock</p> */}
                             </div>
                         </div>
                    </div>
