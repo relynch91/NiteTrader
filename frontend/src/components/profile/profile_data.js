@@ -1,6 +1,5 @@
 import React from 'react';
 import './profile.css';
-import { compareSync } from 'bcryptjs';
 
 class ProfileData extends React.Component {
   constructor(props) {
