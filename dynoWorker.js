@@ -1,5 +1,5 @@
 const axios = require('axios').default;
-const key = require('./config/keys');
+const alphaVantage = require('./config/keys');
 const globalEndPointObject = require('./config/endPointRestructure.js');
 
 function unpackTickers(argument) {
@@ -33,7 +33,7 @@ function timeout(ms) {
 async function fireAPI(ticker) {
     await timeout(18000)
     let value = await axios.get(`
-    https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key}`);
+    https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${alphaVantage}`);
     return value;
 };
 
