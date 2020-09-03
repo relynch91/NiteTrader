@@ -7,8 +7,7 @@ export default class StockDetails extends React.Component {
     this.handleClick = this.handleClick.bind(this)
     this.state = {
       numShares: 0,
-      transactionType: true,
-      flag: false,
+      transactionType: true
     };
     this.findPrice = this.findPrice.bind(this);
   }
@@ -20,12 +19,10 @@ export default class StockDetails extends React.Component {
     getStat(userId);
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (this.props.profile !== prevProps.profile) { 
-      console.log('yes');
       this.oneMoreTime() 
     };
-    // this.setState({ flag: false })
   }
 
   async oneMoreTime() {
@@ -62,11 +59,9 @@ export default class StockDetails extends React.Component {
       'buy': buy 
     }
     if (transactionData['buy']) {
-      console.log(this.props.flag)
-      this.setState()
-      return handleBuy(transactionData)
+      return handleBuy(transactionData);
     } else { 
-      return handleSell(transactionData)  
+      return handleSell(transactionData);
     }
   }
 
@@ -110,8 +105,6 @@ export default class StockDetails extends React.Component {
     let numberOwned;
     let pricePerShare;
 
-    if (Object.keys(transactionErrors).length === 0) {
-    }
     if (ownedStocks.includes(ticker)) {
       numberOwned = this.props.portfolio[ticker]['ownedShares'];
       pricePerShare = parseFloat(this.props.portfolio[ticker]['pricePerShare']).toFixed(2);

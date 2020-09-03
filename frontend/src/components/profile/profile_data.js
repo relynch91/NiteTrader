@@ -11,20 +11,21 @@ class ProfileData extends React.Component {
   async componentDidMount() {
     let { fetchTrades, userId, getStat, endPointState,
       buildPortfolio, getStocks, buildProfile } = this.props;
-    let trades = await fetchTrades(userId); // build all transactions
-    let stockInfo = await buildPortfolio(trades.transactions.data); // stockInfo = AMZN: {pricePerShare: 3307.5, ownedShares: 3}
+    let trades = await fetchTrades(userId);
+    let stockInfo = await buildPortfolio(trades.transactions.data);
     let tickers = Object.keys(stockInfo);
     let dbFetch = await getStocks(tickers);
     let stocks = endPointState(dbFetch);
-    let theProfile = await buildProfile(stocks, stockInfo);
+    await buildProfile(stocks, stockInfo);
     getStat(userId);
   }
 
   buyOrSell(value) {
     if (value) {
       return 'Buy'
-    };
-    return 'Sell';
+    } else {
+      return 'Sell';
+    }
   }
 
   render() {
@@ -58,7 +59,6 @@ class ProfileData extends React.Component {
                   <h4>Ticker: {compObj}</h4>
                   <h4>Price Per Share: {parseFloat(portfolio[compObj]['pricePerShare']).toFixed(2)}</h4>
                   <h4>Shares Owned: {portfolio[compObj]['ownedShares']}</h4>
-                  {/* <h4>Latest Price: { parseFloat(stocks[compObj]['price']).toFixed(2) } </h4> */}
                   <h4>Latest Price: {price} </h4>
                 </li>
               </div>
@@ -119,5 +119,4 @@ class ProfileData extends React.Component {
     )  
   }
 }
-
 export default ProfileData;

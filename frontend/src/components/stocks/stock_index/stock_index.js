@@ -1,10 +1,6 @@
 import React from 'react';
 import './stock_index.css';
 export default class StockIndex extends React.Component {
-  constructor(props){
-    super(props)
-  }
-  
   render(){
     let { myPortfolio, ownedStocks } = this.props;
     if (Object.keys(ownedStocks).length === 0) {return null};
