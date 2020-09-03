@@ -2,7 +2,6 @@ import React from 'react';
 import './profile.css';
 import ProfileDataContainer from './profile_data_container';
 
-
 class Profile extends React.Component {
 
   render() {

@@ -42,6 +42,7 @@ export const endPointState = dbStocks => dispatch => {
 
 export const buildPortfolio = transactions => dispatch => {
     let ownedStocks = PortUtil.activeShares(transactions);
+    console.log(ownedStocks);
     dispatch(receivePortfolio(ownedStocks));
     return ownedStocks;
 };

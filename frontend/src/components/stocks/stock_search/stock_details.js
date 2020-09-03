@@ -19,6 +19,10 @@ export default class StockDetails extends React.Component {
     getStat(userId);
   }
 
+  componentDidUnmount() {
+    
+  }
+
   componentDidUpdate(prevProps) {
     if (this.props.profile !== prevProps.profile) { 
       this.oneMoreTime() 
@@ -59,9 +63,11 @@ export default class StockDetails extends React.Component {
       'buy': buy 
     }
     if (transactionData['buy']) {
-      return handleBuy(transactionData);
+      handleBuy(transactionData);
+      this.render();
     } else { 
-      return handleSell(transactionData);
+      handleSell(transactionData);
+      this.render();
     }
   }
 

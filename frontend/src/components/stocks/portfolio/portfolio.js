@@ -18,7 +18,7 @@ class Portfolio extends React.Component {
   }
 
   render() {
-    let newUser = Object.keys(this.props.trades).length === 0 ? true : false;
+    let newUser = Object.keys(this.props.ownedStocks).length === 0 ? true : false;
 
     if (newUser) {
       return (

@@ -21,7 +21,6 @@ export const receiveBuyTransaction = transaction => {
 };
 
 export const receiveSellTransaction = transaction => {
-    console.log(transaction);
     return ({
         type: RECEIVE_SELL_TRANSACTION,
         transaction

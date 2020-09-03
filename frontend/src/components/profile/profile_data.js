@@ -1,10 +1,10 @@
 import React from 'react';
 import './profile.css';
+import { compareSync } from 'bcryptjs';
 
 class ProfileData extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {};
     this.buyOrSell = this.buyOrSell.bind(this);
   }
 
