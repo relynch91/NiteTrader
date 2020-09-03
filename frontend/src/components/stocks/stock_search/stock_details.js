@@ -20,11 +20,12 @@ export default class StockDetails extends React.Component {
     getStat(userId);
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.state.flag) {
-      this.oneMoreTime();
-      this.state.flag = false;
-    }
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.profile !== prevProps.profile) { 
+      console.log('yes');
+      this.oneMoreTime() 
+    };
+    // this.setState({ flag: false })
   }
 
   async oneMoreTime() {
@@ -32,7 +33,6 @@ export default class StockDetails extends React.Component {
     let trades = await fetchTrades(userId);
     await buildPortfolio(trades.transactions.data);
     getStat(userId);
-    this.state.flag = false;
   }
 
   handleChange() {
@@ -66,9 +66,6 @@ export default class StockDetails extends React.Component {
       this.setState()
       return handleBuy(transactionData)
     } else { 
-      this.setState({
-        flag: true
-      })
       return handleSell(transactionData)  
     }
   }

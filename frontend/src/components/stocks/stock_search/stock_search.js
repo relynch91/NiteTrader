@@ -34,7 +34,6 @@ export default class StockSearch extends React.Component {
   async getStockTicker(e) {
     if (e) { e.preventDefault() }
     this.props.receiveClearStocks();
-    console.log(alphaVantage.alphaVantage);
     const stockSearchAPI = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${this.state.stock}&apikey=${alphaVantage.alphaVantage}`;
     if (this.state.stock === '') {
       return;
