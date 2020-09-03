@@ -6,7 +6,7 @@ function unpackTickers(argument) {
     let tickers = [];
     for(let i = 0; i < argument.length; i ++) {
         let name = argument[i]['ticker']
-        if (!tickers.includes(name)) {            
+        if (!tickers.includes(name)) {
             tickers.push(name)
         }
     }
