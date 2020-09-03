@@ -93,7 +93,7 @@ export const cashValueSell = trade => dispatch => {
     }
     let ticker = trade.ticker;
     ProfileAPIUtil.statUpdate(update)
-        .then(
+        .then(() =>
             dispatch(getStat(update.userID)))
         .catch(error => dispatch(receiveProfileError(error)))
 };
