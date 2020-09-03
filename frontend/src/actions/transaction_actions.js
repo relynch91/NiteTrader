@@ -21,6 +21,7 @@ export const receiveBuyTransaction = transaction => {
 };
 
 export const receiveSellTransaction = transaction => {
+    console.log(transaction);
     return ({
         type: RECEIVE_SELL_TRANSACTION,
         transaction
@@ -62,12 +63,18 @@ export const handleBuy = transactionDetails => dispatch => {
 
 export const handleSell = transactionDetails => dispatch => {
     let { ownedShares, shares } = transactionDetails;
-    if ((ownedShares < shares) || (ownedShares < 1)) {
+    if (ownedShares < shares) {
         let error = { transactionError: "Sorry, you don't own enough shares for that trade." }
         dispatch(receiveErrors(error));
+        return false;
+    } else if (ownedShares < 1) {
+        let error = { transactionError: "Sorry, you don't any shares of that company." }
+        dispatch(receiveErrors(error));
+        return false;
     } else {
         dispatch(sellStock(transactionDetails));
         dispatch(cashValueSell(transactionDetails));
+        return true;
     }
 }
 
@@ -91,7 +98,6 @@ export const cashValueSell = trade => dispatch => {
         userID: trade.userId,
         value: (sum)
     }
-    let ticker = trade.ticker;
     ProfileAPIUtil.statUpdate(update)
         .then(() =>
             dispatch(getStat(update.userID)))

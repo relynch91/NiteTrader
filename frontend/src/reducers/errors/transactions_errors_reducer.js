@@ -1,6 +1,5 @@
 import {
     RECEIVE_TRANSACTION_ERRORS,
-    RECEIVE_ALL_TRADES,
     CLEAR_TRANSACTIONS,
     RECEIVE_BUY_TRANSACTION,
     RECEIVE_SELL_TRANSACTION
@@ -13,8 +12,6 @@ const TransactionsErrorsReducer = (state = _nullErrors, action) => {
     switch (action.type) {
         case RECEIVE_TRANSACTION_ERRORS:
             return action.errors;
-        // case RECEIVE_ALL_TRADES:
-        //     return _nullErrors;
         case RECEIVE_BUY_TRANSACTION:
             return _nullErrors;
         case RECEIVE_SELL_TRANSACTION:
