@@ -65,12 +65,10 @@ export default class StockDetails extends React.Component {
     }
     if (transactionData['buy']) {
       handleBuy(transactionData);
-      // this.render();
       this.setState({ redirect: true });
     } else { 
-      handleSell(transactionData)
-      .then( this.setState({ redirect: true }))
-      // this.render();
+      handleSell(transactionData);
+      this.setState({ redirect: true })
     }
   }
 
@@ -123,7 +121,7 @@ export default class StockDetails extends React.Component {
     }
 
     if (this.state.redirect) {
-      return <Redirect to="/" />
+      return <Redirect to="/profile" />
     }
     return (
       <div className='the-details-stock-api'>
