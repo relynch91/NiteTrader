@@ -66,7 +66,9 @@ export default class StockDetails extends React.Component {
       this.setState()
       return handleBuy(transactionData)
     } else { 
-      this.props.flag = true;
+      this.setState({
+        flag: true
+      })
       return handleSell(transactionData)  
     }
   }
