@@ -41,9 +41,9 @@ export default class StockIndex extends React.Component {
                   }
                 </li>
                 <li>
-                  Percent Change:  {
+                  Percent Change (%):  {
                     parseFloat(ownedStocks[ticker].changePercent).toFixed(2)
-                  } %
+                  }
                 </li>
                 < li >
                   Previous Close: {
