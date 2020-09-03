@@ -117,7 +117,9 @@ export const cashValueBuy = trade => dispatch => {
     }
     let ticker = trade.ticker;
     ProfileAPIUtil.statUpdate(update)
-        .then(dispatch(getStat(update.userID)), dispatch(fireAPI(ticker)))
+        .then(
+            () => dispatch(getStat(update.userID)), 
+            () => dispatch(fireAPI(ticker)))
         .catch(error => dispatch(receiveProfileError(error)))
 };
 
