@@ -5,6 +5,10 @@ import globalEndPoint  from '../frontConfig/endPointRestructure';
 import key from '../frontConfig/frontKeys';
 import { receiveEndPointSuccess, receiveEndPointFailure } from './alphaApi_actions';
 import { getStat } from './profile_actions';
+import { clearErrors } from './error_actions';
+import { clearPortfolio } from './portfolio_actions';
+import { clearProfile } from './profile_actions';
+
 const axios = require('axios').default;
 
 export const RECEIVE_BUY_TRANSACTION = 'RECEIVE_BUY_TRANSACTION';
@@ -126,7 +130,6 @@ export const fireAPI = (ticker) => dispatch => {
 
 export const updateDB = (stockData) => dispatch => {
     let formattedData = globalEndPoint(stockData.data['Global Quote']);
-    console.log(formattedData);
     axios.patch(
         'https://nitetrader.herokuapp.com/api/stock_api/quoteendpointstock/update', formattedData)
         .then( result => dispatch(receiveEndPointSuccess(result)))
@@ -139,3 +142,10 @@ export const fetchTrades = userId => dispatch => {
         .then( allTrades => (dispatch(receiveAllUserTransactions(allTrades))))
         .catch( err => (dispatch(receiveErrors(err))))
 };
+
+export const clearSearchState = () => dispatch => {
+    dispatch(clearPortfolio());
+    dispatch(clearTransactions());
+    dispatch(clearErrors());
+    dispatch(clearProfile());
+}

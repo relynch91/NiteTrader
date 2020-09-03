@@ -1,5 +1,6 @@
 import React from 'react';
-import './stock_details.css'
+import './stock_details.css';
+import { Redirect } from "react-router-dom";
 
 export default class StockDetails extends React.Component {
   constructor(props){
@@ -7,7 +8,8 @@ export default class StockDetails extends React.Component {
     this.handleClick = this.handleClick.bind(this)
     this.state = {
       numShares: 0,
-      transactionType: true
+      transactionType: true,
+      redirect: false
     };
     this.findPrice = this.findPrice.bind(this);
   }
@@ -19,8 +21,8 @@ export default class StockDetails extends React.Component {
     getStat(userId);
   }
 
-  componentDidUnmount() {
-    
+  componentWillUnmount() {
+    this.props.clearSearchState();
   }
 
   componentDidUpdate(prevProps) {
@@ -33,7 +35,6 @@ export default class StockDetails extends React.Component {
     let { userId, fetchTrades, buildPortfolio, getStat } = this.props;
     let trades = await fetchTrades(userId);
     await buildPortfolio(trades.transactions.data);
-    getStat(userId);
   }
 
   handleChange() {
@@ -64,10 +65,12 @@ export default class StockDetails extends React.Component {
     }
     if (transactionData['buy']) {
       handleBuy(transactionData);
-      this.render();
+      // this.render();
+      this.setState({ redirect: true });
     } else { 
       handleSell(transactionData);
-      this.render();
+      // this.render();
+      this.setState({ redirect: true });
     }
   }
 
@@ -117,6 +120,10 @@ export default class StockDetails extends React.Component {
     } else {
       numberOwned = 0;
       pricePerShare = "0.00";
+    }
+
+    if (this.state.redirect) {
+      return <Redirect to="/profile" />
     }
     return (
       <div className='the-details-stock-api'>
