@@ -1,6 +1,5 @@
 import React from 'react';
 import './stock_index.css';
-
 export default class StockIndex extends React.Component {
   constructor(props){
     super(props)
