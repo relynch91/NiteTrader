@@ -18,22 +18,14 @@ export default class StockDetails extends React.Component {
     let trades = await fetchTrades(userId);
     await buildPortfolio(trades.transactions.data);
     getStat(userId);
-    console.log(this.props.flag);
   }
 
   componentDidUpdate(prevProps) {
     if (this.state.flag) {
-      console.log('yes');
       this.oneMoreTime();
       this.state.flag = false;
     }
   }
-
-  // componentDidUpdate(prevProps) {
-  //   if (Object.keys(this.props.myStocks) !== Object.keys(prevProps.myStocks)) {
-  //     this.oneMoreTime();
-  //   }
-  // }
 
   async oneMoreTime() {
     let { userId, fetchTrades, buildPortfolio, getStat } = this.props;
