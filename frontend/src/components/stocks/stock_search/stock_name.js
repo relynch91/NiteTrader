@@ -20,9 +20,9 @@ export default class StockName extends React.Component {
 
     getStockDetails(e) {
         if (e) { e.preventDefault() };
-        const intraDayAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.ticker}&interval=15min&outputsize=full&apikey=${alphaVantage.alphaVantage}`;
+        const intraDayAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.ticker}&interval=15min&outputsize=full&apikey=SVP67XIYGDS40JIM`;
         this.props.intraDayAPICall(intraDayAPI);
-        const weeklyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=${this.state.ticker}&apikey=${alphaVantage.alphaVantage}`;
+        const weeklyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=${this.state.ticker}&apikey=SVP67XIYGDS40JIM`;
         this.props.weeklyAPICall(weeklyAPI);
     }
 
