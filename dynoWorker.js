@@ -31,7 +31,7 @@ function timeout(ms) {
 }
 
 async function fireAPI(ticker) {
-    await timeout(18000)
+    await timeout(3000)
     let value = await axios.get(`
     https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${alphaVantage.alphaVantage}`);
     return value;
@@ -55,25 +55,55 @@ async function candle() {
     let ticker = await tickerCalls();
     let updated = await updateDatabase(ticker);
     updatePortfolio(updated);
+    console.log(updated);
     return true;
 }
 
-candle();
+// candle();
+
+let tickersUniqueFriday = {
+    GOOG: '1641.8400',
+    AAPL: '120.8800',
+    F: '6.8200',
+    IBM: '124.4500',
+    RIG: '1.2100',
+    FB: '291.1200',
+    TSLA: '407.0000',
+    NKE: '112.8500',
+    CAT: '146.7600',
+    DPZ: '397.5000',
+    GT: '9.5700',
+    DDD: '5.4100'
+}
 
 // --------------------- above updates DB w/ all tickers ---------------------
 
-async function updatePortfolio(updatedTestData) { // test data ticker(key) price(value);
-    let theKeys = (updatedTestData); //theKeys are all the tickers
+async function updatePortfolio(tickersUniqueFriday) { // test data ticker(key) price(value);
+    let theKeys = (tickersUniqueFriday); //theKeys are all the tickers
     let users = await axios.get('https://nitetrader.herokuapp.com/api/users/allusernames')
 
     let userIds = [];
     users.data.forEach(obj => {
         userIds.push(obj._id);
     })
+    let date = await new Date(); 
+    // console.log(date.split('T')[0]);
+    let dateOther = date.toString();
+    let dateProper = date.toDateString();
+    console.log(date);
+    console.log(dateProper);
+    console.log(dateOther);
 
     for (let i = 0; i < userIds.length; i ++) {
+        let userId = userIds[i];
+        let mostRecentProfile = await axios.get(
+            `https://nitetrader.herokuapp.com/api/profile/${userId}`
+            )
+        console.log(mostRecentProfile.data);
+        
         let response = await axios.get(
-            `https://nitetrader.herokuapp.com/api/transactions/${userIds[i]}`)
+            `https://nitetrader.herokuapp.com/api/transactions/${userId}`
+            )
         let tickerSharesObj = sortResponse(response.data);
         let userValue = calculateValue(tickerSharesObj, theKeys);
         let userID = userIds[i]
@@ -86,7 +116,8 @@ async function updatePortfolio(updatedTestData) { // test data ticker(key) price
         let profileInfo = {
             userID: userIds[i],
             value: userValue,
-            cash: parseFloat(userCash.data[0]['value'])
+            cash: parseFloat(userCash.data[0]['value']),
+            date: dateProper
         }
         console.log(profileInfo);
         let res = await axios.post(
@@ -95,6 +126,10 @@ async function updatePortfolio(updatedTestData) { // test data ticker(key) price
     }
     console.log('The candle has been lit');
     return true
+}
+
+function newProfilePost (args) {
+
 }
 
 function sortResponse(transactions) {
@@ -123,3 +158,6 @@ function calculateValue (tickerSharesObj, theKeys) {
     }
     return totalValue;
 }
+
+
+console.log(updatePortfolio(tickersUniqueFriday));

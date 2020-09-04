@@ -6,7 +6,8 @@ router.post('/new', (req, res) => {
     const newProfile = new ProfileData({
         userID: req.body.userID,
         value: req.body.value,
-        cash: req.body.cash
+        cash: req.body.cash,
+        date: req.body.date
     })
     newProfile.save()
         .then(newProfile => res.json(newProfile))
@@ -22,6 +23,7 @@ router.patch('/update', (req, res) => {
         userID: req.body.userID,
         value: req.body.value,
         cash: req.body.cash,
+        date: req.body.date
     };
     const updatedStock = ProfileData.replaceOne(
         query, update, { upsert: true }
@@ -36,7 +38,7 @@ router.patch('/update', (req, res) => {
 })
 
 router.get('/:userID', (req, res) => {
-    ProfileData.find({ userID: req.params.userID })
+    ProfileData.find({ userID: { $eq: req.params.userID } })
         .sort({ date: 1 })
         .then(profile => res.json(profile))
         .catch(err =>
