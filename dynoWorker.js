@@ -99,22 +99,22 @@ async function updatePortfolio(tickersUniqueFriday) { // test data ticker(key) p
         let mostRecentProfile = await axios.get(
             `https://nitetrader.herokuapp.com/api/profile/${userId}`
             )
-        console.log(mostRecentProfile.data);
+        // console.log(mostRecentProfile.data);
         
         let response = await axios.get(
             `https://nitetrader.herokuapp.com/api/transactions/${userId}`
             )
         let tickerSharesObj = sortResponse(response.data);
         let userValue = calculateValue(tickerSharesObj, theKeys);
-        let userID = userIds[i]
         let userCash = await axios.get( 
-            `https://nitetrader.herokuapp.com/api/stat/${userID}`)
+            `https://nitetrader.herokuapp.com/api/stat/${userId}`)
         .catch(error => console.log(error))
+
         if (userCash.data.length === 0) {
             userCash.data[0] = {'value': 50000};
         }
         let profileInfo = {
-            userID: userIds[i],
+            userId: userId,
             value: userValue,
             cash: parseFloat(userCash.data[0]['value']),
             date: dateProper
