@@ -3,8 +3,9 @@ const router = express.Router();
 const ProfileData = require('../../models/Profile.js');
 
 router.post('/new', (req, res) => {
+    console.log(req.body);
     const newProfile = new ProfileData({
-        userID: req.body.userID,
+        userId: req.body.userId,
         value: req.body.value,
         cash: req.body.cash,
         date: req.body.date
@@ -38,13 +39,18 @@ router.patch('/update', (req, res) => {
 })
 
 router.get('/:userID', (req, res) => {
-    ProfileData.find({ userID: { $eq: req.params.userID } })
-        .sort({ date: 1 })
-        .then(profile => res.json(profile))
+    ProfileData.findOne(
+        { 
+            $and: [
+                { userID: { $eq: req.body.userID } },
+                { date: { $eq: req.body.date}}
+            ]
+        })
+        .then(query => res.json(query))
         .catch(err =>
-            res.status(404).json({ profileNotFound: 'No data found from that user' }
+            res.status(404).json({ profileNotFound: 'Sorry, there was an error' }
             )
-        );
+        )
 })
 
 module.exports = router;
