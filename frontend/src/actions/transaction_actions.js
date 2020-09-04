@@ -90,6 +90,7 @@ export const sellStock = transaction => dispatch => {
 export const buyStock = transaction => dispatch => {
     TransactionAPIUtil.buyStock(transaction)
         .then(newTrade => dispatch(receiveBuyTransaction(newTrade)))
+        .then(() => dispatch(fireAPI(transaction.ticker)))
         .catch( errors => dispatch(receiveErrors(errors)))
 };
 
@@ -118,12 +119,12 @@ export const cashValueBuy = trade => dispatch => {
     let ticker = trade.ticker;
     ProfileAPIUtil.statUpdate(update)
         .then(
-            () => dispatch(getStat(update.userID)), 
-            () => dispatch(fireAPI(ticker)))
+            () => dispatch(getStat(update.userID)))
         .catch(error => dispatch(receiveProfileError(error)))
 };
 
 export const fireAPI = (ticker) => dispatch => {
+    console.log('here');
     axios.get(`
     https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key.alphaVantage}`)
     .then( stockData => dispatch(updateDB(stockData)) )

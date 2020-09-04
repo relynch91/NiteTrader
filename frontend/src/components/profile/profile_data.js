@@ -79,7 +79,6 @@ class ProfileData extends React.Component {
         <h1>Your Transactions: </h1>
         <ul className='profile-transactions-container'>
           {Object.keys(transactions).map((compObj, idx) => {
-            console.log(transactions[compObj]);
             return (
               <div className='profile-transaction-info'>
                 <li className='profile-transaction-list' key={idx * 29}>
