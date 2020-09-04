@@ -34,7 +34,7 @@ export default class StockSearch extends React.Component {
   async getStockTicker(e) {
     if (e) { e.preventDefault() }
     this.props.receiveClearStocks();
-    const stockSearchAPI = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${this.state.stock}&apikey=${alphaVantage.alphaVantage}`;
+    const stockSearchAPI = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${this.state.stock}&apikey=SVP67XIYGDS40JIM`;
     if (this.state.stock === '') {
       return;
     }
@@ -60,9 +60,9 @@ export default class StockSearch extends React.Component {
 
   getStockDetails(e){
     if (e) { e.preventDefault() };
-    const intraDayAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.ticker}&interval=15min&outputsize=full&apikey=${alphaVantage.alphaVantage}`;
+    const intraDayAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${this.state.ticker}&interval=15min&outputsize=full&apikey=SVP67XIYGDS40JIM`;
     this.props.intraDayAPICall(intraDayAPI);
-    const weeklyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=${this.state.ticker}&apikey=${alphaVantage.alphaVantage}`;
+    const weeklyAPI = `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=${this.state.ticker}&apikey=SVP67XIYGDS40JIM`;
     this.props.weeklyAPICall(weeklyAPI);
   }
   
