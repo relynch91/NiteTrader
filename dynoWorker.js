@@ -59,22 +59,22 @@ async function candle() {
     return true;
 }
 
-// candle();
+candle();
 
-let tickersUniqueFriday = {
-    GOOG: '1641.8400',
-    AAPL: '120.8800',
-    F: '6.8200',
-    IBM: '124.4500',
-    RIG: '1.2100',
-    FB: '291.1200',
-    TSLA: '407.0000',
-    NKE: '112.8500',
-    CAT: '146.7600',
-    DPZ: '397.5000',
-    GT: '9.5700',
-    DDD: '5.4100'
-}
+// let tickersUniqueFriday = {
+//     GOOG: '1641.8400',
+//     AAPL: '120.8800',
+//     F: '6.8200',
+//     IBM: '124.4500',
+//     RIG: '1.2100',
+//     FB: '291.1200',
+//     TSLA: '407.0000',
+//     NKE: '112.8500',
+//     CAT: '146.7600',
+//     DPZ: '397.5000',
+//     GT: '9.5700',
+//     DDD: '5.4100'
+// }
 
 // --------------------- above updates DB w/ all tickers ---------------------
 
@@ -96,9 +96,9 @@ async function updatePortfolio(tickersUniqueFriday) { // test data ticker(key) p
 
     for (let i = 0; i < userIds.length; i ++) {
         let userId = userIds[i];
-        let mostRecentProfile = await axios.get(
-            `https://nitetrader.herokuapp.com/api/profile/${userId}`
-            )
+        // let mostRecentProfile = await axios.get(
+        //     `https://nitetrader.herokuapp.com/api/profile/${userId}`
+        //     )
         // console.log(mostRecentProfile.data);
         
         let response = await axios.get(
@@ -119,7 +119,6 @@ async function updatePortfolio(tickersUniqueFriday) { // test data ticker(key) p
             cash: parseFloat(userCash.data[0]['value']),
             date: dateProper
         }
-        console.log(profileInfo);
         let res = await axios.post(
             'https://nitetrader.herokuapp.com/api/profile/new', profileInfo)
             .catch(err => console.log(err));
@@ -128,9 +127,9 @@ async function updatePortfolio(tickersUniqueFriday) { // test data ticker(key) p
     return true
 }
 
-function newProfilePost (args) {
+// function newProfilePost (args) {
 
-}
+// }
 
 function sortResponse(transactions) {
     let tickers = {};
@@ -160,4 +159,4 @@ function calculateValue (tickerSharesObj, theKeys) {
 }
 
 
-console.log(updatePortfolio(tickersUniqueFriday));
+// console.log(updatePortfolio(tickersUniqueFriday));
