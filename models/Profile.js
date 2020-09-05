@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ProfileSchema = new Schema ({
-    userID: { type: String, index: true },
+    userId: { type: String, index: true },
     value: { type: Number },
     cash: { type: Number }
 })
