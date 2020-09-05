@@ -59,22 +59,22 @@ async function candle() {
     return true;
 }
 
-// candle();
+candle();
 
-let tickersUniqueFriday = {
-    GOOG: '1641.8400',
-    AAPL: '120.8800',
-    F: '6.8200',
-    IBM: '124.4500',
-    RIG: '1.2100',
-    FB: '291.1200',
-    TSLA: '407.0000',
-    NKE: '112.8500',
-    CAT: '146.7600',
-    DPZ: '397.5000',
-    GT: '9.5700',
-    DDD: '5.4100'
-}
+// let tickersUniqueFriday = {
+//     GOOG: '1641.8400',
+//     AAPL: '120.8800',
+//     F: '6.8200',
+//     IBM: '124.4500',
+//     RIG: '1.2100',
+//     FB: '291.1200',
+//     TSLA: '407.0000',
+//     NKE: '112.8500',
+//     CAT: '146.7600',
+//     DPZ: '397.5000',
+//     GT: '9.5700',
+//     DDD: '5.4100'
+// }
 
 // --------------------- above updates DB w/ all tickers ---------------------
 
