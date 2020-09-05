@@ -72,6 +72,8 @@ export default class StockDetails extends React.Component {
     }
   }
 
+  
+
   latestUpdateTicker() {
     let apiResult = this.props.stockDetails.intraDay['Time Series (15min)'];
     let objKeys = Object.keys(apiResult);
