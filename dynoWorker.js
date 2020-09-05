@@ -119,6 +119,7 @@ async function updatePortfolio(tickersUniqueFriday) { // test data ticker(key) p
             cash: parseFloat(userCash.data[0]['value']),
             date: dateProper
         }
+        console.log(profileInfo);
         let res = await axios.post(
             'https://nitetrader.herokuapp.com/api/profile/new', profileInfo)
             .catch(err => console.log(err));
