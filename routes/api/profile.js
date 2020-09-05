@@ -38,12 +38,29 @@ router.patch('/update', (req, res) => {
         );
 })
 
-router.get('/:userID', (req, res) => {
+router.post('/posts', (req, res) => {
+
     ProfileData.findOne(
         { 
             $and: [
-                { userID: { $eq: req.body.userID } },
-                { date: { $eq: req.body.date}}
+                { userId: { $eq: req.body.userId } },
+                { date: { $eq: req.body.dateProper }}
+            ]
+    })
+    .then(query => res.json(query))
+    .catch(err =>
+        res.json({ error: err}
+        )
+    )
+})
+
+router.get('/:userID', (req, res) => {
+
+    ProfileData.findOne(
+        {
+            $and: [
+                { userId: { $eq: req.body.userId } },
+                { date: { $eq: dateProper } }
             ]
         })
         .then(query => res.json(query))
