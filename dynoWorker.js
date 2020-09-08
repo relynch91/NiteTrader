@@ -79,29 +79,26 @@ async function updatePortfolio(tickers123) { // test data ticker(key) price(valu
     users.data.forEach(obj => {
         userIds.push(obj._id);
     })
-    let date = await new Date(); 
-    let dateOther = date.toString();
+    let date = new Date();
     let dateProper = date.toDateString();
-    console.log(date);
     console.log(dateProper);
-    console.log(dateOther);
-
+    console.log(userIds);
     
     for (let i = 0; i < userIds.length; i ++) {
         let userId = userIds[i];
         let profileInfo = { dateProper, userId };
         console.log(profileInfo);
-        let mostRecentProfile = await axios.post(
-            `https://nitetrader.herokuapp.com/api/profile/posts`, profileInfo
+        let mostRecentProfile = await axios.get(
+            `https://nitetrader.herokuapp.com/api/profile/${userId}`
         ).catch(err => console.log(err));
-        console.log(mostRecentProfile);
-        // if (mostRecentProfile.length === 0) {
-        //     createProfilePost(userId)
-        // }
-        // }
-        // console.log('The candle has been lit');
-        return true
-        // createProfilePost(userId, theKeys);
+        console.log(mostRecentProfile.data);
+    //     // if (mostRecentProfile.length === 0) {
+    //     //     createProfilePost(userId)
+    //     // }
+    //     // }
+    //     console.log('The candle has been lit');
+    //     return true
+    //     // createProfilePost(userId, theKeys);
     }
 }
     
@@ -162,6 +159,5 @@ function calculateValue (tickerSharesObj, theKeys) {
     }
     return totalValue;
 }
-
-console.log(updatePortfolio(tickers123));
+updatePortfolio(tickers123);
 // candle()

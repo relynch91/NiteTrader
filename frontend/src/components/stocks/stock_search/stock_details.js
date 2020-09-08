@@ -32,7 +32,7 @@ export default class StockDetails extends React.Component {
   }
 
   async oneMoreTime() {
-    let { userId, fetchTrades, buildPortfolio, getStat } = this.props;
+    let { userId, fetchTrades, buildPortfolio } = this.props;
     let trades = await fetchTrades(userId);
     await buildPortfolio(trades.transactions.data);
   }
