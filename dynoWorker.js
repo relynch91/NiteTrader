@@ -88,8 +88,8 @@ async function updatePortfolio(tickers123) { // test data ticker(key) price(valu
         let userId = userIds[i];
         let profileInfo = { dateProper, userId };
         console.log(profileInfo);
-        let mostRecentProfile = await axios.get(
-            'https://nitetrader.herokuapp.com/api/profile/'
+        let mostRecentProfile = await axios.post(
+            'https://nitetrader.herokuapp.com/api/profile/allProfiles', userId
         ).catch(err => console.log(err));
         console.log(mostRecentProfile);
     //     // if (mostRecentProfile.length === 0) {

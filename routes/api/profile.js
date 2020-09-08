@@ -46,7 +46,7 @@ router.post('/posts', (req, res) => {
     )
 })
 
-router.get('/allProfiles', (req, res) => {
+router.post('/allProfiles', (req, res) => {
     // console.log(req.body.userId);
     ProfileData.find()
     .then(query => res.json(query))
