@@ -3,12 +3,11 @@ const router = express.Router();
 const ProfileData = require('../../models/Profile.js');
 
 router.post('/new', (req, res) => {
-    console.log(req.body);
     const newProfile = new ProfileData({
         userId: req.body.userId,
         value: req.body.value,
         cash: req.body.cash,
-        date: req.body.date
+        date: req.body.dateProper
     })
     newProfile.save()
         .then(newProfile => res.json(newProfile))
@@ -19,7 +18,6 @@ router.post('/new', (req, res) => {
 
 router.patch('/update', (req, res) => {
     const query = { userID: req.body.userID };
-    console.log(query);
     const update = {
         userID: req.body.userID,
         value: req.body.value,
@@ -40,13 +38,7 @@ router.patch('/update', (req, res) => {
 
 router.post('/posts', (req, res) => {
 
-    ProfileData.findOne(
-        { 
-            $and: [
-                { userId: { $eq: req.body.userId } },
-                { date: { $eq: req.body.dateProper }}
-            ]
-    })
+    ProfileData.find()
     .then(query => res.json(query))
     .catch(err =>
         res.json({ error: err}
@@ -54,9 +46,9 @@ router.post('/posts', (req, res) => {
     )
 })
 
-router.get('/:userID', (req, res) => {
+router.get('/allProfiles', (req, res) => {
     // console.log(req.body.userId);
-    ProfileData.find({ userId: { $eq: req.body.userId } })
+    ProfileData.find()
     .then(query => res.json(query))
     .catch(err =>
         res.status(404).json({ profileNotFound: 'Sorry, there was an error' }
