@@ -7,7 +7,7 @@ router.post('/new', (req, res) => {
         userId: req.body.userId,
         value: req.body.value,
         cash: req.body.cash,
-        date: req.body.dateProper
+        date: req.body.date
     })
     newProfile.save()
         .then(newProfile => res.json(newProfile))
@@ -48,7 +48,9 @@ router.post('/posts', (req, res) => {
 
 router.post('/allProfiles', (req, res) => {
     // console.log(req.body.userId);
-    ProfileData.find({ userId: { $eq: req.body.userId}})
+    ProfileData.find({ $and: [ { userId: { $eq: req.body.userId } },
+        { date: { $eq: req.body.date } }] }
+    )
     .then(query => res.json(query))
     .catch(err =>
         res.status(404).json({ profileNotFound: 'Sorry, there was an error' }
