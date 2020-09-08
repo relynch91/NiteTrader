@@ -83,23 +83,12 @@ async function updatePortfolio(tickers123) { // test data ticker(key) price(valu
     let dateProper = date.toDateString();
     console.log(dateProper);
     console.log(userIds);
+
+    let mostRecentProfile = await axios.get(
+        'https://nitetrader.herokuapp.com/api/profile/allProfiles'
+    ).catch(err => console.log(err));
     
-    for (let i = 0; i < userIds.length; i ++) {
-        let userId = userIds[i];
-        let profileInfo = { dateProper, userId };
-        console.log(profileInfo);
-        let mostRecentProfile = await axios.post(
-            'https://nitetrader.herokuapp.com/api/profile/allProfiles', userId
-        ).catch(err => console.log(err));
-        console.log(mostRecentProfile);
-    //     // if (mostRecentProfile.length === 0) {
-    //     //     createProfilePost(userId)
-    //     // }
-    //     // }
-    //     console.log('The candle has been lit');
-    //     return true
-    //     // createProfilePost(userId, theKeys);
-    }
+    console.log(mostRecentProfile);
 }
     
 async function createProfilePost (userId, theKeys) {
