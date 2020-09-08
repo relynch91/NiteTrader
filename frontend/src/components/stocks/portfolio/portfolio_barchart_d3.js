@@ -52,7 +52,6 @@ class PortfolioD3BarChart extends React.Component {
     }
     
     render() {
-
         return (
             <div className="d3-portfolio">
                 <h1>D3 Will be here soon. Prepare. </h1>
