@@ -1,4 +1,5 @@
 import * as QuoteEP from '../util/quote_end_point_util';
+import { max, min } from 'd3-array';
 
 export const activeShares = (trades) => {
     let res = {};
@@ -58,13 +59,27 @@ export const fetchDBStockData = (transactions) => {
 }
 
 export const formatPortfolioData = (portfolio) => {
-    let res = [];
+    let res = {};
     Object.keys(portfolio).forEach(ticker => {
-        let key = parseFloat(portfolio[ticker].changePercent) > 0 ? 'Gain' : 'Loss';
-        res.push({
-            name: ticker,
-            [key]: parseFloat(portfolio[ticker].changePercent)
-        })
+        let tickerKey = ticker;
+        let value = parseFloat(portfolio[ticker].changePercent)
+        res[tickerKey] = value;
     })
     return res;
+}
+
+export const createMinMax = (data) => {
+    let yMax = Math.ceil(max(Object.values(data)));
+    let yMin = Math.ceil(min(Object.values(data)));
+    if (yMax > 10) {
+        yMax += 5;
+    } else {
+        yMax += 3;
+    }
+    if (yMin < (-10)) {
+        yMin -= 5;
+    } else {
+        yMin -= 3;
+    }
+    return [yMin, yMax];
 }

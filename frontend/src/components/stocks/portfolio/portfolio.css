@@ -82,3 +82,12 @@
 .recharts-default-legend{
     margin-top: 8px
 }
+
+.d3-portfolio {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 68vh;
+    min-width: 600px;
+    border: 1px solid;
+}
