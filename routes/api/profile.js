@@ -48,7 +48,7 @@ router.post('/posts', (req, res) => {
 
 router.post('/allProfiles', (req, res) => {
     // console.log(req.body.userId);
-    ProfileData.find()
+    ProfileData.find({ userId: req.body.userId })
     .then(query => res.json(query))
     .catch(err =>
         res.status(404).json({ profileNotFound: 'Sorry, there was an error' }
