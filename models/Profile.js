@@ -5,7 +5,7 @@ const ProfileSchema = new Schema ({
     userId: { type: String, index: true },
     value: { type: Number },
     cash: { type: Number },
-    date: { type: String }
+    dateProper: { type: String }
 })
 
 module.exports = ProfileData = mongoose.model(

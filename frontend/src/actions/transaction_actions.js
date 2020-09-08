@@ -116,7 +116,6 @@ export const cashValueBuy = trade => dispatch => {
         userID: trade.userId,
         value: (-sum)
     }
-    let ticker = trade.ticker;
     ProfileAPIUtil.statUpdate(update)
         .then(
             () => dispatch(getStat(update.userID)))

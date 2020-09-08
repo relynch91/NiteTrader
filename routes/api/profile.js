@@ -55,19 +55,13 @@ router.post('/posts', (req, res) => {
 })
 
 router.get('/:userID', (req, res) => {
-
-    ProfileData.findOne(
-        {
-            $and: [
-                { userId: { $eq: req.body.userId } },
-                { date: { $eq: dateProper } }
-            ]
-        })
-        .then(query => res.json(query))
-        .catch(err =>
-            res.status(404).json({ profileNotFound: 'Sorry, there was an error' }
-            )
+    // console.log(req.body.userId);
+    ProfileData.find({ userId: { $eq: req.body.userId } })
+    .then(query => res.json(query))
+    .catch(err =>
+        res.status(404).json({ profileNotFound: 'Sorry, there was an error' }
         )
+    )
 })
 
 module.exports = router;
