@@ -1,7 +1,6 @@
 import React from 'react';
 import StockDetailsContainer from './stock_details_container';
 import StockGraphContainer from '../stockgraph/stockgraph_container';
-import alphaVantage from '../../../frontConfig/frontKeys';
 import './stock_search.css';
 import { figureAPICall } from './../../../util/stocks_api_util';
 import StockNameContainer from './stock_name_container';
