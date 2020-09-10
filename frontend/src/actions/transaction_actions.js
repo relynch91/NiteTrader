@@ -144,7 +144,6 @@ export const fireAPI = (ticker) => dispatch => {
     axios.get(`
     https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key.alphaVantage}`)
     .then( stockData => dispatch(updateDB(stockData)))
-    .then( () => dispatch(receiveTransactionEnd()))
     .catch( error => dispatch(receiveErrors(error)))
 };
 
@@ -153,6 +152,7 @@ export const updateDB = (stockData) => dispatch => {
     axios.patch(
         'https://nitetrader.herokuapp.com/api/stock_api/quoteendpointstock/update', formattedData)
         .then( result => dispatch(receiveEndPointSuccess(result)))
+        .then(() => dispatch(receiveTransactionEnd()))
         .catch(error => dispatch(receiveEndPointFailure(error)))
     return true
 }

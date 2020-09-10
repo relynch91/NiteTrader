@@ -127,7 +127,9 @@ export default class StockDetails extends React.Component {
       numberOwned = 0;
       pricePerShare = "0.00";
     }
-
+    // if (this.state.loading) {
+    //   return 
+    // }
     if (this.state.redirect) {
       return <Redirect to="/profile" />
     }
