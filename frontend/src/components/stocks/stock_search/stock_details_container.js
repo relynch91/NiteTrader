@@ -1,7 +1,10 @@
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
 import StockDetails from "./stock_details";
-import { buyStock, handleSell, handleBuy, fetchTrades, clearSearchState } from '../../../actions/transaction_actions.js';
+import { buyStock, handleSell, 
+         handleBuy, fetchTrades, 
+         clearSearchState, receiveTransactionStart, 
+         receiveTransactionEnd } from '../../../actions/transaction_actions.js';
 import { buildPortfolio } from '../../../actions/portfolio_actions.js'
 import { getStat } from '../../../actions/profile_actions.js'
 
@@ -23,7 +26,9 @@ const mapDispatchToProps = (dispatch) => ({
   handleSell: (transaction) => dispatch(handleSell(transaction)),
   handleBuy: (transaction) => dispatch(handleBuy(transaction)),
   buildPortfolio: (transactions) => dispatch(buildPortfolio(transactions)),
-  clearSearchState: () => dispatch(clearSearchState())
+  clearSearchState: () => dispatch(clearSearchState()),
+  receiveTransactionStart: () => dispatch(receiveTransactionStart()),
+  receiveTransactionEnd: () => dispatch(receiveTransactionEnd()),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(StockDetails));
