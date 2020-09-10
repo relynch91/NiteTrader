@@ -16,6 +16,9 @@ export const RECEIVE_SELL_TRANSACTION = 'RECEIVE_SELL_TRANSACTION';
 export const RECEIVE_ALL_TRADES = 'RECEIVE_ALL_TRADES';
 export const RECEIVE_TRANSACTION_ERRORS = "RECEIVE_TRANSACTION_ERRORS";
 export const CLEAR_TRANSACTIONS = 'CLEAR_TRANSACTIONS';
+export const RECEIVE_TRANSACTION_START = 'RECEIVE_TRANSACTION_START';
+export const RECEIVE_TRANSACTION_END = 'RECEIVE_TRANSACTION_END';
+
 
 export const receiveBuyTransaction = transaction => {
     return ({
@@ -23,6 +26,20 @@ export const receiveBuyTransaction = transaction => {
         transaction
     });
 };
+
+export const receiveTransactionStart = () => {
+    return ({
+        type: RECEIVE_TRANSACTION_START,
+        flag: true
+    })
+}
+
+export const receiveTransactionEnd = () => {
+    return ({
+        type: RECEIVE_TRANSACTION_END,
+        flag: false
+    })
+}
 
 export const receiveSellTransaction = transaction => {
     return ({
@@ -71,7 +88,7 @@ export const handleSell = transactionDetails => dispatch => {
         dispatch(receiveErrors(error));
         return false;
     } else if (ownedShares < 1) {
-        let error = { transactionError: "Sorry, you don't any shares of that company." }
+        let error = { transactionError: "Sorry, you don't own any shares of that company." }
         dispatch(receiveErrors(error));
         return false;
     } else {
@@ -103,7 +120,9 @@ export const cashValueSell = trade => dispatch => {
     }
     ProfileAPIUtil.statUpdate(update)
         .then(() =>
-            dispatch(getStat(update.userID)))
+            dispatch(getStat(update.userID)),
+            dispatch(receiveTransactionEnd())
+            )
         .catch(error => dispatch(receiveProfileError(error)))
 };
 
@@ -117,16 +136,16 @@ export const cashValueBuy = trade => dispatch => {
     }
     ProfileAPIUtil.statUpdate(update)
         .then(
-            () => dispatch(getStat(update.userID)))
+            () => dispatch(getStat(update.userID), receiveTransactionEnd()))
         .catch(error => dispatch(receiveProfileError(error)))
 };
 
 export const fireAPI = (ticker) => dispatch => {
-    console.log('here');
     axios.get(`
     https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key.alphaVantage}`)
-    .then( stockData => dispatch(updateDB(stockData)) )
-    .catch( error => dispatch(receiveErrors(error)) )
+    .then( stockData => dispatch(updateDB(stockData)))
+    .then( () => dispatch(receiveTransactionEnd()))
+    .catch( error => dispatch(receiveErrors(error)))
 };
 
 export const updateDB = (stockData) => dispatch => {

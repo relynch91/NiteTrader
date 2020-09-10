@@ -1,6 +1,7 @@
 import React from 'react';
 import './stock_details.css';
 import { Redirect } from "react-router-dom";
+import { receiveTransactionEnd } from '../../../actions/transaction_actions';
 
 export default class StockDetails extends React.Component {
   constructor(props){
@@ -45,7 +46,8 @@ export default class StockDetails extends React.Component {
     let price = this.findPrice(
       this.props.stockDetails.intraDay["Time Series (15min)"]);
     let ticker = this.props.stockDetails.intraDay["Meta Data"]['2. Symbol'];
-    let { profile, portfolio, handleBuy, handleSell, userId } = this.props;
+    let { profile, portfolio, handleBuy, handleSell, userId,
+      receiveTransactionStart, receiveTransactionEnd } = this.props;
     let cash = profile;
     let numberOwned;
     if (portfolio[ticker]) {
@@ -64,15 +66,18 @@ export default class StockDetails extends React.Component {
       'buy': buy 
     }
     if (transactionData['buy']) {
-      handleBuy(transactionData)
-        // this.setState({ redirect: true })
-      
-    } else { 
-      handleSell(transactionData)
-      // this.setState( { redirect: true } )
+      this.transactionLogic(transactionData, handleBuy)
+    } else {
+      this.transactionLogic(transactionData, handleSell)
     }
   }
 
+  async transactionLogic(data, worker) {
+    let { receiveTransactionStart, receiveTransactionEnd } = this.props;
+    receiveTransactionStart();
+    await worker(data);
+    // receiveTransactionEnd();
+  }
   
 
   latestUpdateTicker() {
