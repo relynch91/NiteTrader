@@ -75,9 +75,8 @@ export const handleSell = transactionDetails => dispatch => {
         dispatch(receiveErrors(error));
         return false;
     } else {
-        dispatch(sellStock(transactionDetails));
-        dispatch(cashValueSell(transactionDetails));
-        return true;
+        dispatch(sellStock(transactionDetails))
+        dispatch(cashValueSell(transactionDetails))
     }
 }
 
