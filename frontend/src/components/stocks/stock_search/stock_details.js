@@ -64,11 +64,13 @@ export default class StockDetails extends React.Component {
       'buy': buy 
     }
     if (transactionData['buy']) {
-      handleBuy(transactionData);
-      this.setState({ redirect: true });
+      handleBuy(transactionData).then(
+        this.setState({ redirect: true })
+      )
     } else { 
-      handleSell(transactionData);
-      this.setState({ redirect: true })
+      handleSell(transactionData).then(
+        this.setState({ redirect: true })
+      )
     }
   }
 

@@ -14,7 +14,7 @@ class PortfolioD3BarChart extends React.Component {
         this.yScale = scaleLinear()
     }
     componentDidMount() {
-        console.log(formatPortfolioData(this.props.ownedStocks));
+        // console.log(formatPortfolioData(this.props.ownedStocks));
     }
     
     render() {
@@ -23,7 +23,6 @@ class PortfolioD3BarChart extends React.Component {
         let margins = { top: 50, right: 20, bottom: 100, left: 60 };
         let svgDimensions = { width: 600, height: 500 }
         // let yMin = (Math.floor(Math.min(...Object.values(data))) - 1);
-        console.log(data);
         let yMax = (Math.ceil(Math.max(...Object.values(data))) + 1);
         let y0 = Math.max(Math.abs(d3.min(dataValues)), Math.abs(d3.max(dataValues)));
         
@@ -42,18 +41,18 @@ class PortfolioD3BarChart extends React.Component {
             <div className='portfolio-d3'>
                 <h1> Portfolio Day Change (%)</h1>
                 <svg width={svgDimensions.width} height={svgDimensions.height}>
-                    <Axes
-                        scales={{ xScale, yScale }}
-                        margins={margins}
-                        svgDimensions={svgDimensions}
-                    />
-                    <Bars
-                        scales={{ xScale, yScale }}
-                        margins={margins}
-                        data={data}
-                        maxValue={y0}
-                        svgDimensions={svgDimensions}
-                    />
+                <Axes
+                    scales={{ xScale, yScale }}
+                    margins={margins}
+                    svgDimensions={svgDimensions}
+                />
+                <Bars
+                    scales={{ xScale, yScale }}
+                    margins={margins}
+                    data={data}
+                    maxValue={y0}
+                    svgDimensions={svgDimensions}
+                />
                 </svg>
             </div>
         )
