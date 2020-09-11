@@ -1,7 +1,5 @@
 import React from 'react';
 import './stock_details.css';
-import { Redirect } from "react-router-dom";
-import { receiveTransactionEnd } from '../../../actions/transaction_actions';
 
 export default class StockDetails extends React.Component {
   constructor(props){
@@ -30,6 +28,13 @@ export default class StockDetails extends React.Component {
     if (this.props.profile !== prevProps.profile) { 
       this.oneMoreTime() 
     };
+    if (this.props.flag) {
+      // setTimeout( this.loadingFlag(), 4000);
+    }
+  }
+
+  loadingFlag() {
+    this.setState( { loading: false}  )
   }
 
   async oneMoreTime() {
@@ -72,14 +77,14 @@ export default class StockDetails extends React.Component {
     }
   }
 
-  async transactionLogic(data, worker) {
-    let { receiveTransactionStart, receiveTransactionEnd } = this.props;
+  transactionLogic(data, worker) {
+    console.log('start')
+    let { receiveTransactionStart } = this.props;
     receiveTransactionStart();
-    await worker(data);
-    // receiveTransactionEnd();
+    worker(data);
+    console.log('end')
   }
   
-
   latestUpdateTicker() {
     let apiResult = this.props.stockDetails.intraDay['Time Series (15min)'];
     let objKeys = Object.keys(apiResult);
@@ -127,11 +132,12 @@ export default class StockDetails extends React.Component {
       numberOwned = 0;
       pricePerShare = "0.00";
     }
-    // if (this.state.loading) {
-    //   return 
-    // }
-    if (this.state.redirect) {
-      return <Redirect to="/profile" />
+    if (this.props.flag) {
+      return (
+        <div className='loader-holder'>
+          <div className='loader'>
+          </div>
+        </div>)
     }
     return (
       <div className='the-details-stock-api'>
