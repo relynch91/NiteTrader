@@ -121,7 +121,6 @@ export const cashValueSell = trade => dispatch => {
     ProfileAPIUtil.statUpdate(update)
         .then(() =>
             dispatch(getStat(update.userID)),
-            dispatch(receiveTransactionEnd())
             )
         .catch(error => dispatch(receiveProfileError(error)))
 };
@@ -136,7 +135,7 @@ export const cashValueBuy = trade => dispatch => {
     }
     ProfileAPIUtil.statUpdate(update)
         .then(
-            () => dispatch(getStat(update.userID), receiveTransactionEnd()))
+            () => dispatch(getStat(update.userID)))
         .catch(error => dispatch(receiveProfileError(error)))
 };
 

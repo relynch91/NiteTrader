@@ -39,9 +39,7 @@ export default class StockName extends React.Component {
                 <div className='loader-holder'>
                     < div className='loader'>
                     </div>
-                </div>
-                
-            )
+                </div>)
         } else if (this.props.stocks.stockNameSearch.length === 0) {
                return ( 
                    <div>
