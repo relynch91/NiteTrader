@@ -8,10 +8,10 @@ const loadingReducer = (state = false, action) => {
             return { flag: true };
         case RECEIVE_TRANSACTION_END:
             return false
-        // case RECEIVE_BUY_TRANSACTION:
-        //     return false;
-        // case RECEIVE_SELL_TRANSACTION:
-        //     return false;
+        case RECEIVE_BUY_TRANSACTION:
+            return false;
+        case RECEIVE_SELL_TRANSACTION:
+            return false;
         default:
             return state;
     }
