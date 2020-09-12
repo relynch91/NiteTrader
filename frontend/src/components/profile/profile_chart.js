@@ -2,6 +2,17 @@ import React from 'react';
 import './profile.css';
 
 class ProfileChart extends React.Component {
+  constructor(props) {
+    super(props)
+
+  }
+
+  componentDidMount() {
+    let { getProfileValues, userId } = this.props;
+    let values = getProfileValues(userId);
+    console.log(values);
+  }
+
 
   render() {
     return (

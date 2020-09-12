@@ -16,6 +16,15 @@ router.post('/new', (req, res) => {
         );
 })
 
+router.get('/:userId', (req, res) => {
+    ProfileData.find({ userId: req.params.userId })
+        .then(trades => res.json(trades))
+        .catch(err =>
+            res.status(404).json({ noUsersFound: err }
+            )
+        );
+})
+
 router.patch('/update', (req, res) => {
     const query = { userID: req.body.userID };
     const update = {
@@ -57,5 +66,4 @@ router.post('/allProfiles', (req, res) => {
         )
     )
 })
-
 module.exports = router;

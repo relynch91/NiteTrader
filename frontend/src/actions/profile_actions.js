@@ -81,8 +81,8 @@ export const buildProfile = (stocks, info) => dispatch => {
     dispatch(receiveProfileValue(total))
 }
 
-export const getProfileValues = userID => dispatch => {
-    APIUtil.profilesFetch(userID).then(
+export const getProfileValues = userId => dispatch => {
+    APIUtil.profilesFetch(userId).then(
         profiles => dispatch(receiveProfileValues(profiles.data)))
         .catch(error => dispatch(receiveProfileError(error)))
 }
