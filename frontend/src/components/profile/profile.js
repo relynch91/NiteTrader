@@ -9,7 +9,7 @@ class Profile extends React.Component {
     let theProfileDetailsAndGraph = (
       <div className="profile-details-and-graph">
         <ProfileDataContainer />
-        <ProfileChartContainer />
+        {/* <ProfileChartContainer /> */}
       </div>
     );
     let username = this.props.username;
@@ -17,7 +17,7 @@ class Profile extends React.Component {
     return (
       <div className="profile-container">
         <div className="profile-header">
-          <h1>Hello {username}! Here is your Profile Page</h1>  
+          <h1>Hello {username}! Here is your Stock Profile:</h1>  
         </div>
         {theProfileDetailsAndGraph}
       </div>
