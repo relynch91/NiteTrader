@@ -57,8 +57,8 @@ async function candle() {
     return true;
 }
 
-async function updatePortfolio(tickers123) { // test data ticker(key) price(value);
-    let theKeys = (tickers123); //theKeys are all the tickers
+async function updatePortfolio(tickers123) {
+    let theKeys = (tickers123); 
     let users = await axios.get('https://nitetrader.herokuapp.com/api/users/allusernames')
     let userIds = [];
     users.data.forEach(obj => {
@@ -92,7 +92,6 @@ async function createProfilePost (userId, theKeys) {
     let userCash = await axios.get(
         `https://nitetrader.herokuapp.com/api/stat/${userId}`)
         .catch(error => console.log(error))
-        
     if (userCash.data.length === 0) {
         userCash.data[0] = { 'value': 50000 };
     }
