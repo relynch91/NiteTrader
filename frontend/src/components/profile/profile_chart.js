@@ -18,6 +18,9 @@ class ProfileChart extends React.Component {
     return (
       <div className='profile-graph-container'>
         <h1>Profile Chart</h1>
+        <div>
+          <h2>This is where the profile chart will be located.</h2>
+        </div>
       </div>
     )  
   }

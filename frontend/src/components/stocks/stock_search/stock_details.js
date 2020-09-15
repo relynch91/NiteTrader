@@ -28,9 +28,6 @@ export default class StockDetails extends React.Component {
     if (this.props.profile !== prevProps.profile) { 
       this.oneMoreTime() 
     };
-    if (this.props.flag) {
-      // setTimeout( this.loadingFlag(), 4000);
-    }
   }
 
   loadingFlag() {
@@ -51,8 +48,7 @@ export default class StockDetails extends React.Component {
     let price = this.findPrice(
       this.props.stockDetails.intraDay["Time Series (15min)"]);
     let ticker = this.props.stockDetails.intraDay["Meta Data"]['2. Symbol'];
-    let { profile, portfolio, handleBuy, handleSell, userId,
-      receiveTransactionStart, receiveTransactionEnd } = this.props;
+    let { profile, portfolio, handleBuy, handleSell, userId } = this.props;
     let cash = profile;
     let numberOwned;
     if (portfolio[ticker]) {
@@ -78,11 +74,9 @@ export default class StockDetails extends React.Component {
   }
 
   transactionLogic(data, worker) {
-    console.log('start')
     let { receiveTransactionStart } = this.props;
     receiveTransactionStart();
     worker(data);
-    console.log('end')
   }
   
   latestUpdateTicker() {

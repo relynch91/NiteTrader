@@ -66,7 +66,6 @@ async function updatePortfolio(tickers123) {
     })
     let date = new Date();
     let dateProper = date.toDateString();
-    console.log(userIds);
     for (let i = 0; i < userIds.length; i ++) {
         let userId = userIds[i];
         let payload = { userId: userId, date: dateProper}
@@ -78,6 +77,7 @@ async function updatePortfolio(tickers123) {
         }
     }
     console.log("candle has been lit");
+    return true
 }
     
 async function createProfilePost (userId, theKeys) {
