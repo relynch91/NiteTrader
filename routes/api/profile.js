@@ -26,7 +26,7 @@ router.get('/:userId', (req, res) => {
 })
 
 router.patch('/update', (req, res) => {
-    const query = { userID: req.body.userId };
+    const query = { userId: req.body.userId };
     const update = {
         userId: req.body.userId,
         value: req.body.value,
@@ -38,11 +38,10 @@ router.patch('/update', (req, res) => {
     );
     updatedStock
         .then(updatedStock => res.json(updatedStock))
-        .catch(() =>
+        .catch((error) =>
             res.status(404).json({
-                notickersfound: 'Something Goofed. Sorry.'
-            })
-        );
+                error: error}
+        ))
 })
 
 router.post('/posts', (req, res) => {
