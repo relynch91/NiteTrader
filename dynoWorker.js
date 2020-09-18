@@ -57,8 +57,8 @@ async function candle() {
     return true;
 }
 
-async function updatePortfolio(tickers123) {
-    let theKeys = (tickers123); 
+async function updatePortfolio(tickerForToday) {
+    let theKeys = (tickerForToday); 
     let users = await axios.get('https://nitetrader.herokuapp.com/api/users/allusernames')
     let userIds = [];
     users.data.forEach(obj => {
@@ -72,6 +72,7 @@ async function updatePortfolio(tickers123) {
         let mostRecentProfile = await axios.post(
             'https://nitetrader.herokuapp.com/api/profile/allProfiles', payload
         ).catch(err => console.log(err));
+        console.log(mostRecentProfile.data);
         if (mostRecentProfile.data.length === 0) {
             createProfilePost(userId, theKeys);
         }
@@ -101,9 +102,13 @@ async function createProfilePost (userId, theKeys) {
         cash: parseFloat(userCash.data[0]['value']),
         date: dateProper
     }
+    // let res = await axios.post(
+    //     'https://nitetrader.herokuapp.com/api/profile/new', profileInfo)
+    //     .catch(err => console.log(err));
     let res = await axios.post(
-        'https://nitetrader.herokuapp.com/api/profile/new', profileInfo)
+        'https://nitetrader.herokuapp.com/api/profile/update', profileInfo)
         .catch(err => console.log(err));
+    console.log(res);
 }
                 
 function sortResponse(transactions) {
@@ -133,4 +138,20 @@ function calculateValue (tickerSharesObj, theKeys) {
     return totalValue;
 }
 // updatePortfolio(tickers123);
-candle()
+let tickerForToday = {
+    GOOG: '1495.5300',
+    AAPL: '110.3400',
+    F: '7.2800',
+    IBM: '124.9200',
+    RIG: '1.1100',
+    FB: '254.8200',
+    TSLA: '423.4300',
+    NKE: '116.3600',
+    CAT: '153.8700',
+    DPZ: '395.0700',
+    GT: '8.9600',
+    DDD: '5.2100'
+}
+
+updatePortfolio(tickerForToday)
+// candle()
