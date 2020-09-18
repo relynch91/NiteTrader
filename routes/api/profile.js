@@ -33,14 +33,12 @@ router.patch('/update', (req, res) => {
         cash: req.body.cash,
         date: req.body.date
     };
-    const updatedStock = ProfileData.replaceOne(
+    ProfileData.replaceOne(
         query, update, { upsert: true }
-    );
-    updatedStock
-        .then(updatedStock => res.json(updatedStock))
-        .catch((error) =>
-            res.status(404).json({
-                error: error}
+    ).then(updatedStock => res.json(updatedStock))
+    .catch((error) =>
+        res.status(404).json({
+            error: error}
         ))
 })
 

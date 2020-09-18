@@ -57,8 +57,8 @@ async function candle() {
     return true;
 }
 
-async function updatePortfolio(tickerForToday) {
-    let theKeys = (tickerForToday); 
+async function updatePortfolio(tickers1234) {
+    let theKeys = (tickers1234); 
     let users = await axios.get('https://nitetrader.herokuapp.com/api/users/allusernames')
     let userIds = [];
     users.data.forEach(obj => {
@@ -124,20 +124,20 @@ function calculateValue (tickerSharesObj, theKeys) {
     return totalValue;
 }
 // updatePortfolio(tickerForToday);
-let tickerForToday = {
-    GOOG: '1495.5300',
-    AAPL: '110.3400',
-    F: '7.2800',
-    IBM: '124.9200',
-    RIG: '1.1100',
-    FB: '254.8200',
-    TSLA: '423.4300',
-    NKE: '116.3600',
-    CAT: '153.8700',
-    DPZ: '395.0700',
-    GT: '8.9600',
-    DDD: '5.2100'
-}
+// let tickerForToday = {
+//     GOOG: '1495.5300',
+//     AAPL: '110.3400',
+//     F: '7.2800',
+//     IBM: '124.9200',
+//     RIG: '1.1100',
+//     FB: '254.8200',
+//     TSLA: '423.4300',
+//     NKE: '116.3600',
+//     CAT: '153.8700',
+//     DPZ: '395.0700',
+//     GT: '8.9600',
+//     DDD: '5.2100'
+// }
 
-updatePortfolio(tickerForToday)
-// candle()
+// updatePortfolio(tickerForToday)
+candle()
