@@ -26,9 +26,9 @@ router.get('/:userId', (req, res) => {
 })
 
 router.patch('/update', (req, res) => {
-    const query = { userID: req.body.userID };
+    const query = { userID: req.body.userId };
     const update = {
-        userID: req.body.userID,
+        userId: req.body.userId,
         value: req.body.value,
         cash: req.body.cash,
         date: req.body.date
