@@ -21,7 +21,7 @@ class PortfolioD3BarChart extends React.Component {
         console.log(data);
         let dataValues = Object.values(data);
         let margins = { top: 50, right: 20, bottom: 100, left: 60 };
-        let svgDimensions = { width: 600, height: 500 }
+        let svgDimensions = { width: 600, height: 700 }
         // let yMin = (Math.floor(Math.min(...Object.values(data))) - 1);
         let yMax = (Math.ceil(Math.max(...Object.values(data))) + 1);
         let y0 = Math.max(Math.abs(d3.min(dataValues)), Math.abs(d3.max(dataValues)));
