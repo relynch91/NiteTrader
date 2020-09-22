@@ -53,7 +53,6 @@ router.post('/posts', (req, res) => {
 })
 
 router.post('/allProfiles', (req, res) => {
-    // console.log(req.body.userId);
     ProfileData.find({ $and: [ { userId: { $eq: req.body.userId } },
         { date: { $eq: req.body.date } }] }
     )
