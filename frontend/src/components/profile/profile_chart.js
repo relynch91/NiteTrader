@@ -7,10 +7,10 @@ class ProfileChart extends React.Component {
 
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     let { getProfileValues, userId } = this.props;
-    let values = getProfileValues(userId);
-    console.log(values);
+    getProfileValues(userId);
+    // console.log(values);
   }
 
 
