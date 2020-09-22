@@ -6,7 +6,6 @@ import Axes from './portfolio_axes';
 import Bars from './bars_d3';
 import { formatPortfolioData } from '../../../../util/portfolio_api_util';
 
-
 class PortfolioD3BarChart extends React.Component {
     constructor() {
         super()
@@ -19,12 +18,14 @@ class PortfolioD3BarChart extends React.Component {
     
     render() {
         let data = formatPortfolioData(this.props.ownedStocks);
+        console.log(data);
         let dataValues = Object.values(data);
         let margins = { top: 50, right: 20, bottom: 100, left: 60 };
         let svgDimensions = { width: 600, height: 500 }
         // let yMin = (Math.floor(Math.min(...Object.values(data))) - 1);
         let yMax = (Math.ceil(Math.max(...Object.values(data))) + 1);
         let y0 = Math.max(Math.abs(d3.min(dataValues)), Math.abs(d3.max(dataValues)));
+        // let y0 = Math.abs(d3.max(dataValues));
         
         let xScale = this.xScale
             .padding(0.5)
@@ -33,9 +34,12 @@ class PortfolioD3BarChart extends React.Component {
 
         let yScale = this.yScale
             // scaleLinear domain required at least two values, min and max       
-            .domain([0, y0 + 5])
+            .domain([d3.min(dataValues), d3.max(dataValues)])
             // .domain([Math.min(0, d3.min(dataValues, d => d)), d3.max(dataValues, d => d)])
-            .range([svgDimensions.height - margins.bottom, margins.top])
+            .range([svgDimensions.height - (d3.min(dataValues)), 0])
+        // let yAxisScale = d3.scaleLinear()
+        //     .domain([d3.min(data), d3.max(data)])
+        //     .range([chartHeight - yScale(d3.min(data)), 0]);
 
         return (
             <div className='portfolio-d3'>
