@@ -65,15 +65,20 @@ async function updatePortfolio(tickers1234) {
         userIds.push(obj._id);
     })
     for (let i = 0; i < userIds.length; i ++) {
-        createProfilePost(userIds[i], theKeys);
+        profilePostSort(userIds[i], theKeys);
     }
     console.log("candle has been lit");
     return true
 }
     
-async function createProfilePost (userId, theKeys) {
+async function profilePostSort (userId, theKeys) {
     let date = await new Date();
     let dateProper = date.toDateString();
+    let search = {
+        date: dateProper,
+        userId: userId
+    }
+
     let response = await axios.get(
         `https://nitetrader.herokuapp.com/api/transactions/${userId}`
         )
@@ -91,10 +96,10 @@ async function createProfilePost (userId, theKeys) {
         cash: parseFloat(userCash.data[0]['value']),
         date: dateProper
     }
-    console.log(profileInfo);
-    await axios.patch(
+    let answer = await axios.patch(
         'https://nitetrader.herokuapp.com/api/profile/update', profileInfo)
         .catch(err => console.log(err));
+    console.log(answer);
     return true;
 }
                 
