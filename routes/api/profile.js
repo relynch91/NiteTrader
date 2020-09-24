@@ -53,8 +53,12 @@ router.post('/posts', (req, res) => {
 })
 
 router.post('/allProfiles', (req, res) => {
-    ProfileData.find({ $and: [ { userId: { $eq: req.body.userId } },
-        { date: { $eq: req.body.date } }] }
+    // ProfileData.find({ $and: [ { userId: { $eq: req.body.userId } },
+    //     { date: { $eq: req.body.date } }] }
+    // )
+    ProfileData.find(
+        //  userId: { $eq: req.body.userId } 
+        
     )
     .then(query => res.json(query))
     .catch(err =>

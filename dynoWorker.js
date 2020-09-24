@@ -74,28 +74,36 @@ async function updatePortfolio(tickers1234) {
 async function createProfilePost (userId, theKeys) {
     let date = await new Date();
     let dateProper = date.toDateString();
-    let response = await axios.get(
-        `https://nitetrader.herokuapp.com/api/transactions/${userId}`
-        )
-    let tickerSharesObj = sortResponse(response.data);
-    let userValue = calculateValue(tickerSharesObj, theKeys);
-    let userCash = await axios.get(
-        `https://nitetrader.herokuapp.com/api/stat/${userId}`)
-        .catch(error => console.log(error))
-    if (userCash.data.length === 0) {
-        userCash.data[0] = { 'value': 50000 };
+    let search = {
+        date: dateProper,
+        userId: userId
     }
-    let profileInfo = {
-        userId: userId,
-        value: userValue,
-        cash: parseFloat(userCash.data[0]['value']),
-        date: dateProper
-    }
-    console.log(profileInfo);
-    await axios.patch(
-        'https://nitetrader.herokuapp.com/api/profile/update', profileInfo)
-        .catch(err => console.log(err));
-    return true;
+    let any = await axios.post(
+        'https://nitetrader.herokuapp.com/api/profile/allProfiles', search
+    )
+    console.log(any)
+    // let response = await axios.get(
+    //     `https://nitetrader.herokuapp.com/api/transactions/${userId}`
+    //     )
+    // let tickerSharesObj = sortResponse(response.data);
+    // let userValue = calculateValue(tickerSharesObj, theKeys);
+    // let userCash = await axios.get(
+    //     `https://nitetrader.herokuapp.com/api/stat/${userId}`)
+    //     .catch(error => console.log(error))
+    // if (userCash.data.length === 0) {
+    //     userCash.data[0] = { 'value': 50000 };
+    // }
+    // let profileInfo = {
+    //     userId: userId,
+    //     value: userValue,
+    //     cash: parseFloat(userCash.data[0]['value']),
+    //     date: dateProper
+    // }
+    // console.log(profileInfo);
+    // await axios.patch(
+    //     'https://nitetrader.herokuapp.com/api/profile/update', profileInfo)
+    //     .catch(err => console.log(err));
+    // return true;
 }
                 
 function sortResponse(transactions) {
@@ -130,20 +138,20 @@ function calculateValue (tickerSharesObj, theKeys) {
     return totalValue;
 }
 // updatePortfolio(tickerForToday);
-// let tickerForToday = {
-//     GOOG: '1495.5300',
-//     AAPL: '110.3400',
-//     F: '7.2800',
-//     IBM: '124.9200',
-//     RIG: '1.1100',
-//     FB: '254.8200',
-//     TSLA: '423.4300',
-//     NKE: '116.3600',
-//     CAT: '153.8700',
-//     DPZ: '395.0700',
-//     GT: '8.9600',
-//     DDD: '5.2100'
-// }
+let tickerForToday = {
+    GOOG: '1495.5300',
+    AAPL: '110.3400',
+    F: '7.2800',
+    IBM: '124.9200',
+    RIG: '1.1100',
+    FB: '254.8200',
+    TSLA: '423.4300',
+    NKE: '116.3600',
+    CAT: '153.8700',
+    DPZ: '395.0700',
+    GT: '8.9600',
+    DDD: '5.2100'
+}
 
-// updatePortfolio(tickerForToday)
-candle()
+updatePortfolio(tickerForToday)
+// candle()
