@@ -22,7 +22,7 @@ class PortfolioD3BarChart extends React.Component {
         let dataValues = Object.values(data);
         let margins = { top: 50, right: 20, bottom: 100, left: 60 };
         let svgDimensions = { width: 600, height: 500 }
-        // let yMin = (Math.floor(Math.min(...Object.values(data))) - 1);
+        let yMin = (Math.floor(d3.min(dataValues)));
         let yMax = (Math.ceil(Math.max(...Object.values(data))) + 1);
         let y0 = Math.max(Math.abs(d3.min(dataValues)), Math.abs(d3.max(dataValues)));
         
@@ -33,7 +33,7 @@ class PortfolioD3BarChart extends React.Component {
 
         let yScale = this.yScale
             // scaleLinear domain required at least two values, min and max       
-            .domain([0, y0 + 5])
+            .domain([yMin, y0])
             // .domain([Math.min(0, d3.min(dataValues, d => d)), d3.max(dataValues, d => d)])
             .range([svgDimensions.height - margins.bottom, margins.top])
 
