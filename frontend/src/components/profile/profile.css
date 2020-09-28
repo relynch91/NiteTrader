@@ -59,9 +59,17 @@
     background-color: whitesmoke;
 }
 
-.profile-info-stocks-container {
-  width: 100%;
+.profile-info-data h2 .value{
+    color: green;
 }
+
+.profile-info-data h2 .loss{
+    color: red;
+}
+
+/* .profile-info-stocks-container {
+  width: 100%;
+} */
 
 
 
@@ -89,6 +97,7 @@
 .profile-info-stocks-container {
     overflow: scroll;
     width: 100%;
+    overflow-x: hidden;
 }
 
 .profile-graph-container {
@@ -182,6 +191,7 @@
     overflow: scroll;
     width: 100%;
     margin-bottom: 10px;
+    overflow-x: hidden;
 }
 
 .profile-transaction-list {
