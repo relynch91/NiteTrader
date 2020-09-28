@@ -12,13 +12,13 @@ class Profile extends React.Component {
         <ProfileChartContainer />
       </div>
     );
-    let username = this.props.username;
+    // let username = this.props.username;
 
     return (
       <div className="profile-container">
-        <div className="profile-header">
+        {/* <div className="profile-header">
           <h1>Hello {username}! Here is your Stock Profile:</h1>  
-        </div>
+        </div> */}
         {theProfileDetailsAndGraph}
       </div>
     )  
