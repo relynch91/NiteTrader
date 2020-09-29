@@ -9,6 +9,15 @@
     background-color: #27333d;
 }
 
+.profile-rightside-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 76vh;
+}
+
 .profile-header h1 {
     font-size: 28px;
     font-weight: 700;
