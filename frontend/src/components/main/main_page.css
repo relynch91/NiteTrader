@@ -15,6 +15,7 @@
 .main-welcome {
     min-width: 950px;
     max-width: 1150px;
+    margin-top: 5vh;
 }
 
 .baby-button1{
@@ -103,16 +104,17 @@
 }
 
 .main-welcome-message{
-    font-size: 35px;
+    font-size: 46px;
     text-align: center;
     margin-top: 50px;
-    color: #A3333D;
+    /* color: #A3333D; */
+    color: whitesmoke;
     font-weight: 700;
 }
 
 .main-components{
     display: flex;
     justify-content: space-around;
-    align-items: flex-center;
+    /* align-items: flex-center; */
     margin: 40px 50px 40px 50px
 }
