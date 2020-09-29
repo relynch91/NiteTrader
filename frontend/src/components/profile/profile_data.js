@@ -61,11 +61,11 @@ function TransactionContainer({ transactions }) {
             return (
               <div className='profile-transaction-info'>
                 <li className='profile-transaction-list' key={idx * 29}>
-                  <h4>Ticker: {transactions[compObj]['ticker']} </h4>
-                  <h4>Date: {transactions[compObj]['date'].split('T')[0]} </h4>
-                  <h4>Type: {buyOrSell(transactions[compObj]['buy'])} </h4>
-                  <h4>Price: {parseFloat(transactions[compObj]['price']).toFixed(2)} </h4>
-                  <h4>Shares: {transactions[compObj]['shares']} </h4>
+                  <span>Ticker: {transactions[compObj]['ticker']} </span>
+                  <span>Date: {transactions[compObj]['date'].split('T')[0]} </span>
+                  <span>Type: {buyOrSell(transactions[compObj]['buy'])} </span>
+                  <span>Price: {parseFloat(transactions[compObj]['price']).toFixed(2)} </span>
+                  <span>Shares: {transactions[compObj]['shares']} </span>
                 </li>
               </div>
             )

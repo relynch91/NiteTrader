@@ -6,9 +6,10 @@
     height: 80vh;
     width: 100vw;
     min-width: 1050px;
-    background-image: url('./starrynight.jpg');
-    background-repeat: repeat-x;
-    background-size: cover;
+    background-color: #27333d;
+    /* background-image: url('./starrynight.jpg'); */
+    /* background-repeat: repeat-x;
+    background-size: cover; */
 }
 
 .profile-header h1 {
@@ -76,25 +77,32 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .profile-info-stocks > h1 {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
+    align-self: flex-start;
     justify-content: space-around;
-    border: 1px solid gray;
-    background-color: whitesmoke;
-    border-radius: 5px;
+    /* border: 1px solid gray; */
+    /* background-color: whitesmoke; */
+    /* border-radius: 5px; */
     height: 30px;
-    padding: 5px 10px 5px 10px;
-    margin-bottom: 5px;
+    /* padding: 5px 10px 5px 10px; */
+    /* margin-bottom: 5px; */
+    padding-top: 5px;
+    color: whitesmoke;
+    font-size: 18px;
+    font-weight: 700;
+    /* border-bottom: 2px solid whitesmoke; */
 }
 
 .profile-info-stocks-container {
     overflow: scroll;
     width: 100%;
     overflow-x: hidden;
+    /* margin-top: 5px; */
 }
 
 .profile-graph-container {
@@ -112,11 +120,13 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    border: 1px solid gray;
+    /* border: 1px solid gray;
     background-color: whitesmoke;
-    border-radius: 5px;
+    border-radius: 5px; */
     margin: 10px;
-    height: 34px;
+    height: 30px;
+    color: whitesmoke;
+    /* font-size: 18px; */
 }
 
 .profile-info-stocks-item-blank {
@@ -130,6 +140,7 @@
     height: 34px;
     width: 90%;
     font-size: 14px;
+
 }
 
 .profile-info-transactions-blank {
@@ -145,9 +156,9 @@
     font-size: 14px;
 }
 
-.profile-info-stocks-item > h4 {
+/* .profile-info-stocks-item > h4 {
     font-size: 12px;
-}
+} */
 
 .profile-graph {
     display: flex;
@@ -158,10 +169,12 @@
 
 .profile-details-and-graph {
     margin-top: 20px;
+    width: 90vw;
     min-width: 1050px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
+    justify-content:space-evenly;
 }
 
 .profile-transactions {
@@ -173,16 +186,19 @@
 
 .profile-transactions > h1 {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
+    align-self: start;
     justify-content: space-around;
-    border: 1px solid gray;
+    /* border: 1px solid gray;
     background-color: whitesmoke;
-    border-radius: 5px;
+    border-radius: 5px; */
     height: 30px;
-    padding: 5px 10px 5px 10px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-
+    /* padding: 5px 10px 5px 10px; */
+    /* margin-bottom: 10px; */
+    margin-top: 15px;
+    color: whitesmoke;
+    font-size: 18px;
+    font-weight: 700;
 }
 
 .profile-transactions-container {
@@ -196,14 +212,14 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    border: 1px solid gray;
+    /* border: 1px solid gray;
     border-radius: 5px;
-    background-color: whitesmoke;
-    margin: 10px;
+    background-color: whitesmoke; */
+    /* margin: 10px; */
     height: 34px;
 }
-
-.profile-transaction-list > h4 {
-    font-size: 12px;
+.profile-transaction-list > span {
+    color: whitesmoke;
+    font-size: 14px;
 }
 
