@@ -48,7 +48,6 @@ router.patch('/update', (req, res) => {
 })
 
 router.post('/posts', (req, res) => {
-
     ProfileData.find()
     .then(query => res.json(query))
     .catch(err =>
@@ -61,10 +60,6 @@ router.post('/allProfiles', (req, res) => {
     ProfileData.find({ $and: [ { userId: { $eq: req.body.userId } },
         { date: { $eq: req.body.date } }] }
     )
-    // ProfileData.find({ this works! 
-    //      userId: { $eq: req.body.userId } 
-    // }
-    // )
     .then(query => res.json(query))
     .catch(err =>
         res.status(404).json({ profileNotFound: 'Sorry, there was an error' }
