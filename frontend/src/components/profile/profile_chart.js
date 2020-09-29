@@ -25,24 +25,26 @@ class ProfileChart extends React.Component {
       )
     } else {
       return (
-        <div className='profile-graph-container'>
-          <div>
-            <h1 className='profile-graph-header'>
-              Profile Value Over Time
-            </h1>
+        <div className='profile-rightside-container'>
+          <div className='profile-graph-container'>
+            <div>
+              <h1 className='profile-graph-header'>
+                Profile Value Over Time
+              </h1>
+            </div>
+            <AreaChart className='area-chart-container'
+              width={550}
+              height={400}
+              data={profileValues}
+            >
+              <CartesianGrid strokeDasharray="5 5" />
+              <XAxis dataKey="date" dy={10} />
+              <YAxis className='profile-graph-yaxis' dataKey="value" 
+                type="number" domain={['auto', 'auto']} />
+              <Tooltip />
+              <Area type="monotone" fill="black" dataKey="value" stroke="rgb(255, 158, 44)" dot={false} />
+            </AreaChart>
           </div>
-          <AreaChart className='area-chart-container'
-            width={550}
-            height={400}
-            data={profileValues}
-          >
-            <CartesianGrid strokeDasharray="5 5" />
-            <XAxis dataKey="date" dy={10} />
-            <YAxis className='profile-graph-yaxis' dataKey="value" 
-              type="number" domain={['auto', 'auto']} />
-            <Tooltip />
-            <Area type="monotone" fill="black" dataKey="value" stroke="rgb(255, 158, 44)" dot={false} />
-          </AreaChart>
         </div>
       )  
     }
