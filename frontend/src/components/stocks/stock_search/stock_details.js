@@ -137,12 +137,22 @@ export default class StockDetails extends React.Component {
       <div className='the-details-stock-api'>
         <div className="stock-details-goods">
           <h1>Information for { ticker }: </h1>
-          <h4>Week of { date } High: ${parseFloat(data["2. high"]).toFixed(2) }</h4>
-          <h4>Week of { date } Low: ${ parseFloat(data["3. low"]).toFixed(2) }</h4>
-          <h4>Latest Price as of {recentDate}: ${ parseFloat(dayStock).toFixed(2) }</h4>
+          <h4>Week of { date } High: ${parseFloat(data["2. high"]).toLocaleString(
+                  undefined, { minimumFractionDigits: 2 }
+                ) }</h4>
+          <h4>Week of { date } Low: ${ parseFloat(data["3. low"]).toLocaleString(
+                  undefined, { minimumFractionDigits: 2 }
+                ) }</h4>
+          <h4>Latest Price as of {recentDate}: ${ parseFloat(dayStock).toLocaleString(
+                  undefined, { minimumFractionDigits: 2 }
+                ) }</h4>
           <h4>Number of Shares Owned: { numberOwned }</h4>
-          <h4>Average Price Per Share: { parseFloat(pricePerShare).toFixed(2) }</h4>
-          <h4>Current amount of cash: $ { parseFloat(cash).toFixed(2) } </h4>
+          <h4>Average Price Per Share: { parseFloat(pricePerShare).toLocaleString(
+                  undefined, { minimumFractionDigits: 2 }
+                ) }</h4>
+          <h4>Current amount of cash: $ { parseFloat(cash).toLocaleString(
+                  undefined, { minimumFractionDigits: 2 }
+                ) } </h4>
 
         </div>
         <div className='stock-buy-sell-container'>
