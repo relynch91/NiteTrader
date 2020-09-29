@@ -6,26 +6,20 @@
     height: 80vh;
     width: 100vw;
     min-width: 1050px;
-    background-color: #27333d;
-    /* background-image: url('../stocks/portfolio/portfolio_background.jpg');
+    background-image: url('./starrynight.jpg');
     background-repeat: repeat-x;
-    background-size: cover; */
+    background-size: cover;
 }
 
 .profile-header h1 {
     font-size: 28px;
     font-weight: 700;
-    /* color: #2a5976; */
     color: #f2f2f2;
     margin: 0px 10px 0px 10px;
 }
 
 .profile-header {
     margin: 10px 10px 10px 10px;
-    /* background-color: whitesmoke; */
-    /* border: 1px solid; */
-    /* border-radius: 3px; */
-
 }
 
 .profile-data {
@@ -33,7 +27,6 @@
     flex-direction: column;
     height: 76vh;
     width: 500px;
-    /* border: 1px solid gray; */
     border-radius: 5px;
     margin-right: 10px;
 }
@@ -50,27 +43,21 @@
 
 .profile-info-data {
     height: 100%;
-    /* width: 50%; */
-    /* display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center; */
-    /* border: 1px solid gray; */
-    /* border-radius: 5px; */
     margin-top: 5px;
     text-align: left;
-    /* background-color: whitesmoke; */
 }
 
 .profile-info-data h1{
     color: #f2f2f2;
     font-size: 26px;
+    margin-left: 08px;
 }
 
-.profile-info-data h2{
+.profile-info-data h2 {
     color: #f2f2f2;
     font-size: 20px;
     margin-top: 7px;
+    margin-left: 08px;
 }
 
 .profile-info-data h2 .value{

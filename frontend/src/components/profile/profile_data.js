@@ -155,7 +155,7 @@ class ProfileData extends React.Component {
                 )}
               </span>
             </h2>
-            <h2>Performance (Lifteime): <GainLoss totalValue={totalValue} /> </h2>
+            <h2>Performance (Lifetime): <GainLoss totalValue={totalValue} /> </h2>
           </div>
         </div>
         <CurrentStocks stocks={stocks} portfolio={portfolio} />

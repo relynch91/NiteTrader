@@ -4,12 +4,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* background: url(https://greet-up-seeds.s3-us-west-1.amazonaws.com/Sunset_Above_Clouds.jpg) no-repeat center center fixed; 
+    /* background: url(https://greet-up-seeds.s3-us-west-1.amazonaws.com/Sunset_Above_Clouds.jpg) no-repeat center center fixed;  */
     background: url('./kristopher-roller-zepnJQycr4U-unsplash.jpg') no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover; */
+    background-size: cover;
 }
 
 .main-welcome {
