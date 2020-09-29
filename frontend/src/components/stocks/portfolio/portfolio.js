@@ -1,6 +1,8 @@
 import React from 'react';
-import StockIndexContainer from '../stock_index/stock_index_container';
-import PortfolioD3BarChartContainer from './/portfolioD3/portfolio_barchart_d3_container'
+import StockIndexContainer from '../stock_index/stock_index_container.js';
+import PortfolioD3BarChartContainer from './/portfolioD3/portfolio_barchart_d3_container.js'
+import PortfolioRechartContainer from './portfolio_rechart_container.js'
+
 import './portfolio.css'
 
 class Portfolio extends React.Component {
@@ -35,7 +37,8 @@ class Portfolio extends React.Component {
           </div>
           <div className='portfolio-data'>
             <StockIndexContainer />
-            <PortfolioD3BarChartContainer />
+            {/* <PortfolioD3BarChartContainer /> */}
+            <PortfolioRechartContainer />
           </div>
         </div>
       );
