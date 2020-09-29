@@ -13,15 +13,19 @@ function CurrentStocks({ stocks, portfolio }) {
             if (!stocks[compObj]) {
               price = 'N/A'
             } else {
-              price = parseFloat(stocks[compObj]['price']).toFixed(2)
+              price = parseFloat(stocks[compObj]['price']).toLocaleString(
+                undefined, { minimumFractionDigits: 2 }
+              )
             }
             return (
               <div>
                 <li className='profile-info-stocks-item'>
-                  <h4 >Ticker: {compObj}</h4 >
-                  <h4 >Price Per Share: {parseFloat(portfolio[compObj]['pricePerShare']).toFixed(2)}</h4 >
-                  <h4 >Shares Owned: {portfolio[compObj]['ownedShares']}</h4 >
-                  <h4 >Latest Price: ${price} </h4 >
+                  <span >Ticker: {compObj}</span >
+                  <span >Price Per Share: {parseFloat(portfolio[compObj]['pricePerShare']).toLocaleString(
+                    undefined, { minimumFractionDigits: 2 }
+                  )}</span >
+                  <span >Shares Owned: {portfolio[compObj]['ownedShares']}</span >
+                  <span >Latest Price: {price} </span >
                 </li>
               </div>
             )
@@ -63,7 +67,9 @@ function TransactionContainer({ transactions }) {
                   <span>Ticker: {transactions[compObj]['ticker']} </span>
                   <span>Date: {transactions[compObj]['date'].split('T')[0]} </span>
                   <span>Type: {buyOrSell(transactions[compObj]['buy'])} </span>
-                  <span>Price: {parseFloat(transactions[compObj]['price']).toFixed(2)} </span>
+                  <span>Price: {parseFloat(transactions[compObj]['price']).toLocaleString(
+                    undefined, { minimumFractionDigits: 2 }
+                  )} </span>
                   <span>Shares: {transactions[compObj]['shares']} </span>
                 </li>
               </div>

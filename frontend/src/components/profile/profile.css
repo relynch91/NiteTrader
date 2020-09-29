@@ -7,9 +7,6 @@
     width: 100vw;
     min-width: 1050px;
     background-color: #27333d;
-    /* background-image: url('./starrynight.jpg'); */
-    /* background-repeat: repeat-x;
-    background-size: cover; */
 }
 
 .profile-header h1 {
@@ -27,9 +24,9 @@
     display: flex;
     flex-direction: column;
     height: 76vh;
-    width: 500px;
+    min-width: 550px;
     border-radius: 5px;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 .profile-data-wrapper {
@@ -82,51 +79,40 @@
 
 .profile-info-stocks > h1 {
     display: flex;
-    /* align-items: center; */
     align-self: flex-start;
     justify-content: space-around;
-    /* border: 1px solid gray; */
-    /* background-color: whitesmoke; */
-    /* border-radius: 5px; */
     height: 30px;
-    /* padding: 5px 10px 5px 10px; */
-    /* margin-bottom: 5px; */
     padding-top: 5px;
     color: whitesmoke;
     font-size: 18px;
     font-weight: 700;
-    /* border-bottom: 2px solid whitesmoke; */
 }
 
 .profile-info-stocks-container {
     overflow: scroll;
     width: 100%;
     overflow-x: hidden;
-    /* margin-top: 5px; */
 }
 
 .profile-graph-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid gray;
+    border: 1px solid black;
     background-color: whitesmoke;
     height: 450px;
     width: 600px;
     border-radius: 5px;
+    margin-left: 20px;
 }
 
 .profile-info-stocks-item {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    /* border: 1px solid gray;
-    background-color: whitesmoke;
-    border-radius: 5px; */
+    justify-content: space-between;
     margin: 10px;
     height: 30px;
     color: whitesmoke;
-    /* font-size: 18px; */
 }
 
 .profile-info-stocks-item-blank {
@@ -156,10 +142,6 @@
     font-size: 14px;
 }
 
-/* .profile-info-stocks-item > h4 {
-    font-size: 12px;
-} */
-
 .profile-graph {
     display: flex;
     flex-direction: column;
@@ -172,8 +154,6 @@
     width: 90vw;
     min-width: 1050px;
     display: flex;
-    /* justify-content: center;
-    align-items: center; */
     justify-content:space-evenly;
 }
 
@@ -186,15 +166,9 @@
 
 .profile-transactions > h1 {
     display: flex;
-    /* align-items: center; */
     align-self: start;
     justify-content: space-around;
-    /* border: 1px solid gray;
-    background-color: whitesmoke;
-    border-radius: 5px; */
     height: 30px;
-    /* padding: 5px 10px 5px 10px; */
-    /* margin-bottom: 10px; */
     margin-top: 15px;
     color: whitesmoke;
     font-size: 18px;
@@ -212,10 +186,6 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    /* border: 1px solid gray;
-    border-radius: 5px;
-    background-color: whitesmoke; */
-    /* margin: 10px; */
     height: 34px;
 }
 .profile-transaction-list > span {
@@ -224,9 +194,14 @@
 }
 
 .area-chart-container {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .profile-graph-yaxis {
     margin-right: 5px;
+}
+
+.profile-graph-header {
+    font-size: 18px;
+    margin-top: 06px;
 }
