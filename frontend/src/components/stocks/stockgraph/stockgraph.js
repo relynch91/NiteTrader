@@ -19,12 +19,12 @@ export default class StockGraph extends React.Component {
     }
     let theDays = Object.keys(stockDataFromState)
     let structuredProps = theDays.map((dateKey) => {
-
       return ({
         date: dateKey.split(" ")[0],
         close: (parseFloat(parseFloat(stockDataFromState[dateKey]["4. close"]).toFixed(2))),
       })
     });
+    console.log(structuredProps);
     this.setState( { stock: structuredProps.reverse() });
   }
 

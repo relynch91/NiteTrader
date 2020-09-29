@@ -5,6 +5,7 @@ import { getProfileValues } from '../../actions/profile_actions';
 const mapStateToProps = (state) => {
   return {
     userId: state.session.user.id,
+    profileValues: state.profile.profileValues
   };
 };
 

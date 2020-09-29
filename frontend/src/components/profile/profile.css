@@ -103,8 +103,8 @@
     align-items: center;
     border: 1px solid gray;
     background-color: whitesmoke;
-    height: 40vh;
-    width: 500px;
+    height: 450px;
+    width: 600px;
     border-radius: 5px;
 }
 
@@ -207,3 +207,10 @@
     font-size: 12px;
 }
 
+.area-chart-container {
+    margin-top: 20px;
+}
+
+.profile-graph-yaxis {
+    margin-right: 5px;
+}
