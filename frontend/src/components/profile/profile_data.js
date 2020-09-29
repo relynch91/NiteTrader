@@ -1,7 +1,6 @@
 import React from 'react';
 import './profile.css';
 
-
 function CurrentStocks({ stocks, portfolio }) {
 
   if (!!stocks) {
@@ -19,10 +18,10 @@ function CurrentStocks({ stocks, portfolio }) {
             return (
               <div>
                 <li className='profile-info-stocks-item'>
-                  <span >Ticker: {compObj}</span >
-                  <span >Price Per Share: {parseFloat(portfolio[compObj]['pricePerShare']).toFixed(2)}</span >
-                  <span >Shares Owned: {portfolio[compObj]['ownedShares']}</span >
-                  <span >Latest Price: ${price} </span >
+                  <h4 >Ticker: {compObj}</h4 >
+                  <h4 >Price Per Share: {parseFloat(portfolio[compObj]['pricePerShare']).toFixed(2)}</h4 >
+                  <h4 >Shares Owned: {portfolio[compObj]['ownedShares']}</h4 >
+                  <h4 >Latest Price: ${price} </h4 >
                 </li>
               </div>
             )
@@ -89,7 +88,6 @@ function TransactionContainer({ transactions }) {
 function GainLoss({ totalValue }) {
 
   let percentage;
-
   if (totalValue > 50000) {
     percentage = ((totalValue / 50000) - 1) * 100;
     return (
@@ -101,7 +99,6 @@ function GainLoss({ totalValue }) {
       <span className="loss"> {percentage.toFixed(2)}%</span>
     )
   }
-
 }
 
 class ProfileData extends React.Component {
@@ -127,7 +124,6 @@ class ProfileData extends React.Component {
     let portfolio = this.props.myPortfolio;
     let stocks = this.props.ownedStocks;
     let totalValue = parseFloat(profile['profileValue'] + parseFloat(profile['profileValueStat']));
-
 
     return (
       <div className='profile-data'>

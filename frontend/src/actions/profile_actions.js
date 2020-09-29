@@ -83,6 +83,20 @@ export const buildProfile = (stocks, info) => dispatch => {
 
 export const getProfileValues = userId => dispatch => {
     APIUtil.profilesFetch(userId).then(
-        profiles => dispatch(receiveProfileValues(profiles.data)))
-        .catch(error => dispatch(receiveProfileError(error)))
+        profiles => dispatch(formatProfileValues(profiles.data)))
+        .catch(error => dispatch(receiveProfileError(error)))   
 }
+
+export const formatProfileValues = (values) => dispatch => {
+    let theKeys = Object.keys(values);
+    let structuredProps = theKeys.map((dateKey) => {
+        let cash = values[dateKey]['cash'];
+        let value = values[dateKey]['value'];
+        let total = parseFloat(cash + value).toFixed(2);
+        return ({
+            date: values[dateKey]['date'],
+            value: total
+        })
+    })
+    dispatch(receiveProfileValues(structuredProps));
+} 
