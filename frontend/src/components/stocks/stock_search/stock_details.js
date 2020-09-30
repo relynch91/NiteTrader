@@ -28,6 +28,9 @@ export default class StockDetails extends React.Component {
     if (this.props.profile !== prevProps.profile) { 
       this.oneMoreTime() 
     };
+    if (this.props.flag !== prevProps.flag) {
+      this.render();
+    }
   }
 
   loadingFlag() {
@@ -153,7 +156,6 @@ export default class StockDetails extends React.Component {
           <h4>Current amount of cash: $ { parseFloat(cash).toLocaleString(
                   undefined, { minimumFractionDigits: 2 }
                 ) } </h4>
-
         </div>
         <div className='stock-buy-sell-container'>
             <div className='stock-buy-sell'>
