@@ -67,7 +67,7 @@ html body {
     color: whitesmoke;
     text-align: center;
     cursor: pointer;
-    
+    border: 1px solid black;
 }
 .banner-button:hover{
     background: #3d6883;
