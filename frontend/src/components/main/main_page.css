@@ -31,6 +31,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border: 1px black solid;
 }
 
 .baby-button1:hover{
@@ -78,6 +79,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border: 1px black solid;
 }
 
 .baby-button2:hover{

@@ -14,12 +14,12 @@ class ProfileChart extends React.Component {
   render() {
     let { profileValues } = this.props;
     console.log(profileValues);
-    if (profileValues === 'undefined') {
+    if (!profileValues) {
       return (
         <div className='profile-graph-container'>
           <h1>Profile Chart</h1>
           <div>
-            <h2>This is where the profile chart will be located.</h2>
+            <h2>After 2 days this chart will show your Value over Time.</h2>
           </div>
         </div>
       )

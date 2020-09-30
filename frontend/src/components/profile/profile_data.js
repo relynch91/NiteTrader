@@ -3,7 +3,7 @@ import './profile.css';
 
 function CurrentStocks({ stocks, portfolio }) {
 
-  if (!!stocks) {
+  if (Object.keys(stocks).length !== 0) {
     return (
       <div className='profile-info-stocks'>
         <h1>Your Current Stocks:</h1>
@@ -130,7 +130,6 @@ class ProfileData extends React.Component {
     let portfolio = this.props.myPortfolio;
     let stocks = this.props.ownedStocks;
     let totalValue = parseFloat(profile['profileValue'] + parseFloat(profile['profileValueStat']));
-
     return (
       <div className='profile-data'>
         <div className='profile-data-wrapper'>

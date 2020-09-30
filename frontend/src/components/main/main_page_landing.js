@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 import "./main_page.css";
-import Unicorn from './unicorn.jpg';
-import Profile from './profile.jpg';
+import Unicorn from './bull.jpg';
+import Profile from './images.jpg';
 
 
 class MainPageLanding extends React.Component {
@@ -18,7 +18,7 @@ class MainPageLanding extends React.Component {
                   </Link>
                   <Link to="/search" className="baby-button2">
                       <span><img src={Unicorn} alt='unicorn' className="baby-button-img2"/></span>
-                      <span className="baby-button-text2">Find The Next Unicorn</span>
+                      <span className="baby-button-text2">Find The Next Bull Market</span>
                   </Link>
               </div>
           </div>
