@@ -12,7 +12,7 @@ export default class PortfolioRechart extends PureComponent {
             <div className='portfolio-graph'>
                 <div className="portfolio-graph-container">
                     <h1>
-                        Stocks Performance for (Single Day Percentage)
+                        Stocks Performance Single Day Percentage
                 </h1>
                     <BarChart
                         width={420}
