@@ -95,8 +95,7 @@
     background-color: transparent;
     border: none;
     font-size: 15px;
-    margin-left: -2px;
-    margin-top: 10px;
+    margin: 10px;
     cursor: pointer;
 }
 
@@ -108,12 +107,12 @@
 .modal-submit-demo {
     color: #F64740;
     background-color: transparent;
-    border: none;
+    border: 1px black solid;
+    border-radius: 3px;
     font-size: 15px;
-    margin-left: -2px;
-    margin-top: 25px;
-    margin-bottom: 10px;
     cursor: pointer;
+    padding: 10px;
+    margin: 05px 10px 05px 10px;
 }
 
 .modal-submit-demo:hover {

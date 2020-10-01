@@ -14,9 +14,9 @@ class MainPage extends React.Component {
       <div className="main-landing">
         <Switch>
           <Route exact path="/" component={MainPageLanding} />
-          <Route path="/profile" component={ProfileContainer} />
-          <Route path="/portfolio" exact component={PortfolioContainer} />
-          <Route path="/search" exact component={StockSearchContainer} />
+          <Route exact path="/profile" component={ProfileContainer} />
+          <Route exact path="/portfolio" exact component={PortfolioContainer} />
+          <Route exact path="/search" exact component={StockSearchContainer} />
         </Switch>
       </div>
     );

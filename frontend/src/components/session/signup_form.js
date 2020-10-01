@@ -39,7 +39,7 @@ class SignupForm extends React.Component {
   render() {
     const { formType, closeModal, otherForm } = this.props;
     const message = formType === 'Sign Up' ? 'Already have an account?' : 'No account?';
-    const button_text = formType === 'Sign Up' ? 'Sign up' : 'Sign in';
+    const button_text = formType === 'Sign Up' ? 'Sign Up' : 'Sign In';
     const login_intro = formType === 'Sign Up' ? 'Join NiteTrader!' : 'Welcome Back!'
     
     return (
