@@ -14,13 +14,16 @@ class ProfileChart extends React.Component {
   render() {
     let { profileValues } = this.props;
     console.log(profileValues);
-    if (!profileValues) {
+    if (!profileValues || (profileValues.length === 0)) {
       return (
-        <div className='profile-graph-container'>
+        <div className='profile-graph-container-empty'>
           <h1>Profile Chart</h1>
-          <div>
-            <h2>After 2 days this chart will show your Value over Time.</h2>
-          </div>
+          <h2>
+            This chart will show your Value over Time by the end of day!
+          </h2>
+          <h2>
+            We need some data first!
+          </h2>
         </div>
       )
     } else {
