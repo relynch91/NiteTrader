@@ -10,8 +10,7 @@ router.get('/activeTrades', (req, res) => {
     Transaction.find({ buy: true }, { ticker: 1, _id: 0 })
         .then( tickerArray => res.json(tickerArray))
         .catch(err => 
-            res.status(404).json({ noTradesFound: 'No active trades found' }
-            )
+            res.status(404).json({ noTradesFound: 'No active trades found' })
         )
 });
 

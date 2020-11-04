@@ -20,7 +20,7 @@ async function receiveTickers() {
 
 async function tickerCalls() {
     let ticker = await receiveTickers();
-    let ticks = unpackTickers(ticker.data)
+    let ticks = unpackTickers(ticker.data);
     return ticks;
 }
 
@@ -58,8 +58,8 @@ async function candle() {
 }
 
 async function updatePortfolio(tickers1234) {
-    let theKeys = (tickers1234); 
-    let users = await axios.get('https://nitetrader.herokuapp.com/api/users/allusernames')
+    let theKeys = (tickers1234);
+    let users = await axios.get('https://nitetrader.herokuapp.com/api/users/allusernames');
     let userIds = [];
     users.data.forEach(obj => {
         userIds.push(obj._id);
@@ -119,7 +119,7 @@ function sortResponse(transactions) {
     }
     return tickers;
 }
-                
+
 function calculateValue (tickerSharesObj, theKeys) {
     let totalValue = 0;
     let ownedStocks = Object.keys(tickerSharesObj);
@@ -134,4 +134,5 @@ function calculateValue (tickerSharesObj, theKeys) {
     }
     return totalValue;
 }
+
 candle()
