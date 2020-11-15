@@ -1,0 +1,6 @@
+Websocket Notes:
+
+1. npm install socket.io
+2. let io = socket(server); 
+3. establish connection, run functioni on connect (callback());
+4. 
