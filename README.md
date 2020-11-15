@@ -1,12 +1,12 @@
-NiteTrader README:
+About NiteTrader:
 
 NiteTrader is an application built implementing the MERN Stack Software Model.  Node.js is used as the application runtime that the stack runs on, mongoDB is used as the backend database, express router is implemented as the backend application router, and lastly NiteTrader uses react as the frontend web application framework.  API requests are dispatched as AJAX requests to the AlphaVantage Stock Api providing real-time and up-to-date information on any publicly traded company.  
 
 Users are able to create an account which sets up a default profile value of 50,000$.  The user are able to buy and sell stock with current up to date prices of the actual stock price.  Users are be able to see their overall return on not only each individual company that they invest in, but also they are able to track their profile and portfolio growth over time.
 
-The application impelments Heroku Cloud Services as the hosting platform, and also uses Heroku Dynos to run microservices that update all currently owned stocks by users.  When users login, a simple database request is made to fetch information for that specific user, instead of fetching information from a third party api.  This improves both the speed and the reliability of the website.
+The application implements Heroku Cloud Services as the hosting platform, and also uses Heroku Dynos to run microservices that update all currently owned stocks by users.  When users login, a simple database request is made to fetch information for that specific user, instead of fetching information from a third party api.  This improves both the speed and the reliability of the website.
 
-Heroku Dyno Scheduler is implemented to be able to run the micro processes file.  At the same time every night,
+Heroku Dyno Scheduler is used to be able to run the micro processes file.  At the same time every night,
 the scheduler runs the web and worker files that are specified in the scheduler.  This worker file is then ran and performs numerous database functions.  First, the service will run through the database creating an array of all 
 tickers that have ever been bought by the users.  Then, an Axios Request is made to a third-party API, AlphaVantage, to get up-to-date information about each ticker.  Each ticker and its information is then stored as a document in MongoDB.  Next, an object is made of key: value pairs that are the current tickers and price of each stock.  A request is then made for all the users, and another request is made for each user's transaction history.  The algorithm then iterates through all currently held stocks for each user, based on the number of stocks bought and sold.  Once all currently held stocks and the number of shares for each owner are configured, the users portfolio value can then be calculated.  One last get request is made to the MongoDB, which retrieves the total cash value held for the user.  Lastly, a new document is made for each user which details the amount of cash the user has and the total value of all owned stocks.  
 
