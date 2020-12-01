@@ -16,3 +16,10 @@ export const allStocks = () => {
     let tickers = axios.get('/api/transactions/activeTrades')
     return tickers;
 }
+
+export const updateDataBase = (globalEndPoint) => {
+    return  axios.patch(
+        '/api/stock_api/quoteendpointstock/update',
+        // 'https://nitetrader.herokuapp.com/api/stock_api/quoteendpointstock/update', 
+        globalEndPoint);
+}
