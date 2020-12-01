@@ -141,7 +141,7 @@ export const cashValueBuy = trade => dispatch => {
 
 export const fireAPI = (ticker) => dispatch => {
     axios.get(`
-    https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${key.alphaVantage}`)
+    https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=SVP67XIYGDS40JIM`)
     .then( stockData => dispatch(updateDB(stockData)))
     .catch( error => dispatch(receiveErrors(error)))
 };
