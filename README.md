@@ -1,6 +1,6 @@
 About NiteTrader:
 
-NiteTrader is an application built implementing the MERN Stack Software Model.  Node.js is used as the application runtime that the stack runs on, mongoDB is used as the backend database, express router is implemented as the backend application router, and lastly NiteTrader uses react as the frontend web application framework.  API requests are dispatched as AJAX requests to the AlphaVantage Stock Api providing real-time and up-to-date information on any publicly traded company.  
+NiteTrader is an application built implementing the MERN Stack Software Model.  Node.js is used as the runtime environment, mongoDB is used as the database, express router is implemented as the applicaiton framework, and lastly NiteTrader uses react and redux as the frontend web application state and component management libraries.  API requests are dispatched as AJAX requests to the AlphaVantage Stock Api providing real-time and up-to-date information on any publicly traded company.  
 
 Users are able to create an account which sets up a default profile value of 50,000$.  The user are able to buy and sell stock with current up to date prices of the actual stock price.  Users are be able to see their overall return on not only each individual company that they invest in, but also they are able to track their profile and portfolio growth over time.
 
